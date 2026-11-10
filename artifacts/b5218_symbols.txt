@@ -151,3 +151,51 @@ FNV1a('unityframework') ^ 0xa5c39f17 = 0xea7fd991 (expected 0xea7fd991)
   idx=16 (0x10) | hash_enc=0xb9c99cf8cd2eefea | uf_va=0x0a10f9f8 | il2cpp_class_get_field_from_name
   idx=17 (0x11) | hash_enc=0xc15437eba954ff1b | uf_va=0x0a110128 | il2cpp_field_static_set_value
   idx=18 (0x12) | hash_enc=0xde1720f481de6873 | uf_va=0x0a110124 | il2cpp_field_static_get_value
+
+=== sub_b973c Disasm (0xb973c .. 0xb97e4) ===
+  0x0b973c: cbz      x0, #0xb97c8
+  0x0b9740: mov      x8, #0x2325
+  0x0b9744: movk     x8, #0x8422, lsl #16
+  0x0b9748: movk     x8, #0x9ce4, lsl #32
+  0x0b974c: movk     x8, #0xcbf2, lsl #48
+  0x0b9750: ldrb     w11, [x0]
+  0x0b9754: cbz      w11, #0xb978c
+  0x0b9758: add      x9, x0, #1
+  0x0b975c: mov      x10, #0x1b3
+  0x0b9760: movk     x10, #0x100, lsl #32
+  0x0b9764: sub      w12, w11, #0x41
+  0x0b9768: and      w12, w12, #0xff
+  0x0b976c: add      w13, w11, #0x20
+  0x0b9770: cmp      w12, #0x1a
+  0x0b9774: csel     w11, w13, w11, lo
+  0x0b9778: and      x11, x11, #0xff
+  0x0b977c: eor      x8, x8, x11
+  0x0b9780: mul      x8, x8, x10
+  0x0b9784: ldrb     w11, [x9], #1
+  0x0b9788: cbnz     w11, #0xb9764
+  0x0b978c: eor      x8, x8, x8, lsr #30
+  0x0b9790: mov      x9, #0xe5b9
+  0x0b9794: movk     x9, #0x1ce4, lsl #16
+  0x0b9798: movk     x9, #0x476d, lsl #32
+  0x0b979c: movk     x9, #0xbf58, lsl #48
+  0x0b97a0: mul      x8, x8, x9
+  0x0b97a4: eor      x8, x8, x8, lsr #27
+  0x0b97a8: mov      x9, #0x11eb
+  0x0b97ac: movk     x9, #0x1331, lsl #16
+  0x0b97b0: movk     x9, #0x49bb, lsl #32
+  0x0b97b4: movk     x9, #0x94d0, lsl #48
+  0x0b97b8: mul      x8, x8, x9
+  0x0b97bc: lsr      x9, x8, #0x3f
+  0x0b97c0: lsr      x8, x8, #0x20
+  0x0b97c4: eor      w0, w9, w8
+  0x0b97c8: ret      
+  0x0b97cc: stp      x29, x30, [sp, #-0x10]!
+  0x0b97d0: mov      x29, sp
+  0x0b97d4: mov      x0, x2
+  0x0b97d8: bl       #0x639fd88
+  0x0b97dc: ldp      x29, x30, [sp], #0x10
+  0x0b97e0: b        #0x639fca4
+
+=== +[_UISceneBootstrapLoader load] Decrypted setenv(name, value, 1) ===
+  env_name  = '_UISceneTraitBootToken'
+  env_value = '1'
