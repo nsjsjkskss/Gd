@@ -262,22 +262,60 @@ Phân tích toàn bộ dải `0x4b40 .. 0x39f19c` (xem chi tiết tại `artifac
 | `0x224b40 .. 0x39ec8c` | `1` lệnh `brk #1`, `0` lệnh `svc` | **Thư viện Mật mã & TLS Tĩnh (BoringSSL / OpenSSL `libcrypto` + `libssl`):** Được liên kết tĩnh vào `libPPAPIKey_full.a` để thực hiện mã hóa tầng truyền tải độc lập và xác minh chữ ký số X.509 / ChaCha20-Poly1305 (`ChaCha20 for ARMv8, CRYPTOGAMS` tại `0x66f2d40`) cùng trạng thái bảo vệ tại `__DATA.__ppguard` (`0xcc85000`). |
 | `0x39ec8c .. 0x39f19c` | `12` lệnh `brk #1` / `udf #0` | **Trạm Xử lý Cờ Độc Trung tâm (`sub_39ec8c` Poison Sink):** Được gọi khi phát hiện vi phạm toàn vẹn (`bl #0x39ec8c` tại `0xb566c`, `0x39ee50`, ...). Ghi đè hằng số báo lỗi `0xdead10cc58632790` vào `[0xcc74870]` và `[0xcc74878]`, ghi `0xdead10cd` vào `[0xcc74890]`, xóa `[0xcc8f6b8]` và `[0xcc8f6c0]` về `0`, bật bit `0x80000003` tại `[0xcc74880]`, sau đó xóa toàn bộ thanh ghi `x0, x1, x29, x30, sp` về `0` và gọi `brk #1`. |
 
-### 12.2. Liên kết Trực tiếp giữa 130 RVA của `Penny` và 139 Điểm Nhảy Tĩnh trong `UnityFramework`
+### 12.2. Liên kết Trực tiếp giữa 130 RVA của `Penny` và 155 Điểm Nhảy Tĩnh trong `UnityFramework`
 Quét toàn bộ vùng `__TEXT.__text` của `UnityFramework` (`0x4000 .. 0xa19aeb4`) và đối chiếu với 3 bảng RVA trong `Penny` (`artifacts/uf_bridge_map.txt`) xác nhận cơ chế nối kết hai chiều:
 
-1. **Cấu trúc Điểm Nhảy tại `rva - 4` trong `UnityFramework`:**
-   - Mọi địa chỉ `rva` trong `Table 1` (15 mục), `Table 2` (19 mục) và `Table 3` (96 mục) đều trỏ tới **lệnh thứ hai** (offset `+4`) của hàm mục tiêu trong `UnityFramework`.
-   - Lệnh đầu tiên của các hàm đó (tại địa chỉ `rva - 4`) đã được sửa tĩnh trong tệp `UnityFramework` thành lệnh nhảy:
-     - **Nhóm nhảy trực tiếp bằng `b #<stub_va>` (120/130 mục):**
-       - Toàn bộ **96/96 mục của `Table 3`** và **4 mục của `Table 1`/`Table 2`** (`t1[2]`, `t2[2]`, `t2[3]`, `t2[4]`) có lệnh tại `rva - 4` là `b #<stub_va>` nhảy thẳng tới đúng **100 trampoline stub** trong `__TEXT_EXEC.__objc_tramp` (`0xc388100 .. 0xc389c40`). Không có bất kỳ nhánh dư thừa nào ngoài 100 điểm này (`Unmatched __TEXT_EXEC branches = 0`).
-       - **12 mục của `Table 1`** (`t1[3..14]`) và **8 mục của `Table 2`** (`t2[7..14]`) có lệnh tại `rva - 4` là `b #<auth_stub_va>` nhảy tới **20 trampoline stub** trong `__AUTH_EXEC.__auth_stubs` (`0xc39c100 .. 0xc39cc00`). Ngoài ra còn **19 điểm nhảy khác** trong `UnityFramework` (tại `0x5632f7c`, `0x5632fe0` và dải `0x6bfe764 .. 0x6c00b70`) nhảy tới 19 stub còn lại trong `__AUTH_EXEC` (tổng cộng `39` điểm nhảy tĩnh vào `__AUTH_EXEC`).
-     - **Nhóm nhảy qua thanh ghi `br x16` (10/130 mục):**
-       - Gồm `t1[0..1]` (`0x21e8d20`, `0x15cb050`) và `t2[0..1, 5..6, 15..18]` (`0x20f2d94`, `0x21ebd24`, `0x21ea8c8`, `0x21eab34`, `0x3421fc0 .. 0x34225c4`), nơi đoạn đầu hàm dùng chuỗi nạp địa chỉ vào `x16` kết thúc bằng `br x16` tại `rva - 4`.
+1. **Quy luật 4-byte (`b #<stub>`) so với 12-byte (`adrp x16; add x16; br x16`) — Khớp tuyệt đối `155/155` Stubs:**
+   - Trong kiến trúc ARM64, lệnh nhảy trực tiếp `b #<imm26>` có tầm nhảy tối đa `±128 MB` (`±0x8000000`). Do `__TEXT_EXEC` nằm ở `0xc388000` và `__AUTH_EXEC` nằm ở `0xc39c000`, mọi hàm trong `UnityFramework` có địa chỉ `< 0x4388000` đều nằm ngoài tầm `128 MB` của lệnh `b`.
+   - Vì vậy:
+     - **Với các hàm tại địa chỉ `>= 0x4388000` (139 vị trí):** Ghi đè **1 lệnh (4 byte)** tại `rva - 4` (`func_entry + 0`) bằng `b #<stub_va>`, gồm **100 nhánh** nhảy vào `__TEXT_EXEC` (`96` từ `Table 3`, `1` từ `Table 1`, `3` từ `Table 2`) và **39 nhánh** nhảy vào `__AUTH_EXEC` (`12` từ `Table 1`, `8` từ `Table 2`, và `19` nhánh tại `0x5632f7c..0x6c00b70`).
+     - **Với các hàm tại địa chỉ `< 0x4388000` (16 vị trí):** Ghi đè **3 lệnh (12 byte)** tại `rva - 12 .. rva` (`func_entry + 0 .. +8`) bằng cụm `adrp x16, #<stub_page>; add x16, x16, #<stub_off>; br x16`, gồm **10 nhánh** nhảy vào `__TEXT_EXEC` (`t1[0..1]`, `t2[0..1]` và `6` nhánh tại `0x21ec318..0x41b2c10`) và **6 nhánh** nhảy vào `__AUTH_EXEC` (`t2[5..6]`, `t2[15..18]`).
+     - **Tổng cộng:** `__TEXT_EXEC` có đúng `100 + 10 = 110 / 110` stub được trỏ tới; `__AUTH_EXEC` có đúng `39 + 6 = 45 / 45` stub được trỏ tới (**tổng `155 / 155` stub khớp 100%, không dư một stub nào**).
 
-2. **Cơ chế Gọi Hàm Gốc qua 44 `Orig-Call Thunks` trong `Penny` (`0xdb5d0 .. 0xdc280`):**
-   - Khi hàm xử lý trong `Penny` cần gọi lại hàm gốc của `UnityFramework` (vốn đã bị ghi đè lệnh đầu tiên tại `rva - 4`), nó gọi qua dải thunk tại `0xdb5d0 .. 0xdc280`.
+2. **Hai giai đoạn nạp Slot `__DATA_DIRTY` (`0xc398080`) & `__AUTH_DATA` (`0xc3a0080`):**
+   - **Giai đoạn 1 — Khởi tạo Passthrough Trước Xác thực (`+[_UIContextAssertionCoordinator _configureSystemContextAssertions]` tại `0xba558 .. 0xbaf38` -> `sub_cf930`):**
+     - Ngay khi nạp thư viện (`+[_UISceneBootstrapLoader load]` -> `0xe54cc`), `sub_ba558` đọc hạt giống 64-bit `0x065afa27e8371494` từ header 128 byte đầu phân vùng `UnityFramework.__TEXT_EXEC` (`0xc388004 .. 0xc38800c`, xác minh qua `sub_cf358` tại `0xcf400 .. 0xcf494`), giải mã 3 bảng RVA vào `0xcc8f6c8`, `0xcc8f740`, `0xcc8f7e8` và gọi `sub_cf930(uf_base, 0xc398080, 0xc3a0080, 0x065afa27e8371494)` (`0xbaf38`).
+     - `sub_cf930` giải mã chỉ số slot `(w9 & 0xff) * 16` và số bit xoay `w24` từ bảng `0x63dbcb0` / `0x63dbd1e`, rồi gọi `sub_cd608` để ghi cặp `(rol(handler_va, w24) ^ key, key)` vào `__DATA_DIRTY` / `__AUTH_DATA`. Khi stub chạy `eor x17, x17, x16; ror x17, x17, #<rot>`, khóa ngẫu nhiên `key` tự triệt tiêu và nhảy tới `handler_va`. Ở giai đoạn chưa xác thực này, đa số `handler_va` được trỏ vào các **hàm `orig_thunk` chuyển tiếp (`0xdb7d4 .. 0xdc108`)** và stub trả về `0` (`0xde3ec`) để `UnityFramework` chạy qua lệnh gốc bình thường mà không rơi vào nhánh fallback giả `b #0x5632fe4`.
+   - **Giai đoạn 2 — Kích hoạt Handler Tính năng Sau Xác thực (`sub_cdad8`, `sub_cf1a4`, `sub_de414` tại `0x63dbc2c`):**
+     - Sau khi xác thực thành công (`0xbdbb0 .. 0xbdbbc`), `sub_cdad8` và `sub_cf1a4` kích hoạt bảng điều phối 31 mục `sub_de414` (`0xde414 .. 0xde5f8`, jump table tại `0x63dbc2c`) và các hàm `sub_d8fc4`, `sub_d7a10`, `sub_d6ac8` để chuyển hướng các slot sang các hàm xử lý tính năng thực sự (`0xd48d8 .. 0xd6904`, `0xdb578`, ...).
+
+3. **Cơ chế Gọi Hàm Gốc qua 44 `Orig-Call Thunks` trong `Penny` (`0xdb5d0 .. 0xdc280`):**
+   - Khi hàm xử lý trong `Penny` cần gọi lại hàm gốc của `UnityFramework` (vốn đã bị ghi đè lệnh đầu tiên tại `rva - 4` hoặc 3 lệnh đầu tại `rva - 12`), nó gọi qua dải thunk tại `0xdb5d0 .. 0xdc280`.
    - Mỗi thunk thực hiện:
      1. Kiểm tra bit dấu của `[0xcc74880]` (`tbnz w17, #0x1f`) và ghi hằng số `0x7c3a4f9b` vào `[0xcc74880]`.
      2. Đọc con trỏ đã mã hóa từ bảng BSS `0xcc8f6c8` (`Table 1`) hoặc `0xcc8f740` (`Table 2`) (do `sub_ba558` nạp tại `0xbad34 .. 0xbae60`).
      3. Giải mã địa chỉ `rva` bằng cách XOR với địa chỉ hiện tại cộng hằng số (`adr x16, #...; add x16, x16, #...`) và khóa phiên 64-bit tại `[0xcc74888]`.
-     4. Thực thi **lệnh prologue bị ghi đè** (ví dụ `stp x20, x19, [sp, #-0x20]!`, `sub sp, sp, #0x60`, ...) ngay trước khi thực hiện `br x17` để nhảy vào `rva` (tức `func_start + 4` trong `UnityFramework`).
+     4. Thực thi **1 lệnh prologue bị ghi đè** (đối với nhánh 4 byte tại `rva - 4`) hoặc **3 lệnh prologue bị ghi đè** (đối với nhánh 12 byte tại `rva - 12`) ngay trước khi thực hiện `br x17` để nhảy vào `rva` trong `UnityFramework`.
+
+### 12.3. Bộ Phân giải 19 Hàm `il2cpp_*` (`sub_d9e44`), Luồng Timer 350ms (`0xde6b4`) và Quét Chống Hook `UnityFramework` (`sub_d47a0`)
+1. **Bảng 19 Hàm Export `il2cpp_*` tại `0x63dcd28` (`sub_d9e44` & `sub_da2e0`):**
+   - Hàm `sub_d9e44(uint32_t idx)` (`0xd9e44 .. 0xda2dc`, với `idx = 0..18`) duyệt bảng symbol `LC_SYMTAB` của `UnityFramework`, lọc các symbol bắt đầu bằng `"il2cpp_"` (`0xda228 .. 0xda248`), băm tên symbol qua `sub_da2e0` (FNV-1a 64-bit `basis = 0xcbf29ce484222325`, `prime = 0x100000001b3` + SplitMix64) rồi XOR với mặt nạ `0x376d7964fb120108` để khớp với 19 mục trong bảng `0x63dcd28` (lưu cache đã mã hóa vào `0xcc90ce8`):
+     - `[0] il2cpp_domain_get` (`0x0a10fefc`)
+     - `[1] il2cpp_thread_attach` (`0x0a11043c`)
+     - `[2] il2cpp_runtime_class_init` (`0x0a110408`)
+     - `[3] il2cpp_object_new` (`0x0a1103b8`)
+     - `[4] il2cpp_array_new` (`0x0a10f98c`)
+     - `[5] il2cpp_class_from_name` (`0x0a10f9d8`)
+     - `[6] il2cpp_get_corlib` (`0x0a10f96c`)
+     - `[7] il2cpp_gchandle_new` (`0x0a110204`)
+     - `[8] il2cpp_gc_wbarrier_set_field` (`0x0a110278`)
+     - `[9] il2cpp_string_new` (`0x0a110420`)
+     - `[10] il2cpp_class_get_method_from_name` (`0x0a10fa04`)
+     - `[11] il2cpp_runtime_invoke` (`0x0a110404`)
+     - `[12] il2cpp_class_get_methods` (`0x0a10f9fc`)
+     - `[13] il2cpp_method_get_name` (`0x0a1102e0`)
+     - `[14] il2cpp_domain_get_assemblies` (`0x0a10ff08`)
+     - `[15] il2cpp_assembly_get_image` (`0x0a10f9a0`)
+     - `[16] il2cpp_class_get_field_from_name` (`0x0a10f9f8`)
+     - `[17] il2cpp_field_static_set_value` (`0x0a110128`)
+     - `[18] il2cpp_field_static_get_value` (`0x0a110124`)
+
+2. **Luồng GCD Timer Định kỳ 350ms (`sub_cf1a4` -> `0xde6b4`) và Hook `MethodInfo->methodPointer` (`sub_d6ac8`):**
+   - Tại `sub_cf1a4` (`0xcf2b8 .. 0xcf340`), `Penny` khởi tạo một `dispatch_source_t` kiểu timer lặp lại mỗi `350 ms` (`0x14dc9380` ns) gọi vào `0xde6b4`.
+   - Hàm `0xde6b4` gọi `il2cpp_domain_get()` (`idx = 0`) và `il2cpp_thread_attach(domain)` (`idx = 1`), sau đó chạy `sub_d7a10` và `sub_d6ac8`.
+   - Trong `sub_d6ac8` (`0xd6ed8 .. 0xd7008`), `Penny` dùng `il2cpp_class_get_methods` (`idx = 12`) và `il2cpp_method_get_name` (`idx = 13`), băm tên phương thức qua `sub_b973c` để tìm 2 phương thức có mã băm `0x16113cae` và `0x2e70e851`, lưu `method->methodPointer` gốc vào `[0xcc90e38]` / `[0xcc90e48]` và ghi đè `method->methodPointer` thành `0xd6904` / `0xdb578`.
+   - Trong `sub_d9b24` (`0xd9b24 .. 0xd9d88`), `Penny` lấy UUID 36 ký tự từ `identifierForVendor` (`sub_da37c`), băm FNV-1a thành chuỗi hex 64 ký tự tại `0xcc90d80`, tạo đối tượng `Il2CppString*` qua `il2cpp_string_new` (`idx = 9`), ghim vào bộ thu gom rác qua `il2cpp_gchandle_new(..., 1)` (`idx = 7`) và lưu tại `[0xcc90ce0]`.
+
+3. **Bộ Quét Chống Hook trên `UnityFramework` (`sub_d47a0`) và Kiểm tra Địa chỉ Trả về `LR` (`0xd4a0c .. 0xd4a2c`):**
+   - Hàm `sub_d47a0` (`0xd47a0 .. 0xd48b8`) đọc mã máy của `UnityFramework` tại `rva - 4` và 4 lệnh tiếp theo từ `rva` để kiểm tra xem có bị công cụ bên thứ ba chèn `brk` (`0xd4200000`), `hlt` (`0xd4400000`) hoặc inline hook `ldr x16/x17, #8; br x16/x17` (`0x58000050` / `0xd61f0200`) hay không; nếu phát hiện sẽ kích hoạt cờ độc (`0xdead0020`).
+   - Các hàm xử lý tính năng tại `0xd48d8 .. 0xd64d8` đều kiểm tra thanh ghi `x30` (`LR & 0x7fffffffffff`) phải nằm trong phạm vi bộ nhớ `[uf_base, uf_base + 0x0d000000)` của `UnityFramework` (`0xd4a0c .. 0xd4a2c`), từ chối thực thi nếu được gọi từ ngoài `UnityFramework`.
