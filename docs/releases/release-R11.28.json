@@ -1,0 +1,22 @@
+{
+  "version": "R11.28",
+  "bytes": 289925,
+  "sha256": "02a89afa9952470c983569d782eea64196138daf50e41c9fce1cf611953f28d2",
+  "raw_bytes": 770675,
+  "raw_sha1": "0C2osZ/m55wGiha/baBLVs9Fjfc=",
+  "packed_sha1": "PEbN5ASjFRV8OpLcrUZJnCSgEs4=",
+  "fixes": 84,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,0C2osZ/m55wGiha/baBLVs9Fjfc=,770675,0,PEbN5ASjFRV8OpLcrUZJnCSgEs4=,289925,True,0",
+  "backup_tag": "pre-r1128-20261022T151646Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "pullenemy": "firing-triggered vertical gather: while local.IsFiring(), all valid enemies are set to (local.x, local.y + height, local.z) with height 8 -> 0 at 12 m/s; no writes when not firing; target list refreshed every 0.25 s (max 128)",
+  "aimkill": "R11.25 parity test retained: object wipe + inventory opcode 108",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-r1128-20261022T151646Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

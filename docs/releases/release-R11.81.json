@@ -1,0 +1,13 @@
+{
+  "version": "R11.81",
+  "bytes": 292900,
+  "sha256": "ed13ddcb52799b93510ec8bdec8c209b8959ef075aba55ee806bb11a7906c2f3",
+  "fixes": 87,
+  "guard": "PASS 27/27",
+  "model": "R11.80 measured: x1.0 -> h=69.0, x3.0 -> h=142.4 (2.06x). Extending the boost window 18 -> 30 frames did not change height, so a constant gravity component caps it. Height factor = 1/((1-w) + w/d) with w = 0.772 (share of ascent gravity coming from get_CustomGravity; the rest is the unhookable inline -9.8 in JLPJMAFLADI). R11.81 inverts the model: d = w/(1/target - (1-w)), clamped 1..20, so the slider maps to the requested height multiplier. Validated against the Bay measurement: bay 2.05 predicted 1.65x, measured 1.6x.",
+  "uploadTag": "v=11.81",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261024T033107Z.bin"
+}

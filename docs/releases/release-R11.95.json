@@ -1,0 +1,18 @@
+{
+  "version": "R11.95",
+  "bytes": 294339,
+  "sha256": "c17d7b59997b8bad14994d1237990c4bfce41d034b47d193f6636d87f359247b",
+  "packed_sha1": "NfmitIMiM+YUs2LbBY8ADM/AgRs=",
+  "raw_sha1": "7a4VpaZy9eYz4N/B85/buzxbp+U=",
+  "fixes": 87,
+  "guard": "PASS 27/27",
+  "cause": "AimKill diagnostics existed only inside the game: reading them required opening the log overlay and copying text out by hand.",
+  "change": "The payload now pushes its own AimKill log to http(s)://core-gmc.freefiremobile.com/okmod/aimlog on a host the 1297 PAC already routes to the proxy. The proxy addon answers 200 'ok' and appends one JSON line per report to logs/aimkill-online.log. Sends are rate limited to one per 3s, tagged shot / err / man, and fired on every AimKill result, on exception, and from the new GUI LOG button in the log overlay (next to COPY). Log line gained online=<state> sent=<count> tag=<last>.",
+  "transport": "UnityEngine.Networking.UnityWebRequest.Get(url) + SendWebRequest(). The type lives in UnityEngine.UnityWebRequestModule (image 24 of the live metadata); claiming CoreModule would have rejected the patch the same way R11.90 was rejected.",
+  "rollback": "cp backup/patches/patch.pre-clean-20261024T114143Z.bin build/okmod-R8-AIM-ESP.bin && systemctl restart okmod-1297",
+  "fileinfo_row": "codepatch/assembly-csharp-patch,NfmitIMiM+YUs2LbBY8ADM/AgRs=,790947,0,7a4VpaZy9eYz4N/B85/buzxbp+U=,294339,True,0",
+  "verified": "core_guard PASS 27/27, AimKill suite PASS, deploy health=200, service active, proxy sink round-trip selftest wrote logs/aimkill-online.log",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ]
+}

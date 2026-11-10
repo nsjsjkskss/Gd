@@ -1,0 +1,22 @@
+{
+  "version": "R11.29",
+  "bytes": 289963,
+  "sha256": "0b47417a23a2e34bee6876e7d5c7e99a0342f0268f5cd5bb10dc97f817b9a412",
+  "raw_bytes": 771123,
+  "raw_sha1": "f4SIBeIbPzmpFnY/Cg3X8OxoRTg=",
+  "packed_sha1": "iJ5h4scYUul9T/UK3odxx8ATAsQ=",
+  "fixes": 84,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,f4SIBeIbPzmpFnY/Cg3X8OxoRTg=,771123,0,iJ5h4scYUul9T/UK3odxx8ATAsQ=,289963,True,0",
+  "backup_tag": "pre-r1129-20261022T153654Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "pullenemy": "firing-triggered front pull: while local.IsFiring(), all valid enemies are set to head position + forward * 1.2 m and held there; no writes when not firing; target list refreshed every 0.25 s",
+  "aimkill": "R11.25 parity test retained: object wipe + inventory opcode 108",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-r1129-20261022T153654Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

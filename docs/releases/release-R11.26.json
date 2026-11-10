@@ -1,0 +1,23 @@
+{
+  "version": "R11.26",
+  "bytes": 289936,
+  "sha256": "f246591939800b972948c79e03fbc7e70d32448c212cfd6a1a02d9b4ff55a8c6",
+  "raw_bytes": 771331,
+  "raw_sha1": "DsUWrZI2ppHDU2BxEph2dRQb5EA=",
+  "packed_sha1": "nVp4O+JT8EE4Xpe+LuXXU7MC0kI=",
+  "fixes": 84,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,DsUWrZI2ppHDU2BxEph2dRQb5EA=,771331,0,nVp4O+JT8EE4Xpe+LuXXU7MC0kI=,289936,True,0",
+  "backup_tag": "pre-r1126-20261022T144947Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "server_kill_confirmation": "unverified",
+  "pullenemy": "BS4484 V2.4 PullEnemy port: nearest enemy within 8 m is lerped toward 1 m in front of local (8 * dt), target re-picked every 0.25 s, cached transforms only, default off",
+  "aimkill": "R11.25 parity test retained: object wipe + inventory opcode 108",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-r1126-20261022T144947Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

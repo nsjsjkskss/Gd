@@ -1,0 +1,18 @@
+{
+  "version": "R12.08",
+  "purpose": "read-only native manual-shot baseline; not a damage-effectiveness fix",
+  "bytes": 296875,
+  "sha256": "869e462f836f5f58883137ba1bc15449d9d6ad4930078ced1501c992ad4fd206",
+  "packed_sha1": "neye9fuy1yflJkxZN6IkG3UoZEY=",
+  "raw_sha1": "v0+tSRnD0P/hgZDQG5Zo0fYwcYo=",
+  "raw_bytes": 802731,
+  "change": "Existing LastAimingInfoFromWeapon getter now observes native hit fields during genuine local firing when AK is enabled, at most once per 250ms. It keeps only a text snapshot and returns the same object without writes. Logs manualSamples/manualAt/manualHit/manualError. No added fire/hit/damage calls and no cadence change.",
+  "verified": [
+    "Recording test same native hit object returned and fields preserved",
+    "Recording test no StartFire/StopFire/hit calls, bounded sampling and no sample outside firing",
+    "All four suites PASS; core guard 27/27",
+    "Live proxy download hash matches; active; health 200"
+  ],
+  "device_status": "User confirms normal match: manual shots reduce HP, synthetic hits do not. Need native firing sample to compare context; no known exact rejection cause yet.",
+  "rollback": "cp backup/pre-R12.08/okmod-R8-AIM-ESP.bin build/okmod-R8-AIM-ESP.bin && systemctl restart okmod-1297"
+}

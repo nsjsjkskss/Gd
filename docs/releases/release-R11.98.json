@@ -1,0 +1,27 @@
+{
+  "version": "R11.98",
+  "bytes": 295963,
+  "sha256": "a27695dac1f77f664e2d8e42fb7747b602c4448eab5126da1cb796303fb435a0",
+  "packed_sha1": "4F4C64MZugTiUQnrTt+lUIe7Fb4=",
+  "raw_sha1": "G1X7QVE3OoC+OgAuoG7GAt3Bk3U=",
+  "raw_bytes": 798427,
+  "chain": [
+    "Player.JGIEOGCGFEP(CGKJLKPMGDJ)",
+    "HBIBDMMOOOK.LHNJLFOINDO(CGKJLKPMGDJ)",
+    "HBIBDMMOOOK.KBIFKMJODNA()",
+    "HBIBDMMOOOK.NPLMKLBKJPE(OGKFEMJNCGM, Collider, bool, HNLIMBLIANL)",
+    "PlayerNetwork.TakeDamage(int, BEADLMGGGGL, HNLIMBLIANL, int, Vector3, Vector3, List<float>, PIAEKELILCJ, uint)"
+  ],
+  "contract": "build/aimkill-runtime-contract.json",
+  "verified": [
+    "registration-level exact type contract passed for 9 chain methods and chain fields",
+    "AimKill recording suite passed",
+    "HUD lifecycle suite passed",
+    "visuals suite passed",
+    "hitfly suite passed",
+    "core guard PASS 27/27",
+    "proxy restarted and health 200"
+  ],
+  "runtime_status": "Pending device report; log now records chainStage, dispatched, baseDamage, checks, startResult and chainError.",
+  "rollback": "cp backup/patches/patch.pre-pc-chain-R11.98.bin build/okmod-R8-AIM-ESP.bin && systemctl restart okmod-1297"
+}

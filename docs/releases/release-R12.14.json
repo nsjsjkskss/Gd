@@ -1,0 +1,34 @@
+{
+  "version": "R12.14",
+  "bytes": 299380,
+  "sha256": "4f3b234cc1336a90d9808de4a4a7cb9b21cd1cf6915442d5a105699bb3d20fbf",
+  "packed_sha1": "E2r5vexQquMqkunNhlNAXrXgjgs=",
+  "raw_sha1": "fempZCrfkFsS7Noc+UhOP/fSeBM=",
+  "raw_bytes": 816571,
+  "changes": [
+    "AK range, FOV, point and manual smoothing now use OKMOD.AK keys, not aimbot settings; defaults 150m/220px/head/0",
+    "Independent auto and manual-assist toggles default ON; master AK/recovery remain separate",
+    "Auto path retains owned start/hit/stop/finally; manual holding only assists aim through native input, with zero synthetic fire/damage/sync calls",
+    "Sample manual ownership every feature frame, scan manual target at bounded poll cadence, revalidate cached owner/match/weapon/target/range/FOV/LOS each aim update",
+    "150ms release handoff before auto resumes; reload/cover/stale target/weapon/match transition cancels cached manual assistance without touching native trigger",
+    "AIM rows 43-48 expose independent AK settings; max scroll 3240; log includes inputBranch/manualAims/akConfig/manualAimError"
+  ],
+  "configuration": {
+    "OKMOD.AK.Auto": "X2 default",
+    "OKMOD.AK.Manual": "X2 default; native camera aiming only, no extra hits",
+    "OKMOD.AK.Range.Float": "10-500m; default 150; still bounded by weapon range",
+    "OKMOD.AK.FOV.Float": "20-800px; default 220; applied only with existing AK FOV-limit toggle",
+    "OKMOD.AK.Point": "0=head,1=neck,2=chest,3=body; default 0",
+    "OKMOD.AK.ManualSmooth.Float": "0-20; default 0; no aimbot smoothing reads"
+  },
+  "verification": [
+    "Recording tests: config isolation, own FOV/range filters, manual smoothing, auto/manual independent switches",
+    "Recording tests: held fire never adds starts/stops/hits/108; native hit object unchanged; 150ms handoff then auto resumes",
+    "Recording tests: cover/reload/recovery/dead target/weapon change/stale cache/match change reject manual aim without releasing native trigger",
+    "Build manual reachability gate prohibits StartFiring/StopFire/StartWholeBodyFiring/FullWeaponAmmo/LHNJLFOINDO/TakeDamage/Send in manual branch graph",
+    "All four suites PASS; core guard 27/27",
+    "Live proxy download SHA256 matches; active; health 200"
+  ],
+  "device_status": "Pending. Manual mode aims native shots; it is not simultaneous extra automatic damage. Stub tests cannot prove server acceptance, actual input timing or no camera jitter on device.",
+  "rollback": "cp backup/pre-R12.14/okmod-R8-AIM-ESP.bin build/okmod-R8-AIM-ESP.bin && systemctl restart okmod-1297"
+}

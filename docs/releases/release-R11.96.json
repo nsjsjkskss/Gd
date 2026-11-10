@@ -1,0 +1,27 @@
+{
+  "version": "R11.96",
+  "bytes": 294700,
+  "sha256": "7c6e8e4e782440fe3c4c95b9229ffb5312378c4bc4f793acaba5a998efee9bee",
+  "packed_sha1": "a61d80wN+3s6ky6k+Fwynia8JnQ=",
+  "raw_sha1": "LAKVxWdgKhr/7Pa/a6PhnldcLfE=",
+  "raw_bytes": 792963,
+  "endpoint": "https://okmod.sbs/aimlog?aimkill=1",
+  "log": "/var/log/nginx/okmod-aimkill.jsonl",
+  "reader": "python3 proxy/read_aimkill_log.py -n 10",
+  "nginx_config": [
+    "/etc/nginx/conf.d/okmod-aimlog-format.conf",
+    "/etc/nginx/conf.d/okmod-meomeo.conf"
+  ],
+  "change": "AimKill reports now go directly to nginx over HTTPS using the constructor transport already used by working jump logs. The existing /aimlog returns 204 and additionally records aimkill=1 reports in dedicated JSONL. Polling acknowledges only completed 2xx responses, preserves in-flight requests, and disposes finished requests. Transport errors have their own fields. Reports are sent every 3s while AimKill is enabled, after shots/errors, and manually. Query encoding supports UTF-8.",
+  "states": {"0": "idle", "1": "pending", "2": "acknowledged", "-2": "failed"},
+  "verified": [
+    "nginx -t passed and nginx reloaded",
+    "Public HTTPS selftest returned 204; JSONL reader recovered Vietnamese, punctuation and emoji",
+    "Recording-stub suite passed including pending, 204, 500, resource disposal and UTF-8 query roundtrip",
+    "Core guard PASS 27/27",
+    "okmod-1297 restarted; proxy health 200; nginx and proxy active"
+  ],
+  "device_confirmation": "Pending; server selftest is not a device report.",
+  "rollback": "cp backup/patches/patch.pre-nginx-R11.96.bin build/okmod-R8-AIM-ESP.bin && systemctl restart okmod-1297",
+  "nginx_backup": "/tmp/opencode/okmod-meomeo.pre-R11.96.conf"
+}

@@ -1,0 +1,24 @@
+{
+  "version": "R12.20 DEV Sophia-derived trial",
+  "status": "deployed by explicit user request",
+  "deployed_at_utc": "2026-10-26T09:50:35Z",
+  "candidate": "build/candidates/hf-sophia-trial/okmod-R8-AIM-ESP.bin",
+  "bytes": 300891,
+  "sha256": "2ece48b64ef814db6383da4e4a11d457296ea32a5791165cc1e8bcee0d2c2b78",
+  "packed_sha1": "v5tBksO+Nm4OJpiGfhaBJKWWlmQ=",
+  "raw_sha1": "mEY8k9goAtRwpvFavAV+g8hyUX0=",
+  "raw_bytes": 821587,
+  "reference": "Sophia/port1300 runtime body20 map657 block, pinned runtime SHA25639ce90c5293a45a4529580da26dd98e816f01efc80f9ba6d59cd37c186826ff4",
+  "behavior": "One-shot opcode657, Y150, gravity default50 or valid FallingGravity, time clamp1.8..6 from Sophia estimate, XZ distance/time*clamp(2.1+D/1000,2.15,2.55)*independent scale0.5..1.5. Marker controller fallback. Read-only client observation; no force-key, transform setter, correction, teleport or destination stop claim.",
+  "verification": [
+    "240 C# parameter cases equal pinned Sophia formula across distance/dy/gravity/scale",
+    "Packet fields/657 transport/ID/direction/constructor defaults verified",
+    "Marker real-position and controller fallback, invalid marker/distance and gravity fallback verified",
+    "Observation airborne/apex/nearest/landing/unattributed/timeout/context/manual-HF lifecycle verified",
+    "AimKill/HUD/visual suites PASS; core guard27/27; Sophia reference audit PASS"
+  ],
+  "device_status": "Pending. No device execution or server acceptance. Sophia reference itself has no explicit destination brake in inspected block.",
+  "live_status": "R12.20 Sophia-derived candidate installed atomically; service active, health200; live proxy download SHA256 matches candidate. Device flight/server acceptance remains pending.",
+  "backup": "backup/pre-R12.20-sophia-live-20261026T095035Z/okmod-R8-AIM-ESP.bin",
+  "rollback": "cp backup/pre-R12.20-sophia-live-20261026T095035Z/okmod-R8-AIM-ESP.bin build/okmod-R8-AIM-ESP.bin && systemctl restart okmod-1297"
+}

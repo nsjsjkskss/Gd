@@ -1,0 +1,21 @@
+{
+  "version": "R11.49",
+  "bytes": 290538,
+  "sha256": "5e6f702e19105c6f136236dba0210d227a96a842db7437a02ac803c6a7233da6",
+  "raw_bytes": 773275,
+  "raw_sha1": "X3lG1EV3PYC3YioOSbPBJFWWFsg=",
+  "packed_sha1": "huUA4zkbjf9Rh3JXTS+i+ON06Is=",
+  "fixes": 85,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,X3lG1EV3PYC3YioOSbPBJFWWFsg=,773275,0,huUA4zkbjf9Rh3JXTS+i+ON06Is=,290538,True,0",
+  "backup_tag": "pre-clean-20261023T081135Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "aimkill": "copy row now verifies clipboard readback (shows Copy lỗi on mismatch) and a new 'Xem log' row opens a full-screen log overlay with a close button, so diagnostics can be read/screenshotted even if the clipboard is blocked",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261023T081135Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

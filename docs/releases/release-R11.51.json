@@ -1,0 +1,21 @@
+{
+  "version": "R11.51",
+  "bytes": 290837,
+  "sha256": "9e7fed0e025a21f860b2908b45c74dfa368c0423b06776a6acc36226b6dfc1d9",
+  "raw_bytes": 775995,
+  "raw_sha1": "nh0uY0asvLYTnLJ625wF6QtRSMU=",
+  "packed_sha1": "OubyNGKgmKWOLC7x5+Wrgzq5lfI=",
+  "fixes": 85,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,nh0uY0asvLYTnLJ625wF6QtRSMU=,775995,0,OubyNGKgmKWOLC7x5+Wrgzq5lfI=,290837,True,0",
+  "backup_tag": "pre-clean-20261023T083027Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "aimkill": "manual 'Gửi log online' row (38) sends a numeric diagnostic snapshot via UnityWebRequest HTTPS to https://okmod.sbs/aimlog; nginx logs the query to /var/log/nginx/aimlog.log",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261023T083027Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

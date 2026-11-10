@@ -1,0 +1,11 @@
+{
+  "version": "R11.71",
+  "bytes": 291766,
+  "sha256": "a6aac5b051be79e8651a8589296cac78b4829915a336e71933ab42db6f87ddfe",
+  "fixes": 87,
+  "guard": "PASS 27/27",
+  "jump": "Lực nhảy x (1.0-3.0) now multiplies the magnitude returned by Player.get_RisingGravity. Rationale: launch speed v0 = sqrt(2*H*|g_rise|) while the ascent uses get_CustomGravity (HADKJKALGOL 0x568CE60 only takes the Rising/Falling branch when InSnowSlideWayDashing), so apex = H*|g_rise|/|g_custom| and scales linearly with the slider. The R11.70 GameVarDef.JSDeadGhostJumpScale write was reverted: that field belongs to the ghost/replay jump path (ELGCCFOEIID is only reached from ICBEPIHDJIA, a PraiseKey action).",
+  "published_to": ["http://217.217.255.156:1297/"],
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261023T184407Z.bin"
+}

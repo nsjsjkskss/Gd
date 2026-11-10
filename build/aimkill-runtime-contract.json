@@ -1,0 +1,138 @@
+{
+  "methods": [
+    {
+      "owner": "COW.GameFacade",
+      "name": "Send",
+      "index": 34916,
+      "return": "System.Boolean",
+      "params": [
+        "System.UInt32",
+        "GCommon.UDPClientMessageBase",
+        "System.Byte",
+        "System.Boolean"
+      ],
+      "static": true
+    },
+    {
+      "owner": "COW.GamePlay.Player",
+      "name": "StartFiring",
+      "index": 210565,
+      "return": "System.Void",
+      "params": [
+        "COW.GamePlay.HBIBDMMOOOK"
+      ],
+      "static": false
+    },
+    {
+      "owner": "COW.GamePlay.Player",
+      "name": "StopFire",
+      "index": 210569,
+      "return": "System.Void",
+      "params": [
+        "COW.GamePlay.HBIBDMMOOOK"
+      ],
+      "static": false
+    },
+    {
+      "owner": "COW.GamePlay.Player",
+      "name": "SetAimRotation",
+      "index": 210029,
+      "return": "System.Void",
+      "params": [
+        "UnityEngine.Quaternion",
+        "System.Boolean"
+      ],
+      "static": false
+    },
+    {
+      "owner": "COW.GamePlay.Player",
+      "name": "GetAimRotation",
+      "index": 210495,
+      "return": "UnityEngine.Quaternion",
+      "params": [],
+      "static": false
+    },
+    {
+      "owner": "COW.GamePlay.HBIBDMMOOOK",
+      "name": "LHNJLFOINDO",
+      "index": 224997,
+      "return": "System.Int32",
+      "params": [
+        "COW.GamePlay.CGKJLKPMGDJ"
+      ],
+      "static": false
+    },
+    {
+      "owner": "COW.GamePlay.HBIBDMMOOOK",
+      "name": "LDKCJEMDAMC",
+      "index": 224578,
+      "return": "System.Single",
+      "params": [],
+      "static": false
+    },
+    {
+      "owner": "COW.GamePlay.HBIBDMMOOOK",
+      "name": "BDHMJJIADFG",
+      "index": 224580,
+      "return": "System.Single",
+      "params": [],
+      "static": false
+    },
+    {
+      "owner": "COW.GamePlay.HBIBDMMOOOK",
+      "name": "KENANOGLPJO",
+      "index": 224540,
+      "return": "System.Boolean",
+      "params": [],
+      "static": false
+    },
+    {
+      "owner": "COW.GamePlay.HBIBDMMOOOK",
+      "name": "KBIFKMJODNA",
+      "index": 224583,
+      "return": "System.Int32",
+      "params": [],
+      "static": false
+    },
+    {
+      "owner": "COW.GamePlay.IEFJGCGOMID",
+      "name": "MJCENIGKEPH",
+      "index": 221041,
+      "return": "System.UInt32",
+      "params": [],
+      "static": false
+    },
+    {
+      "owner": "COW.GamePlay.PlayerAttributes",
+      "name": "IsInvincible",
+      "index": 245900,
+      "return": "System.Boolean",
+      "params": [],
+      "static": false
+    }
+  ],
+  "fields": [
+    {
+      "owner": "COW.GamePlay.IEFJGCGOMID",
+      "name": "ODFDGMOCJLL",
+      "type": "System.UInt32",
+      "offset": 16
+    },
+    {
+      "owner": "message.EOBFCLNNIJH",
+      "name": "BEADLMGGGGL",
+      "type": "System.UInt32",
+      "offset": 20
+    },
+    {
+      "owner": "message.EOBFCLNNIJH",
+      "name": "FIKKBFDEJOK",
+      "type": "System.UInt32",
+      "offset": 24
+    }
+  ],
+  "native_sha256": "fba6d8392c96049bb67aef94c37078f64b5f455becb8606f68550332e4102152",
+  "metadata_sha256": "597e77fc1dd15bac9ff75215bd328d60c6d205f5fc4a7e32cec1b37d3cc2ea5d",
+  "mode": "owned-engine-shot",
+  "synthetic_damage_reachable": true
+}

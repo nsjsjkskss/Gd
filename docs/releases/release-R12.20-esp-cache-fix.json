@@ -1,0 +1,27 @@
+{
+  "version": "R12.20 DEV ESP cache fix",
+  "status": "deployed by explicit user request",
+  "deployed_at_utc": "2026-10-26T10:43:13Z",
+  "bytes": 300829,
+  "sha256": "16754c03de6e08f40c4d7c7b549815dd401c83ce9dc1e890d4d57ffc8736b910",
+  "packed_sha1": "K0FctzsGkAD7oaCNYEqPTchra58=",
+  "raw_sha1": "3UbFsJW8GxLrGVZ1wTIRMufJ/4c=",
+  "candidate": "build/candidates/hf-sophia-esp-fix/okmod-R8-AIM-ESP.bin",
+  "changes": [
+    "Sophia MAP scale fixed at x1.1; MAP speed slider removed from the Sophia trial UI and old saved scale ignored",
+    "ESP stale cache cleanup for expired samples and unused slots",
+    "Render no longer performs slot-based interpolation over rotating player IDs; ProjectCached remains the ID-aware projection path",
+    "Live cache count now reports only successfully projected records"
+  ],
+  "verification": [
+    "Sophia formula/packet/observation 240 cases PASS",
+    "ESP visuals, AimKill and HUD suites PASS",
+    "Core guard27/27 PASS",
+    "Candidate installed atomically after backup; service active; health200",
+    "Payload downloaded through live proxy matches installed and staged candidate SHA256"
+  ],
+  "device_status": "Pending. Real device landing and multi-player rendering still require observation.",
+  "previous_sha256": "2ece48b64ef814db6383da4e4a11d457296ea32a5791165cc1e8bcee0d2c2b78",
+  "backup": "backup/pre-R12.20-esp-cache-fix-20261026T104313Z/okmod-R8-AIM-ESP.bin",
+  "rollback": "cp backup/pre-R12.20-esp-cache-fix-20261026T104313Z/okmod-R8-AIM-ESP.bin build/okmod-R8-AIM-ESP.bin && systemctl restart okmod-1297"
+}

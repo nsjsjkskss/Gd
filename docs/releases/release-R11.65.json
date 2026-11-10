@@ -1,0 +1,21 @@
+{
+  "version": "R11.65",
+  "bytes": 291450,
+  "sha256": "d12ce40b99831a2a32c64a5161361227ad9096ce046ca94d5c76904ed8000523",
+  "raw_bytes": 777555,
+  "raw_sha1": "noukv65LRy0c3y15slSFfT8Gjqo=",
+  "packed_sha1": "WvVXjBwS36JYlqsto+FZo6pU/zc=",
+  "fixes": 85,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,noukv65LRy0c3y15slSFfT8Gjqo=,777555,0,WvVXjBwS36JYlqsto+FZo6pU/zc=,291450,True,0",
+  "backup_tag": "pre-clean-20261023T153456Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "groundhack": "Player.OnFixedUpdate post-hook: calls <>iFixBaseProxy_OnFixedUpdate first, then GroundHackAfterFixedUpdate forces m_GroundHitResult true when toggle ON; no direct Unity CharacterController hook",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261023T153456Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

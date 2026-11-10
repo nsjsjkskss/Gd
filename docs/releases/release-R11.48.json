@@ -1,0 +1,21 @@
+{
+  "version": "R11.48",
+  "bytes": 290003,
+  "sha256": "f86b21518277b98f3da993e86d81c85fe59456587c61eb8c6882d24d62faa3c0",
+  "raw_bytes": 770603,
+  "raw_sha1": "fItK7cwWl7IwoMDI0HG0v0D76ak=",
+  "packed_sha1": "HJsQtDep1kEBgTrqgirVKIsajnQ=",
+  "fixes": 85,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,fItK7cwWl7IwoMDI0HG0v0D76ak=,770603,0,HJsQtDep1kEBgTrqgirVKIsajnQ=,290003,True,0",
+  "backup_tag": "pre-clean-20261023T075918Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "aimkill": "copy-log button (AIM row 36) writes the AimKill diagnostic snapshot to the iOS clipboard via GUIUtility.systemCopyBuffer; includes stop/status/target/distance/zeros/reloads/ammo/calls/result/group/fire/weapon/delay/range/point/error/time",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261023T075918Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

@@ -1,0 +1,25 @@
+{
+  "version": "R12.00",
+  "bytes": 296391,
+  "sha256": "48064ccc5c6214f48e7fc14d3318818faaa45fca3375727cb31b56de66beeb9b",
+  "packed_sha1": "qukwV4RYjJG3b6EWUKBK/qleH+Y=",
+  "raw_sha1": "fsdHp6w4ZDdnyvk6nmTnErB7BIQ=",
+  "change": "Strict AimKill LOS rejects every non-local first ray hit instead of allowing close non-local colliders; manual trigger input is never mixed with synthetic dispatch; candidate scan is capped at 48 and 2.5 ms; default AimKill cadence is 250 ms. Diagnostics add scanned, blocked, manualSkips and effectiveRange.",
+  "fixes": [
+    "through-cover false positives",
+    "manual fire suppression and stuck trigger interaction",
+    "frame hitch from broad candidate scan",
+    "timeout pressure from overly aggressive dispatch cadence",
+    "online ASCII URL encoder failure was fixed and tested"
+  ],
+  "verified": [
+    "AimKill suite PASS",
+    "HUD lifecycle suite PASS",
+    "visuals suite PASS",
+    "hitfly suite PASS",
+    "core guard PASS 27/27",
+    "proxy active and health 200"
+  ],
+  "runtime_status": "Pending device confirmation: inspect blocked/manualSkips/effectiveRange and probeOk/probeFail.",
+  "rollback": "cp backup/patches/patch.pre-stability-R12.00.bin build/okmod-R8-AIM-ESP.bin && systemctl restart okmod-1297"
+}

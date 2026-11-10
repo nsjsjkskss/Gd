@@ -1,0 +1,22 @@
+{
+  "version": "R11.23",
+  "bytes": 288844,
+  "sha256": "e2ad7b0490b00c56e89d89c09f53f661fd074af29ef2703d81d1016ae76ba2e8",
+  "raw_bytes": 765595,
+  "raw_sha1": "mG+uOayRQpsc2reONIRv2Ncsz70=",
+  "packed_sha1": "Lvgyuau1/XKBRzZqpFIiJbmmJhU=",
+  "fixes": 84,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,mG+uOayRQpsc2reONIRv2Ncsz70=,765595,0,Lvgyuau1/XKBRzZqpFIiJbmmJhU=,288844,True,0",
+  "backup_tag": "pre-r1123-20261022T101109Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "server_kill_confirmation": "unverified",
+  "aimkill": "experimental, one nearest valid enemy per configured 20/40/80 ms cadence; default off; prediction optional",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-r1123-menu-20261022T103049Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

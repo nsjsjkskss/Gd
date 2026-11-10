@@ -1,0 +1,22 @@
+{
+  "version": "R11.27",
+  "bytes": 289933,
+  "sha256": "bdc71addd84421c07da13d8e90075134606bfcaeb39c92adc5ace8d9836f5bcf",
+  "raw_bytes": 771331,
+  "raw_sha1": "CT8zlKmN/ZDenAixBDzOJ0CNC/s=",
+  "packed_sha1": "+krctyWvQdzTz0B2DX6RJ4kZ/mI=",
+  "fixes": 84,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,CT8zlKmN/ZDenAixBDzOJ0CNC/s=,771331,0,+krctyWvQdzTz0B2DX6RJ4kZ/mI=,289933,True,0",
+  "backup_tag": "pre-r1127-20261022T145647Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "pullenemy": "R11.26 PullEnemy reachable: AIM drag-scroll clamp raised from 1944 to 2232 so rows 36/37 are visible",
+  "aimkill": "R11.25 parity test retained: object wipe + inventory opcode 108",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-r1127-20261022T145647Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

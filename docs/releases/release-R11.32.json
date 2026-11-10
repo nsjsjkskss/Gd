@@ -1,0 +1,22 @@
+{
+  "version": "R11.32",
+  "bytes": 290098,
+  "sha256": "7a95cadb0fd4e3f9b9f0fa1390668511c989008dcebe3e48c2c259291bcc6a1b",
+  "raw_bytes": 771827,
+  "raw_sha1": "8RgEUCBNK6dM8ureUgMsVmB7xu8=",
+  "packed_sha1": "nnwisLtoo7x1ERpps8M5VmbDXZY=",
+  "fixes": 84,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,8RgEUCBNK6dM8ureUgMsVmB7xu8=,771827,0,nnwisLtoo7x1ERpps8M5VmbDXZY=,290098,True,0",
+  "backup_tag": "pre-r1132-20261022T161957Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "pullenemy": "server-side attempt: while firing, sends the game's hit-fly movement message (opcode 657 / message.NNDOIBJBAJI) with the target's player id, time 0.5 s, horizontal speed distance/0.5 clamped 8-45, direction enemy->local, one impulse per second; no client transform writes",
+  "aimkill": "R11.25 parity test retained: object wipe + inventory opcode 108",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-r1132-20261022T161957Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

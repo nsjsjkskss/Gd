@@ -1,0 +1,17 @@
+[Unit]
+Description=OKMOD 1106 XenProxy (CDN codepatch swap)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/root/okmod-1297-clean
+Environment=OKMOD_PATCH=/root/okmod-1297-clean/build/okmod-R8-AIM-ESP.bin
+Environment=OKMOD_ONLINE_LOG=/root/okmod-1297-clean/logs/aimkill-online.log
+ExecStart=/opt/xenproxy/venv/bin/xenproxy dump --listen-host 0.0.0.0 --listen-port 1106 -s /root/okmod-1297-clean/proxy/xenproxy/addons/okmod_guard.py -s /root/okmod-1297-clean/proxy/xenproxy/addons/okmod_patch.py -s /root/okmod-1297-clean/proxy/xenproxy/addons/okmod_stealth.py --set ff_bypass=false --set ff_mask_fingerprint=false --set ff_tcp_enabled=false --set confdir=/root/okmod-1297-clean/proxy/conf --set connection_strategy=lazy --set block_global=false --set flow_detail=0
+Restart=always
+RestartSec=2
+LimitNOFILE=65535
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

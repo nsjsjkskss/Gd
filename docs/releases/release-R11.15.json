@@ -1,0 +1,18 @@
+{
+  "version": "R11.15",
+  "bytes": 285391,
+  "sha256": "1226d57c97659bad6a2c6d08a16527fc2dd2af970b098d941c9b98711c01a0d3",
+  "raw_bytes": 745323,
+  "raw_sha1": "UCdlY+iaTtnIngxTQniCGIAMz1c=",
+  "packed_sha1": "1RBbyhMUYR7AX7I8ESvbcSah8w8=",
+  "fixes": 84,
+  "guard": "PASS 27/27",
+  "device_test": "pending",
+  "manifest_row": "codepatch/assembly-csharp-patch,UCdlY+iaTtnIngxTQniCGIAMz1c=,745323,0,1RBbyhMUYR7AX7I8ESvbcSah8w8=,285391,True,0",
+  "backup_tag": "pre-r1115-final-20261022T062550Z",
+  "published_to": [
+    "aimtest",
+    "proxy"
+  ],
+  "proxy_download_verified": true
+}

@@ -1,0 +1,1146 @@
+{
+  "file": "/root/okmod-1297-clean/build/okmod-R8-AIM-ESP.bin",
+  "sha256": "dd0cfb079c6df8daa5e24cc1c151af72f641e84601e312dce1d62e02d5d050a8",
+  "bytes": 112227,
+  "payload_sha256": "7fa73000d93c0fe9de69725197f602cc87afcda767a8ae75b3078230da65c31b",
+  "helpers": {
+    "FallingGravity": 331,
+    "VanillaGravity": 332,
+    "HoverValue": 333,
+    "HoverModeOn": 334,
+    "NativeRecovery": 335,
+    "RisingGravity": 336,
+    "CustomGravity": 337,
+    "JumpScale": 338,
+    "HighJumpOn": 339,
+    "ShowDamageNum": 340,
+    "ScatterRate": 341,
+    "SilentAimingInfo": 342,
+    "ValidVector": 343,
+    "ClearSight": 344,
+    "ReadFloatSetting": 345,
+    "ReadSetting": 346,
+    "ReadSpeedScale": 347,
+    "SilentHitPoint": 348,
+    "SilentCollider": 349,
+    "SilentPoint": 350,
+    "AimPoint": 351,
+    "RefreshAimTarget": 352,
+    "AimScore": 353,
+    "AimScoreAny": 354,
+    "ResolveAimMode": 355,
+    "RestoreSilent": 356,
+    "SameVector": 357,
+    "ObserveManualHit": 358,
+    "Hud": 359,
+    "RecordHudError": 360,
+    "HudBody": 361,
+    "CachedStyle": 362,
+    "DrawEspMenu": 363,
+    "SliderRow": 364,
+    "ScrollButtons": 365,
+    "CrosshairStyleRow": 366,
+    "ListToggle": 367,
+    "ToggleRow": 368,
+    "SetAimKillEnabled": 369,
+    "ClearAimKillProbes": 370,
+    "ClearAimKillManualTarget": 371,
+    "ColorRow": 372,
+    "PresetName": 373,
+    "PresetColor": 374,
+    "DrawAimMenu": 375,
+    "DrawAimLogActions": 376,
+    "CopyAimKillLog": 377,
+    "BuildAimKillLog": 378,
+    "AimKillManualEnabled": 379,
+    "AimKillAutoEnabled": 380,
+    "AimKillManualSmooth": 381,
+    "AimKillFovLimited": 382,
+    "AimKillFov": 383,
+    "AimKillPointMode": 384,
+    "AimKillRange": 385,
+    "H": 386,
+    "HitFlyMapLog": 387,
+    "HitFlyCoordinates": 388,
+    "AimPointLabel": 389,
+    "MenuScrollMax": 390,
+    "AimKillLogRow": 391,
+    "AimKillStatusRow": 392,
+    "HitFlyValueRow": 393,
+    "HitFlyValue": 394,
+    "DrawAimKillHeader": 395,
+    "ReadMenuPointer": 396,
+    "DrawEspLayer": 397,
+    "DrawEsp": 398,
+    "Telemetry": 399,
+    "RecordError": 400,
+    "SetPhase": 401,
+    "Render": 402,
+    "GuiLine": 403,
+    "GuiSkeleton": 404,
+    "GuiBox": 405,
+    "EspColor": 406,
+    "DrawRadar": 407,
+    "RadarPoint": 408,
+    "GuiCircle": 409,
+    "DrawArrowDistance": 410,
+    "ArrowAnchor": 411,
+    "DrawOffscreenArrow": 412,
+    "DrawBatch": 413,
+    "ReleaseBatch": 414,
+    "MeshLine": 415,
+    "MeshHpBand": 416,
+    "Quad": 417,
+    "MeshSkeleton": 418,
+    "MeshCircle": 419,
+    "MeshBox": 420,
+    "MeshCorners": 421,
+    "ProjectCached": 422,
+    "CompactProjectedSlot": 423,
+    "Valid": 424,
+    "Sample": 425,
+    "SampleVehicles": 426,
+    "SampleSkeleton": 427,
+    "SkeletonTransform": 428,
+    "AimForward": 429,
+    "SampleVisibility": 430,
+    "ClearContext": 431,
+    "DrawCrosshair": 432,
+    "ReleaseFov": 433,
+    "DrawFov": 434,
+    "LoadColor": 435,
+    "InitCache": 436,
+    "UpdateFeaturesOnce": 437,
+    "UpdateAimKillProbes": 438,
+    "UpdateJumpBoost": 439,
+    "RecordJump": 440,
+    "UpdateCombat": 441,
+    "UpdateAimKill": 442,
+    "ApplyAimKillManualAim": 443,
+    "InsideScreenFov": 444,
+    "ClearAimKillSight": 445,
+    "UpdateAimKillLegacy": 446,
+    "StartAimKillXNEW": 447,
+    "RecordAimKillProbe": 448,
+    "ExecuteAimKillShot": 449,
+    "Send108Sync": 450,
+    "DispatchEngineHit": 451,
+    "AimKillWeaponDelay": 452,
+    "AimKillDelaySeconds": 453,
+    "SampleAimKillInput": 454,
+    "ReleaseAimKillAmmo": 455,
+    "UpdateAimbot": 456,
+    "CleanupLegacyResidue": 457,
+    "HexNibble": 458
+  },
+  "fixes": 87,
+  "storeys": 10,
+  "q3_bodies_unchanged": 138,
+  "q3_fixes_preserved": 79,
+  "build_id": "R8-AIM-ESP-v1",
+  "batch_signatures_checked": [
+    {
+      "owner": "UnityEngine.Color",
+      "method": ".ctor",
+      "parameters": [
+        "Single",
+        "Single",
+        "Single",
+        "Single"
+      ]
+    },
+    {
+      "owner": "UnityEngine.GL",
+      "method": "LoadPixelMatrix",
+      "parameters": [
+        "Single",
+        "Single",
+        "Single",
+        "Single"
+      ]
+    },
+    {
+      "owner": "UnityEngine.GL",
+      "method": "PopMatrix",
+      "parameters": []
+    },
+    {
+      "owner": "UnityEngine.GL",
+      "method": "PushMatrix",
+      "parameters": []
+    },
+    {
+      "owner": "UnityEngine.Graphics",
+      "method": "DrawMeshNow",
+      "parameters": [
+        "Mesh",
+        "Matrix4x4"
+      ]
+    },
+    {
+      "owner": "UnityEngine.Material",
+      "method": ".ctor",
+      "parameters": [
+        "Shader"
+      ]
+    },
+    {
+      "owner": "UnityEngine.Material",
+      "method": "SetInt",
+      "parameters": [
+        "String",
+        "Int32"
+      ]
+    },
+    {
+      "owner": "UnityEngine.Material",
+      "method": "SetPass",
+      "parameters": [
+        "Int32"
+      ]
+    },
+    {
+      "owner": "UnityEngine.Mathf",
+      "method": "Clamp",
+      "parameters": [
+        "Single",
+        "Single",
+        "Single"
+      ]
+    },
+    {
+      "owner": "UnityEngine.Mathf",
+      "method": "Sin",
+      "parameters": [
+        "Single"
+      ]
+    },
+    {
+      "owner": "UnityEngine.Mathf",
+      "method": "Sqrt",
+      "parameters": [
+        "Single"
+      ]
+    },
+    {
+      "owner": "UnityEngine.Matrix4x4",
+      "method": "get_identity",
+      "parameters": []
+    },
+    {
+      "owner": "UnityEngine.Mesh",
+      "method": ".ctor",
+      "parameters": []
+    },
+    {
+      "owner": "UnityEngine.Mesh",
+      "method": "MarkDynamic",
+      "parameters": []
+    },
+    {
+      "owner": "UnityEngine.Mesh",
+      "method": "set_colors",
+      "parameters": [
+        "Color[]"
+      ]
+    },
+    {
+      "owner": "UnityEngine.Mesh",
+      "method": "set_triangles",
+      "parameters": [
+        "Int32[]"
+      ]
+    },
+    {
+      "owner": "UnityEngine.Mesh",
+      "method": "set_vertices",
+      "parameters": [
+        "Vector3[]"
+      ]
+    },
+    {
+      "owner": "UnityEngine.Object",
+      "method": "Destroy",
+      "parameters": [
+        "Object"
+      ]
+    },
+    {
+      "owner": "UnityEngine.Object",
+      "method": "op_Equality",
+      "parameters": [
+        "Object",
+        "Object"
+      ]
+    },
+    {
+      "owner": "UnityEngine.Object",
+      "method": "op_Inequality",
+      "parameters": [
+        "Object",
+        "Object"
+      ]
+    },
+    {
+      "owner": "UnityEngine.Shader",
+      "method": "Find",
+      "parameters": [
+        "String"
+      ]
+    },
+    {
+      "owner": "UnityEngine.Time",
+      "method": "get_realtimeSinceStartup",
+      "parameters": []
+    },
+    {
+      "owner": "UnityEngine.Vector3",
+      "method": ".ctor",
+      "parameters": [
+        "Single",
+        "Single",
+        "Single"
+      ]
+    }
+  ],
+  "added_externs_game_metadata_checked": [
+    {
+      "owner": "COW.GamePlay.PlayerAttributes",
+      "method": "get_SkillScatterRateSighting",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 245793,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.PlayerAttributes",
+      "method": "get_SkillScatterRate",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 245791,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "UnityEngine.Collider",
+      "method": "get_isTrigger",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 330281,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.Player",
+      "method": "get_ShoulderBoneTransform",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 210121,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "UnityEngine.Object",
+      "method": "GetInstanceID",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 317693,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "System.Int16",
+      "method": "ToString",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 290932,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "UnityEngine.PlayerPrefs",
+      "method": "Save",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 317306,
+          "static": true
+        }
+      ]
+    },
+    {
+      "owner": "UnityEngine.GUIUtility",
+      "method": "set_systemCopyBuffer",
+      "arity": 1,
+      "matches": [
+        {
+          "metadata_method": 328305,
+          "static": true
+        }
+      ]
+    },
+    {
+      "owner": "UnityEngine.GUIUtility",
+      "method": "get_systemCopyBuffer",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 328304,
+          "static": true
+        }
+      ]
+    },
+    {
+      "owner": "System.Int64",
+      "method": "ToString",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 290996,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "UnityEngine.Mathf",
+      "method": "Abs",
+      "arity": 1,
+      "matches": [
+        {
+          "metadata_method": 317088,
+          "static": true
+        },
+        {
+          "metadata_method": 317089,
+          "static": true
+        }
+      ]
+    },
+    {
+      "owner": "UnityEngine.Mesh",
+      "method": "set_vertices",
+      "arity": 1,
+      "matches": [
+        {
+          "metadata_method": 316162,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "UnityEngine.Mesh",
+      "method": "set_triangles",
+      "arity": 1,
+      "matches": [
+        {
+          "metadata_method": 316290,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "UnityEngine.Mesh",
+      "method": "set_colors",
+      "arity": 1,
+      "matches": [
+        {
+          "metadata_method": 316184,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "System.String",
+      "method": "ToUpper",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 289641,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.Player",
+      "method": "IsReloading",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 210618,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.Player",
+      "method": "IsCrouching",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 210346,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.Player",
+      "method": "get_HasVest",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 209884,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.Player",
+      "method": "get_HasHelmet",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 209885,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "System.Collections.IDictionary",
+      "method": "get_Values",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 300671,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "System.Collections.IEnumerable",
+      "method": "GetEnumerator",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 300682,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "System.Collections.IEnumerator",
+      "method": "get_Current",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 300684,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.LevelVehicle",
+      "method": "get_MaxHP",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 234959,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.LevelVehicle",
+      "method": "get_CurHP",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 234957,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.Player",
+      "method": "GetHipTF",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 210725,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.Player",
+      "method": "get_LeftForeArmTF",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 209997,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.Player",
+      "method": "get_LeftHandTF",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 209996,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.Player",
+      "method": "get_RightForeArmTF",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 209998,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.Player",
+      "method": "get_RightHandTF",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 209995,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.Player",
+      "method": "GetLeftAnkleTF",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 210727,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.Player",
+      "method": "GetRightAnkleTF",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 210728,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.Player",
+      "method": "get_LastStartJumpTime",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 210016,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.Player",
+      "method": "GetPhysXState",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 210344,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.Player",
+      "method": "IsGrounded",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 210444,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.Player",
+      "method": "GetVelocity",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 210343,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "UnityEngine.Camera",
+      "method": "get_fieldOfView",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 314673,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "UnityEngine.Camera",
+      "method": "set_fieldOfView",
+      "arity": 1,
+      "matches": [
+        {
+          "metadata_method": 314674,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.Player",
+      "method": "ResetSwapWeaponTime",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 210026,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.Player",
+      "method": "get_Attributes",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 209987,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.HBIBDMMOOOK",
+      "method": "ILGIAJHNNDP",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 224616,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.PlayerAttributes",
+      "method": "set_FireIntervalScale",
+      "arity": 1,
+      "matches": [
+        {
+          "metadata_method": 245872,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.PlayerAttributes",
+      "method": "get_FireIntervalScale",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 245871,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.PlayerAttributes",
+      "method": "set_IsAmmoFree",
+      "arity": 1,
+      "matches": [
+        {
+          "metadata_method": 245785,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.PlayerAttributes",
+      "method": "get_IsAmmoFree",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 245784,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GameSettingData",
+      "method": "GetAutoSwitchWeapon",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 46068,
+          "static": true
+        }
+      ]
+    },
+    {
+      "owner": "COW.GameSettingData",
+      "method": "SetAutoSwitchWeapon",
+      "arity": 1,
+      "matches": [
+        {
+          "metadata_method": 46069,
+          "static": true
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.Player",
+      "method": "AutoSwitchWeapon",
+      "arity": 2,
+      "matches": [
+        {
+          "metadata_method": 210588,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.PlayerAttributes",
+      "method": "IsInvincible",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 245900,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.HBIBDMMOOOK",
+      "method": "OEOBPHDFJMO",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 224485,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.CGKJLKPMGDJ",
+      "method": ".ctor",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 243465,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.Player",
+      "method": "get_PlayerID",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 209847,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.BEADLMGGGGL",
+      "method": "DEIPJDIGKIP",
+      "arity": 1,
+      "matches": [
+        {
+          "metadata_method": 246196,
+          "static": true
+        },
+        {
+          "metadata_method": 246197,
+          "static": true
+        },
+        {
+          "metadata_method": 246198,
+          "static": true
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.Player",
+      "method": "StartFiring",
+      "arity": 1,
+      "matches": [
+        {
+          "metadata_method": 210565,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.Player",
+      "method": "StopFire",
+      "arity": 1,
+      "matches": [
+        {
+          "metadata_method": 210569,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.IEFJGCGOMID",
+      "method": "MJCENIGKEPH",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 221041,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "message.EOBFCLNNIJH",
+      "method": ".ctor",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 11980,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GameFacade",
+      "method": "Send",
+      "arity": 4,
+      "matches": [
+        {
+          "metadata_method": 34916,
+          "static": true
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.HBIBDMMOOOK",
+      "method": "KBIFKMJODNA",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 224583,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.HBIBDMMOOOK",
+      "method": "LHNJLFOINDO",
+      "arity": 1,
+      "matches": [
+        {
+          "metadata_method": 224997,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.HBIBDMMOOOK",
+      "method": "KENANOGLPJO",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 224540,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "COW.GamePlay.HBIBDMMOOOK",
+      "method": "BDHMJJIADFG",
+      "arity": 0,
+      "matches": [
+        {
+          "metadata_method": 224580,
+          "static": false
+        }
+      ]
+    },
+    {
+      "owner": "System.IO.File",
+      "method": "Exists",
+      "arity": 1,
+      "matches": [
+        {
+          "metadata_method": 299324,
+          "static": true
+        }
+      ]
+    }
+  ],
+  "damage_chain_exact_contract": {
+    "methods": [
+      {
+        "owner": "COW.GameFacade",
+        "name": "Send",
+        "index": 34916,
+        "return": "System.Boolean",
+        "params": [
+          "System.UInt32",
+          "GCommon.UDPClientMessageBase",
+          "System.Byte",
+          "System.Boolean"
+        ],
+        "static": true
+      },
+      {
+        "owner": "COW.GamePlay.Player",
+        "name": "StartFiring",
+        "index": 210565,
+        "return": "System.Void",
+        "params": [
+          "COW.GamePlay.HBIBDMMOOOK"
+        ],
+        "static": false
+      },
+      {
+        "owner": "COW.GamePlay.Player",
+        "name": "StopFire",
+        "index": 210569,
+        "return": "System.Void",
+        "params": [
+          "COW.GamePlay.HBIBDMMOOOK"
+        ],
+        "static": false
+      },
+      {
+        "owner": "COW.GamePlay.Player",
+        "name": "SetAimRotation",
+        "index": 210029,
+        "return": "System.Void",
+        "params": [
+          "UnityEngine.Quaternion",
+          "System.Boolean"
+        ],
+        "static": false
+      },
+      {
+        "owner": "COW.GamePlay.Player",
+        "name": "GetAimRotation",
+        "index": 210495,
+        "return": "UnityEngine.Quaternion",
+        "params": [],
+        "static": false
+      },
+      {
+        "owner": "COW.GamePlay.HBIBDMMOOOK",
+        "name": "LHNJLFOINDO",
+        "index": 224997,
+        "return": "System.Int32",
+        "params": [
+          "COW.GamePlay.CGKJLKPMGDJ"
+        ],
+        "static": false
+      },
+      {
+        "owner": "COW.GamePlay.HBIBDMMOOOK",
+        "name": "LDKCJEMDAMC",
+        "index": 224578,
+        "return": "System.Single",
+        "params": [],
+        "static": false
+      },
+      {
+        "owner": "COW.GamePlay.HBIBDMMOOOK",
+        "name": "BDHMJJIADFG",
+        "index": 224580,
+        "return": "System.Single",
+        "params": [],
+        "static": false
+      },
+      {
+        "owner": "COW.GamePlay.HBIBDMMOOOK",
+        "name": "KENANOGLPJO",
+        "index": 224540,
+        "return": "System.Boolean",
+        "params": [],
+        "static": false
+      },
+      {
+        "owner": "COW.GamePlay.HBIBDMMOOOK",
+        "name": "KBIFKMJODNA",
+        "index": 224583,
+        "return": "System.Int32",
+        "params": [],
+        "static": false
+      },
+      {
+        "owner": "COW.GamePlay.IEFJGCGOMID",
+        "name": "MJCENIGKEPH",
+        "index": 221041,
+        "return": "System.UInt32",
+        "params": [],
+        "static": false
+      },
+      {
+        "owner": "COW.GamePlay.PlayerAttributes",
+        "name": "IsInvincible",
+        "index": 245900,
+        "return": "System.Boolean",
+        "params": [],
+        "static": false
+      }
+    ],
+    "fields": [
+      {
+        "owner": "COW.GamePlay.IEFJGCGOMID",
+        "name": "ODFDGMOCJLL",
+        "type": "System.UInt32",
+        "offset": 16
+      },
+      {
+        "owner": "message.EOBFCLNNIJH",
+        "name": "BEADLMGGGGL",
+        "type": "System.UInt32",
+        "offset": 20
+      },
+      {
+        "owner": "message.EOBFCLNNIJH",
+        "name": "FIKKBFDEJOK",
+        "type": "System.UInt32",
+        "offset": 24
+      }
+    ],
+    "native_sha256": "fba6d8392c96049bb67aef94c37078f64b5f455becb8606f68550332e4102152",
+    "metadata_sha256": "597e77fc1dd15bac9ff75215bd328d60c6d205f5fc4a7e32cec1b37d3cc2ea5d",
+    "mode": "owned-engine-shot",
+    "synthetic_damage_reachable": true
+  },
+  "cache_render_has_no_game_calls": true,
+  "published": false,
+  "profile": "full",
+  "guided_map_trial": false,
+  "sophia_map_trial": false,
+  "guided_map_validation": "not compiled"
+}

@@ -1,0 +1,21 @@
+{
+  "version": "R11.39",
+  "bytes": 289149,
+  "sha256": "da688de45fa9794a41d1426e070c0303c2391fb6ad6e16fbc9e1d7d83edcbe88",
+  "raw_bytes": 766731,
+  "raw_sha1": "JmnjMh9chLilTsUK5Xf5jonl5HE=",
+  "packed_sha1": "wGX0+ueO30HGMu/Xz+sA/nr6qGg=",
+  "fixes": 84,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,JmnjMh9chLilTsUK5Xf5jonl5HE=,766731,0,wGX0+ueO30HGMu/Xz+sA/nr6qGg=,289149,True,0",
+  "backup_tag": "pre-r1139-20261022T183609Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "aimkill": "removed lead row/multiplier and crosshair-only target pick; always picks the nearest enemy in any direction; reload (out of ammo) releases the held fire and shows status 6",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-r1139-20261022T183609Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

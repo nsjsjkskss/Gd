@@ -1,0 +1,16 @@
+# DEPRECATED: mitmproxy unit kept for rollback only.
+# Live engine: proxy/okmod-xenproxy.service (XenProxy, port 1106).
+[Unit]
+Description=OKMOD 1297 clean CDN codepatch proxy (port 1106)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/root/okmod-1297-clean
+Environment=OKMOD_PATCH=/root/okmod-1297-clean/build/okmod-R8-AIM-ESP.bin
+ExecStart=/opt/okmod-sophia/venv-mitm/bin/mitmdump --listen-host 0.0.0.0 --listen-port 1106 --set confdir=/root/okmod-1297-clean/proxy/conf --set connection_strategy=lazy --set block_global=false -s /root/okmod-1297-clean/proxy/okmod_addon.py
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

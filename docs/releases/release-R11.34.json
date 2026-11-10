@@ -1,0 +1,22 @@
+{
+  "version": "R11.34",
+  "bytes": 289050,
+  "sha256": "0dde486069a9b50a91509cd4a15a4dd288fde9b4b8bfd9212b5a18d95b3a553a",
+  "raw_bytes": 766315,
+  "raw_sha1": "DNTNEgB6YU8PUcUXM6pMwtV+0AA=",
+  "packed_sha1": "vSUqGYEmbBnZSmQ2bMRLvfPb/LQ=",
+  "fixes": 84,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,DNTNEgB6YU8PUcUXM6pMwtV+0AA=,766315,0,vSUqGYEmbBnZSmQ2bMRLvfPb/LQ=,289050,True,0",
+  "backup_tag": "pre-r1134-20261022T170618Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "pullenemy": "removed: client transform pull, 657 hit-fly attempt and all R7Pull fields/rows are gone; AIM scroll clamp restored to 2160",
+  "aimkill": "kept at R11.25 parity: pooled-free hit object, ctor collections cleared, inventory opcode 108 after StopFire",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-r1134-20261022T170618Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

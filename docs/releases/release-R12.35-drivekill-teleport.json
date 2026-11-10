@@ -1,0 +1,14 @@
+{
+  "version": "R12.35-drivekill-teleport",
+  "artifact": "build/okmod-R8-AIM-ESP.bin",
+  "bytes": 301720,
+  "sha256": "1d6fc09655391b52cffa684aef9ea4f96f827a87bc3014543f1e110e5ac74e4e",
+  "changes": [
+    "Teleport the car directly onto the enemy every 80ms with 80m/s velocity",
+    "PushSyncState + SyncStateWithServer + SetVelocity, no run-up",
+    "Replaced crashing Vehicle.CollisionEnter with VehicleCollision.OnTriggerEnter",
+    "OFF releases the seat via ChangeState(false)"
+  ],
+  "checks": {"core_guard": "27/27 PASS", "tests": ["aimkill", "hud_lifecycle", "visuals", "hitfly"]},
+  "deployed_port_1146": true
+}

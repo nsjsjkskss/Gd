@@ -1,0 +1,1629 @@
+#!/usr/bin/env python3
+"""Compile only the new renderer graph into corrected q3 + menu-only.
+
+No base-table remapping and no production writes: original q3 indices stay put.
+"""
+import gzip
+import argparse
+import hashlib
+import json
+import os
+import re
+from pathlib import Path
+import struct
+import subprocess
+import sys
+
+HERE = Path(__file__).resolve().parent
+KIT = HERE.parent / 'buildkit'
+sys.path.insert(0, str(KIT / 'tools'))
+sys.path.insert(0, str(KIT / 'pylibs'))
+sys.path.insert(0, str(KIT / 'audit'))
+import cs2patch
+import ifixc
+import patchc
+import UnityPy
+from aimkill_runtime_contract import RuntimeContract, check_patch, check_compiled, canonical_type, ENGINE_METHODS
+from merge_q3_hbs import parse_q3, serialize, extern_key
+
+ROOT = HERE
+BASE = Path(os.environ.get('OKMOD_BASE', str(KIT / 'patches' / 'menuonly.patch'))).expanduser()
+BASELINE = KIT / 'patches' / 'baseline.patch'
+FIELDS = {}
+for name in ('Front', 'Back', 'Prev', 'Draw', 'World', 'WorldPrev', 'Live', 'Meters', 'BackMeters'):
+    FIELDS['Zx' + name] = 'System.Single[]'
+for name in ('PrevCount', 'WorldCount', 'WorldPrevCount', 'LiveCount', 'IdsCount', 'IdsPrevCount'):
+    FIELDS['Zx' + name] = 'System.Int32'
+for name in ('Ids', 'IdsPrev'):
+    FIELDS['Zx' + name] = 'System.Int32[]'
+
+FIELDS.update({'Zx5992bd4': 'UnityEngine.LineRenderer[]', 'Zxc8b6421': 'UnityEngine.LineRenderer[]', 'Zx9dd2f81': 'UnityEngine.Material', 'Zxa606551': 'System.Int32', 'Zxa4ac39a': 'COW.GamePlay.Player', 'Zx6472cf9': 'COW.GamePlay.Player', 'Zxb414436': 'COW.GamePlay.JMAGGLCNGIG', 'Zxb44a5e1': 'System.Int32', 'Zx513f0e7': 'System.Int32', 'Zx6bd394c': 'System.Int32', 'Zxf5ba39d': 'System.Int32', 'Zxdc58154': 'System.Int32', 'Zxad02e3d': 'System.Int32', 'Zxe61c424': 'System.Int32', 'Zx2a72a6f': 'COW.GamePlay.CGKJLKPMGDJ', 'Zxa463246': 'UnityEngine.GameObject', 'Zxfa9a523': 'UnityEngine.GameObject', 'Zx167cbcd': 'UnityEngine.Collider', 'Zx4882118': 'UnityEngine.Collider', 'Zx9d4a2d3': 'UnityEngine.Vector3', 'Zx8176230': 'UnityEngine.Vector3', 'Zx6674dbe': 'UnityEngine.Vector3', 'Zxcfd54c0': 'UnityEngine.Vector3', 'Zx0126c95': 'UnityEngine.Vector3', 'Zx4ef8a62': 'COW.GamePlay.LKOOALMKJND', 'Zx39781aa': 'COW.GamePlay.LKOOALMKJND', 'Zx5d825f6': 'System.Boolean', 'Zxf3457a1': 'System.Boolean', 'Zxc0a4b9d': 'System.Boolean', 'Zxc5c2fc9': 'System.Boolean', 'Zx76cb2b6': 'UnityEngine.GUIStyle[]', 'Zxeed3b1e': 'System.Boolean', 'Zxd35d8b7': 'System.Boolean', 'Zx65f7d8f': 'System.Int32', 'Zx447d912': 'System.Int32', 'Zx1d8a279': 'System.Single', 'Zx635b5cc': 'System.Single', 'Zx1e1fdc1': 'System.Int32', 'Zxd28db42': 'System.Int32', 'Zx60cb4f4': 'System.Single'})
+FIELDS['ZxRootTf'] = 'UnityEngine.Transform[]'
+FIELDS['ZxHeadTf'] = 'UnityEngine.Transform[]'
+FIELDS.update({'Zx9fd1fea': 'System.Single[]',
+               'Zx9916ba5': 'System.Boolean[]',
+               'Zxa13badb': 'UnityEngine.Transform[]', 'Zxcd78bd5': 'UnityEngine.Transform[]',
+               'Zxf3d93d7': 'System.Int32[]', 'Zxe3a3dfd': 'System.String[]',
+               'Zxdeb10c2': 'System.String[]', 'Zx7fa6a53': 'System.Int32[]',
+               'Zx9f021cb': 'System.String[]', 'Zx3c4a82a': 'UnityEngine.Color',
+               'Zx96dd77c': 'System.Single[]', 'R8FovMesh': 'UnityEngine.Mesh',
+               'R8FovMaterial': 'UnityEngine.Material', 'R8FovRadius': 'System.Single',
+               'R8FovWidth': 'System.Int32', 'R8FovHeight': 'System.Int32'})
+FIELDS.update({'Zx7e03505': 'System.Int32[]', 'Zx6ee14f8': 'System.Int32[]',
+               'Zx3b0e144': 'System.Single[]', 'Zx41c39ab': 'System.Single[]',
+               'Zxa659ff4': 'System.Boolean[]', 'Zx857fa6c': 'System.Boolean[]',
+               'Zxfa3386b': 'System.Boolean[]', 'Zx054c30e': 'System.Boolean[]',
+               'Zx6d86575': 'System.Single[]', 'Zx838d60d': 'System.Single[]',
+               'Zx46ee197': 'System.Boolean[]', 'Zx30eaf81': 'System.Boolean[]',
+               'Zxcb50f6d': 'COW.GamePlay.Player[]', 'Zx3836571': 'COW.GamePlay.Player[]',
+               'Zx0eda687': 'System.Single[]', 'Zxec27a7e': 'System.String[]',
+               'Zx8d0a841': 'UnityEngine.Color', 'Zx1d1640d': 'UnityEngine.Color',
+               'Zx4de822b': 'System.Int32'})
+FIELDS.update({'Zxf4ca405': 'System.Boolean', 'Zxd743c61': 'System.Single',
+               'Zx1619ebc': 'System.Int32', 'Zx5b461d5': 'System.Int32',
+               'Zxd16e43d': 'System.Int32', 'Zx58d8e8b': 'System.String'})
+FIELDS.update({'Zx4f44d88': 'System.Boolean',
+                 'Zx51a4eaa': 'UnityEngine.Vector3', 'Zx27385ef': 'System.Single'})
+FIELDS.update({'Zx5aedd00': 'COW.GamePlay.Player', 'Zxc0040fc': 'COW.GamePlay.JMAGGLCNGIG',
+               'Zxaaebcd5': 'UnityEngine.Vector3', 'Zx04a45e0': 'UnityEngine.Vector3',
+               'Zx324e1d0': 'System.Single', 'Zx41d811b': 'System.Single',
+               'Zx7146047': 'System.Single', 'Zx0545665': 'System.Single',
+               'Zxeb2d06c': 'System.Single', 'Zx5998847': 'System.Single',
+               'Zx5e922fb': 'System.Single', 'Zx04df5b3': 'System.Single',
+               'Zxbf365f8': 'System.Int32', 'Zx1a282ff': 'System.Int32',
+               'Zxb0bf803': 'System.Boolean', 'Zxba0dd78': 'System.String'})
+FIELDS['ZxHFNoticeUntil'] = 'System.Single'
+FIELDS.update({'Zx92648bd': 'System.Single', 'Zxa7465f3': 'System.Int32',
+               'Zx994d756': 'System.Int32', 'Zxe208c69': 'System.Int32',
+               'Zx25cb7bd': 'System.String'})
+FIELDS.update({'Zx633e561': 'COW.GamePlay.Player', 'Zx0b81acf': 'COW.GamePlay.JMAGGLCNGIG',
+               'Zxcdd5a3a': 'System.Int32', 'Zx6cf04c7': 'System.Boolean',
+               'Zx6910825': 'System.Boolean', 'Zx27a70e8': 'UnityEngine.Vector3',
+               'Zx97406cf': 'UnityEngine.Vector3', 'Zx41dd9fc': 'System.Single',
+               'Zxa5fc5e7': 'System.Single', 'Zx8c2e64e': 'System.Single',
+               'Zxf5f6bcc': 'System.Single', 'Zxaadaf57': 'System.Single',
+               'Zxdc4dc6d': 'System.Single', 'Zxee5f1e7': 'System.Single',
+               'Zx123707a': 'System.Single'})
+FIELDS.update({'Zx51c6116': 'System.Single', 'Zx4835f14': 'System.Single',
+               'Zx8f27331': 'System.Single', 'Zx64c6109': 'System.Boolean',
+               'Zx9b7df00': 'System.Boolean', 'Zx4f494d8': 'System.Single',
+               'Zx8495afa': 'System.Int32', 'Zxf99b46d': 'System.Single',
+               'Zxaa6699a': 'System.Single', 'Zx85fe3a2': 'System.Single'})
+FIELDS['ZxFeatureFrame'] = 'System.Int32'
+# NETMAP diagnostic: dump cmd -> message type from NetworkMessageDispatcher.
+FIELDS.update({'Zx01d4522': 'System.Int32', 'Zxcc8d803': 'System.Boolean', 'Zxa8c09ba': 'System.Int32', 'Zx4d50001': 'System.String'})
+FIELDS.update({'Zx725515d': 'System.Boolean'})
+FIELDS.update({'Zx3c924df': 'UnityEngine.Networking.UnityWebRequest', 'Zxdeb7952': 'System.Int32',
+               'Zxac13af9': 'System.Boolean'})
+FIELDS.update({'Zx742e4f2': 'UnityEngine.Networking.UnityWebRequest', 'Zx3f0a2e2': 'System.Boolean',
+               'Zxeb06d54': 'System.Int32'})
+FIELDS.update({'Zx8920732': 'UnityEngine.Networking.UnityWebRequest', 'Zx0c284aa': 'System.Int32', 'Zx02b572c': 'System.String'})
+FIELDS.update({'Zxefde87b': 'UnityEngine.Networking.UnityWebRequest', 'Zx4f78091': 'System.Int32', 'Zxdf32c93': 'System.String'})
+FIELDS.update({'Zxae1b147': 'UnityEngine.Networking.UnityWebRequest', 'Zx4d1d440': 'System.Int32', 'Zxa87a45e': 'System.Boolean', 'Zx6592044': 'System.String',
+               'Zx6fa5c15': 'System.String'})
+FIELDS.update({'Zx0fda3c3': 'UnityEngine.Networking.UnityWebRequest', 'Zx214fac9': 'System.Int32', 'Zx99087db': 'System.String'})
+FIELDS.update({'Zx6045a8e': 'System.Single', 'Zx0082d3a': 'System.Int32',
+                'Zx4ab5f41': 'System.Int32', 'Zx3440801': 'System.Int32', 'Zx689a5a3': 'System.Int32',
+                'Zx0365f1c': 'System.Int32', 'Zx931a875': 'System.Int32', 'Zx8f3ce9a': 'System.Int32',
+                'Zx57b65d1': 'System.Int32', 'Zx72c422d': 'System.Int32', 'Zxccc4567': 'System.Int32',
+                'Zx66e6ece': 'System.Single', 'Zx925b72b': 'System.Single', 'Zx5245c77': 'System.Single',
+                'Zx847ed24': 'System.Int32', 'Zxc2144e5': 'System.Int32',
+                'Zx74bb9a1': 'System.Single', 'Zx8827a2e': 'System.Int32',
+                'Zx748c7f9': 'System.Int32', 'Zx6784c20': 'System.Int32',
+                'Zx93c4570': 'System.Int32',
+                'Zx3daf7a7': 'System.String', 'Zxda45310': 'System.String', 'Zx9b8c19f': 'System.String',
+                'Zx30ab0df': 'System.String', 'Zxda9c714': 'System.String',
+                'Zxbfe2278': 'UnityEngine.Networking.UnityWebRequest',
+                'Zxb0c5deb': 'System.Single', 'Zx7cd2b77': 'System.Single',
+                'Zx94a6b6a': 'System.Single', 'Zxd869a67': 'System.Int32',
+                'Zxd06ff6f': 'COW.GamePlay.Player', 'Zx316270d': 'System.Single',
+                'Zxfd35f49': 'COW.GamePlay.PlayerAttributes', 'Zx54c4855': 'System.Boolean',
+                'Zxe240989': 'System.Boolean', 'Zx24da377': 'System.Single',
+                'Zx17e9bf3': 'System.Single'})
+FIELDS.update({'Zx577f981': 'System.Single', 'Zx21571fa': 'System.Int32',
+               'Zxe418f63': 'System.Int32', 'Zxeefa15e': 'System.Int32',
+               'Zx2623aa9': 'System.Int32',
+               'Zx558a20f': 'System.Boolean', 'Zx59631bb': 'System.Single',
+               'Zxcd36d2e': 'System.UInt32', 'Zxc7b6d43': 'System.Single',
+               'Zxb6e8183': 'System.Int32', 'Zx16fc72e': 'System.Int32',
+               'Zx825a403': 'System.Int32', 'Zx70e9f3a': 'System.Int32',
+               'Zxf0498e2': 'System.Int32', 'Zx86f4aae': 'System.Int32', 'Zx240eed4': 'System.Single',
+               'Zx9792f89': 'COW.GamePlay.Player',
+               'Zxfd4df51': 'COW.GamePlay.Player', 'Zx56b69c0': 'COW.GamePlay.Player',
+               'Zx7f23289': 'COW.GamePlay.JMAGGLCNGIG',
+               'Zx1619c92': 'COW.GamePlay.HBIBDMMOOOK',
+               'Zx82c9c5c': 'System.Single', 'Zx88dcc5a': 'System.Single',
+               'Zxbd7113e': 'System.Boolean', 'Zx897adec': 'System.Int32',
+               'Zx5569989': 'System.String',
+               'Zx1ddcddd': 'System.String',
+               'Zxfa9179c': 'COW.GamePlay.Player[]', 'Zxab0dd60': 'System.Int32[]', 'Zx8edff5a': 'System.Single[]',
+               'Zx19dccf8': 'System.Int32', 'Zx89ff375': 'System.Int32', 'Zx99746dd': 'System.Int32',
+               'Zx4969a60': 'System.Int32', 'Zxe332667': 'System.Int32',
+               'Zxf49526f': 'System.Boolean', 'Zxf48e82a': 'System.Int32', 'Zxe502b16': 'System.Single',
+               'Zxc4ebb60': 'System.Boolean', 'Zx11e14e7': 'System.Single',
+               'Zx8db27de': 'System.Boolean', 'Zx13f260f': 'System.Single',
+               'Zxe8d2f5b': 'System.Boolean',
+               'Zx792c226': 'System.Int32[]', 'Zx583761b': 'System.Int32[]', 'Zx0b983fd': 'System.Int32[]',
+               'Zx55d7b96': 'System.Int32', 'Zx0099695': 'System.Int32', 'Zx3575d3d': 'System.Int32',
+               'Zx0a8bff9': 'System.Int32', 'Zx5a3e469': 'System.String',
+               'Zxd265c96': 'System.Int32',
+               'Zxda4736a': 'System.Int32', 'Zx2753b33': 'System.String',
+               'Zxe2e9f09': 'System.Int32', 'Zx34efd7c': 'System.Int32',
+               'Zxe54ff61': 'System.Int32', 'Zxf906f1e': 'System.Int32',
+               'Zx44c0115': 'System.Int32', 'Zxc93449b': 'System.Int32',
+               'Zx547c35e': 'System.Int32', 'Zx73b7a69': 'System.Single',
+               'Zx99b3be4': 'System.Int32',
+               'Zx801408c': 'System.String', 'Zxc4cc996': 'System.UInt32',
+               'Zxa454328': 'System.Single',
+               'Zxbac7a40': 'System.Single', 'Zxf302889': 'System.Single',
+               'Zxf4ca292': 'COW.GamePlay.HBIBDMMOOOK',
+               'Zx3c16b4d': 'System.Single', 'Zx3d7d0cc': 'System.Single',
+               'Zxa3804d7': 'System.Single', 'Zxf011053': 'System.Single',
+               'Zx85ff0ad': 'System.Single', 'Zxb091c0b': 'System.Single',
+               'Zx31e5d10': 'System.Single', 'Zx028ff7b': 'System.Int32',
+               'Zxa7dbda9': 'System.Single', 'Zxe317b04': 'System.Int32',
+               'Zxa5e3ae5': 'System.String', 'Zxc2db594': 'System.String',
+               'Zx6318eaa': 'System.Int32', 'Zx82d65f6': 'System.Int32',
+               'Zx4c5532b': 'System.String', 'Zx2487c50': 'System.Boolean',
+               'Zx77f3f72': 'System.Int32', 'Zx5a0676a': 'System.Int32',
+               'Zx23c3e3e': 'System.Int32[]',
+               'Zxe02a56c': 'System.Single', 'Zxc1c359d': 'System.Int32',
+               'Zxa3a059f': 'System.Int32', 'Zx9d368fe': 'System.Int32',
+               'Zxa8041cb': 'System.Int32', 'Zxd6e24b3': 'System.UInt32',
+               'Zxfb38810': 'System.String', 'Zx53a2ee1': 'System.String',
+               'Zx89c3772': 'System.Boolean',
+               'Zxe0a6680': 'System.Int32', 'Zx85aba33': 'System.Int32',
+               'Zxd48ca0a': 'System.Int32', 'Zx6983b27': 'System.Int32',
+               'Zxdec9f99': 'System.Single', 'Zx14970e5': 'System.Int32',
+               'Zx6775f79': 'System.Int32', 'Zx13554af': 'System.String',
+               'Zxe0f54c0': 'System.String', 'Zxa955bc1': 'System.Int64',
+               'Zxa69426c': 'UnityEngine.Networking.UnityWebRequest',
+               'Zxa7737bd': 'System.Single',
+               'Zx9af4ccb': 'System.Boolean', 'Zx47c075a': 'System.Boolean',
+               'Zx8afdb74': 'UnityEngine.Networking.UnityWebRequest', 'Zx9ef7abd': 'System.Boolean', 'Zxbd51549': 'System.Single', 'Zx300a80a': 'System.Boolean',
+               'Zx6f3f293': 'System.String',
+})
+# 1146 vehicle-auth probe (alt account only).
+FIELDS.update({
+    'Zx0674c58': 'System.Int32',
+    'Zx095eaf9': 'System.Single',
+    'Zx5442eaa': 'System.Int32',
+    'Zxde221c0': 'System.Int32',
+    'Zx904ac7d': 'System.Int32',
+    'Zxc22150c': 'System.Int32',
+    'Zx44ffec0': 'System.Single',
+    'Zx56ccd1a': 'System.Single',
+    'Zx660c3b1': 'System.String',
+    'Zx2b4538a': 'COW.GamePlay.Vehicle',
+    'Zxf1604d9': 'COW.GamePlay.Player',
+})
+for name in ('PrevStamp', 'LiveStamp'):
+    FIELDS['Zx' + name] = 'System.Single'
+for name in ('Smooth', 'LiveValid'):
+    FIELDS['Zx' + name] = 'System.Boolean'
+for name in ('Names', 'BackNames', 'Distances', 'BackDistances', 'FullNames', 'ShortNames', 'DistanceLabels'):
+    FIELDS['Zx' + name] = 'System.String[]'
+for name in ('Knocked', 'BackKnocked'):
+    FIELDS['Zx' + name] = 'System.Boolean[]'
+for name in ('Frame', 'Width', 'Height', 'Flags', 'Count', 'Visited', 'Samples', 'DrawBudget', 'Draws', 'Errors', 'HeapMiB'):
+    FIELDS['Zx' + name] = 'System.Int32'
+FIELDS['ZxCursor'] = 'System.Int32'
+for name in ('NextSample', 'SampleStamp', 'SampleMs', 'HeapDelay', 'ErrorAfter', 'SaveAfter', 'HeapAfter', 'ReportAfter'):
+    FIELDS['Zx' + name] = 'System.Single'
+FIELDS.update({'Zx9bd4c39': 'System.Int64', 'Zx65541d1': 'System.String', 'Zx09c9fc4': 'System.String',
+               'Zx1cc5c48': 'UnityEngine.GUIStyle', 'Zxe331a2b': 'System.Single', 'Zx2f1848f': 'COW.GamePlay.JMAGGLCNGIG',
+               'Zxfb417c8': 'UnityEngine.Camera', 'Zxf36379d': 'COW.GamePlay.Player'})
+for name in ('Thread', 'Collections', 'GcErrors'):
+    FIELDS['Zx' + name] = 'System.Int32'
+for name in ('HeapStart', 'HeapPeak', 'HeapBefore', 'HeapAfterCollect'):
+    FIELDS['Zx' + name] = 'System.Int64'
+for name in ('CollectAfter', 'GcMs'):
+    FIELDS['Zx' + name] = 'System.Single'
+FIELDS['ZxGcStats'] = 'System.String'
+FIELDS.update({'R8Mesh': 'UnityEngine.Mesh', 'R8Material': 'UnityEngine.Material',
+               'R8Vertices': 'UnityEngine.Vector3[]', 'R8Colors': 'UnityEngine.Color[]',
+               'R8Indices': 'System.Int32[]', 'R8MeshDirty': 'System.Boolean', 'R8ColorsDirty': 'System.Boolean', 'R8BatchOn': 'System.Boolean',
+               'R8BatchActive': 'System.Boolean', 'R8BatchRetry': 'System.Single',
+               'R8QuadCount': 'System.Int32', 'R8ApiDraws': 'System.Int32',
+               'R8Uploads': 'System.Int32', 'R8BatchFailures': 'System.Int32',
+               'R8Stats': 'System.String', 'R8Phase': 'System.String',
+               'Zx3de8320': 'System.Boolean[]', 'Zx5b0b2a5': 'System.Boolean[]',
+               'Zx8c4b660': 'System.Boolean[]', 'Zxe63a668': 'System.Boolean[]',
+               'Zx9df99a6': 'System.Single[]', 'Zxbc88301': 'System.Single[]',
+               'Zx649d8fa': 'System.Int32',
+               'Zxaeb6ade': 'UnityEngine.Color', 'Zxfc90704': 'UnityEngine.Color',
+               'Zx84f3f18': 'UnityEngine.Color', 'Zx3b07a6a': 'UnityEngine.Color',
+               'Zxfefb633': 'COW.GamePlay.PlayerAttributes',
+               'Zx4b2c801': 'System.Boolean', 'Zxff3d85e': 'System.Boolean',
+                'Zx54899b4': 'COW.GamePlay.PlayerAttributes',
+                'Zx06ef0b8': 'System.String',
+               'Zx8ef9e60': 'System.Single', 'Zx39038d4': 'System.Boolean',
+                                                                                          'Zx7eb83a6': 'System.Single', 'Zx2d99817': 'System.Boolean',
+               'Zx9045c73': 'System.Int32',
+               'Zxd7bf0bd': 'COW.WeaponGunFeelProfileData',
+               'Zx88c5083': 'System.Boolean',
+               'Zx357fec0': 'System.Boolean',
+               'Zxbe529ad': 'System.Boolean',
+               'Zx03407a4': 'COW.GamePlay.PlayerAttributes',
+               'Zx1e83147': 'System.Single', 'Zx5a3f1a5': 'System.Boolean',
+               'Zxb96978c': 'System.Boolean', 'Zx56a65a5': 'System.Boolean',
+               'Zxcee1755': 'System.Boolean',
+               'Zx238f04e': 'COW.GamePlay.PlayerAttributes',
+               'Zxdee11d6': 'System.Boolean', 'Zxd6c366c': 'System.Boolean',
+               'Zxee85210': 'System.Boolean', 'Zxbf3cddc': 'System.Boolean',
+               'Zx8f1be81': 'System.Single',
+})
+
+MESH_STUBS = '''
+namespace UnityEngine {
+  public class Mesh : Object {
+    public Mesh() {}
+    public void MarkDynamic() {}
+    public void set_vertices(Vector3[] v) {}
+    public void set_colors(Color[] v) {}
+    public void set_triangles(int[] v) {}
+  }
+  public static class GL {
+    public static void PushMatrix() {}
+    public static void PopMatrix() {}
+    public static void LoadPixelMatrix(float left, float right, float bottom, float top) {}
+  }
+  public static class Graphics { public static void DrawMeshNow(Mesh m, Matrix4x4 matrix) {} }
+}
+'''
+
+HITFLY_STUBS = '''
+namespace GCommon {
+  public class UDPClientMessageBase { }
+}
+namespace message {
+  public class EOBFCLNNIJH : GCommon.UDPClientMessageBase {
+    public uint BEADLMGGGGL, FIKKBFDEJOK;
+  }
+  public class BJFGLKKKOAN : GCommon.UDPClientMessageBase { }
+  public class NNDOIBJBAJI : GCommon.UDPClientMessageBase {
+    public uint BEADLMGGGGL;
+    public float DCEMJOGHMEG, KJGOMDJCKEB, DPJAIECLHGL;
+    public BJFGLKKKOAN MGJNBIJNLIJ;
+    public string JBEHMJFBEMG;
+    public byte IMAOCDIIIHI;
+  }
+  public static class LMCBHLCPAJD {
+    public static BJFGLKKKOAN MGOGJCMCIPG(UnityEngine.Vector3 direction) { return null; }
+    public static LDCJOLOBGGH DJNIOABIFCA(UnityEngine.Vector3 value) { return null; }
+  }
+}
+namespace COW.GamePlay {
+  public struct BEADLMGGGGL {
+    public static uint DEIPJDIGKIP(BEADLMGGGGL value) { return 0; }
+  }
+}
+namespace COW {
+  public class UIInGameScene {
+    public UIBigMapController GetBigMap() { return null; }
+    public EMapStateType get_MapState() { return EMapStateType.MiniMap; }
+  }
+  public class UIMapBaseController {
+    public UIMapContentController CurrentActiveGetMapContentCtrl() { return null; }
+  }
+  public class UIBigMapController : UIMapBaseController {
+    public bool GetBigMapActive() { return false; }
+  }
+  public class UIMapContentController {
+    public bool m_HasLocalMapMarkRealPos;
+    public UnityEngine.Vector3 m_LocalMapMarkRealPos;
+    public UIHudPlayerMarkController m_LocalMapMarkController;
+  }
+  public class UIHudPlayerMarkController : UnityEngine.Component { public UnityEngine.Vector3 m_pos; }
+}
+public enum EMapStateType { MiniMap = 0, BigMap = 1, SideMap = 2 }
+'''
+
+PC_DAMAGE_STUBS = '''
+namespace COW.GamePlay {
+  public interface OGKFEMJNCGM { UnityEngine.GameObject get_gameObject(); }
+  public enum EHGMCNBHNMD { None = 0, Head = 1, Body = 2, Limb = 3 }
+  public class IJHHJLDNMGH { public uint GetId() { return 0; } }
+  public class IOKEALMHBKN { public uint JAOECECKADN; public IJHHJLDNMGH MHMGCLILKGJ; }
+  public class HNLIMBLIANL {
+    public int KOPMDJJKLKH;
+    public EHGMCNBHNMD BGMOAOCFPGM;
+    public BEADLMGGGGL BIHCFIINIBK;
+    public HBIBDMMOOOK HBIBDMMOOOK;
+    public int NEGABPENICF;
+    public UnityEngine.Vector3 HOOMBLGOEPL, KEOAMDFAOLM, DOJDNHCGFGK;
+    public short CLOLKHNMNEK;
+    public bool FDJNCEIGHGB;
+    public int OCOCPPNPHKN;
+  }
+  public class PIAEKELILCJ {
+    public float BCGCKCKIFJE, BGPCJENGPBM, GGLOGCIBGFA, MMMHNBGEGNK,
+                 HMGMDJJJCAA, OPCDFPPCIOB, FIPDEHJALEE, KLAJFPICFFJ, IFJNGGDLGMD;
+    public int IEIDAILNCCE, JOGBMDLHJPH;
+  }
+  public class PlayerNetwork : Player {
+    public int TakeDamage(int damage, BEADLMGGGGL playerId, HNLIMBLIANL info,
+        int weaponId, UnityEngine.Vector3 firePos, UnityEngine.Vector3 targetPos,
+        System.Collections.Generic.List<float> checks, PIAEKELILCJ dynamicInfo, uint vehicleId) { return 0; }
+  }
+}
+'''
+
+VEH_AUTH_STUBS = '''
+namespace message {
+  public class LDCJOLOBGGH {
+    public int ALNGACCIEFF;
+    public int CHHBFMKPGDC;
+    public int JJPBHGNHGDN;
+  }
+  public class APCOOODFCGL {
+    public uint FALECEKOBKD;
+    public LDCJOLOBGGH CHBDLAKCLKD;
+    public LPEKLBNOBEK GFJPEIEIFHC;
+    public byte IMNOFNCGNBB;
+    public BJFGLKKKOAN IEEIGMJLPEL;
+  }
+  public class LPEKLBNOBEK {
+    public short ALNGACCIEFF;
+    public short CHHBFMKPGDC;
+    public short JJPBHGNHGDN;
+    public short FAAFHAAKNGI;
+  }
+}
+namespace COW.GamePlay {
+  public class Vehicle : UnityEngine.MonoBehaviour {
+    public void ChangeState(bool isEnter, Player player, bool flag, int seat, uint timestamp, bool force) {}
+    public void PushSyncState(message.APCOOODFCGL msg, uint timestamp) {}
+    public void SetVisibility(uint flags, bool visible) {}
+    public void SetVelocity(UnityEngine.Vector3 value) {}
+    public uint GetAttackableID() { return 0; }
+  }
+  public class VehicleCollision : UnityEngine.MonoBehaviour {
+    public Vehicle attachVehicle;
+    public bool isKillCollision;
+    public void OnTriggerEnter(UnityEngine.Collider collider) {}
+  }
+}
+'''
+
+
+
+FIELD_RENAME = {
+    'OkAimAppliedCollider': 'Zx4882118',
+    'OkAimAppliedDirection': 'Zx0126c95',
+    'OkAimAppliedGroup': 'Zx39781aa',
+    'OkAimAppliedIgnore': 'Zx5d825f6',
+    'OkAimAppliedObject': 'Zxfa9a523',
+    'OkAimAppliedPoint': 'Zxcfd54c0',
+    'OkAimFrame': 'Zxb44a5e1',
+    'OkAimHit': 'Zx2a72a6f',
+    'OkAimMatch': 'Zxb414436',
+    'OkAimOldBlocked': 'Zxc0a4b9d',
+    'OkAimOldCollider': 'Zx167cbcd',
+    'OkAimOldDirection': 'Zx6674dbe',
+    'OkAimOldGroup': 'Zx4ef8a62',
+    'OkAimOldIgnore': 'Zxf3457a1',
+    'OkAimOldNormal': 'Zx8176230',
+    'OkAimOldObject': 'Zxa463246',
+    'OkAimOldPoint': 'Zx9d4a2d3',
+    'OkAimOwner': 'Zx6472cf9',
+    'OkAimSilentAppliedFrame': 'Zxf5ba39d',
+    'OkAimSilentCalls': 'Zxad02e3d',
+    'OkAimSilentFrame': 'Zx6bd394c',
+    'OkAimSilentStatus': 'Zxdc58154',
+    'OkAimSilentWrites': 'Zxe61c424',
+    'OkAimStatus': 'Zx513f0e7',
+    'OkAimTarget': 'Zxa4ac39a',
+    'OkEspBlueLines': 'Zx5992bd4',
+    'OkEspEffectFrame': 'Zxa606551',
+    'OkEspGrenadeLines': 'Zxc8b6421',
+    'OkEspLineMaterial': 'Zx9dd2f81',
+    'OkUiAccepted': 'Zx4c1ce7a',
+    'OkUiActive': 'Zxc5c2fc9',
+    'OkUiFinger': 'Zx65f7d8f',
+    'OkUiMoved': 'Zxd35d8b7',
+    'OkUiPhase': 'Zx1e1fdc1',
+    'OkUiReentry': 'Zx5f3a853',
+    'OkUiRejected': 'Zx6b5ca42',
+    'OkUiScroll': 'Zx60cb4f4',
+    'OkUiSlider': 'Zxd28db42',
+    'OkUiStyles': 'Zx76cb2b6',
+    'OkUiTouch': 'Zxeed3b1e',
+    'OkUiTouchFrame': 'Zx447d912',
+    'OkUiX': 'Zx1d8a279',
+    'OkUiY': 'Zx635b5cc',
+    'Okmod': 'Zx9466c8e',
+    'R7': 'Zx',
+    'R7AKBranch': 'Zx5569989',
+    'R7AKInputMatch': 'Zx7f23289',
+    'R7AKInputOwner': 'Zx56b69c0',
+    'R7AKManualAims': 'Zx897adec',
+    'R7AKManualAt': 'Zx82c9c5c',
+    'R7AKManualError': 'Zx1ddcddd',
+    'R7AKManualHolding': 'Zxbd7113e',
+    'R7AKManualTarget': 'Zxfd4df51',
+    'R7AKManualWeapon': 'Zx1619c92',
+    'R7AKResumeAt': 'Zx88dcc5a',
+    'R7AimAmmoApplied': 'Zxe240989',
+    'R7AimAmmoOld': 'Zx54c4855',
+    'R7AimAmmoOwner': 'Zxfd35f49',
+    'R7AimCadenceLast': 'Zx3c16b4d',
+    'R7AimCadenceWeapon': 'Zxf4ca292',
+    'R7AimCooldownUntil': 'Zx3d7d0cc',
+    'R7AimFireUntil': 'Zx17e9bf3',
+    'R7AimKillAmmoFails': 'Zx70e9f3a',
+    'R7AimKillAmmoFills': 'Zx825a403',
+    'R7AimKillBaseDamage': 'Zxe2e9f09',
+    'R7AimKillBlocked': 'Zx44c0115',
+    'R7AimKillCallMs': 'Zxb091c0b',
+    'R7AimKillCalls': 'Zxe418f63',
+    'R7AimKillChainError': 'Zx2753b33',
+    'R7AimKillChainStage': 'Zxda4736a',
+    'R7AimKillCheckCount': 'Zx34efd7c',
+    'R7AimKillCopyAt': 'Zxa7737bd',
+    'R7AimKillCopyOk': 'Zx9af4ccb',
+    'R7AimKillDataId': 'Zxc4cc996',
+    'R7AimKillDispatches': 'Zxe54ff61',
+    'R7AimKillEffectiveDelay': 'Zxf011053',
+    'R7AimKillEffectiveRange': 'Zx73b7a69',
+    'R7AimKillError': 'Zx6f3f293',
+    'R7AimKillFiring': 'Zx558a20f',
+    'R7AimKillGroup': 'Zx2623aa9',
+    'R7AimKillImmediateAfter': 'Zx85aba33',
+    'R7AimKillImmediateBefore': 'Zxe0a6680',
+    'R7AimKillInvincibleSkips': 'Zxd48ca0a',
+    'R7AimKillLastDispatchAt': 'Zxa454328',
+    'R7AimKillLastGap': 'Zx85ff0ad',
+    'R7AimKillLastTarget': 'Zx59631bb',
+    'R7AimKillLocalReason': 'Zx801408c',
+    'R7AimKillManualSkips': 'Zx547c35e',
+    'R7AimKillNativeDelay': 'Zxa3804d7',
+    'R7AimKillNext': 'Zx577f981',
+    'R7AimKillNextHit': 'Zxbac7a40',
+    'R7AimKillPC': 'Zxd265c96',
+    'R7AimKillRecoveryWasOn': 'Zx89c3772',
+    'R7AimKillReloads': 'Zx16fc72e',
+    'R7AimKillResult': 'Zxeefa15e',
+    'R7AimKillScanCursor': 'Zx99b3be4',
+    'R7AimKillScanMs': 'Zx31e5d10',
+    'R7AimKillScanned': 'Zxc93449b',
+    'R7AimKillStartResult': 'Zxf906f1e',
+    'R7AimKillStatus': 'Zx21571fa',
+    'R7AimKillStop': 'Zxf0498e2',
+    'R7AimKillTargetDist': 'Zxc7b6d43',
+    'R7AimKillTargetId': 'Zxcd36d2e',
+    'R7AimKillTargetPlayer': 'Zx9792f89',
+    'R7AimKillUserDelay': 'Zxf302889',
+    'R7AimKillWeaponId': 'Zx86f4aae',
+    'R7AimKillWeaponRange': 'Zx240eed4',
+    'R7AimKillZeros': 'Zxb6e8183',
+    'R7AimShotAborted': 'Zx77f3f72',
+    'R7AimShotCleanupError': 'Zx4c5532b',
+    'R7AimShotFaulted': 'Zx2487c50',
+    'R7AimShotStarts': 'Zx6318eaa',
+    'R7AimShotStops': 'Zx82d65f6',
+    'R7AmmoApplied': 'Zxd6c366c',
+    'R7AmmoOld': 'Zxdee11d6',
+    'R7AmmoOwner': 'Zx238f04e',
+    'R7ApexY': 'Zx7cd2b77',
+    'R7AutoSwapApplied': 'Zxbf3cddc',
+    'R7AutoSwapNext': 'Zx8f1be81',
+    'R7AutoSwapOld': 'Zxee85210',
+    'R7Back': 'ZxBack',
+    'R7BackBoneTf': 'Zxcd78bd5',
+    'R7BackBots': 'Zx30eaf81',
+    'R7BackDirectionValid': 'Zx857fa6c',
+    'R7BackDirections': 'Zx41c39ab',
+    'R7BackDistances': 'ZxBackDistances',
+    'R7BackInfo': 'Zxdeb10c2',
+    'R7BackKnocked': 'ZxBackKnocked',
+    'R7BackMeters': 'ZxBackMeters',
+    'R7BackNames': 'ZxBackNames',
+    'R7BackPlayers': 'Zx3836571',
+    'R7BackRadar': 'Zx838d60d',
+    'R7BackTarget': 'Zxe63a668',
+    'R7BackTeam': 'Zx5b0b2a5',
+    'R7BackThreat': 'Zx054c30e',
+    'R7BackVisibility': 'Zx6ee14f8',
+    'R7BonePairs': 'Zxf3d93d7',
+    'R7BoneTf': 'Zxa13badb',
+    'R7Bots': 'Zx46ee197',
+    'R7CamFovApplied': 'Zx2d99817',
+    'R7CamFovOld': 'Zx7eb83a6',
+    'R7Camera': 'Zxfb417c8',
+    'R7CapBuf': 'Zx6592044',
+    'R7CollectAfter': 'ZxCollectAfter',
+    'R7Collections': 'ZxCollections',
+    'R7CombatError': 'Zx06ef0b8',
+    'R7Count': 'ZxCount',
+    'R7Cursor': 'ZxCursor',
+    'R7DiagArm': 'Zx3440801',
+    'R7DiagHits': 'Zx689a5a3',
+    'R7DiagVy': 'Zx4ab5f41',
+    'R7DirectionValid': 'Zxa659ff4',
+    'R7Directions': 'Zx3b0e144',
+    'R7DistanceLabels': 'ZxDistanceLabels',
+    'R7Distances': 'ZxDistances',
+    'R7Draw': 'ZxDraw',
+    'R7DrawBudget': 'ZxDrawBudget',
+    'R7Draws': 'ZxDraws',
+    'R7EnemyColor': 'Zxaeb6ade',
+    'R7ErrorAfter': 'ZxErrorAfter',
+    'R7Errors': 'ZxErrors',
+    'R7FallBase': 'Zx6784c20',
+    'R7FallCalls': 'Zx8f3ce9a',
+    'R7FallLast': 'Zx5245c77',
+    'R7FeatureFrame': 'ZxFeatureFrame',
+    'R7Flags': 'ZxFlags',
+    'R7FontSize': 'Zxe331a2b',
+    'R7FpsApplied': 'Zxb96978c',
+    'R7FpsOld': 'Zx56a65a5',
+    'R7FpsSmoothOld': 'Zxcee1755',
+    'R7Frame': 'ZxFrame',
+    'R7Front': 'ZxFront',
+    'R7FullNames': 'ZxFullNames',
+    'R7GcErrors': 'ZxGcErrors',
+    'R7GcMs': 'ZxGcMs',
+    'R7GcStats': 'ZxGcStats',
+    'R7GodBase': 'Zx8827a2e',
+    'R7GodCalls': 'Zx0365f1c',
+    'R7GodLast': 'Zx66e6ece',
+    'R7GravityApplied': 'Zxd869a67',
+    'R7GravityOld': 'Zx94a6b6a',
+    'R7GroundedLast': 'Zxccc4567',
+    'R7GunFeelApplied': 'Zxbe529ad',
+    'R7GunFeelOwner': 'Zxd7bf0bd',
+    'R7GunFeelRecoilOld': 'Zx88c5083',
+    'R7GunFeelVisualOld': 'Zx357fec0',
+    'R7HFGuideAt': 'Zx41dd9fc',
+    'R7HFGuideCruiseY': 'Zxaadaf57',
+    'R7HFGuideFault': 'Zx6cf04c7',
+    'R7HFGuideForceOwned': 'Zx6910825',
+    'R7HFGuideGroundAt': 'Zxee5f1e7',
+    'R7HFGuideLastForce': 'Zx27a70e8',
+    'R7HFGuideLastPos': 'Zx97406cf',
+    'R7HFGuideManualUntil': 'Zx123707a',
+    'R7HFGuideMatch': 'Zx0b81acf',
+    'R7HFGuideMetric': 'Zxf5f6bcc',
+    'R7HFGuideOwner': 'Zx633e561',
+    'R7HFGuideProgressAt': 'Zx8c2e64e',
+    'R7HFGuideSpeed': 'Zxdc4dc6d',
+    'R7HFGuideState': 'Zxcdd5a3a',
+    'R7HFGuideTickAt': 'Zxa5fc5e7',
+    'R7HFMapApex': 'Zx5e922fb',
+    'R7HFMapAt': 'Zxeb2d06c',
+    'R7HFMapAttempts': 'Zx994d756',
+    'R7HFMapDirty': 'Zxb0bf803',
+    'R7HFMapError': 'Zx25cb7bd',
+    'R7HFMapGravity': 'Zx0545665',
+    'R7HFMapGroundSamples': 'Zx1a282ff',
+    'R7HFMapLast': 'Zx04a45e0',
+    'R7HFMapMatch': 'Zxc0040fc',
+    'R7HFMapMiss': 'Zx04df5b3',
+    'R7HFMapNext': 'Zx92648bd',
+    'R7HFMapOrigin': 'Zxaaebcd5',
+    'R7HFMapOwner': 'Zx5aedd00',
+    'R7HFMapReason': 'Zxba0dd78',
+    'R7HFMapSampleAt': 'Zx5998847',
+    'R7HFMapSent': 'Zxe208c69',
+    'R7HFMapState': 'Zxbf365f8',
+    'R7HFMapStatus': 'Zxa7465f3',
+    'R7HFMapTime': 'Zx324e1d0',
+    'R7HFMapXZ': 'Zx41d811b',
+    'R7HFMapY': 'Zx7146047',
+    'R7HFNoticeUntil': 'ZxHFNoticeUntil',
+    'R7HFSophiaAirSeen': 'Zx64c6109',
+    'R7HFSophiaEstimate': 'Zx51c6116',
+    'R7HFSophiaNearest': 'Zx8f27331',
+    'R7HFSophiaPhysState': 'Zx8495afa',
+    'R7HFSophiaScale': 'Zx4835f14',
+    'R7HFSophiaTelemetryAt': 'Zx4f494d8',
+    'R7HFSophiaVx': 'Zxf99b46d',
+    'R7HFSophiaVy': 'Zxaa6699a',
+    'R7HFSophiaVz': 'Zx85fe3a2',
+    'R7HFSophiaWasGrounded': 'Zx9b7df00',
+    'R7HeadScreen': 'Zx96dd77c',
+    'R7HeadTf': 'ZxHeadTf',
+    'R7HeapAfter': 'ZxHeapAfter',
+    'R7HeapAfterCollect': 'ZxHeapAfterCollect',
+    'R7HeapBase': 'Zx9bd4c39',
+    'R7HeapBefore': 'ZxHeapBefore',
+    'R7HeapDelay': 'ZxHeapDelay',
+    'R7HeapMiB': 'ZxHeapMiB',
+    'R7HeapPeak': 'ZxHeapPeak',
+    'R7HeapStart': 'ZxHeapStart',
+    'R7Height': 'ZxHeight',
+    'R7HiddenColor': 'Zx1d1640d',
+    'R7HitFlyAttempts': 'Zx5b461d5',
+    'R7HitFlyError': 'Zx58d8e8b',
+    'R7HitFlyMapDistance': 'Zx27385ef',
+    'R7HitFlyMapPending': 'Zx4f44d88',
+    'R7HitFlyMapTarget': 'Zx51a4eaa',
+    'R7HitFlyNext': 'Zxd743c61',
+    'R7HitFlyPending': 'Zxf4ca405',
+    'R7HitFlySent': 'Zxd16e43d',
+    'R7HitFlyStatus': 'Zx1619ebc',
+    'R7Ids': 'ZxIds',
+    'R7IdsCount': 'ZxIdsCount',
+    'R7IdsPrev': 'ZxIdsPrev',
+    'R7IdsPrevCount': 'ZxIdsPrevCount',
+    'R7Info': 'Zxe3a3dfd',
+    'R7InfoBits': 'Zx7fa6a53',
+    'R7InfoCache': 'Zx9f021cb',
+    'R7J0': 'Zx3daf7a7',
+    'R7J1': 'Zxda45310',
+    'R7J2': 'Zx9b8c19f',
+    'R7J3': 'Zx30ab0df',
+    'R7J4': 'Zxda9c714',
+    'R7JIdx': 'Zx93c4570',
+    'R7JumpActive': 'Zx847ed24',
+    'R7JumpBoostUntil': 'Zx0082d3a',
+    'R7JumpEvents': 'Zx57b65d1',
+    'R7JumpReq': 'Zxbfe2278',
+    'R7JumpScaleAt': 'Zxc2144e5',
+    'R7JumpStamp': 'Zx6045a8e',
+    'R7Knocked': 'ZxKnocked',
+    'R7Live': 'ZxLive',
+    'R7LiveCount': 'ZxLiveCount',
+    'R7LiveStamp': 'ZxLiveStamp',
+    'R7LiveValid': 'ZxLiveValid',
+    'R7Local': 'Zxf36379d',
+    'R7LockTarget': 'Zxd06ff6f',
+    'R7LockUntil': 'Zx316270d',
+    'R7LogOpen': 'Zx47c075a',
+    'R7LogRequest': 'Zx8afdb74',
+    'R7LogSendOk': 'Zx300a80a',
+    'R7LogSending': 'Zx9ef7abd',
+    'R7LogSentAt': 'Zxbd51549',
+    'R7ManualHitAt': 'Zxa7dbda9',
+    'R7ManualHitError': 'Zxc2db594',
+    'R7ManualHitSamples': 'Zxe317b04',
+    'R7ManualHitSnapshot': 'Zxa5e3ae5',
+    'R7Match': 'Zx2f1848f',
+    'R7Meters': 'ZxMeters',
+    'R7NameColor': 'Zx3c4a82a',
+    'R7Names': 'ZxNames',
+    'R7NextSample': 'ZxNextSample',
+    'R7NoReloadApplied': 'Zxff3d85e',
+    'R7NoReloadOld': 'Zx4b2c801',
+    'R7NoReloadOwner': 'Zxfefb633',
+    'R7Offscreen': 'Zx0eda687',
+    'R7OffscreenDistance': 'Zxec27a7e',
+    'R7OnlineAt': 'Zxdec9f99',
+    'R7OnlineCount': 'Zx14970e5',
+    'R7OnlineError': 'Zxe0f54c0',
+    'R7OnlineHttp': 'Zxa955bc1',
+    'R7OnlineReqA': 'Zxa69426c',
+    'R7OnlineState': 'Zx6775f79',
+    'R7OnlineTag': 'Zx13554af',
+    'R7PeakCur': 'Zx74bb9a1',
+    'R7Players': 'Zxcb50f6d',
+    'R7Prev': 'ZxPrev',
+    'R7PrevCount': 'ZxPrevCount',
+    'R7PrevStamp': 'ZxPrevStamp',
+    'R7ProbeAt': 'Zx8edff5a',
+    'R7ProbeCursor': 'Zx19dccf8',
+    'R7ProbeDropped': 'Zx028ff7b',
+    'R7ProbeFail': 'Zx99746dd',
+    'R7ProbeHealed': 'Zx6983b27',
+    'R7ProbeHp': 'Zxab0dd60',
+    'R7ProbeLastAfter': 'Zxe332667',
+    'R7ProbeLastBefore': 'Zx4969a60',
+    'R7ProbeManualBaseline': 'Zx23c3e3e',
+    'R7ProbeMixed': 'Zx5a0676a',
+    'R7ProbeOk': 'Zx89ff375',
+    'R7ProbeTargets': 'Zxfa9179c',
+    'R7Radar': 'Zx6d86575',
+    'R7RapidApplied': 'Zx5a3f1a5',
+    'R7RapidOld': 'Zx1e83147',
+    'R7RapidOwner': 'Zx03407a4',
+    'R7ReportAfter': 'ZxReportAfter',
+    'R7RiseBase': 'Zx748c7f9',
+    'R7RiseCalls': 'Zx931a875',
+    'R7RiseLast': 'Zx925b72b',
+    'R7RootTf': 'ZxRootTf',
+    'R7SampleMs': 'ZxSampleMs',
+    'R7SampleStamp': 'ZxSampleStamp',
+    'R7Samples': 'ZxSamples',
+    'R7SaveAfter': 'ZxSaveAfter',
+    'R7ScatterCalls': 'Zx9045c73',
+    'R7ShortNames': 'ZxShortNames',
+    'R7Skeleton': 'Zx9fd1fea',
+    'R7SkeletonValid': 'Zx9916ba5',
+    'R7Smooth': 'ZxSmooth',
+    'R7SpeedApplied': 'Zx39038d4',
+    'R7SpeedOld': 'Zx8ef9e60',
+    'R7SpeedOwner': 'Zx54899b4',
+    'R7StartY': 'Zxb0c5deb',
+    'R7StateLast': 'Zx72c422d',
+    'R7Stats': 'Zx65541d1',
+    'R7Stats2': 'Zx09c9fc4',
+    'R7Style': 'Zx1cc5c48',
+    'R7Sync108Attempts': 'Zxc1c359d',
+    'R7Sync108Error': 'Zx53a2ee1',
+    'R7Sync108Failed': 'Zx9d368fe',
+    'R7Sync108Next': 'Zxe02a56c',
+    'R7Sync108Sent': 'Zxa3a059f',
+    'R7Sync108Skipped': 'Zxa8041cb',
+    'R7Sync108State': 'Zxfb38810',
+    'R7Sync108Weapon': 'Zxd6e24b3',
+    'R7Target': 'Zx8c4b660',
+    'R7TargetColor': 'Zx3b07a6a',
+    'R7Team': 'Zx3de8320',
+    'R7TeamColor': 'Zxfc90704',
+    'R7TestActive': 'Zxf49526f',
+    'R7TestArmed': 'Zxc4ebb60',
+    'R7TestBaseCalls': 'Zx3575d3d',
+    'R7TestBaseFail': 'Zx0099695',
+    'R7TestBaseOk': 'Zx55d7b96',
+    'R7TestCalls': 'Zx0b983fd',
+    'R7TestFail': 'Zx583761b',
+    'R7TestNext': 'Zxe502b16',
+    'R7TestOk': 'Zx792c226',
+    'R7TestPhase': 'Zxf48e82a',
+    'R7TestRotFlag': 'Zx8db27de',
+    'R7TestSavedDelay': 'Zx0a8bff9',
+    'R7TestSourceFlag': 'Zxe8d2f5b',
+    'R7TestSummary': 'Zx5a3e469',
+    'R7TestWaitStart': 'Zx11e14e7',
+    'R7TestWeaponRange': 'Zx13f260f',
+    'R7Thread': 'ZxThread',
+    'R7Threat': 'Zxfa3386b',
+    'R7ThreatCount': 'Zx4de822b',
+    'R7VehBack': 'Zxbc88301',
+    'R7VehCalls': 'Zx904ac7d',
+    'R7VehColor': 'Zx84f3f18',
+    'R7VehCount': 'Zx649d8fa',
+    'R7VehDmgResult': 'Zxde221c0',
+    'R7VehError': 'Zx660c3b1',
+    'R7VehFront': 'Zx9df99a6',
+    'R7VehHitAt': 'Zx095eaf9',
+    'R7VehHpBefore': 'Zx5442eaa',
+    'R7VehNext': 'Zx44ffec0',
+    'R7VehReauth': 'Zx56ccd1a',
+    'R7VehSent': 'Zxc22150c',
+    'R7VehStatus': 'Zx0674c58',
+    'R7VehTarget': 'Zxf1604d9',
+    'R7VehVehicle': 'Zx2b4538a',
+    'R7Visibility': 'Zx7e03505',
+    'R7VisibleColor': 'Zx8d0a841',
+    'R7Visited': 'ZxVisited',
+    'R7Width': 'ZxWidth',
+    'R7World': 'ZxWorld',
+    'R7WorldCount': 'ZxWorldCount',
+    'R7WorldPrev': 'ZxWorldPrev',
+    'R7WorldPrevCount': 'ZxWorldPrevCount',
+}
+
+
+PREF_LITERAL_RE = re.compile(r'"(OKMOD\.[A-Za-z0-9_.]+)"')
+
+
+def _pref_rename():
+    keys = set()
+    for name in ('okmod.cs', 'esp_sampled.cs'):
+        keys.update(PREF_LITERAL_RE.findall((HERE / name).read_text()))
+    return {key: 'u3d.q.' + hashlib.md5(('pref:' + key).encode()).hexdigest()[:8]
+            for key in sorted(keys)}
+
+
+PREF_RENAME = _pref_rename()
+
+
+def _field_map(text):
+    for old, new in FIELD_RENAME.items():
+        text = re.sub(r'\b' + re.escape(old) + r'\b', new, text)
+    return text
+
+
+SOURCE_STRINGS = (
+    ('new GameObject("OKMOD")', 'new GameObject("UI")'),
+    ('"OKMOD.', '"u3d.q.'),
+    ('"OKMOD R12.30 DEV', '"SYS'),
+)
+
+
+def _source_map(text):
+    # Pref keys are literals: hash them before identifier renaming so keys that
+    # contain R7/Ok tokens are not partially rewritten.
+    for key, value in PREF_RENAME.items():
+        text = text.replace('"%s"' % key, '"%s"' % value)
+    text = _field_map(text)
+    for old, new in SOURCE_STRINGS:
+        text = text.replace(old, new)
+    return text
+
+SCRUB_TOKENS = (
+    ('Silent Aim', 'Ngắm ngầm'),
+    ('Silent khi bắn', 'Ngầm khi bắn'),
+    ('SILENT', 'NGẦM'),
+    ('Silent', 'Ngầm'),
+    ('AimKill', 'Hạ gục'),
+    ('aimkill', 'hạ gục'),
+    ('Aimbot', 'Trợ ngắm'),
+    ('aimbot', 'trợ ngắm'),
+    ('No recoil', 'Không giật'),
+    ('Hide damage', 'Ẩn sát thương'),
+    ('EnableTeamESP', 'Đồng đội'),
+    ('EspFireBlue', 'Tia xanh'),
+    ('EspFire', 'Tia nối'),
+    ('ESP', 'Lớp phủ'),
+    ('AIM', 'NGẮM'),
+)
+SCRUB_KEYWORDS = ('aimkill', 'silent', 'aimbot', 'no recoil', 'hide damage',
+                  'enableteamesp', 'espfire', 'esp', 'aim')
+
+
+def _scrub_strings():
+    pairs = {}
+    for name in ('okmod.cs', 'esp_sampled.cs'):
+        text = (HERE / name).read_text()
+        for match in re.finditer(r'"([^"\\\n]{2,80})"', text):
+            value = match.group(1)
+            if not any(word in value.lower() for word in SCRUB_KEYWORDS):
+                continue
+            new = value
+            for old, repl in SCRUB_TOKENS:
+                new = new.replace(old, repl)
+            if new != value:
+                pairs[value] = new
+    return pairs
+
+
+SCRUB_STRINGS = _scrub_strings()
+# Strings baked into the base patch by earlier HUD builds (not in current source).
+SCRUB_STRINGS.setdefault('Silent khi bắn', 'Ngầm khi bắn')
+
+
+def scrub_interns(patch):
+    for index, value in enumerate(patch.interns):
+        new = SCRUB_STRINGS.get(value)
+        if new is None:
+            low = value.lower()
+            if any(token in low for token in ('aimkill', 'aimbot', 'hitfly',
+                                              'espfire', 'enableteamesp',
+                                              'no recoil', 'silent aim')):
+                new = value
+                for old, repl in SCRUB_TOKENS:
+                    new = new.replace(old, repl)
+        if new is not None and new != value:
+            patch.interns[index] = new
+
+
+RELEASE_FIELD_PREFIXES = ('R7', 'Ok')
+RELEASE_FORBIDDEN_SUBSTRINGS = ('okmod', 'aimlog', 'aimkill', 'aimbot',
+                                'hitfly', 'no recoil', 'silent aim',
+                                'espfire', 'enableteamesp')
+
+
+def assert_release_clean(patch):
+    """Fail the build if renamed identifiers or signatures leaked through."""
+    bad_fields = [f.name for f in patch.fields
+                  if f.name.startswith(RELEASE_FIELD_PREFIXES)]
+    if bad_fields:
+        raise SystemExit('RELEASE CHECK: unmapped field names in payload: '
+                         + ', '.join(bad_fields[:10]))
+    bad_strings = []
+    bad_prefs = []
+    pref_re = re.compile(r'^u3d\.q\.[0-9a-f]{8}(\.[A-Za-z]+)?$')
+    for value in patch.interns:
+        low = value.lower()
+        if any(key in low for key in RELEASE_FORBIDDEN_SUBSTRINGS):
+            bad_strings.append(value[:80])
+        if value.startswith('u3d.q.') and not pref_re.match(value):
+            bad_prefs.append(value[:80])
+    if bad_prefs:
+        raise SystemExit('RELEASE CHECK: descriptive pref key in payload: '
+                         + ' | '.join(bad_prefs[:10]))
+    if bad_strings:
+        raise SystemExit('RELEASE CHECK: forbidden strings in payload: '
+                         + ' | '.join(bad_strings[:10]))
+
+
+HOOK_FORBIDDEN_TOKENS = (
+    'device', 'unique', 'identifier', 'imei', 'serial', 'macaddress',
+    'androidid', 'idfv', 'systeminfo', 'anogs', 'anosdk', 'tsssdk',
+    'security', 'hackbehavior', 'anticheat', 'anti_hack',
+)
+
+
+def assert_hooks_clean(base, candidate):
+    """Our own hooks must never touch identity or anti-cheat methods.
+
+    The base patch keeps its official hooks; this checks only the methods this
+    build adds. Hooking a device-identity getter (IMEI/serial/IDFV) or an
+    anti-cheat entry point is exactly the behaviour that turns a quiet patch
+    into a flagged account.
+    """
+    def key(patch, ref):
+        return (patch.types[ref.tid].split(',')[0], ref.name)
+
+    base_keys = {key(base, ref) for ref, _ in base.fixes}
+    added = [k for k in (key(candidate, ref) for ref, _ in candidate.fixes)
+             if k not in base_keys]
+    bad = [k for k in added
+           if any(token in k[1].lower() for token in HOOK_FORBIDDEN_TOKENS)]
+    if bad:
+        raise SystemExit('RELEASE CHECK: hook touches identity/anti-cheat: '
+                         + ', '.join('%s.%s' % k for k in bad[:10]))
+
+
+def declarations():
+    return '\n'.join('    public static %s %s;' % (typ, name) for name, typ in FIELDS.items())
+
+
+def check_added_externs(original, candidate):
+    """Check new dependencies against supplied game metadata, not test stubs.
+
+    Metadata exposes owner/name/arity/static flags here. This check does not
+    replace on-device invocation or full parameter-type/AOT compatibility tests.
+    """
+    meta_path = KIT / 'audit' / 'global-metadata.dat'
+    classes_path = Path('/root/ffdump/ffmeta_classes.json')
+    if not meta_path.exists() or not classes_path.exists():
+        print('WARN: metadata extern check skipped (metadata/classes missing)')
+        return []
+    metadata = meta_path.read_bytes()
+    classes = json.loads(classes_path.read_text())
+    methods_offset = struct.unpack_from('<I', metadata, 48)[0]
+    strings_offset = struct.unpack_from('<I', metadata, 24)[0]
+    owners = {c['name']: c for c in classes}
+    checked = []
+    for ref in candidate.extm[len(original.extm):]:
+        owner = canonical_type(candidate.types[ref.tid])
+        cls = owners.get(owner.split('[', 1)[0])
+        assert cls is not None, ('extern owner absent from game', owner)
+        matches = []
+        for ix in range(cls['ms'], cls['ms'] + cls['mc']):
+            rec = struct.unpack_from('<8I4H', metadata, methods_offset + ix * 40)
+            start = strings_offset + rec[0]
+            name = metadata[start:metadata.index(b'\0', start)].decode()
+            if name == ref.name and rec[-1] == len(ref.nums):
+                matches.append({'metadata_method': ix, 'static': bool(rec[-4] & 0x10)})
+        assert matches, ('extern absent from supplied game', owner, ref.name, len(ref.nums))
+        checked.append({'owner': owner, 'method': ref.name, 'arity': len(ref.nums), 'matches': matches})
+    return checked
+
+
+def check_batch_signatures(candidate, ids):
+    """Cross-check every mesh-path reference against exact dump parameter names.
+
+    No matching by only arity; DrawMeshNow and mesh setters are overloaded.
+    """
+    todo = [ids['DrawBatch'], ids['ReleaseBatch']]
+    seen, refs = set(), set()
+    while todo:
+        bid = todo.pop()
+        if bid in seen:
+            continue
+        seen.add(bid)
+        for c, o in candidate.bodies[bid].instrs:
+            if candidate.op_name(c) == 'Call':
+                target = o & 65535
+                if target != ids['RecordError']:
+                    todo.append(target)
+            elif candidate.op_name(c) in ('CallExtern', 'Newobj'):
+                refs.add(o & 65535)
+    required = set()
+    for index in refs:
+        m = candidate.extm[index]
+        owner = candidate.types[m.tid].split(',')[0]
+        required.add((owner, m.name, tuple(candidate.types[t].split(',')[0].rsplit('.', 1)[-1] for t in m.nums)))
+    declarations, ns, owner = set(), '', ''
+    required_owners = {r[0] for r in required}
+    dump_path = Path('/root/ffdump/com.dts.freefiremax-dump.cs')
+    if not dump_path.exists():
+        print('WARN: batch signature check skipped (dump missing)')
+        return []
+    with dump_path.open() as dump:
+        for line in dump:
+            if line.startswith('// Namespace:'):
+                ns = line.partition(':')[2].strip()
+                owner = ''
+            match = re.match(r'public (?:(?:sealed|static|abstract) )*(?:class|struct) ([^ :\n]+)', line)
+            if match:
+                owner = (ns + '.' + match.group(1)).lstrip('.')
+            if owner not in required_owners:
+                continue
+            match = re.search(r'\s([\w.]+)\(([^)]*)\) \{ \}', line)
+            if match:
+                params = []
+                if match.group(2):
+                    for param in match.group(2).split(','):
+                        parts = param.strip().split()
+                        params.append(parts[-2])
+                declarations.add((owner, match.group(1), tuple(params)))
+    missing = required - declarations
+    assert not missing, ('missing exact batch method signatures', sorted(missing))
+    return [{'owner': owner, 'method': name, 'parameters': list(params)} for owner, name, params in sorted(required)]
+
+
+class Converter(cs2patch.Conv):
+    def _owner_name(self, tabled):
+        if str(getattr(tabled.table, 'name', '')) == 'TypeSpec':
+            signature = bytes(tabled.row.Signature.value)
+            name, end = self._sig_type(signature, 0)
+            assert end == len(signature)
+            return name
+        return super()._owner_name(tabled)
+
+    def type_id(self, fullname):
+        return self.type_index_for(str(fullname))
+
+    def type_index_for(self, name):
+        # endswith("UnityEngine.Material") also matches the comma-truncated
+        # List<Material> name in the old converter. Always match exact types.
+        for i, full in enumerate(self.p.types):
+            if full.split(',')[0] == name:
+                return i
+        if name.endswith('[]'):
+            element = self.p.types[self.type_index_for(name[:-2])]
+            typ, assembly = element.split(',', 1)
+            full = typ + '[],' + assembly
+        elif name == 'System.Collections.Generic.List`1[System.Single]':
+            full = ('System.Collections.Generic.List`1[[System.Single, mscorlib, '
+                    'Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], '
+                    'mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089')
+            if full in self.p.types:
+                return self.p.types.index(full)
+        elif name.startswith('System.'):
+            full = name + ', mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089'
+        elif name.startswith('UnityEngine.'):
+            if name in ('UnityEngine.Networking.UnityWebRequest',
+                        'UnityEngine.Networking.UnityWebRequestAsyncOperation'):
+                # Image 24 of the current metadata is
+                # UnityEngine.UnityWebRequestModule.dll (verified from the
+                # image table); a wrong module name rejects the whole patch.
+                module = 'UnityEngine.UnityWebRequestModule'
+            else:
+                module = 'UnityEngine.IMGUIModule' if name in ('UnityEngine.GUI', 'UnityEngine.GUIStyle', 'UnityEngine.GUIStyleState', 'UnityEngine.Event') else 'UnityEngine.CoreModule'
+            full = name + ', ' + module + ', Version=0.0.0.0, Culture=neutral, PublicKeyToken=null'
+        else:
+            full = name + ', Assembly-CSharp, Version=0.86.0.518, Culture=neutral, PublicKeyToken=null'
+        self.p.types.append(full)
+        return len(self.p.types) - 1
+
+    def fld_for(self, owner, name):
+        if str(owner) == 'COW.GamePlay.SceneEditBoxSelectTool' and str(name) in FIELDS:
+            tid = self.type_id(str(owner))
+            index = self.p.find_field(tid, str(name))
+            if index < 0:
+                index = self.p.add_field(tid, str(name), True,
+                                         (self.type_index_for(FIELDS[str(name)]), -1))
+            return index
+        return super().fld_for(owner, name)
+
+
+def export_vm(p, entry, path):
+    ids, todo = [], [entry]
+    while todo:
+        bid = todo.pop()
+        if bid in ids:
+            continue
+        ids.append(bid)
+        for c, o in p.bodies[bid].instrs:
+            if p.op_name(c) == 'Call':
+                todo.append(o & 65535)
+    refs, fields, bodies = {}, {}, []
+    for bid in ids:
+        code = []
+        for c, o in p.bodies[bid].instrs:
+            op = p.op_name(c)
+            if op == 'Call':
+                o = (o & 0xffff0000) | ids.index(o & 65535)
+            elif op in ('CallExtern', 'Newobj'):
+                ix = o & 65535
+                refs.setdefault(ix, len(refs))
+                o = (o & 0xffff0000) | refs[ix]
+            elif op in ('Ldfld', 'Stfld', 'Ldsfld', 'Stsfld', 'Ldflda', 'Ldsflda'):
+                fields.setdefault(o, len(fields))
+                o = fields[o]
+            code.append([op, o])
+        bodies.append({'name': 'body' + str(bid), 'code': code,
+                       'handlers': [list(struct.unpack_from('<6i', p.bodies[bid].eh, i))
+                                    for i in range(0, len(p.bodies[bid].eh), 24)]})
+    manifest = {
+        'types': [t.split(',')[0] for t in p.types], 'strings': p.interns, 'bodies': bodies,
+        'externs': [{'owner': p.types[p.extm[i].tid].split(',')[0], 'name': p.extm[i].name,
+                     'params': [p.types[t].split(',')[0] for t in p.extm[i].nums]} for i in refs],
+        'fields': [{'owner': p.types[p.fields[i].tid].split(',')[0], 'name': p.fields[i].name,
+                    'isnew': p.fields[i].isnew,
+                    'type': p.types[p.fields[i].extra[0]].split(',')[0] if p.fields[i].isnew else None,
+                    'initializer': p.fields[i].extra[1] if p.fields[i].isnew else -1} for i in fields],
+    }
+    path.write_text(json.dumps(manifest, indent=2))
+    return ids
+
+
+def main():
+    stub = (KIT / 'r6-lite' / 'stubs.cs').read_text()
+    stub = stub.replace(
+        'public class GameObject : Object {',
+        'public class GameObject : Object {\n'
+        '    public Component GetComponent(Type type) { return null; }\n'
+        '    public Component GetComponent(string type) { return null; }\n'
+        '    public Component GetComponentInChildren(Type type) { return null; }\n'
+        '    public static GameObject Find(string name) { return null; }')
+    stub = stub.replace(
+        'public class Object {',
+        'public class Object {\n'
+        '    public static void DontDestroyOnLoad(Object target) {}')
+    stub = stub.replace('public class GameFacade {',
+        'public class GameFacade {\n'
+        '    public static UIInGameScene CurrentInGameUIScene() { return null; }\n'
+        '    public static GCommon.MatchGameClient CurretOnlineMatchClient() { return null; }\n'
+        '    public static COW.MatchGame CurrentMatchGame;\n'
+        '    public static bool Send(uint id, GCommon.UDPClientMessageBase msg, byte option, bool cache) { return false; }')
+    stub = stub.replace('public class Player : UnityEngine.Component {',
+        'public class Player : UnityEngine.Component {\n'
+        '    public BEADLMGGGGL get_PlayerID() { return new BEADLMGGGGL(); }\n'
+        '    public virtual void StartFiring(HBIBDMMOOOK weapon) {}\n'
+        '    public virtual void StartWholeBodyFiring(HBIBDMMOOOK weapon) {}\n'
+        '    public OGKFEMJNCGM JGIEOGCGFEP(CGKJLKPMGDJ hit) { return null; }\n'
+        '    public virtual void StopFire(HBIBDMMOOOK weapon) {}\n'
+        '    public virtual void FullWeaponAmmo() {}\n'
+        '    public bool IsGroundedByRayCastHit() { return false; }\n'
+        '    public bool IsGrounded() { return false; }\n'
+        '    public float get_LastStartJumpTime() { return 0f; }\n'
+        '    public UnityEngine.Vector3 GetVelocity() { return new UnityEngine.Vector3(); }\n'
+        '    public void SetForceMoveVelocity(UnityEngine.Vector3 value, uint key) {}\n'
+        '    public UnityEngine.Vector3 GetForceMoveVelocity() { return new UnityEngine.Vector3(); }\n'
+        '    public int GetPhysXState() { return 0; }\n'
+
+
+        '    public HBIBDMMOOOK GetWeaponOnHand() { return null; }\n'
+        '    public bool m_GroundHitResult;\n'
+        '    public bool InSnowSlideWayDashing;\n'
+        '    public float SnowSlideWayRisingGravity;\n'
+        '    public float SnowSlideWayFallingGravity;\n'
+        '    public float get_CustomGravity() { return 0f; }')
+    stub = stub.replace('public float get_CustomGravity() { return 0f; }',
+                        'public float get_CustomGravity() { return 0f; }\n'
+                        '    public float get_FallingGravity() { return 0f; }')
+    # UnityEngine behaviour hierarchy so AimKill can declare the exact
+    # parameter type of HBIBDMMOOOK.CIHHEOKFADJ (MonoBehaviour).
+    stub = stub.replace('public class Component : Object {',
+        'public class Behaviour : Component { }\n'
+        '  public class MonoBehaviour : Behaviour { }\n'
+        '  public class Component : Object {')
+    stub = stub.replace('public class Transform : Component {',
+        'public class Transform : Component {\n'
+        '    public Vector3 get_forward() { return new Vector3(0, 0, 1); }\n'
+        '    public void set_position(Vector3 value) {}\n'
+        '    public int get_childCount() { return 0; }\n'
+        '    public Transform GetChild(int index) { return null; }')
+    stub = stub.replace('public struct Quaternion {',
+                        'public struct Quaternion { public float x, y, z, w;')
+    bone_getters = ('GetHipTF', 'get_ArmBoneLeft', 'get_ArmBoneRight',
+                    'get_LeftForeArmTF', 'get_RightForeArmTF', 'get_LeftHandTF',
+                    'get_RightHandTF', 'get_LegBoneLeft', 'get_LegBoneRight',
+                    'GetLeftAnkleTF', 'GetRightAnkleTF', 'get_FootBoneLeft', 'get_FootBoneRight')
+    additions = []
+    for name in bone_getters:
+        if not re.search(r'\b' + name + r'\s*\(', stub):
+            additions.append('    public UnityEngine.Transform %s() { return null; }' % name)
+    for name in ('get_HasVest', 'get_HasHelmet', 'IsCrouching', 'IsReloading'):
+        if not re.search(r'\b' + name + r'\s*\(', stub):
+            additions.append('    public bool %s() { return false; }' % name)
+    stub = stub.replace('public class Player : UnityEngine.Component {',
+                        'public class Player : UnityEngine.Component {\n' + '\n'.join(additions))
+    # Player really is a MonoBehaviour in this build
+    # (Player -> AttackableEntity -> COWReplicationEntity -> ReplicationEntity ->
+    # Entity -> MonoBehaviour). Declaring it that way lets AimKill pass it
+    # straight into HBIBDMMOOOK.CIHHEOKFADJ without a runtime castclass.
+    stub = stub.replace('public class Player : UnityEngine.Component {',
+                        'public class Player : UnityEngine.MonoBehaviour {')
+    stub = stub.replace(
+        'public class HBIBDMMOOOK {',
+        'public class IEFJGCGOMID { public uint ODFDGMOCJLL; public uint MJCENIGKEPH() { return 0; } }\n'
+        '  public class HBIBDMMOOOK : IEFJGCGOMID {\n    public COW.WeaponGunFeelProfileData ILGIAJHNNDP() { return null; }')
+    stub = stub.replace(
+        'public class HBIBDMMOOOK {}',
+        'public class HBIBDMMOOOK { public COW.WeaponGunFeelProfileData ILGIAJHNNDP() { return null; } }')
+    stub = stub.replace(
+        'namespace COW {',
+        'namespace COW {\n  public static class GameSettingData { public static bool m_IsHighFramerate; public static bool m_SmoothHighFrame; public static bool GetAutoSwitchWeapon() { return false; } public static void SetAutoSwitchWeapon(bool v) {} }')
+    stub = stub.replace(
+        'namespace COW {',
+        'namespace COW {\n  public class WeaponGunFeelProfileData { public bool enableRecoil; public bool enableVisualRecoil; }')
+    stub = stub.replace(
+        'public class UnityWebRequest {\n    public UnityWebRequest(string url) {}',
+        'public class UnityWebRequest {\n    public UnityWebRequest(string url) {}\n'
+        '    public static UnityWebRequest Get(string url) { return null; }\n'
+        '    public long get_responseCode() { return 0; }\n'
+        '    public void set_timeout(int seconds) {}')
+    stub = stub.replace('public class HBIBDMMOOOK : IEFJGCGOMID {',
+        'public class HBIBDMMOOOK : IEFJGCGOMID {\n'
+        '    public IOKEALMHBKN PIILKNEHNLB;\n'
+        '    public int KBIFKMJODNA() { return 0; }\n'
+        '    public float LDKCJEMDAMC() { return 0f; }\n'
+        '    public float BDHMJJIADFG() { return 0f; }\n'
+        '    public bool KENANOGLPJO() { return false; }\n'
+        '    public System.Collections.Generic.List<float> NPLMKLBKJPE(OGKFEMJNCGM target, UnityEngine.Collider collider, bool flag, HNLIMBLIANL info) { return null; }\n'
+        '    public int LHNJLFOINDO(CGKJLKPMGDJ hit) { return 0; }\n'
+        # PC AimKill parity: the engine's own weapon-hit entry. Current
+        # metadata registration says (CGKJLKPMGDJ, UnityEngine.MonoBehaviour,
+        # float) -> int; the second slot must be declared as MonoBehaviour or
+        # IFix cannot bind the extern and rejects the whole patch (R11.90).
+        '    public int CIHHEOKFADJ(CGKJLKPMGDJ hit, UnityEngine.MonoBehaviour target, float param) { return 0; }\n'
+        '    public float OEOBPHDFJMO() { return 0f; }')
+    stub = stub.replace('public class CGKJLKPMGDJ {',
+        'public class CGKJLKPMGDJ {\n'
+        '    public UnityEngine.Vector3 ONMKMEGMHOL;\n'
+        '    public short CLOLKHNMNEK;\n'
+        '    public object MGBCGEBLKJB;\n'
+        '    public string ANJGNHKHOKO;')
+    stub = stub.replace(
+        'public Vector3 WorldToScreenPoint(Vector3 p) { return new Vector3(0,0,0); }',
+        'public Vector3 WorldToScreenPoint(Vector3 p) { return new Vector3(0,0,0); }\n'
+        '    public float get_fieldOfView() { return 0f; }\n'
+        '    public void set_fieldOfView(float value) {}')
+    stub = stub.replace(
+        'public class PlayerAttributes : UnityEngine.Component { public bool ShootNoReload; public float RunSpeedUpScale; public float SkillScatterRate { get { return 0f; } set {} } public float SkillScatterRateSighting { get { return 0f; } set {} } public float FireIntervalScale { get { return 1f; } set {} } public bool IsAmmoFree { get { return false; } set {} } public float BuffWeaponReloadScale; public float ForceSetRunAndDashSpeed; }',
+        'public class PlayerAttributes : UnityEngine.Component { public bool ShootNoReload; public float RunSpeedUpScale; public float SkillScatterRate { get { return 0f; } set {} } public float SkillScatterRateSighting { get { return 0f; } set {} } public float FireIntervalScale { get { return 1f; } set {} } public bool IsAmmoFree { get { return false; } set {} } public float BuffWeaponReloadScale; public float ForceSetRunAndDashSpeed; }')
+    stub = stub.replace(
+        'public UnityEngine.Vector3 GetAttackableCenterWS() { return new UnityEngine.Vector3(); }',
+        'public UnityEngine.Vector3 GetAttackableCenterWS() { return new UnityEngine.Vector3(); }\n'
+        '    public PlayerAttributes get_Attributes() { return null; }\n'
+        '    public void ResetSwapWeaponTime() {}\n'
+        '    public void AutoSwitchWeapon(bool a, bool b) {}\n'
+)
+    stub = stub.replace(
+        'public class JMAGGLCNGIG { public System.Collections.IList ILPNGCMEFFI() { return null; } public System.Collections.IDictionary LGNHODMMCMJ; }',
+        'public class JMAGGLCNGIG { public System.Collections.IList ILPNGCMEFFI() { return null; } public System.Collections.IDictionary LGNHODMMCMJ; }\n'
+        '  public class PlayerAttributes : UnityEngine.Component { public bool ShootNoReload; public float RunSpeedUpScale; public float SkillScatterRate { get { return 0f; } set {} } public float SkillScatterRateSighting { get { return 0f; } set {} } public float FireIntervalScale { get { return 1f; } set {} } public bool IsAmmoFree { get { return false; } set {} } public float BuffWeaponReloadScale; public float ForceSetRunAndDashSpeed; }')
+    stub = stub.replace(
+        'public struct Color { public Color(float r, float g, float b, float a) {} }',
+        'public struct Color { public float r, g, b, a; '
+        'public Color(float r, float g, float b, float a) { this.r = r; this.g = g; this.b = b; this.a = a; } }')
+    stub = stub.replace(
+        'public class JMAGGLCNGIG { public System.Collections.IList ILPNGCMEFFI() { return null; } }',
+        'public class JMAGGLCNGIG { public System.Collections.IList ILPNGCMEFFI() { return null; } '
+        'public System.Collections.IDictionary LGNHODMMCMJ; }\n'
+        '  public class LevelVehicle : UnityEngine.Component { public int get_CurHP() { return 0; } public int get_MaxHP() { return 0; } }')
+    stub = stub.replace(
+        'public class LevelVehicle : UnityEngine.Component { public int get_CurHP() { return 0; } public int get_MaxHP() { return 0; } }',
+        'public class LevelVehicle : UnityEngine.Component { public int get_CurHP() { return 0; } public int get_MaxHP() { return 0; } }\n'
+        '  public class PlayerAttributes : UnityEngine.Component { public bool ShootNoReload; public float RunSpeedUpScale; public float SkillScatterRate { get { return 0f; } set {} } public float SkillScatterRateSighting { get { return 0f; } set {} } public float FireIntervalScale { get { return 1f; } set {} } public bool IsAmmoFree { get { return false; } set {} } public float BuffWeaponReloadScale; public float ForceSetRunAndDashSpeed; }')
+    stub = stub.replace('public static int OkUiAccepted, OkUiRejected, OkUiReentry;',
+                        'public static int OkUiAccepted, OkUiRejected, OkUiReentry;\n' + declarations())
+    stub = stub.replace('public class Time {', 'public class Time {\n    public static float get_realtimeSinceStartup() { return 0f; }')
+    stub = stub.replace('public class PlayerPrefs {', 'public class PlayerPrefs {\n    public static void Save() {}')
+    stub = stub.replace('public class Object {', 'public class Object {\n    public int GetInstanceID() { return 0; }\n    public static void Destroy(Object o) {}')
+    stub = stub.replace('public class Material : Object {', 'public class Material : Object {\n    public bool SetPass(int pass) { return true; }')
+    stub = stub.replace('public class Collider : Component { public Bounds get_bounds() { return new Bounds(); } }',
+                        'public class Collider : Component { public Bounds get_bounds() { return new Bounds(); } public bool get_isTrigger() { return false; } }')
+    stub += MESH_STUBS + HITFLY_STUBS + PC_DAMAGE_STUBS + VEH_AUTH_STUBS
+    stub = stub.replace(
+        'public UnityEngine.Transform get_RootTransform() { return null; }',
+        'public UnityEngine.Transform get_RootTransform() { return null; }\n'
+        '    public bool IsInVehicle() { return false; }\n'
+        '    public COW.GamePlay.Vehicle VehicleIAmIn() { return null; }')
+    stub = stub.replace('public bool ShootNoReload;',
+                        'public bool IsInvincible() { return false; } public bool ShootNoReload;')
+    stub += ('\nnamespace COW.GamePlay { public class IPBGFJNGLOH '
+             '{ public static float AMMOCNCMBBG; } }\n')
+    stub += '\nnamespace UnityEngine { public static class GUIUtility { public static string systemCopyBuffer { get { return ""; } set {} } } }\n'
+    # NETMAP diagnostic surface: GCommon network dispatcher (cmd -> message type).
+    stub += ('\nnamespace GCommon {'
+             ' public class NetworkMessageDispatcher {'
+             '  public System.Type GetCmdType(uint cmd) { return null; } }'
+             ' public class NetworkClient {'
+             '  public GCommon.NetworkMessageDispatcher m_MessageDispatcher; }'
+             ' public class MatchGameClient : GCommon.NetworkClient {'
+             '  public System.Collections.IList m_CurFrameHandleMsgCmdList;'
+             '  public System.Collections.IList m_LastFrameHandleMsgCmdList;'
+             '  public System.Collections.IList m_HandleMsgPacketList;'
+             '  public System.Collections.IList m_RecvUDPMsgList;'
+             '  public System.Collections.IList m_UnSerializedMsgList;'
+             '  public GCommon.FastBinaryReader m_BinaryReader;'
+             '  public GCommon.INetworkSession m_UDPSession; }'
+             ' public class UDPMsgPacket { public byte MsgKey; public byte CRC7;'
+             '  public byte SendOption; public ushort Cmd; public ushort OrderID;'
+             '  public byte Flags; public ushort Length; public byte[] Data; }'
+             ' public class FastBinaryReader { public byte[] _ioBuffer; public int _ioIndex;'
+             '  public int _available; }'
+             ' public class TeaDecTempBuffer { public byte[] dec_iv_pre; public byte[] dec_iv_cur;'
+             '  public uint[] dec_k; }'
+             ' public interface IUDPSession { byte[] GetPayloadKey(ushort cmd);'
+             '  byte[] GetFallbackPayloadKey(ushort cmd); }'
+             ' public interface INetworkSession : GCommon.IUDPSession { }'
+             ' public class MUDPSession : GCommon.INetworkSession { public string m_SessionKey;'
+             '  public byte[] m_TargetSecretKey; public byte[] m_SessionSecretKey;'
+             '  public byte[] m_TargetProxySecretKey; public GCommon.TeaDecTempBuffer m_DecBuffer;'
+             '  public byte[] GetPayloadKey(ushort cmd) { return null; }'
+             '  public byte[] GetFallbackPayloadKey(ushort cmd) { return null; } }'
+             ' public class UDPSession : GCommon.INetworkSession { public string m_SessionKey;'
+             '  public byte[] m_SessionSecretKey; public GCommon.TeaDecTempBuffer m_DecBuffer;'
+             '  public byte[] GetPayloadKey(ushort cmd) { return null; }'
+             '  public byte[] GetFallbackPayloadKey(ushort cmd) { return null; } }'
+             ' public class MultiNetworkSession { public System.Object m_Sessions;'
+             '  public byte[] m_TargetSecretKey; public int[] m_TargetHeadSecretKey;'
+             '  public byte[] m_TargetProxySecretKey; public byte[] m_SessionSecretKey; }'
+             ' public static class UDPParameters { public static byte[] SECRET_KEY;'
+             '  public static int[] HEAD_SECRET; }'
+             ' public static class NetworkCryptologyUtil { public static int SALT_LEN;'
+             '  public static int ZERO_LEN; public static uint DELTA; public static int ROUNDS;'
+             '  public static int LOG_ROUNDS; public static byte[] TestKey; }'
+             ' public class ReplicationData { public int GroupID;'
+             '  public GCommon.ReplicationDataValue Value; }'
+             ' public struct ReplicationDataValue { public float m_Single; public int m_Int32;'
+             '  public uint m_UInt32; public short m_Int16; public ushort m_UInt16; }'
+             ' public class ReplicationDataPool { public GCommon.ReplicationData[] m_Datas;'
+             '  public float GetDataFloat32(uint varID) { return 0f; }'
+             '  public int GetDataInt32(uint varID) { return 0; }'
+             '  public uint GetDataUInt32(uint varID) { return 0; }'
+             '  public ushort GetDataUInt16(uint varID) { return 0; }'
+             '  public short GetDataInt16(uint varID) { return 0; }'
+             '  public byte GetDataUInt8(uint varID) { return 0; }'
+             '  public bool GetDataBool(uint varID) { return false; } }'
+             ' public class ReplicationEntity { public System.Object m_PRIDataPool;'
+             '  public uint GetReplicationID() { return 0; } } }\n')
+    stub += ('\nnamespace COW { public class MatchGame {'
+             ' public System.Object m_ReplicationEntitis; } }\n')
+    stub = _field_map(stub)
+    (ROOT / 'stubs.cs').write_text(stub)
+    subprocess.run(['mcs', '-target:library', '-out:' + str(ROOT / 'stubs.dll'), str(ROOT / 'stubs.cs')], check=True)
+    defines = ['-define:HF_GUIDED_TRIAL'] if GUIDED_TRIAL else (['-define:HF_SOPHIA_TRIAL'] if SOPHIA_TRIAL else [])
+    gen = ROOT / '.gen'
+    gen.mkdir(exist_ok=True)
+    for name in ('okmod.cs', 'esp_sampled.cs'):
+        (gen / name).write_text(_source_map((HERE / name).read_text()))
+    subprocess.run(['mcs', '-target:library'] + defines + ['-r:' + str(ROOT / 'stubs.dll'),
+                    '-out:' + str(ROOT / 'renderer.dll'), str(gen / 'okmod.cs'),
+                    str(gen / 'esp_sampled.cs')], check=True)
+    original = parse_q3(BASE.read_bytes(), 580)
+    for _f in original.fields:
+        if _f.name in FIELD_RENAME:
+            _f.name = FIELD_RENAME[_f.name]
+    p = parse_q3(BASE.read_bytes(), 580)
+    for _f in p.fields:
+        if _f.name in FIELD_RENAME:
+            _f.name = FIELD_RENAME[_f.name]
+    kit = ifixc.Kit.__new__(ifixc.Kit)
+    kit.p = p; kit._intern = {s: i for i, s in enumerate(p.interns)}; kit.stack_space = 8
+    conv = Converter(dll=str(ROOT / 'renderer.dll'), kit=kit)
+    runtime_contract = RuntimeContract()
+    check_compiled(conv, runtime_contract)
+    methods, todo = {}, ['Hud', 'SilentAimingInfo', 'ScatterRate', 'ShowDamageNum',
+                         'CustomGravity', 'RisingGravity', 'FallingGravity']
+    while todo:
+        name = todo.pop()
+        if name in methods:
+            continue
+        m = conv.convert(name)
+        methods[name] = m
+        todo.extend(target for _, target in m._own_calls)
+    ids = {name: kit.commit(m) for name, m in methods.items()}
+    for name, m in methods.items():
+        for at, target in m._own_calls:
+            old = p.bodies[ids[name]].instrs[at][1]
+            p.set_operand(ids[name], at, (old & 0xffff0000) | ids[target])
+    # OnGUI shim -> Okmod.Hud.
+    shim = len(p.bodies)
+    p.bodies.append(patchc.Body([
+        [p.op_code('StackSpace'), 8],
+        [p.op_code('Call'), ids['Hud']],
+        [p.op_code('Ret'), 0],
+    ]))
+    ongui = next((i for i, (m, b) in enumerate(p.fixes) if m.name == 'OnGUI'), None)
+    if ongui is not None:
+        p.fixes[ongui] = (p.fixes[ongui][0], shim)
+    else:
+        scene_tid = p.find_type('COW.GamePlay.SceneEditBoxSelectTool')
+        if scene_tid < 0:
+            scene_tid = p.add_type(
+                'COW.GamePlay.SceneEditBoxSelectTool, Assembly-CSharp, '
+                'Version=0.86.0.518, Culture=neutral, PublicKeyToken=null')
+        ongui_ref = patchc.MRef(False, scene_tid, 'OnGUI')
+        ongui_ref.nums = []
+        p.fixes.append([ongui_ref, shim])
+
+    # menuonly dropped the silent getter hook; re-add it with the new body.
+    merged = parse_q3((KIT / 'patches' / 'merged.patch').read_bytes(), 580)
+    silent_ref = next((mr for mr, bid in merged.fixes
+                       if mr.name == 'get_LastAimingInfoFromWeapon'), None)
+    assert silent_ref is not None
+    assert all(m.name != 'get_LastAimingInfoFromWeapon' for m, b in p.fixes)
+    p.fixes.append([silent_ref, ids['SilentAimingInfo']])
+
+    # Real no-recoil hook: replace PlayerAttributes.GetScatterRate.
+    scatter_tid = next(i for i, t in enumerate(p.types)
+                       if t.split(',')[0] == 'COW.GamePlay.PlayerAttributes')
+    scatter_ref = patchc.MRef(False, scatter_tid, 'GetScatterRate')
+    scatter_ref.nums = []
+    p.fixes.append([scatter_ref, ids['ScatterRate']])
+
+    # Hide damage numbers via Player.get_ShowDamageNum.
+    damage_tid = next(i for i, t in enumerate(p.types)
+                      if t.split(',')[0] == 'COW.GamePlay.Player')
+    damage_ref = patchc.MRef(False, damage_tid, 'get_ShowDamageNum')
+    damage_ref.nums = []
+    p.fixes.append([damage_ref, ids['ShowDamageNum']])
+
+    # Movement gravity hooks.
+    #
+    # GroundHack as BS4484 implements it hooks
+    # UnityEngine.CharacterController::get_isGrounded. That method lives in
+    # UnityEngine.PhysicsModule; this IFix build only rewrites Assembly-CSharp,
+    # so that hook is unreachable here (see docs/GROUNDHACK-ANALYSIS.md).
+    #
+    # What is reachable are the two gravity getters HADKJKALGOL actually consumes
+    # (0x568D02C: vy += gravity * dt). Both are leaf methods with an IsPatched
+    # prologue and no <>iFixBaseProxy_*, so the OFF path must reproduce the
+    # original. In normal matches both collapse to Player.get_CustomGravity()
+    # (IPBGFJNGLOH.AMMOCNCMBBG == -9.8f), and that getter is left UNPATCHED so
+    # UGC rooms keep their own gravity. Snow-slide-way keeps its per-player
+    # fields, matching the original branch order.
+    for method, body in (('get_CustomGravity', 'CustomGravity'),
+                         ('get_RisingGravity', 'RisingGravity'),
+                         ('get_FallingGravity', 'FallingGravity')):
+        gravity_ref = patchc.MRef(False, damage_tid, method)
+        gravity_ref.nums = []
+        p.fixes.append([gravity_ref, ids[body]])
+
+    # Visible UI build identifier, no extra hotkey/gameplay hook.
+    checked_externs = check_added_externs(original, p)
+    if 'DispatchEngineHit' in ids:
+        assert 'DispatchPcDamage' not in ids
+        assert 'ServiceAimFire' not in ids and 'ReleaseAimKillFire' not in ids
+        specs = [spec for spec in ENGINE_METHODS if spec[0] != 'message.EOBFCLNNIJH']
+        assert 'TrySyncInventory108' not in ids
+        damage_contract = check_patch(p, runtime_contract, specs)
+        damage_contract['mode'] = 'owned-engine-shot'
+        damage_contract['synthetic_damage_reachable'] = True
+    elif 'UpdateAimKillLegacy' not in ids:
+        assert 'DispatchPcDamage' not in ids and 'StartAimKillXNEW' not in ids
+        assert 'ServiceAimFire' not in ids and 'ReleaseAimKillFire' not in ids
+        damage_contract = {'mode': 'native-recovery', 'synthetic_damage_reachable': False,
+                           'methods': [], 'fields': []}
+    else:
+        damage_contract = check_patch(p, runtime_contract)
+        damage_contract['mode'] = 'isolated-damage'
+        damage_contract['synthetic_damage_reachable'] = True
+    (ROOT / 'aimkill-runtime-contract.json').write_text(json.dumps(damage_contract, indent=2) + '\n')
+    checked_signatures = check_batch_signatures(p, ids)
+    assert_hooks_clean(original, p)
+    scrub_interns(p)
+    scrub_interns(original)
+    blob = serialize(p)
+    check = parse_q3(blob, 580)
+    assert_release_clean(check)
+    assert serialize(check) == blob
+    assert len(check.fixes) == len(p.fixes) and check.storey_raw == original.storey_raw
+    for i in range(len(original.bodies)):
+        assert check.bodies[i].instrs == original.bodies[i].instrs
+        assert check.bodies[i].eh == original.bodies[i].eh
+    assert check.types[:len(original.types)] == original.types
+    assert check.interns[:len(original.interns)] == original.interns
+    assert check.sft[:len(original.sft)] == original.sft and check.storey_raw == original.storey_raw
+    for a, b in zip(original.fields, check.fields):
+        assert (a.isnew, a.tid, a.name, a.extra) == (b.isnew, b.tid, b.name, b.extra)
+    for a, b in zip(original.extm, check.extm):
+        assert extern_key(original, a) == extern_key(check, b)
+    for fi, ((a, ab), (b, bb)) in enumerate(zip(original.fixes, check.fixes)):
+        if a.name == 'OnGUI':
+            continue
+        if not (ab == bb and extern_key(original, a) == extern_key(check, b)):
+            print('FIX MISMATCH', fi, a.name, b.name, ab, bb)
+            print('orig', extern_key(original, a))
+            print('cand', extern_key(check, b))
+            raise AssertionError
+    for f in check.fields:
+        if f.name.startswith(('Zx', 'R8')):
+            assert f.isnew and f.extra[1] == -1
+    reachable = export_vm(check, ids['Hud'], ROOT / 'hud-vm-Zx.json')
+    manual_reach = export_vm(check, ids['ApplyAimKillManualAim'], ROOT / 'aimkill-manual-vm.json')
+    assert not {'ObserveHitFlyMap', 'SolveHitFlyMapArc', 'HitFlyMapSurface', 'FinishHitFlyMap'} & ids.keys()
+    hitfly_reach = []  # HitFly removed from the HUD; nothing to export
+    for bid in hitfly_reach:
+        for code, operand in check.bodies[bid].instrs:
+            if check.op_name(code) in ('CallExtern', 'Newobj'):
+                name = check.extm[operand & 65535].name
+                assert name not in {'set_position', 'SetVelocity', 'set_velocity', 'SwitchPhysXState',
+                                     'StartFiring', 'StopFire', 'LHNJLFOINDO', 'TakeDamage'}, ('HF MAP simple impulse graph violation', name)
+    guide_reach = export_vm(check, ids['TickGuidedMap'], ROOT / 'hitfly-guided-vm.json') if GUIDED_TRIAL else []
+    for bid in guide_reach:
+        for code, operand in check.bodies[bid].instrs:
+            if check.op_name(code) in ('CallExtern', 'Newobj'):
+                name = check.extm[operand & 65535].name
+                assert name not in {'Send', 'set_position', 'SwitchPhysXState', 'ResetHitFlyInfo',
+                                    'SetVelocity', 'set_velocity', 'StartFiring', 'StopFire', 'TakeDamage'}, ('guided motion graph violation', name)
+    if GUIDED_TRIAL:
+        for name, arity in (('SetForceMoveVelocity', 2), ('GetForceMoveVelocity', 0), ('GetVelocity', 0)):
+            check_patch(check, runtime_contract, [('COW.GamePlay.Player', name, arity)])
+    if SOPHIA_TRIAL:
+        assert not {'TickGuidedMap', 'StartGuidedMap', 'GuidedMapActive'} & ids.keys()
+        check_patch(check, runtime_contract, [('COW.GamePlay.Player', 'get_FallingGravity', 0)])
+        for owner, name in (('COW.UIMapContentController', 'm_LocalMapMarkController'),
+                            ('COW.UIHudPlayerMarkController', 'm_pos')):
+            runtime_contract.field(owner, name)
+        observer = export_vm(check, ids['ObserveSophiaMap'], ROOT / 'hitfly-sophia-observer-vm.json')
+        for bid in observer:
+            for code, operand in check.bodies[bid].instrs:
+                if check.op_name(code) in ('CallExtern', 'Newobj'):
+                    name = check.extm[operand & 65535].name
+                    assert name not in {'Send', 'SetForceMoveVelocity', 'set_position', 'SwitchPhysXState',
+                                        'SetVelocity', 'set_velocity', 'TakeDamage'}, ('Sophia observation must not control motion', name)
+        for bid in hitfly_reach:
+            for code, operand in check.bodies[bid].instrs:
+                if check.op_name(code) in ('CallExtern', 'Newobj'):
+                    assert check.extm[operand & 65535].name != 'SetForceMoveVelocity'
+    for bid in manual_reach:
+        for code, operand in check.bodies[bid].instrs:
+            if check.op_name(code) in ('CallExtern', 'Newobj'):
+                name = check.extm[operand & 65535].name
+                assert name not in {'StartFiring', 'StartWholeBodyFiring', 'StopFire',
+                                    'FullWeaponAmmo', 'LHNJLFOINDO', 'TakeDamage', 'Send'}, ('manual branch ownership violation', name)
+    if damage_contract.get('mode') in ('native-recovery', 'isolated-damage', 'engine-hit', 'owned-engine-shot'):
+        forbidden = {'StartFiring', 'StartWholeBodyFiring', 'StopFire', 'FullWeaponAmmo'}
+        if damage_contract.get('mode') == 'owned-engine-shot':
+            forbidden.difference_update({'StartFiring', 'StopFire'})
+        if damage_contract.get('mode') not in ('engine-hit', 'owned-engine-shot'):
+            forbidden.add('LHNJLFOINDO')
+        else:
+            forbidden.update({'TakeDamage', 'NPLMKLBKJPE', 'JGIEOGCGFEP'})
+        if damage_contract.get('mode') == 'native-recovery':
+            forbidden.update({'TakeDamage', 'NPLMKLBKJPE', 'JGIEOGCGFEP'})
+        for bid in reachable:
+            for code, operand in check.bodies[bid].instrs:
+                if check.op_name(code) in ('CallExtern', 'Newobj'):
+                    name = check.extm[operand & 65535].name
+                    if name == 'TakeDamage' and bid in (ids.get('UpdateVehicleAuth'), ids.get('DispatchVehicleHit')):
+                        continue
+                    assert name not in forbidden, ('native recovery fire dependency', bid)
+                    if check.extm[operand & 65535].name in ('StartFiring', 'StopFire'):
+                        assert bid == ids['ExecuteAimKillShot'], ('unscoped trigger call', bid)
+    render_reach = export_vm(check, ids['Render'], ROOT / 'render-vm-Zx.json')
+    for bid in render_reach:
+        for c, o in check.bodies[bid].instrs:
+            if check.op_name(c) in ('CallExtern', 'Newobj'):
+                owner = check.types[check.extm[o & 65535].tid].split(',')[0]
+                assert not owner.startswith('COW.'), ('game API in cache renderer', owner)
+    assert 309 not in reachable and 319 not in reachable and ids['DrawEsp'] in reachable
+    (ROOT / 'candidate.patch').write_bytes(blob)
+    container = Path('/root/assembly-csharp-patch.HBSY4R0mIV7GPFGWGCbnw1ze~2B0I~3D')
+    env = UnityPy.load(str(container))
+    assets = [o for o in env.objects if o.type.name == 'TextAsset']; assert len(assets) == 1
+    a = assets[0].read(); a.m_Script = blob.decode('utf-8', 'surrogateescape'); a.save()
+    packed = gzip.compress(bytes(env.file.save(packer='original')), 9, mtime=0)
+    assert patchc.split_bundle(gzip.decompress(packed))[2] == blob
+    (ROOT / 'okmod-R8-AIM-ESP.bin').write_bytes(packed)
+    report = {'file': str(ROOT / 'okmod-R8-AIM-ESP.bin'), 'sha256': hashlib.sha256(packed).hexdigest(),
+              'bytes': len(packed), 'payload_sha256': hashlib.sha256(blob).hexdigest(),
+              'helpers': ids, 'fixes': len(check.fixes), 'storeys': check.storeys,
+              'q3_bodies_unchanged': 138, 'q3_fixes_preserved': 79,
+              'build_id': 'R8-AIM-ESP-v1', 'batch_signatures_checked': checked_signatures,
+               'added_externs_game_metadata_checked': checked_externs,
+               'damage_chain_exact_contract': damage_contract,
+               'cache_render_has_no_game_calls': True, 'published': False,
+                'guided_map_trial': GUIDED_TRIAL,
+                'sophia_map_trial': SOPHIA_TRIAL,
+               'guided_map_validation': 'ideal-model-only; native and server acceptance unverified' if GUIDED_TRIAL else 'not compiled'}
+    (ROOT / 'build-aim-report.json').write_text(json.dumps(report, indent=2))
+    subprocess.run([sys.executable, str(KIT / 'tools' / 'check_core_rules.py'),
+                    '--candidate', str(ROOT / 'okmod-R8-AIM-ESP.bin'),
+                    '--report', str(ROOT / 'build-aim-report.json'),
+                    '--base', str(BASE),
+                    '--baseline', str(BASELINE),
+                    '--mode', 'r8-aim'], check=True)
+    print(json.dumps(report, indent=2))
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Build an IFix candidate; no service restart is performed.')
+    parser.add_argument('--output-dir', type=Path,
+                        help='Write generated files here instead of build/; source files still come from build/.')
+    parser.add_argument('--guided-map-trial', action='store_true', help='Compile experimental keyed-force MAP controller; requires staged output.')
+    parser.add_argument('--sophia-map-trial', action='store_true', help='Compile Sophia-derived one-shot MAP with read-only observations; requires staged output.')
+    args = parser.parse_args()
+    GUIDED_TRIAL = args.guided_map_trial
+    SOPHIA_TRIAL = args.sophia_map_trial
+    if GUIDED_TRIAL and SOPHIA_TRIAL:
+        parser.error('Choose one MAP trial, not both')
+    if (GUIDED_TRIAL or SOPHIA_TRIAL) and (args.output_dir is None or args.output_dir.resolve() == HERE):
+        parser.error('MAP trials require a separate --output-dir; no live artifact writes')
+    if args.output_dir is not None:
+        ROOT = args.output_dir.expanduser().resolve()
+        ROOT.mkdir(parents=True, exist_ok=True)
+    main()

@@ -1,0 +1,17 @@
+{
+  "version": "R12.17",
+  "bytes": 300488,
+  "sha256": "548118a0e1bd33691e9bcb9b73004f31532f1ba923f52ab418a85c522947925e",
+  "packed_sha1": "3/FrGZwAqv0hRu9inZ0fhp2/y4A=",
+  "raw_sha1": "X23jQJAC1QmkeGUwU5H+RJ1bBU0=",
+  "raw_bytes": 820051,
+  "device_evidence": "R12.16 online logs 2026-10-26 06:40:15..55+01 show hfMap status=12 state=0 t/xz/vy=0 and gravityApplied=1. The button reached the launch preflight, but a movement/gravity prerequisite blocked Send; native/server flight behavior was not reached in these reports.",
+  "change": "Split status12 causes into high-jump-enabled/hover-enabled/not-grounded/snow-slide-dashing/gravity-restoring; show actionable status beside floating HF MAP for 8 seconds and while observing flight. Queue/rejection snapshots use existing bounded telemetry even with AK off. Preserve movement settings, launch guards and R12.16 flight model rather than silently disabling other features.",
+  "verification": [
+    "HF recording regression verifies each movement conflict reason and UI text, eight-second notice, telemetry dirty flag, unchanged user hover preference, successful send after conflicts are removed",
+    "All four suites PASS, including 234 model-only ballistic cases; guard27/27",
+    "Live service active, health200, actual proxy download SHA256 matches build"
+  ],
+  "limitations": "This fixes missing rejection feedback, not proof of flight or exact landing. Device retest must disable high-jump/hover, stand grounded and retry. Native receiver/time semantics and server acceptance remain unverified.",
+  "rollback": "cp backup/pre-R12.17/okmod-R8-AIM-ESP.bin build/okmod-R8-AIM-ESP.bin && systemctl restart okmod-1297"
+}

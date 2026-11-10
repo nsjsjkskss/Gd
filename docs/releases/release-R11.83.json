@@ -1,0 +1,14 @@
+{
+  "version": "R11.83",
+  "bytes": 293000,
+  "sha256": "29d14db8f3e8a5f9d57eeb8307a5aa6c2870188fa901b63c67a07ddb313d4afa",
+  "fixes": 87,
+  "guard": "PASS 27/27",
+  "mechanism": "get_CustomGravity returns IPBGFJNGLOH.AMMOCNCMBBG and JLPJMAFLADI adds the same static inline at 0x5785104. R11.81 only scaled the first (measured 77% share) which capped the gain at ~4.4x. R11.83 writes the static itself for the boost window: MBBG = original / slider, restored afterwards. Both components now scale together, so apex should track the slider linearly.",
+  "reverted": "The direct vy impulse via Player.get_MyPhsXData() was dropped: the metadata has two global classes named GFLBFKKDAMK (controller tix 31659 with 34 methods, and a 1-method duplicate), so the name is ambiguous for runtime type resolution and would risk killing the whole patch.",
+  "uploadTag": "v=11.83",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261024T033603Z.bin"
+}

@@ -1,0 +1,21 @@
+{
+  "version": "R11.60",
+  "bytes": 292946,
+  "sha256": "0f3bab7d146f3faa1c753776e2d8651c6e0d85f8899320c8b6f4b9217a0f920f",
+  "raw_bytes": 787195,
+  "raw_sha1": "g0eSqisSpPqVy3NfiOLp/LZSVXE=",
+  "packed_sha1": "sGfWViEnomMhExuDV86INtBln3k=",
+  "fixes": 85,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,g0eSqisSpPqVy3NfiOLp/LZSVXE=,787195,0,sGfWViEnomMhExuDV86INtBln3k=,292946,True,0",
+  "backup_tag": "pre-clean-20261023T114653Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "aimkill": "new 'Kiểu BS4484 (từng phát)' toggle: one StartFiring -> LHNJLFOINDO -> StopFire per shot, and hit normal = hitPoint like the source; auto-test summary records src=0/1",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261023T114653Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}
