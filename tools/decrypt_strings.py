@@ -4,12 +4,13 @@ import sys
 import capstone
 
 SEED_B497C = 0x2FDDD4D1
+SEED_B5090 = 0x4031CC15
 M32 = 0xFFFFFFFF
 
 
-def dec_b497c(enc, w2):
+def dec_stream(enc, w2, seed=SEED_B497C):
     w8 = 0
-    w9 = (SEED_B497C ^ w2) & M32
+    w9 = (seed ^ w2) & M32
     out = bytearray()
     for b in enc:
         w17 = (w9 ^ w8) & M32
@@ -23,7 +24,8 @@ def dec_b497c(enc, w2):
     return bytes(out)
 
 
-def dump_b497c(raw, md):
+def dump_stream_calls(raw, md, target_fn, seed, label):
+    print(f"=== {label} (fn={target_fn:#x}, seed={seed:#010x}) ===")
     hits = []
     for off in range(0x4B40, 0xE8890, 4):
         w = struct.unpack("<I", raw[off : off + 4])[0]
@@ -31,7 +33,7 @@ def dump_b497c(raw, md):
             imm26 = w & 0x3FFFFFF
             if imm26 & (1 << 25):
                 imm26 -= 1 << 26
-            if off + (imm26 << 2) == 0xB497C:
+            if off + (imm26 << 2) == target_fn:
                 hits.append(off)
 
     for call_va in hits:
@@ -99,7 +101,7 @@ def dump_b497c(raw, md):
         length = regs.get("w1", 0)
         w2 = regs.get("w2", 0)
         if 0 < length < 256 and 0 <= buf_ptr < len(mem) - length:
-            dec = dec_b497c(mem[buf_ptr : buf_ptr + length], w2)
+            dec = dec_stream(mem[buf_ptr : buf_ptr + length], w2, seed=seed)
             print(f"  {call_va:#07x} (len={length:2d}, w2={w2:#010x}): {dec.decode('utf-8', 'replace')!r}")
 
 
@@ -112,4 +114,6 @@ if __name__ == "__main__":
     with open(target, "rb") as f:
         raw_bytes = f.read()
     cs = capstone.Cs(capstone.CS_ARCH_ARM64, capstone.CS_MODE_ARM)
-    dump_b497c(raw_bytes, cs)
+    dump_stream_calls(raw_bytes, cs, 0xB497C, SEED_B497C, "sub_b497c Strings")
+    print()
+    dump_stream_calls(raw_bytes, cs, 0xB5090, SEED_B5090, "sub_b5090 Strings")
