@@ -332,3 +332,22 @@ Quét toàn bộ vùng `__TEXT.__text` của `UnityFramework` (`0x4000 .. 0xa19a
 3. **Bộ Quét Chống Hook trên `UnityFramework` (`sub_d47a0`) và Kiểm tra Địa chỉ Trả về `LR` (`0xd4a0c .. 0xd4a2c`):**
    - Hàm `sub_d47a0` (`0xd47a0 .. 0xd48b8`) đọc mã máy của `UnityFramework` tại `rva - 4` và 4 lệnh tiếp theo từ `rva` để kiểm tra xem có bị công cụ bên thứ ba chèn `brk` (`0xd4200000`), `hlt` (`0xd4400000`) hoặc inline hook `ldr x16/x17, #8; br x16/x17` (`0x58000050` / `0xd61f0200`) hay không; nếu phát hiện sẽ kích hoạt cờ độc (`0xdead0020`).
    - Các hàm xử lý tính năng tại `0xd48d8 .. 0xd64d8` đều kiểm tra thanh ghi `x30` (`LR & 0x7fffffffffff`) phải nằm trong phạm vi bộ nhớ `[uf_base, uf_base + 0x0d000000)` của `UnityFramework` (`0xd4a0c .. 0xd4a2c`), từ chối thực thi nếu được gọi từ ngoài `UnityFramework`.
+@@
+3. **Bộ Quét Chống Hook trên `UnityFramework` (`sub_d47a0`) và Kiểm tra Địa chỉ Trả về `LR` (`0xd4a0c .. 0xd4a2c`):**
+   - Hàm `sub_d47a0` (`0xd47a0 .. 0xd48b8`) đọc mã máy của `UnityFramework` tại `rva - 4` và 4 lệnh tiếp theo từ `rva` để kiểm tra xem có bị công cụ bên thứ ba chèn `brk` (`0xd4200000`), `hlt` (`0xd4400000`) hoặc inline hook `ldr x16/x17, #8; br x16/x17` (`0x58000050` / `0xd61f0200`) hay không; nếu phát hiện sẽ kích hoạt cờ độc (`0xdead0020`).
+   - Các hàm xử lý tính năng tại `0xd48d8 .. 0xd64d8` đều kiểm tra thanh ghi `x30` (`LR & 0x7fffffffffff`) phải nằm trong phạm vi bộ nhớ `[uf_base, uf_base + 0x0d000000)` của `UnityFramework` (`0xd4a0c .. 0xd4a2c`), từ chối thực thi nếu được gọi từ ngoài `UnityFramework`.
++
++---
++
++## 13. Đối Chiếu Thực Nghiệm Với Bản Đóng Gói Lại `m5d0l6e-f3701-fast.ipa` (`HunterFF.dylib`)
++
++Chi tiết toàn bộ phép đối chiếu nhị phân và kết quả giả lập Unicorn giữa gói IPA 1 (`T74ODgYWCToR`) và gói IPA 2 (`m5d0l6e-f3701-fast.ipa`) được trình bày trong [`IPA2_HUNTERFF_COMPARISON.md`](IPA2_HUNTERFF_COMPARISON.md) và [`artifacts/ipa2_comparison_dump.txt`](artifacts/ipa2_comparison_dump.txt):
++
++1. **Cùng một bản build gốc (`LC_UUID` trùng khớp 100%)**:
++   - `FreeFire` (`456886fe...`) và `DataDomeSDK` (`058758ec...`) giống hệt `100%` trước `LC_CODE_SIGNATURE`.
++   - `UnityFramework` (`c8de7371...`) giữ nguyên `100%` phân vùng `__TEXT.__text`, chỉ khác `1.321 byte` tại header và hai phân vùng trampoline `__TEXT_EXEC.__objc_tramp` (`923 B`) / `__AUTH_EXEC.__auth_stubs` (`392 B`).
++2. **Khôi phục tĩnh `154/154` prologue bị cài bẫy trong `UnityFramework`**:
++   - Trong `155` slot mang lệnh `stp d11, d10, [sp, #-0x40]! ; b #0x5632fe4` của IPA 1, `AuthSlot 12` (`0xc39c180`) là prologue thật của hàm `0x5632fe0`, còn `154` slot kia (`110` trong `__objc_tramp` + `44` trong `__auth_stubs`) là bẫy. Trong IPA 2, cả `154/154` slot này đã được ghi đè sẵn trên đĩa bằng lệnh prologue gốc và nhánh nhảy quay lại từng hàm trong `UnityFramework`.
++3. **Sửa đổi `8.486 byte` trong `Penny` và tiêm `HunterFF.dylib`**:
++   - IPA 2 vá tự động `1.792` lệnh `mov w16, #1/#0x1a` trước `svc` thành `b #<pc+8>`, ghi cứng `SEED = 0x2fddd4d1` tại `0xb4a04` và `x0 = 0x1fbba9ea58632790` tại `0xb6ac8`, đổi chuỗi Telegram mã hóa tại `0x48394`/`0x4a71c` sang `t.me/xudeptraix2`, và chuyển hướng 9 điểm nút của `Penny` (`0xbb290`, `0xcd608`, `0x3032c`, `0xde6b4`, `0xbe8c4`, `0xbee54`, `0xbe19c`, `0xcd9a8`, `0xc3a84`) qua bảng con trỏ `__DATA.__bss` (`0xcc94280..0xcc942c0`) do `HunterFF.dylib` kiểm soát.
++   - Giả lập Unicorn trên `HunterFF.dylib` xác nhận hàm `_time` interpose (`0x40863c`) trả về cứng `1794268800` (`2026-11-10 00:00:00 UTC`), và callback `0x416dec` kiểm tra `33` vùng byte trong `Penny` bằng `_memcmp` trước khi ghi 9 con trỏ cầu nối vào `0xcc94280..0xcc942c0` để yêu cầu xác thực key qua `https://api.hackgamefile.com/sophia/verify`.
