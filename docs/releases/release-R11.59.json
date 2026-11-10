@@ -1,0 +1,21 @@
+{
+  "version": "R11.59",
+  "bytes": 292804,
+  "sha256": "d826c5d478a754ec9b3ff2b40745c79b4efce239a448a96b007575677edbcc81",
+  "raw_bytes": 786403,
+  "raw_sha1": "KhU8wvEoiZfGzQhQ79k6jnEBIKc=",
+  "packed_sha1": "5wJzVCFR79EvMCFsnImEoQfEvDo=",
+  "fixes": 85,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,KhU8wvEoiZfGzQhQ79k6jnEBIKc=,786403,0,5wJzVCFR79EvMCFsnImEoQfEvDo=,292804,True,0",
+  "backup_tag": "pre-clean-20261023T112755Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "aimkill": "when 'Xoay nhân vật' is ON, a per-frame lock rotates both the local character and the main camera toward the stored target's head, instead of only calling SetAimRotation on each dispatch",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261023T112755Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

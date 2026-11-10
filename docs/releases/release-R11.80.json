@@ -1,0 +1,18 @@
+{
+  "version": "R11.80",
+  "bytes": 292720,
+  "sha256": "71bfbfce212338907fe53285f9326aa616879c600d12baef31b3dcf33bf5339d",
+  "fixes": 87,
+  "guard": "PASS 27/27",
+  "measured": {
+    "jump1.0_bay9.8": "h=72/70/70 (x1.0)",
+    "jump3.0_bay9.8": "h=149 (x2.1)",
+    "jump1.0_bay2.05": "h=112 (x1.6)"
+  },
+  "change": "Jump boost window 18 -> 30 frames to push 3.0 closer to the requested 3x. Upload tag bumped to v=11.80 so new samples are separable in /var/log/nginx/aimlog.log.",
+  "health": "deploy verify raced mitmproxy startup again (health=000 at +5s); recheck at +8s returned 200 and service is active.",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261024T032334Z.bin"
+}

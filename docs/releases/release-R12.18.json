@@ -1,0 +1,19 @@
+{
+  "version": "R12.18",
+  "bytes": 299200,
+  "sha256": "e8e7882c4b4dc0f3acb8aa03114de7a496d93c48b99e85e844b3b164378ada7d",
+  "packed_sha1": "QqDJngi7riLsUU4futcgJLuOpjA=",
+  "raw_sha1": "BKokfcN0Cqms8SYqK8Owbg9jp+s=",
+  "raw_bytes": 813147,
+  "change": "Supersedes R12.16/17 trajectory experiment. HF MAP uses original horizontal marker bearing plus fixed upward impulse50, fixed short time1, independent adjustable horizontal speed5..100 default25. No ballistic time/landing solver, destination surface raycast, flight-observation gate, highjump/hover/grounded/snow-slide/gravity preflight. Recovery/local/ID/marker validation and cooldown retained. One speed row, no loft-height UI. Camera HITFLY retains its original settings; AimKill unchanged.",
+  "device_evidence_before_change": "Latest R12.17 log at 2026-10-26T06:58:14+01:00: state4 reason=no-takeoff-observed t13.53 xz24.93 vy69.99. Does not validate modeled trajectory or server movement acceptance.",
+  "verification": [
+    "Recording tests: fixed1/50, adjustable MAP speed, camera-independent marker XZ bearing, no terrain/grounding/gravity blockers even with old conflicting settings",
+    "Original HITFLY defaults/custom settings, one-shot/cooldown, ID/local/death/invalid marker, false Send, exceptions, recovery cancellation, speed UI isolation PASS",
+    "Build asserts four old trajectory/observer helpers absent; hitfly-simple-vm rejects Raycast, IsGrounded, movement setters and firing/damage calls",
+    "Four recording suites PASS and core guard27/27",
+    "Service active health200, actual live proxy payload SHA256 matches candidate"
+  ],
+  "limitations": "This is a simpler high upward impulse in marker direction, not exact landing or obstacle avoidance. Upward50 is not device-validated yet. Hover/jump can alter actual motion, but no longer block or silently change those settings. Send=true is not server approval.",
+  "rollback": "cp backup/pre-R12.18/okmod-R8-AIM-ESP.bin build/okmod-R8-AIM-ESP.bin && systemctl restart okmod-1297"
+}

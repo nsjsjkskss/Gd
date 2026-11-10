@@ -1,0 +1,20 @@
+{
+  "version": "R11.22",
+  "bytes": 288327,
+  "sha256": "a7680a63edc8f3e2f8ef23f37ddff9addad8f06ac5416ccfb1ad3da288a0c820",
+  "raw_bytes": 762523,
+  "raw_sha1": "SEQKDvEGSNJNlVrWyQ1V8GSdvDI=",
+  "packed_sha1": "SN3KVw8ROQqBQt5VS3KFWqXHlMQ=",
+  "fixes": 84,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,SEQKDvEGSNJNlVrWyQ1V8GSdvDI=,762523,0,SN3KVw8ROQqBQt5VS3KFWqXHlMQ=,288327,True,0",
+  "backup_tag": "pre-r1122-20261022T082621Z",
+  "published_to": [
+    "aimtest",
+    "proxy"
+  ],
+  "device_test": "pending",
+  "server_kill_confirmation": "unverified",
+  "aimkill": "experimental, one nearest valid enemy per 0.8s; default off",
+  "proxy_download_verified": true
+}

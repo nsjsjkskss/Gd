@@ -1,0 +1,21 @@
+{
+  "version": "R11.40",
+  "bytes": 288767,
+  "sha256": "8fef53e70c9f05ec3037ddb83e298f01b18655e41bc19cf7ba419e7b7367bb28",
+  "raw_bytes": 765115,
+  "raw_sha1": "3zgxlx8bnS/kz47zLLlhVKGLsM4=",
+  "packed_sha1": "gm0dIM8cTHlXrmglextTVwyr19A=",
+  "fixes": 84,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,3zgxlx8bnS/kz47zLLlhVKGLsM4=,765115,0,gm0dIM8cTHlXrmglextTVwyr19A=,288767,True,0",
+  "backup_tag": "pre-r1140-20261022T184031Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "aimkill": "SetAimRotation removed: AimKill no longer turns the player; prediction removed as it only affected that rotation; menu rows now 32 AimKill, 33 delay, 34 status",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-r1140-20261022T184031Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

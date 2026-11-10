@@ -1,0 +1,31 @@
+{
+  "version": "R12.16",
+  "bytes": 300082,
+  "sha256": "8e260c8041e4585e76fe9f47e96152a3315b4477530f6d9715d74e0b5a3a9228",
+  "packed_sha1": "Gebanu8TOwdMRkDfJZKFgRSP0+g=",
+  "raw_sha1": "fapvJZS995HszS2S7mJ1f05ryVE=",
+  "raw_bytes": 818155,
+  "change": "HF MAP predicted lofted trajectory to a loaded surface at marker XZ, independent adjustable horizontal speed ceiling and minimum loft, read-only flight/landing observations, no per-frame gameplay corrections. Existing camera HITFLY settings and AimKill preset retained.",
+  "settings": {
+    "OKMOD.Move.HFMapSpeed.Float": {"default": 25, "min": 5, "max": 100, "step": 5, "units": "horizontal speed ceiling m/s"},
+    "OKMOD.Move.HFMapHeight.Float": {"default": 30, "min": 10, "max": 200, "step": 10, "units": "minimum apex above higher endpoint m"}
+  },
+  "verification": [
+    "234 reachable analytic model cases: endpoint/descent/loft/speed bounds; NaN/unreachable rejected",
+    "Recording HF suite: map surface lookup, no camera dependency for MAP, packet fields, unchanged manual settings",
+    "Recording HF suite: UI plus controls and bounds, requeue/cooldown, false send, exceptions, death/local/match/recovery transitions, no-takeoff and airborne timeout, stable-grounded observations",
+    "AimKill, HUD lifecycle and visual recording suites PASS",
+    "Core guard 27/27; exported solver/observer graphs reject gameplay Send, movement setters, fire and damage calls",
+    "Nine key AimKill method source bodies identical to pre-R12.16",
+    "Service restarted and active; health 200; actual live-proxy download SHA256 equals candidate"
+  ],
+  "limitations": [
+    "Device test pending: exact landing not established. Native receiver integration and server time/velocity limits are not verified.",
+    "Explicit constant-gravity point model uses packet time as total airtime; native HitFly time may instead be a state lifetime.",
+    "Surface selection is first non-trigger hit from above, including roofs; not a walkability or whole-arc collision check.",
+    "Client landing observations and Send=true are not server ACK or per-request movement attribution. No corrective teleport is used.",
+    "Launch requires standing on ground, recovery/high-jump/hover off, no snow-slide dashing or pending gravity restoration. Application bounds: distance 1..2000m exclusive lower bound, time 0.2..20s, velocities 0..100m/s exclusive lower bound."
+  ],
+  "details": "docs/HITFLY-MAP-R12.16.md",
+  "rollback": "cp backup/pre-R12.16/okmod-R8-AIM-ESP.bin build/okmod-R8-AIM-ESP.bin && systemctl restart okmod-1297"
+}

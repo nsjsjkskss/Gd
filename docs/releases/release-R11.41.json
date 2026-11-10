@@ -1,0 +1,21 @@
+{
+  "version": "R11.41",
+  "bytes": 288756,
+  "sha256": "aab1080b3d484346fa4644fb2f954c20a654681636fcba9bb1d9495df57c9793",
+  "raw_bytes": 765067,
+  "raw_sha1": "iHUmuRM4fOLh5gGcN9oyDgqSqJ4=",
+  "packed_sha1": "uC3cprwoMiTVKwRXpTEDeYDvzmk=",
+  "fixes": 84,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,iHUmuRM4fOLh5gGcN9oyDgqSqJ4=,765067,0,uC3cprwoMiTVKwRXpTEDeYDvzmk=,288756,True,0",
+  "backup_tag": "pre-r1141-20261022T185047Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "aimkill": "always enforces line of sight: ClearSight runs on every AimKill candidate and again before dispatch, regardless of the aimbot visibility toggle; blocked targets are skipped",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-r1141-20261022T185047Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

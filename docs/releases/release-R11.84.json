@@ -1,0 +1,18 @@
+{
+  "version": "R11.84",
+  "bytes": 293100,
+  "sha256": "c06f75343f0c2f2e76f5df3c23b1f284c2f9d471cdcef2fa12b2e9009ced4414",
+  "fixes": 87,
+  "guard": "PASS 27/27",
+  "menu": {
+    "row21": "Nh\u1ea3y cao x3.0  -> OKMOD.Move.HighJump (jumpScale 3.0, bay 9.8)",
+    "row22": "Bay l\u01a1 l\u1eedng x3.0 + 0.3 -> OKMOD.Move.Hover (jumpScale 3.0, bay 0.3)"
+  },
+  "exclusive": "Enabling one clears the other in ToggleRow, so the two presets never stack.",
+  "removed": "The jump/bay sliders and the on-row diagnostic were replaced by these presets; automatic upload and the 5-entry history rows (35-39) stay.",
+  "measuredBasis": "R11.83 log with bay off: x1.0 h=69.0, x3.0 h=194.5 (2.82x), pk unchanged.",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261024T034647Z.bin"
+}

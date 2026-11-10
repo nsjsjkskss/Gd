@@ -1,0 +1,23 @@
+{
+  "version": "R12.04",
+  "bytes": 296489,
+  "sha256": "5a25504e208ab3af945d7c040662c7ee9f8fef77600ac49619fd685cf19c7389",
+  "packed_sha1": "s5JIRjg7qnNZvr3EH8VIuB3DwAI=",
+  "raw_sha1": "qipg74nXFDJeUMMEwszmW7xHaXI=",
+  "raw_bytes": 800067,
+  "change": "Pass populated HNLIMBLIANL into NPLMKLBKJPE, matching the engine call at 0x5C25194-0x5C251A8. Read damage-info weapon definition ID through PIILKNEHNLB.MHMGCLILKGJ.GetId(), matching 0x5C24B0C-0x5C24B24 rather than unrelated JAOECECKADN. Add localReason, lastDispatchAt, dataId; clear pc flag/lock/probes on invalid local/match.",
+  "native_evidence": {
+    "PlayerNetwork.TakeDamage": "0x5A5A6E8 calls base OBEMNJENEFF, constructs and submits message 0x6A, and returns base result; return 0 alone does not distinguish early exit, transmitted request or server rejection",
+    "damage_info_definition": "weapon+0x98 -> IOKEALMHBKN+0xE0 -> IJHHJLDNMGH.GetId()",
+    "check_params": "engine calls NPLMKLBKJPE(attackable, collider, flag, populatedDamageInfo)"
+  },
+  "verified": [
+    "Exact metadata/native registration contracts including GetId and MHMGCLILKGJ",
+    "Recording test checks non-null populated damage info and definition ID differing from JAOECECKADN",
+    "Recording test no-match reason and pc flag cleared",
+    "All four suites PASS; core guard 27/27",
+    "Downloaded through live proxy: SHA256 matches; service active; health 200"
+  ],
+  "device_status": "Pending. Native data-path corrections are not device evidence of automatic kills or server acceptance.",
+  "rollback": "cp backup/pre-R12.04/okmod-R8-AIM-ESP.bin build/okmod-R8-AIM-ESP.bin && systemctl restart okmod-1297"
+}

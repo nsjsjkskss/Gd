@@ -1,0 +1,13 @@
+{
+  "version": "R11.86",
+  "bytes": 292720,
+  "sha256": "724d66257bce991b388151cc6444b07db17bc41cf5b525a5d288ee13436544a9",
+  "fixes": 87,
+  "guard": "PASS 27/27",
+  "aimkillFix": "Reference source (PC~AIMKILL~SRC, backend.cpp StartAimKillV2 0x3097) fills the player's own hit-info object Player.FDMIEDDNCEC (0xE50) instead of allocating one. Our patch created a new CGKJLKPMGDJ per shot, so the engine pipeline could read its own (stale) instance. Now reuses local.FDMIEDDNCEC with a new-object fallback.",
+  "reviewDoc": "docs/AIMKILL-REVIEW.md",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261024T035741Z.bin"
+}

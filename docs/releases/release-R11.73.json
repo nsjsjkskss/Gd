@@ -1,0 +1,11 @@
+{
+  "version": "R11.73",
+  "bytes": 291810,
+  "sha256": "b101d95c7c8563b561fe4f230341640aa4860e7f03758c4e73096d9c0f3b3a57",
+  "fixes": 87,
+  "guard": "PASS 27/27",
+  "jump": "Slider capped at 1.2 (step 0.05). Root cause of 'above 1.2 jumps lower': the launch frame(s) still report IsGrounded()==true, so the scaled gravity is integrated into the very start of the ascent and cancels the impulse. Above ~1.2 the cancellation outweighs the gain, producing a lower jump. A gravity-multiplier cannot deliver clean high jumps here.",
+  "recommended": "For real height use Bay gravity: apex = H * |g_rise| / |g_custom|, so lowering the Bay value raises the apex linearly (4.9 -> 2x, 3.27 -> 3x, 2.45 -> 4x) and stays smooth.",
+  "published_to": ["http://217.217.255.156:1297/"],
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261024T022937Z.bin"
+}

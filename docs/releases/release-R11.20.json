@@ -1,0 +1,21 @@
+{
+  "version": "R11.20",
+  "bytes": 287235,
+  "sha256": "6aa5b57a8717d77810b901c1e7ce817a0b0807265204cd7b80ed9875ea78c54d",
+  "raw_bytes": 757547,
+  "raw_sha1": "Z4LsZP59GnaP9XA3nEXmVdyeyDU=",
+  "packed_sha1": "hELx5CBeCcTnNDvsZ3t6BSHPWPo=",
+  "fixes": 84,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,Z4LsZP59GnaP9XA3nEXmVdyeyDU=,757547,0,hELx5CBeCcTnNDvsZ3t6BSHPWPo=,287235,True,0",
+  "backup_tag": "pre-r1120-20261022T075847Z",
+  "published_to": [
+    "aimtest",
+    "proxy"
+  ],
+  "device_test": "pending",
+  "map_state_mutators": "none",
+  "feature_updates": "once per repaint independent of menu/map",
+  "esp_layer": "behind mod menu, hidden on native map",
+  "proxy_download_verified": true
+}

@@ -1,0 +1,21 @@
+{
+  "version": "R11.54",
+  "bytes": 291004,
+  "sha256": "978ca6453f37bf417a749039bf205e731332b2c0facd64c1eb9eb0f5d35cc552",
+  "raw_bytes": 776267,
+  "raw_sha1": "8Ix3rJYwKD7N9jRpcUmKsr6iZMM=",
+  "packed_sha1": "ZTOBCVDUI9w9Y0o32rDGsbnj9u4=",
+  "fixes": 85,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,8Ix3rJYwKD7N9jRpcUmKsr6iZMM=,776267,0,ZTOBCVDUI9w9Y0o32rDGsbnj9u4=,291004,True,0",
+  "backup_tag": "pre-clean-20261023T100541Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "aimkill": "delay cycle 80/120/200/300 ms; new 'Chỉ bắn khi giữ cò' toggle (require real IsFiring, no synthetic StartFiring); weapon change detection by object reference; log includes actual weapon range",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261023T100541Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

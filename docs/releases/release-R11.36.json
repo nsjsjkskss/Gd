@@ -1,0 +1,22 @@
+{
+  "version": "R11.36",
+  "bytes": 289486,
+  "sha256": "c267dcc1addc4b20a89578ba9107283493fe07604694556bb1aac0ca9f7e5f5f",
+  "raw_bytes": 768739,
+  "raw_sha1": "XPmjqJ9eNiiNpBAJK6VXaEWNJ3Y=",
+  "packed_sha1": "27ZJt+xyOxxG8OGswHOsJDZjSh4=",
+  "fixes": 84,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,XPmjqJ9eNiiNpBAJK6VXaEWNJ3Y=,768739,0,27ZJt+xyOxxG8OGswHOsJDZjSh4=,289486,True,0",
+  "backup_tag": "pre-r1136-20261022T174359Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "aimkill": "packet 108 removed entirely after device feedback (OFF was more stable): no inventory send, no toggle, no message stub; retain center pick, group mapping, 0/20/40/80 delay and 0-150% lead",
+  "pullenemy": "removed in R11.34",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-r1136-20261022T174359Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

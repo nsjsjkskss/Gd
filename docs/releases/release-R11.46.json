@@ -1,0 +1,21 @@
+{
+  "version": "R11.46",
+  "bytes": 288919,
+  "sha256": "7f88a65c03f5b7ef0e36b6b0c708fc96370c6d344b6bdee0c490b0c7364fd5ec",
+  "raw_bytes": 765707,
+  "raw_sha1": "lGpGcz5NOkv23YDjHkeHvdRd2z0=",
+  "packed_sha1": "KV4JqwRsuJMZL1Ifwo6Wb4qqKxk=",
+  "fixes": 85,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,lGpGcz5NOkv23YDjHkeHvdRd2z0=,765707,0,KV4JqwRsuJMZL1Ifwo6Wb4qqKxk=,288919,True,0",
+  "backup_tag": "pre-clean-20261023T073314Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "aimkill": "line of sight now tested at the submitted collider centre (not the bone); hits within 0.9 m of the ray origin are treated as own weapon/body and skipped; real cover still blocks",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261023T073314Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

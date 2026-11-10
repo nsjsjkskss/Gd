@@ -1,0 +1,12 @@
+{
+  "version": "R11.66",
+  "bytes": 291469,
+  "sha256": "27682dcacc40c1e55b786c8131383430d1bfbba51fb10f6c5f513616611f83c1",
+  "fixes": 86,
+  "guard": "PASS 27/27",
+  "published": false,
+  "device_test": "pending",
+  "groundhack": "R11.45 IsGrounded hook removed (4 graphics callers only, zero movement effect); R11.64 m_GroundHitResult write removed (overwritten by the same-frame raycast); R11.65 Player.OnFixedUpdate post-hook removed (nargs=0 Call bug + proxy resolves to empty Entity.OnFixedUpdate). Replaced with leaf hooks on Player.get_RisingGravity / get_FallingGravity: toggle ON returns -0.25f (glide), OFF reproduces the original branch order and delegates to the unpatched Player.get_CustomGravity.",
+  "notes": "docs/GROUNDHACK-ANALYSIS.md",
+  "unit_tests": "aimkill, hud_lifecycle, visuals, hitfly PASS"
+}

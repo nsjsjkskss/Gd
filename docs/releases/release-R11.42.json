@@ -1,0 +1,21 @@
+{
+  "version": "R11.42",
+  "bytes": 288759,
+  "sha256": "0f90b59531068fc3d75ea8e5fa346829eac38f7a9943396dbbf7936c8a6a52dd",
+  "raw_bytes": 765131,
+  "raw_sha1": "1pmUtjsph1QfEwCZZlgo5c6lEQs=",
+  "packed_sha1": "IT1XhFwLjpeckvTUnxQlK+UB13E=",
+  "fixes": 84,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,1pmUtjsph1QfEwCZZlgo5c6lEQs=,765131,0,IT1XhFwLjpeckvTUnxQlK+UB13E=,288759,True,0",
+  "backup_tag": "pre-r1142-20261022T185905Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "aimkill": "clip is kept free while AimKill is on (IsAmmoFree auto-applied, restored when AimKill/InfiniteAmmo off) to avoid the held-fire no-auto-reload dead zone; status 6 still reports game reloads",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-r1142-20261022T185905Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

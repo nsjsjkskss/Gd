@@ -1,0 +1,27 @@
+{
+  "version": "R12.20 DEV ESP multi-record fix",
+  "status": "deployed by explicit user request",
+  "deployed_at_utc": "2026-10-26T11:29:02Z",
+  "bytes": 301067,
+  "sha256": "d8ad6dee13747785c7e94a2c96e87f66836e57cd17447e7daaa63933d8ec528c",
+  "packed_sha1": "/eodvDXe2NUSTH3snJgYFP3nuro=",
+  "raw_sha1": "bhVFYbC64zfa4DfzCWmcqLgewQ4=",
+  "candidate": "build/candidates/hf-sophia-esp-multi-fix/okmod-R8-AIM-ESP.bin",
+  "changes": [
+    "Compacts projected ESP records and all parallel metadata by surviving player identity after invalid/offscreen projection",
+    "Prevents box/name/team/target/HP/skeleton/radar/direction slot mismatches when rotating through many players",
+    "Keeps Sophia MAP fixed x1.1 and prior stale-cache expiry changes"
+  ],
+  "verification": [
+    "ESP visual suite PASS",
+    "Sophia MAP 240 cases PASS",
+    "AimKill/HUD PASS",
+    "Core guard27/27 PASS",
+    "Candidate installed atomically after backup; service active; health200",
+    "Live proxy payload SHA256 matches installed and staged candidate"
+  ],
+  "device_status": "Pending. Multi-player device rendering observation still required.",
+  "previous_sha256": "16754c03de6e08f40c4d7c7b549815dd401c83ce9dc1e890d4d57ffc8736b910",
+  "backup": "backup/pre-R12.20-esp-multi-fix-20261026T112902Z/okmod-R8-AIM-ESP.bin",
+  "rollback": "cp backup/pre-R12.20-esp-multi-fix-20261026T112902Z/okmod-R8-AIM-ESP.bin build/okmod-R8-AIM-ESP.bin && systemctl restart okmod-1297"
+}

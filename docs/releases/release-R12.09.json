@@ -1,0 +1,20 @@
+{
+  "version": "R12.09",
+  "bytes": 297361,
+  "sha256": "000c1435a5a1259524c51015fd40e549ba2bfb649aabceb3f1af356721c1094b",
+  "packed_sha1": "QIbqe76zHpo9lJmgme1mIDdC19I=",
+  "raw_sha1": "FCfhlcRyqXx/XdX2imD6EW2XtyU=",
+  "raw_bytes": 804915,
+  "change": "Restore reference-informed synchronous shot preparation: capture local/weapon and original aim, validate no manual firing/reload and clear cover, aim at target, attempt StartFiring, invoke single LHNJLFOINDO hit, StopFire on captured arguments in finally, conditionally restore original aim. No deferred trigger cleanup or explicit second damage call. Native hit info stays isolated. Cleanup exceptions latch a fault and block future automated attempts until game restart.",
+  "reference_difference": "Matches BS4484 aim/start/hit/stop sequence but deliberately does not add weapon swap, teleports, forced refill or PC V2 explicit TakeDamage/whole-body path. Device/server effectiveness remains unconfirmed.",
+  "diagnostics": ["shotStarts", "shotStops", "shotFault", "cleanupError"],
+  "verified": [
+    "Native registration exact contracts for Player StartFiring, StopFire, SetAimRotation and GetAimRotation",
+    "Recording tests: aim/start/hit/stop/restore order; partial start exception; engine exception; captured weapon after swap; cleanup fault latches; manual input untouched",
+    "All four suites PASS; core guard 27/27",
+    "Build gate permits trigger calls only inside ExecuteAimKillShot; no delayed cleanup, refill, whole-body start or duplicate explicit damage",
+    "Live proxy download SHA256 matches; active; health 200"
+  ],
+  "device_status": "Pending. A native call can have side effects not represented by stubs; this does not guarantee no stuck trigger or server-accepted damage.",
+  "rollback": "cp backup/pre-R12.09/okmod-R8-AIM-ESP.bin build/okmod-R8-AIM-ESP.bin && systemctl restart okmod-1297"
+}

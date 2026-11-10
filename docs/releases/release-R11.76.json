@@ -1,0 +1,13 @@
+{
+  "version": "R11.76",
+  "bytes": 292256,
+  "sha256": "4e0ad233a8f6326965b30fbb51f2c258530c0014c9143180fb1bf3b03ed60e99",
+  "fixes": 87,
+  "guard": "PASS 27/27",
+  "diagnostics": "Row 21 shows v (GetVelocity().y x100), a (boost frames left), g (CustomGravity calls inside the window). Tapping the middle of the row copies a detailed snapshot to the clipboard: jumpScale, bay, speed, jumps, stamp, state (GetPhysXState), grounded, vy, peak vy, arm, hitsInWindow, custom/rising/falling call counts and last returned values.",
+  "purpose": "Determine which gravity getter the live ascent actually uses and whether the jump detector ever fires, before changing any more behaviour.",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261024T025552Z.bin"
+}

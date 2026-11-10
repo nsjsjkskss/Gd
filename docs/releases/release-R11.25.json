@@ -1,0 +1,22 @@
+{
+  "version": "R11.25",
+  "bytes": 289054,
+  "sha256": "78922dea6b789050df2939d2406daf14db06c54be20d58482820df084cf1b711",
+  "raw_bytes": 766315,
+  "raw_sha1": "+PZoqy8qInb4wUVQ3MmWW41WtIE=",
+  "packed_sha1": "9Fx2UMuegZiOevcli6p42O3f/zE=",
+  "fixes": 84,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,+PZoqy8qInb4wUVQ3MmWW41WtIE=,766315,0,9Fx2UMuegZiOevcli6p42O3f/zE=,289054,True,0",
+  "backup_tag": "pre-r1125-20261022T142555Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "server_kill_confirmation": "unverified",
+  "aimkill": "BS4484 V2.4 parity test: clears ctor collections MGBCGEBLKJB/ANJGNHKHOKO (0x88/0x90) like the source memset, and sends inventory-on-hand opcode 108 (message.EOBFCLNNIJH, player id + IEFJGCGOMID.ODFDGMOCJLL at +0x10) after StopFire; default off, experimental",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-r1125-20261022T142555Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

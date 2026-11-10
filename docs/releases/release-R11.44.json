@@ -1,0 +1,21 @@
+{
+  "version": "R11.44",
+  "bytes": 288814,
+  "sha256": "c098592ccc3caa4b833d31b71ffd30fd7b90c9f2e29f85357ed3241efb0a01b6",
+  "raw_bytes": 765275,
+  "raw_sha1": "FvnnaOkEdjA7NKJsMb8DLXPkrbQ=",
+  "packed_sha1": "rEMbCxnlX+0hapxIL2BEKjXAqpI=",
+  "fixes": 84,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,FvnnaOkEdjA7NKJsMb8DLXPkrbQ=,765275,0,rEMbCxnlX+0hapxIL2BEKjXAqpI=,288814,True,0",
+  "backup_tag": "pre-r1144-20261022T191704Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "aimkill": "IsAmmoFree and ShootNoReload auto-apply both removed; while AimKill is active the mod calls Player.FullWeaponAmmo() at most once per second to keep the current clip usable",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-r1144-20261022T191704Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

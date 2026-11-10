@@ -1,0 +1,22 @@
+{
+  "version": "R11.30",
+  "bytes": 290093,
+  "sha256": "9cc088d960f94415cd892240a2484622c254be131779c84499e79c2fbd2f6734",
+  "raw_bytes": 771891,
+  "raw_sha1": "PbBObLKvdSpFptNGV2gXtk92lYM=",
+  "packed_sha1": "JYK/+Dl5CQxPH1i0shbpZsMSYjE=",
+  "fixes": 84,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,PbBObLKvdSpFptNGV2gXtk92lYM=,771891,0,JYK/+Dl5CQxPH1i0shbpZsMSYjE=,290093,True,0",
+  "backup_tag": "pre-r1130-20261022T154701Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "pullenemy": "firing-triggered single-target head pull: nearest valid enemy root is placed so its head lands on the camera aim ray 8 m ahead; target held until dead/invalid (0.25 s re-pick), no writes when not firing",
+  "aimkill": "R11.25 parity test retained: object wipe + inventory opcode 108",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-r1130-20261022T154701Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

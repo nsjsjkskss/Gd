@@ -1,0 +1,21 @@
+{
+  "version": "R11.61",
+  "bytes": 292953,
+  "sha256": "c4a8742011d88da11f2d003c36da442cc39fb6e75fd86c6ce4647554d33bfdf8",
+  "raw_bytes": 787195,
+  "raw_sha1": "9yITyL6CpO0+zA2hra/crhd6dfQ=",
+  "packed_sha1": "iVUg129+kC1R1c5MlI5AyMcgjVw=",
+  "fixes": 85,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,9yITyL6CpO0+zA2hra/crhd6dfQ=,787195,0,iVUg129+kC1R1c5MlI5AyMcgjVw=,292953,True,0",
+  "backup_tag": "pre-clean-20261023T134435Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "aimkill": "source-parity mode now default ON: one StartFiring -> LHNJLFOINDO -> StopFire per shot and normal=hitPoint; device logs show ~88-90% HP-drop success vs 23% for held fire",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261023T134435Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

@@ -1,0 +1,19 @@
+{
+  "version": "R11.87",
+  "bytes": 293400,
+  "sha256": "56c1107f1a890179ef49034052e33fa72e3d022fe4e5678590381296ca7d618e",
+  "fixes": 87,
+  "guard": "PASS 27/27",
+  "aimkill": {
+    "burst": "Trigger is now held for the whole burst: StartFiring once, LHNJLFOINDO per shot, StopFire only when the target is lost (0.4 s), on reload, on exception, or when the feature is switched off. The old code stopped and restarted the weapon every shot. LHNJLFOINDO is NOT reduced to once per burst because in this build it is the damage call - the reference's once-per-burst flag applies to its own TakeDamage chain, which does not exist in 1297.",
+    "cadence": "default 0.08 s (was 0.12); modes 0.05 / 0.08 / 0.15 / 0.25.",
+    "ammo": "FullWeaponAmmo refill every 0.5 s removed.",
+    "lock": "Target lock for 3 s, refreshed on every shot. Released on death/dieing/hp<=0/teammate/inactive/out of range/lost line of sight/timeout.",
+    "fov": "New row 34 'AimKill gi\u1edbi h\u1ea1n FOV', default off, reuses OKMOD.Aim.FOV pixel radius. Log rows moved to 35-39, menu scroll 2520 -> 2592."
+  },
+  "tests": "test_aimkill.py updated to the burst contract; 4/4 suites pass.",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261024T044354Z.bin"
+}

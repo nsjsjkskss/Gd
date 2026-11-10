@@ -1,0 +1,22 @@
+{
+  "version": "R11.33",
+  "bytes": 290148,
+  "sha256": "5e812a95b2ca85be27766562a47c8b7df8e1cb2504c11e1c7705e4ca9eff0ee4",
+  "raw_bytes": 771947,
+  "raw_sha1": "Y88s4ha2aeq6rE0jl38KLXv38xg=",
+  "packed_sha1": "guWmHOQB3XPMPNOYme+k+GZ3ppc=",
+  "fixes": 84,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,Y88s4ha2aeq6rE0jl38KLXv38xg=,771947,0,guWmHOQB3XPMPNOYme+k+GZ3ppc=,290148,True,0",
+  "backup_tag": "pre-r1133-20261022T163421Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "pullenemy": "diagnostic 657 packet matching the game sender: target player id exposed in status, IMAOCDIIIHI=1 (the game sender sets it to 1), time 1.0 s, speedXZ=distance clamped 10-45, speedY=20, direction enemy->local; one per second while firing",
+  "aimkill": "R11.25 parity test retained: object wipe + inventory opcode 108",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-r1133-20261022T163421Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

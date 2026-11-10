@@ -1,0 +1,30 @@
+{
+  "version": "R12.15",
+  "bytes": 298498,
+  "sha256": "5b305e97e107bd4053ea595f8875a58b4bf510fa6fe83711e57fc76b861a21bc",
+  "packed_sha1": "5hsjIc6+vFQXL8J090efKsrk524=",
+  "raw_sha1": "C8bYnsvAbW1bSDaQm24sDpMi/T8=",
+  "raw_bytes": 810075,
+  "change": "Single AimKill master with fixed widest/fastest existing preset: head, configured range 500m capped by weapon range, FOV restriction off, direct native manual aim, 80ms attempt delay, automatic ownership switching. Remove AK configuration rows, jump-history clutter and optional sync108 from AIM list. Old settings retained on disk but ignored by fixed helpers. Recovery and diagnostics remain. Experimental message108 has no reachable caller.",
+  "preset": {
+    "range_m": 500,
+    "point": "head",
+    "fov_restriction": false,
+    "manual_smoothing": 0,
+    "attempt_delay_ms": 80,
+    "auto": true,
+    "manual_native_aim": true,
+    "sync108": false,
+    "cover_policy": "skip covered targets"
+  },
+  "verification": [
+    "Preset test conflicting historical settings do not affect range/point/cadence/manual behavior and remain preserved",
+    "Preset test auto/manual/handoff/cover/recovery/no108/no duplicate damage/native-hit preservation",
+    "Preset test partial start/engine exception cleanup and cleanup-fault lockout",
+    "UI source assertions remove AK parameter rows; HUD/visuals/HitFly PASS",
+    "Core guard 27/27; no reachable 108 caller or config-row methods; manual graph has no fire/RPC calls",
+    "Live proxy download hash matches; active; health 200"
+  ],
+  "device_status": "Pending. Widest/fastest preset is not proven strongest server-accepted damage; actual effect depends on weapon, input, cover and server state.",
+  "rollback": "cp backup/pre-R12.15/okmod-R8-AIM-ESP.bin build/okmod-R8-AIM-ESP.bin && systemctl restart okmod-1297"
+}

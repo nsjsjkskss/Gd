@@ -1,0 +1,13 @@
+{
+  "version": "R11.67",
+  "bytes": 291469,
+  "sha256": "dd6b8d40fb409436847c01cad724cf8e06eb813d7f43dc266da0fd4bf98f109a",
+  "fixes": 86,
+  "guard": "PASS 27/27",
+  "device_test": "user reported R11.66 jump reduced to a hop; fixed in R11.67",
+  "groundhack": "RisingGravity no longer overridden while the toggle is on: Player.ELGCCFOEIID (0x57746BC) derives launch speed as sqrt(max(h * -2.0f * RisingGravity, 0)), so lowering it shrank the jump (v0 ~ sqrt|g|). Hover now only softens FallingGravity to -0.25f: normal jump, slow float down.",
+  "published_to": ["http://217.217.255.156:1297/"],
+  "proxy_download_verified": false,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261023T175632Z.bin"
+}

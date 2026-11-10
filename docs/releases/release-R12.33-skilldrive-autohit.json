@@ -1,0 +1,15 @@
+{
+  "version": "R12.33-skilldrive-autohit",
+  "source": "build/okmod.cs",
+  "artifact": "build/okmod-R8-AIM-ESP.bin",
+  "bytes": 303281,
+  "sha256": "08d5f85d5142f304ce15e1a7bd422b1a78a7cface3db2c256f2fad5f12a87941",
+  "changes": [
+    "SkillDrive hits the locked enemy every 80ms until HP<=0/IsDieing, then switches",
+    "Damage no longer stops when the vehicle is already at the target",
+    "Teleport car toggle and SkillDrive toggle are mutually exclusive with 1146"
+  ],
+  "checks": {"core_guard": "27/27 PASS", "tests": ["aimkill", "hud_lifecycle", "visuals", "hitfly"]},
+  "deployed": false,
+  "note": "Live unit /opt/okmod-1297 still serves the InTexX patch.bin."
+}

@@ -1,0 +1,19 @@
+{
+  "version": "R11.97",
+  "bytes": 294915,
+  "sha256": "ebc41eb7fcc718b2bfcf038717d9baf1fdf759ab47074a552b6e3e20aa92fe97",
+  "packed_sha1": "N/SxvpYP43q6wnlV+LWgWDXsLlU=",
+  "raw_sha1": "25eUDTBlnnmMpxMlX/iH52z3fQE=",
+  "raw_bytes": 794251,
+  "cause": "ReadMenuPointer clamped AIM swipe scrolling to 2088 even though DrawAimMenu accepted 2664. Row 40 Xem log needs at least 2440 scroll to fit the viewport, so swiping could not reach it. COPY was only exposed inside that overlay.",
+  "change": "Shared MenuScrollMax supplies 2664 for AIM swipe and scroll buttons. Added fixed LOG / COPY / GỬI controls at the right column y+468, below Mượt and above Trực tiếp / Mượt 6, independently of left-list scroll. COPY uses a shared helper also used by the overlay. Visible build label R11.97.",
+  "verified": [
+    "HUD recording suite: fixed toolbar visible at scroll=0; LOG opens at scroll=2664; COPY writes pc and online fields to clipboard",
+    "HUD recording suite: AIM scroll max 2664; ESP scroll max 2088",
+    "AimKill and nginx transport suite PASS",
+    "Core guard PASS 27/27",
+    "Proxy restarted, active, health 200"
+  ],
+  "device_confirmation": "Pending",
+  "rollback": "cp backup/patches/patch.pre-ui-R11.97.bin build/okmod-R8-AIM-ESP.bin && systemctl restart okmod-1297"
+}

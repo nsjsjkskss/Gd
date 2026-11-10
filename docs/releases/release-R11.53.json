@@ -1,0 +1,21 @@
+{
+  "version": "R11.53",
+  "bytes": 290915,
+  "sha256": "46f3d6e18be50d8abcd51e3583105894511bfb2961296e98906c9bc027fe66a2",
+  "raw_bytes": 775883,
+  "raw_sha1": "0nMJMNceDm9e7ZMj1QKvleThayY=",
+  "packed_sha1": "LzRlp2vnWIq8+EXZZ8QZo5F+Otk=",
+  "fixes": 85,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,0nMJMNceDm9e7ZMj1QKvleThayY=,775883,0,LzRlp2vnWIq8+EXZZ8QZo5F+Otk=,290915,True,0",
+  "backup_tag": "pre-clean-20261023T095642Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "aimkill": "numeric fields are explicitly ToString()'d before concatenation (fixing Int32->String and Object[]->String IL2CPP errors); log and URL are chunked; log panel has a full-screen opaque backdrop",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261023T095642Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

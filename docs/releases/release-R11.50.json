@@ -1,0 +1,21 @@
+{
+  "version": "R11.50",
+  "bytes": 290381,
+  "sha256": "7777a428d05126645e91c091d61fd8ae2d1db83bb0f4215bc2e23a969c0ea14b",
+  "raw_bytes": 772827,
+  "raw_sha1": "LGE6KqsD1GdeBP9/51QGgh5FMP0=",
+  "packed_sha1": "mCV+AeySEVo3ba088q8wWp9w2EU=",
+  "fixes": 85,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,LGE6KqsD1GdeBP9/51QGgh5FMP0=,772827,0,mCV+AeySEVo3ba088q8wWp9w2EU=,290381,True,0",
+  "backup_tag": "pre-clean-20261023T082409Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "aimkill": "log panel moved inside the scaled menu (the previous screen-space overlay did not render); 'Xem log' replaces the menu content with the diagnostic text and a ĐÓNG button; copy readback still reports Copy lỗi when iOS blocks it",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261023T082409Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

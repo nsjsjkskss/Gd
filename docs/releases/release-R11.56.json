@@ -1,0 +1,21 @@
+{
+  "version": "R11.56",
+  "bytes": 292412,
+  "sha256": "c337a8c153e824ba161f541b7fb69905489f5abcb66e7b9b9c3378dd37a3a94d",
+  "raw_bytes": 783987,
+  "raw_sha1": "XSrgh4tvPUUtr9uhlciRsDPiCDU=",
+  "packed_sha1": "nALZgE8ZGYRPy1WlCBTiF8dfaoI=",
+  "fixes": 85,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,XSrgh4tvPUUtr9uhlciRsDPiCDU=,783987,0,nALZgE8ZGYRPy1WlCBTiF8dfaoI=,292412,True,0",
+  "backup_tag": "pre-clean-20261023T102259Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "aimkill": "auto test clears the HP probe at each phase boundary and runs 6 s per delay (18 s total); log adds probeLast=before->after; URL/version corrected to 11.56",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261023T102259Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

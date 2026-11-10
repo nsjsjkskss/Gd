@@ -1,0 +1,15 @@
+{
+  "version": "R11.92",
+  "bytes": 293210,
+  "sha256": "b385dd86ea8c6ab8f360e123858b06c41c07075be04692a27751994433a8d01f",
+  "packed_sha1": "6NrpReGj2+luaCvggJYnaLhkrTo=",
+  "fixes": 87,
+  "guard": "PASS 27/27",
+  "cause": "R11.90 introduced a CallExtern to HBIBDMMOOOK.CIHHEOKFADJ whose second parameter type cannot be resolved from the obfuscated metadata. IFix failed to bind it at load, so the whole patch was rejected and the menu disappeared. Rolling back the deployed file to R11.89 restored the menu, but the SOURCE still contained the call, so R11.91 was rebuilt with it and failed the same way. 1299 kept working because it serves a different payload that never had that extern.",
+  "change": "Call reverted to weapon.LHNJLFOINDO(hit); the CIHHEOKFADJ stub is removed from build.py and the source; payload verified to contain zero occurrences of CIHHEOKFADJ.",
+  "infra": "Service now runs from /root/okmod-1297-clean (no /opt copy). PAC served from /var/www/okmod-1297 by nginx. Rollback payloads in backup/patches/.",
+  "verified": "Served row through the proxy: codepatch/assembly-csharp-patch,...6NrpReGj2+luaCvggJYnaLhkrTo=,293210,True,0 ; health 200",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ]
+}

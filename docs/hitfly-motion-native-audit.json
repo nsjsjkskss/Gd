@@ -1,0 +1,471 @@
+{
+  "native_sha256": "2de005ae6c9d263ddd705aedda833c29a5b27044d2f56655ecc3cf98dc7be54a",
+  "metadata_sha256": "597e77fc1dd15bac9ff75215bd328d60c6d205f5fc4a7e32cec1b37d3cc2ea5d",
+  "scope": "Static read-only evidence; no device run and no server implementation available.",
+  "contracts": [
+    {
+      "owner": "COW.GamePlay.Player",
+      "name": "GetVelocity",
+      "index": 210343,
+      "return": "UnityEngine.Vector3",
+      "params": [],
+      "static": false
+    },
+    {
+      "owner": "COW.GamePlay.Player",
+      "name": "SetForceMoveVelocity",
+      "index": 211149,
+      "return": "System.Void",
+      "params": [
+        "UnityEngine.Vector3",
+        "System.UInt32"
+      ],
+      "static": false
+    },
+    {
+      "owner": "COW.GamePlay.Player",
+      "name": "GetForceMoveVelocity",
+      "index": 211150,
+      "return": "UnityEngine.Vector3",
+      "params": [],
+      "static": false
+    },
+    {
+      "owner": "COW.GamePlay.Player",
+      "name": "ResetHitFlyInfo",
+      "index": 210020,
+      "return": "System.Void",
+      "params": [],
+      "static": false
+    },
+    {
+      "owner": "COW.GamePlay.Player",
+      "name": "SwitchPhysXState",
+      "index": 213279,
+      "return": "System.Void",
+      "params": [
+        "IPOMEHAJGHN",
+        "message.KOJPEFFGGIJ"
+      ],
+      "static": false
+    },
+    {
+      "owner": "COW.GamePlay.PlayerNetwork",
+      "name": "SyncStateWithServer",
+      "index": 219613,
+      "return": "System.Void",
+      "params": [
+        "message.PBGBMJIAKCI"
+      ],
+      "static": false
+    },
+    {
+      "owner": "COW.GamePlay.PlayerNetwork",
+      "name": "SyncServerAuthorizedSwitchPhysXState",
+      "index": 219779,
+      "return": "System.Void",
+      "params": [
+        "message.EAPDDNNMBBH"
+      ],
+      "static": false
+    },
+    {
+      "owner": "COW.GamePlay.NetworkAIPawn",
+      "name": "StopHitfly",
+      "index": 244765,
+      "return": "System.Void",
+      "params": [],
+      "static": false
+    }
+  ],
+  "packet657_fields": [
+    {
+      "owner": "message.NNDOIBJBAJI",
+      "name": "BEADLMGGGGL",
+      "type": "System.UInt32",
+      "offset": 20
+    },
+    {
+      "owner": "message.NNDOIBJBAJI",
+      "name": "DCEMJOGHMEG",
+      "type": "System.Single",
+      "offset": 24
+    },
+    {
+      "owner": "message.NNDOIBJBAJI",
+      "name": "KJGOMDJCKEB",
+      "type": "System.Single",
+      "offset": 28
+    },
+    {
+      "owner": "message.NNDOIBJBAJI",
+      "name": "DPJAIECLHGL",
+      "type": "System.Single",
+      "offset": 32
+    },
+    {
+      "owner": "message.NNDOIBJBAJI",
+      "name": "MGJNBIJNLIJ",
+      "type": "message.BJFGLKKKOAN",
+      "offset": 40
+    },
+    {
+      "owner": "message.NNDOIBJBAJI",
+      "name": "JBEHMJFBEMG",
+      "type": "System.String",
+      "offset": 48
+    },
+    {
+      "owner": "message.NNDOIBJBAJI",
+      "name": "IMAOCDIIIHI",
+      "type": "System.Byte",
+      "offset": 56
+    }
+  ],
+  "nested_motion_data": {
+    "type_index": 31659,
+    "short_name": "GFLBFKKDAMK",
+    "fields": [
+      {
+        "name": "BDOEGBMMEOK",
+        "type": "COW.GamePlay.Player",
+        "offset": "0x10"
+      },
+      {
+        "name": "KFLCGJFEMPJ",
+        "type": "IPOMEHAJGHN",
+        "offset": "0x18"
+      },
+      {
+        "name": "<BPIGJFNDGOP>k__BackingField",
+        "type": "EIILAKAAIOP",
+        "offset": "0x20"
+      },
+      {
+        "name": "AMLAKBMFPDO",
+        "type": "UnityEngine.Vector3",
+        "offset": "0x28"
+      },
+      {
+        "name": "HGGDKEEEHBA",
+        "type": "UnityEngine.Vector3",
+        "offset": "0x34"
+      },
+      {
+        "name": "HOPBMDELOAO",
+        "type": "System.Single",
+        "offset": "0x40"
+      },
+      {
+        "name": "ONOPGGIFOFC",
+        "type": "System.Single",
+        "offset": "0x44"
+      },
+      {
+        "name": "IEEIGMJLPEL",
+        "type": "UnityEngine.Vector3",
+        "offset": "0x48"
+      },
+      {
+        "name": "PHDPINKFBKH",
+        "type": "UnityEngine.Vector3",
+        "offset": "0x54"
+      },
+      {
+        "name": "HDODPFJDPPE",
+        "type": "UnityEngine.Vector3",
+        "offset": "0x60"
+      }
+    ],
+    "same_name_type_indices": [
+      31659,
+      33423
+    ]
+  },
+  "server_velocity_field": {
+    "owner": "message.PBGBMJIAKCI",
+    "name": "IEEIGMJLPEL",
+    "type": "message.BJFGLKKKOAN",
+    "offset": 48
+  },
+  "regions": {
+    "get_velocity": {
+      "start": "0x5659058",
+      "end": "0x5659074",
+      "sha256": "011b4cfdc9ea48d09cd181c448a4a2752923e16d9e0be2824b0e0d0ad5d44e0a",
+      "instructions": [
+        "0x5659058: ldr x8, [x19, #0x1d48]",
+        "0x565905c: cbz x8, #0x5659074",
+        "0x5659060: ldp s0, s1, [x8, #0x48]",
+        "0x5659064: ldr s2, [x8, #0x50]",
+        "0x5659068: ldp x29, x30, [sp, #0x10]",
+        "0x565906c: ldp x20, x19, [sp], #0x20",
+        "0x5659070: ret "
+      ]
+    },
+    "sync_velocity": {
+      "start": "0x5a53958",
+      "end": "0x5a53a30",
+      "sha256": "fd83bc408e4cc394fdf229592954a8a54df598a72c80a90590e72c2f11a35c2d",
+      "instructions": [
+        "0x5a53958: ldr x23, [x19, #0x1d48]",
+        "0x5a5395c: ldr x0, [x20, #0x30]",
+        "0x5a53960: mov x1, #0",
+        "0x5a53964: bl #0x3715998",
+        "0x5a53968: cbz x23, #0x5a53b60",
+        "0x5a5396c: stp s0, s1, [x23, #0x48]",
+        "0x5a53970: str s2, [x23, #0x50]",
+        "0x5a53974: ldr x23, [x19, #0x1d48]",
+        "0x5a53978: ldr w0, [x20, #0x40]",
+        "0x5a5397c: mov x1, #0",
+        "0x5a53980: bl #0x371656c",
+        "0x5a53984: cbz x23, #0x5a53b60",
+        "0x5a53988: mov x0, x23",
+        "0x5a5398c: mov x1, #0",
+        "0x5a53990: bl #0x58222fc",
+        "0x5a53994: ldr x0, [x19, #0x1d48]",
+        "0x5a53998: cbz x0, #0x5a53b60",
+        "0x5a5399c: ldr s0, [x0, #0x4c]",
+        "0x5a539a0: mov x1, #0",
+        "0x5a539a4: bl #0x5822238",
+        "0x5a539a8: cmp w22, #5",
+        "0x5a539ac: b.ne #0x5a53ab4",
+        "0x5a539b0: ldr x22, [x19, #0x24a8]",
+        "0x5a539b4: ldr x0, [x20, #0x20]",
+        "0x5a539b8: mov x1, #0",
+        "0x5a539bc: bl #0x3715e98",
+        "0x5a539c0: cbz x22, #0x5a53b60",
+        "0x5a539c4: stp s0, s1, [x22, #0x30]",
+        "0x5a539c8: str s2, [x22, #0x38]",
+        "0x5a539cc: ldr x0, [x19, #0x1d48]",
+        "0x5a539d0: cbz x0, #0x5a53b60",
+        "0x5a539d4: ldr x22, [x19, #0x24a8]",
+        "0x5a539d8: mov x1, #0",
+        "0x5a539dc: bl #0x58222a4",
+        "0x5a539e0: cbz x22, #0x5a53b60",
+        "0x5a539e4: str s0, [x22, #0x84]",
+        "0x5a539e8: ldr x0, [x19, #0x1d48]",
+        "0x5a539ec: cbz x0, #0x5a53b60",
+        "0x5a539f0: ldr x22, [x19, #0x24a8]",
+        "0x5a539f4: mov x1, #0",
+        "0x5a539f8: bl #0x58221e0",
+        "0x5a539fc: cbz x22, #0x5a53b60",
+        "0x5a53a00: str s0, [x22, #0x88]",
+        "0x5a53a04: ldr x0, [x19, #0x1d48]",
+        "0x5a53a08: cbz x0, #0x5a53b60",
+        "0x5a53a0c: ldr x22, [x19, #0x24a8]",
+        "0x5a53a10: mov x1, #0",
+        "0x5a53a14: bl #0x5822080",
+        "0x5a53a18: cbz x22, #0x5a53b60",
+        "0x5a53a1c: str w0, [x22, #0x7c]",
+        "0x5a53a20: ldr x8, [x19, #0x24a8]",
+        "0x5a53a24: cbz x8, #0x5a53b60",
+        "0x5a53a28: ldrb w9, [x20, #0x39]",
+        "0x5a53a2c: str w9, [x8, #0x80]"
+      ]
+    },
+    "hitfly_state5": {
+      "start": "0x5830d4c",
+      "end": "0x5830d5c",
+      "sha256": "9bcb2f7ddcb75ca5ed05703547ec900f1a4927897b752bb6f95d090d6b2f019c",
+      "instructions": [
+        "0x5830d4c: mov w0, #5",
+        "0x5830d50: ldp x29, x30, [sp, #0x10]",
+        "0x5830d54: ldp x20, x19, [sp], #0x20",
+        "0x5830d58: ret "
+      ]
+    },
+    "kinematics_dispatch": {
+      "start": "0x568a69c",
+      "end": "0x568a6d4",
+      "sha256": "d6775e50654c24a2ae54745179820c774ddccbc5fd142f966abf9b71e6d53a52",
+      "instructions": [
+        "0x568a69c: ldr x0, [x19, #0x1d48]",
+        "0x568a6a0: cbz x0, #0x568af2c",
+        "0x568a6a4: mov x1, #0",
+        "0x568a6a8: bl #0x5822080",
+        "0x568a6ac: mov w22, #0",
+        "0x568a6b0: cmp w0, #0x13",
+        "0x568a6b4: b.hi #0x568a96c",
+        "0x568a6b8: mov w8, w0",
+        "0x568a6bc: adrp x9, #0xa51e000",
+        "0x568a6c0: add x9, x9, #2",
+        "0x568a6c4: adr x10, #0x568a6d4",
+        "0x568a6c8: ldrb w11, [x9, x8]",
+        "0x568a6cc: add x10, x10, x11, lsl #2",
+        "0x568a6d0: br x10"
+      ],
+      "jump_table": {
+        "0": "0x568a6d4",
+        "1": "0x568a7d8",
+        "2": "0x568a878",
+        "3": "0x568a864",
+        "4": "0x568a76c",
+        "5": "0x568a96c",
+        "6": "0x568a828",
+        "7": "0x568a8cc",
+        "8": "0x568a8e0",
+        "9": "0x568a930",
+        "10": "0x568a91c",
+        "11": "0x568a758",
+        "12": "0x568a83c",
+        "13": "0x568a96c",
+        "14": "0x568a7c0",
+        "15": "0x568a744",
+        "16": "0x568a8f4",
+        "17": "0x568a908",
+        "18": "0x568a958",
+        "19": "0x568a944"
+      }
+    },
+    "keyed_force_accumulator": {
+      "start": "0x5702f18",
+      "end": "0x5703000",
+      "sha256": "588cd9e009a58484666f90e9550f546cbe488421c94a9e634d955a0d107526b5",
+      "instructions": [
+        "0x5702f18: ldr x0, [x19, #0x10a0]",
+        "0x5702f1c: cbz x0, #0x570301c",
+        "0x5702f20: adrp x8, #0xbba3000",
+        "0x5702f24: add x8, x8, #0xf20",
+        "0x5702f28: ldr x2, [x8]",
+        "0x5702f2c: mov x1, x20",
+        "0x5702f30: fmov s0, s10",
+        "0x5702f34: fmov s1, s9",
+        "0x5702f38: fmov s2, s8",
+        "0x5702f3c: bl #0x82584e8",
+        "0x5702f40: adrp x20, #0xb7ea000",
+        "0x5702f44: ldrb w8, [x20, #0xb93]",
+        "0x5702f48: adrp x21, #0xbb5e000",
+        "0x5702f4c: add x21, x21, #0x328",
+        "0x5702f50: tbnz w8, #0, #0x5702f68",
+        "0x5702f54: adrp x0, #0xbb5e000",
+        "0x5702f58: add x0, x0, #0x328",
+        "0x5702f5c: bl #0xa11121c",
+        "0x5702f60: mov w8, #1",
+        "0x5702f64: strb w8, [x20, #0xb93]",
+        "0x5702f68: ldr x8, [x21]",
+        "0x5702f6c: ldr x8, [x8, #0xb8]",
+        "0x5702f70: ldr s0, [x8, #8]",
+        "0x5702f74: ldr d1, [x8]",
+        "0x5702f78: str d1, [x19, #0x10a8]",
+        "0x5702f7c: str s0, [x19, #0x10b0]",
+        "0x5702f80: ldr x0, [x19, #0x10a0]",
+        "0x5702f84: cbz x0, #0x570301c",
+        "0x5702f88: adrp x8, #0xbba3000",
+        "0x5702f8c: add x8, x8, #0xf18",
+        "0x5702f90: ldr x1, [x8]",
+        "0x5702f94: add x20, sp, #0x10",
+        "0x5702f98: add x8, sp, #0x10",
+        "0x5702f9c: bl #0x8258878",
+        "0x5702fa0: stp xzr, x20, [sp]",
+        "0x5702fa4: adrp x20, #0xbb9e000",
+        "0x5702fa8: add x20, x20, #0x728",
+        "0x5702fac: ldr x1, [x20]",
+        "0x5702fb0: add x0, sp, #0x10",
+        "0x5702fb4: bl #0x7f06dec",
+        "0x5702fb8: tbz w0, #0, #0x5702fec",
+        "0x5702fbc: ldp s0, s1, [sp, #0x24]",
+        "0x5702fc0: ldr s2, [sp, #0x2c]",
+        "0x5702fc4: ldr s3, [x19, #0x10a8]",
+        "0x5702fc8: ldr s4, [x19, #0x10ac]",
+        "0x5702fcc: ldr s5, [x19, #0x10b0]",
+        "0x5702fd0: fadd s0, s3, s0",
+        "0x5702fd4: fadd s1, s4, s1",
+        "0x5702fd8: fadd s2, s5, s2",
+        "0x5702fdc: str s0, [x19, #0x10a8]",
+        "0x5702fe0: str s1, [x19, #0x10ac]",
+        "0x5702fe4: str s2, [x19, #0x10b0]",
+        "0x5702fe8: b #0x5702fac",
+        "0x5702fec: adrp x8, #0xbb9e000",
+        "0x5702ff0: add x8, x8, #0x720",
+        "0x5702ff4: ldr x1, [x8]",
+        "0x5702ff8: add x0, sp, #0x10",
+        "0x5702ffc: bl #0x7f06f3c"
+      ]
+    },
+    "reset_hitfly_info": {
+      "start": "0x5636acc",
+      "end": "0x5636af0",
+      "sha256": "247d49b8fa3cc443ff575f7065d0ab3afc22425b0db3e54d15e8dffa7bff537c",
+      "instructions": [
+        "0x5636acc: ldr x8, [x19, #0x7f8]",
+        "0x5636ad0: cbz x8, #0x5636af0",
+        "0x5636ad4: adrp x9, #0xa4c0000",
+        "0x5636ad8: ldr d0, [x9, #0x6e8]",
+        "0x5636adc: stur d0, [x8, #0x14]",
+        "0x5636ae0: strb wzr, [x19, #0x801]",
+        "0x5636ae4: ldp x29, x30, [sp, #0x10]",
+        "0x5636ae8: ldp x20, x19, [sp], #0x20",
+        "0x5636aec: ret "
+      ]
+    },
+    "movement_additive_force_consumer": {
+      "start": "0x5785024",
+      "end": "0x57850d4",
+      "sha256": "3157659773e0694ed16ce1282c91b26b20299bc90e30270f1d7f3547f72cd59c",
+      "instructions": [
+        "0x5785024: ldr x8, [x19, #0x1d48]",
+        "0x5785028: cbz x8, #0x5786af0",
+        "0x578502c: ldr d8, [x8, #0x48]",
+        "0x5785030: ldr s11, [x8, #0x50]",
+        "0x5785034: mov w0, #0x4a1e",
+        "0x5785038: mov x1, #0",
+        "0x578503c: bl #0x7104a58",
+        "0x5785040: cbz w0, #0x5785068",
+        "0x5785044: mov w0, #0x4a1e",
+        "0x5785048: mov x1, #0",
+        "0x578504c: bl #0x7104b40",
+        "0x5785050: cbz x0, #0x5786af0",
+        "0x5785054: mov x1, x19",
+        "0x5785058: mov x2, #0",
+        "0x578505c: bl #0x6d43058",
+        "0x5785060: mov v0.s[1], v1.s[0]",
+        "0x5785064: b #0x5785070",
+        "0x5785068: ldr d0, [x19, #0x10a8]",
+        "0x578506c: ldr s2, [x19, #0x10b0]",
+        "0x5785070: ldr x0, [x19, #0x1d48]",
+        "0x5785074: ldr q4, [sp, #0x80]",
+        "0x5785078: cbz x0, #0x5786af0",
+        "0x578507c: fmul v1.2s, v8.2s, v4.s[0]",
+        "0x5785080: fmul s3, s11, s4",
+        "0x5785084: fmul v0.2s, v0.2s, v4.s[0]",
+        "0x5785088: fmul s2, s2, s4",
+        "0x578508c: fadd v0.2s, v1.2s, v0.2s",
+        "0x5785090: str q0, [sp, #0x70]",
+        "0x5785094: fadd s11, s3, s2",
+        "0x5785098: mov x1, #0",
+        "0x578509c: bl #0x5823154",
+        "0x57850a0: cbz w0, #0x57850d4",
+        "0x57850a4: mov x0, x19",
+        "0x57850a8: mov x1, #0",
+        "0x57850ac: bl #0x6b49d04",
+        "0x57850b0: ldr q3, [sp, #0x70]",
+        "0x57850b4: fadd s0, s3, s0",
+        "0x57850b8: mov s14, v3.s[1]",
+        "0x57850bc: fadd s1, s14, s1",
+        "0x57850c0: fadd s2, s11, s2",
+        "0x57850c4: mov x0, x19",
+        "0x57850c8: mov x1, #0",
+        "0x57850cc: bl #0x6b49e10",
+        "0x57850d0: b #0x5785ed8"
+      ]
+    }
+  },
+  "findings": [
+    "GetVelocity reads the motion vector at Player+0x1d48 -> +0x48/+0x50.",
+    "SyncStateWithServer decodes message.PBGBMJIAKCI.IEEIGMJLPEL and writes that same motion vector; its state5 branch also updates interpolation data.",
+    "Base UpdateKinematics state5 skips the per-state movement calculation in this particular switch. Other update paths exist; this alone does not prove all HitFly motion is server-only.",
+    "ResetHitFlyInfo changes recovery metadata/flags, not the GetVelocity vector. It is not established as a horizontal brake.",
+    "SetForceMoveVelocity updates a keyed force accumulator distinct from the actual motion vector. A zero force is not a proven HitFly stop.",
+    "JLPJMAFLADI at0x5785068 reads the keyed-force sum and the following instructions add scaled force to scaled baseline movement. This supports an additive-force trial, not a verified universal actuator/brake or server-approved movement route.",
+    "NetworkAIPawn.StopHitfly is not a human Player method.",
+    "Nested GFLBFKKDAMK and an unrelated same-short-name class collide in name-only resolver dictionaries. Do not use the latter field layout for Player motion.",
+    "Packet657 contains player ID, time, two scalar speeds, packed direction, string and flag; no separate destination position. The current client sender never transmits the map marker as a destination."
+  ],
+  "not_established": [
+    "Packet657 time/velocity semantics and server validation rules.",
+    "Authoritative destination-aware flight and stop/landing request.",
+    "Native/IFix behavior of any proposed new movement setter.",
+    "Collision-free path, safe landing surface and endpoint precision on device."
+  ]
+}
