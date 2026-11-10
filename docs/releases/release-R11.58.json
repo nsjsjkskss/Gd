@@ -1,0 +1,21 @@
+{
+  "version": "R11.58",
+  "bytes": 292642,
+  "sha256": "685ecef32b052112f6688991c69c8e837656318029b72ba21a40af892f730dbc",
+  "raw_bytes": 785379,
+  "raw_sha1": "EZ5ixvMQESDpvnRCuz/5GGJbDVE=",
+  "packed_sha1": "k+VnUumzwBTe2vWfOIOPp56LU2k=",
+  "fixes": 85,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,EZ5ixvMQESDpvnRCuz/5GGJbDVE=,785379,0,k+VnUumzwBTe2vWfOIOPp56LU2k=,292642,True,0",
+  "backup_tag": "pre-clean-20261023T111054Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "aimkill": "auto test now arms each phase on the first hit and runs 5 s (skips a phase after 10 s without target); summary records rot/wr; phases are comparable instead of being dominated by targetless periods",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261023T111054Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

@@ -1,0 +1,21 @@
+{
+  "version": "R11.64",
+  "bytes": 291421,
+  "sha256": "bdf8b61a5f62a6a477ae2013583d167a0f99bd48bbf1274acd2971442e66ef0e",
+  "raw_bytes": 777483,
+  "raw_sha1": "vAMDeZccd5auFnR/Y3qijgCwMRY=",
+  "packed_sha1": "sjaizlfwEczdwlWjS5Y4HUOptqw=",
+  "fixes": 85,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,vAMDeZccd5auFnR/Y3qijgCwMRY=,777483,0,sjaizlfwEczdwlWjS5Y4HUOptqw=,291421,True,0",
+  "backup_tag": "pre-clean-20261023T140543Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "groundhack": "while Ground hack is on, the local Player.m_GroundHitResult (0x1DC4) is forced true every frame in addition to the Player.IsGrounded hook",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261023T140543Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

@@ -1,0 +1,15 @@
+{
+  "version": "R12.34-drivekill-ram",
+  "source": "build/okmod.cs",
+  "artifact": "build/okmod-R8-AIM-ESP.bin",
+  "bytes": 301723,
+  "sha256": "1d98755d674adecf922fb2f45dd64a93e966ff62a5b5d614c7becb022efdf53c",
+  "changes": [
+    "Merged teleport/skilldrive into the single 1146 AUTH DRIVEKILL toggle",
+    "Ram is movement based: 7m behind, 3.5m steps at 60m/s, CollisionEnter + SetVelocity",
+    "Hold target until HP<=0/IsDieing, count hits only on real HP drop, then next enemy",
+    "OFF releases the seat so the player can exit the vehicle"
+  ],
+  "checks": {"core_guard": "27/27 PASS", "tests": ["aimkill", "hud_lifecycle", "visuals", "hitfly"]},
+  "deployed_port_1146": true
+}

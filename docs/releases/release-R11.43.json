@@ -1,0 +1,21 @@
+{
+  "version": "R11.43",
+  "bytes": 288760,
+  "sha256": "62a27dfc01e3301aa46e5d45614dab384a8c6461191a003789cb13a3c392b2d5",
+  "raw_bytes": 765131,
+  "raw_sha1": "W85TMbkKwYX4PXyUTXq4v97v42A=",
+  "packed_sha1": "kI4+UrFc2UfNfHeMWrxDpqI0MNU=",
+  "fixes": 84,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,W85TMbkKwYX4PXyUTXq4v97v42A=,765131,0,kI4+UrFc2UfNfHeMWrxDpqI0MNU=,288760,True,0",
+  "backup_tag": "pre-r1143-20261022T190819Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "aimkill": "IsAmmoFree auto-apply removed; while AimKill is on the mod applies PlayerAttributes.ShootNoReload (existing No reload path), restored when AimKill/NoReload off",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-r1143-20261022T190819Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

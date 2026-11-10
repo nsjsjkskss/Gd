@@ -1,0 +1,12 @@
+{
+  "version": "R11.68",
+  "bytes": 291535,
+  "sha256": "af590371ccd592b13130af7467be674d51fa44fd260f61205c908b9ad02f5bb7",
+  "fixes": 87,
+  "guard": "PASS 27/27",
+  "device_test": "R11.67 did nothing: falling path was wrong",
+  "groundhack": "HADKJKALGOL only consults Rising/Falling gravity while InSnowSlideWayDashing (0x568CE60 -> 0x568CFA4 otherwise). The normal fall goes through get_CustomGravity (0x568CFFC). Now patched all three: CustomGravity returns -0.25f when ON, RisingGravity keeps the vanilla constant so jump launch speed stays normal, FallingGravity covers the snow-slide branch.",
+  "published_to": ["http://217.217.255.156:1297/"],
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261023T180428Z.bin"
+}

@@ -1,0 +1,20 @@
+{
+  "version": "R12.02",
+  "bytes": 293141,
+  "sha256": "8f7a45458608b7b607fe7140be9944c665acbe6684872ba6d028ebcceb3a8e3d",
+  "packed_sha1": "BjO07mcpmRNbrrkjiMdFKZiRT38=",
+  "raw_sha1": "UHVQlM3dnsLIyTIRV9j8BiZ2LIg=",
+  "raw_bytes": 785227,
+  "change": "Recovery uses an independent OKMOD.Diagnostic.NativeRecovery preference (default off). AIM row 41 exposes recovery, with scroll max 2736. Row 31 explicitly reports suspended AimKill, opening the log rather than presenting an ineffective on/off switch. Recovery no longer clears aimbot/silent preferences. Legacy AimKill preference does not suppress combat/movement features. Speed controls use one unit range 1.0-2.0; legacy 10-20 float values migrate to 1-2. Disabling jump/hover restores gravity immediately. Combat errors are recorded rather than silently lost.",
+  "aimkill_status": "Synthetic damage remains suspended. This release restores independent feature toggling, not automatic kills.",
+  "verified": [
+    "Recording regression: recovery on/off/on and per-feature on/off restore/reapply speed, no-reload, rapid-fire and free-ammo",
+    "Recording regression: recovery preserves aimbot/silent preferences; native trigger/hit data unchanged",
+    "Recording regression: legacy speed 15 normalizes to 1.5",
+    "HUD, visual, HitFly and recovery/transport suites PASS",
+    "Core guard PASS 27/27",
+    "Live proxy download SHA256 matches built payload; health 200; service active"
+  ],
+  "device_status": "Await independent-feature report; unspecified non-working functions need names to diagnose.",
+  "rollback": "cp backup/pre-R12.02/okmod-R8-AIM-ESP.bin build/okmod-R8-AIM-ESP.bin && systemctl restart okmod-1297"
+}

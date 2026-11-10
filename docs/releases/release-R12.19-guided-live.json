@@ -1,0 +1,23 @@
+{
+  "version": "R12.19 DEV",
+  "deployment": "guided-map-trial promoted to live by explicit user request",
+  "deployed_at_utc": "2026-10-26T07:20:51Z",
+  "bytes": 301451,
+  "sha256": "be444a7b38f1f0584f3addfc6e117686c95631a17642bd8410c256e2d8f6193f",
+  "packed_sha1": "N9Reka1WK/9fvn+tEus73HrtxWo=",
+  "raw_sha1": "t611dxULrz6LAM7kILFdVh/dhzU=",
+  "source_candidate": "build/candidates/hf-guided-trial/okmod-R8-AIM-ESP.bin",
+  "verification": [
+    "Candidate hash and guided_map_trial=true build report verified before promotion",
+    "18 ideal additive-model flights and lifecycle/cleanup/ownership regressions PASS again before deployment",
+    "Core guard27/27 PASS again before deployment",
+    "Live payload backed up, candidate installed atomically, service restarted and active, health200",
+    "Actual payload downloaded through live proxy matches installed and staged candidate SHA256"
+  ],
+  "device_status": "FAILED ascent on device. R12.19 DEV telemetry at 2026-10-26T10:03:26..28+01:00 shows phase1 with commanded force0,16.29,0, originY11.44 and observedY11.76..11.79, then phase6 reason=guide-no-progress owned0 force0 fault0. User reports small hop, jitter and stationary movement. Native/client/server cause not isolated; do not claim server correction solely from these samples. Later attempt was user-cancelled. No transit/braking/descent/landing validated.",
+  "current_status": "Rolled back to R12.18 after failed device report; service active, health200, actual live-proxy download verified against R12.18 SHA256. Guided candidate retained but not currently served.",
+  "rollback_sha256": "e8e7882c4b4dc0f3acb8aa03114de7a496d93c48b99e85e844b3b164378ada7d",
+  "requirements": "Grounded walking local player; recovery/high-jump/hover off; gravity restored; loaded surface at marker; trial range2..1000m. Second MAP press cancels. Manual HF cannot stack with an owned MAP trip.",
+  "backup": "backup/pre-R12.19-guided-live-20261026T072051Z/okmod-R8-AIM-ESP.bin",
+  "rollback": "cp backup/pre-R12.19-guided-live-20261026T072051Z/okmod-R8-AIM-ESP.bin build/okmod-R8-AIM-ESP.bin && systemctl restart okmod-1297"
+}

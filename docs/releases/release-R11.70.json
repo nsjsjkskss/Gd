@@ -1,0 +1,16 @@
+{
+  "version": "R11.70",
+  "bytes": 291736,
+  "sha256": "a11fb27df27ac5127e7101e6e27bee9aeb0d55c548ea3ea0251a606ada6bf317",
+  "fixes": 87,
+  "guard": "PASS 27/27",
+  "sliders": {
+    "jump": "Lực nhảy x (1.0-3.0, step 0.2) -> GameVarDef.JSDeadGhostJumpScale (0x4380). ELGCCFOEIID uses h = MaxJumpHeight * JSDeadGhostJumpScale * scaleMap and v0 = sqrt(h * -2 * RisingGravity), gravity unchanged, so apex scales linearly with the slider.",
+    "speed": "Tốc chạy x (1.0-2.0, step 0.1) -> PlayerAttributes.RunSpeedUpScale. GetSpeedByType multiplies GetBaseSpeedBySpeedType by GetSpeedScaleBySpeedType, so this also raises airborne steering.",
+    "bay": "Bay gravity (9.8 = off, 0-9.8 step 0.25) -> get_CustomGravity / get_FallingGravity hooks."
+  },
+  "migrations": ["OKMOD.Move.Speed X2 -> 1.3x float", "OKMOD.Move.GroundHack X2 -> 0.25 gravity"],
+  "published_to": ["http://217.217.255.156:1297/"],
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261023T181945Z.bin"
+}

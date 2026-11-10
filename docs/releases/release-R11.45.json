@@ -1,0 +1,21 @@
+{
+  "version": "R11.45",
+  "bytes": 288865,
+  "sha256": "01b67c511b669f32de897c8ca313e81ae844791e13e915f2fb9403a2f022e371",
+  "raw_bytes": 765483,
+  "raw_sha1": "P8+etXNn2b7RD0jXPZiNVE8BWYw=",
+  "packed_sha1": "oy8HMjvk081QrRuO2vHPwjkgFFU=",
+  "fixes": 85,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,P8+etXNn2b7RD0jXPZiNVE8BWYw=,765483,0,oy8HMjvk081QrRuO2vHPwjkgFFU=,288865,True,0",
+  "backup_tag": "pre-r1145-20261022T194837Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "groundhack": "Player.IsGrounded hooked: toggle ON returns true; OFF calls IsGroundedByRayCastHit as the original approximation (extra fix #85); Unity CharacterController hook not attempted",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-r1145-20261022T194837Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

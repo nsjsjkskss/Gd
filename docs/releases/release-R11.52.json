@@ -1,0 +1,21 @@
+{
+  "version": "R11.52",
+  "bytes": 290981,
+  "sha256": "572990479cbb0e3f5924899519806aa3467e525c6247e9dc8496f880b95e629b",
+  "raw_bytes": 776083,
+  "raw_sha1": "x6al96Jo+qCuSmSKwiwXND/CAR0=",
+  "packed_sha1": "TUJ84dXvfkoCRltHeVuQfEB8tf4=",
+  "fixes": 85,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,x6al96Jo+qCuSmSKwiwXND/CAR0=,776083,0,TUJ84dXvfkoCRltHeVuQfEB8tf4=,290981,True,0",
+  "backup_tag": "pre-clean-20261023T094743Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "aimkill": "online log URL is built in small chunks (the long chain compiled to String.Concat(object[]) and threw on IL2CPP); send completion now checks get_error and shows Gửi lỗi; log panel opaque",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261023T094743Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

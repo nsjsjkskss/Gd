@@ -1,0 +1,21 @@
+{
+  "version": "R11.37",
+  "bytes": 289486,
+  "sha256": "d8d4188a8056da947b94237980f740c381d4aad27575d53741eae1b09be266f8",
+  "raw_bytes": 768731,
+  "raw_sha1": "WsqxRH8bvDaA77IGWed2nRUQo0s=",
+  "packed_sha1": "RgUzV/I/0ReLUKk4wDdqzVX3hkk=",
+  "fixes": 84,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,WsqxRH8bvDaA77IGWed2nRUQo0s=,768731,0,RgUzV/I/0ReLUKk4wDdqzVX3hkk=,289486,True,0",
+  "backup_tag": "pre-r1137-20261022T175653Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "aimkill": "delay cycle now 20/40/80/120 ms (0 ms removed after disconnect); lead and center toggles unchanged (local-only, no packet)",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-r1137-20261022T175653Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

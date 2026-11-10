@@ -1,0 +1,21 @@
+{
+  "version": "R11.57",
+  "bytes": 292470,
+  "sha256": "b95830c37dd92edafece81c3024699409ebe663b0edc5cedb823e41369327cbc",
+  "raw_bytes": 784395,
+  "raw_sha1": "pm1CCoForn0xx2JLljJWel2NJgM=",
+  "packed_sha1": "RHAghpBf5jeAMs4KI4MRPjm5uEc=",
+  "fixes": 85,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,pm1CCoForn0xx2JLljJWel2NJgM=,784395,0,RHAghpBf5jeAMs4KI4MRPjm5uEc=,292470,True,0",
+  "backup_tag": "pre-clean-20261023T103043Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "aimkill": "opt-in 'Xoay nhân vật khi bắn' toggle (default off) to A/B test whether server hit validation needs the character facing the target; normal log/URL add weaponRange and rotate flag",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261023T103043Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

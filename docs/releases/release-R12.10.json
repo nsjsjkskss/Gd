@@ -1,0 +1,24 @@
+{
+  "version": "R12.10",
+  "bytes": 297565,
+  "sha256": "39c494575f788e2a22c94832b178e7cc7e9c557793472e77522db7058bffbc36",
+  "packed_sha1": "Oa3vpum7uQxGtT7hCFBhN1mhZbk=",
+  "raw_sha1": "5F18abjqyJLOnofb5R5BApQ7sdE=",
+  "raw_bytes": 806027,
+  "changes": [
+    "New delay mode 4=80ms, preserving modes 0..3 and max(user,native) cadence",
+    "Manual observer skips mod-owned native firing to avoid self-contaminated telemetry",
+    "HP observation windows spanning observed manual samples increment probeMixed rather than probeOk/Fail",
+    "Revalidate local/weapon/target/LOS after StartFiring; abort stale hit and cleanup captured weapon"
+  ],
+  "audit": "docs/AIMKILL-GAPS-R12.10.md",
+  "verification": [
+    "Regression: 80ms on 65ms weapon; native 130ms floor retained",
+    "Regression: synthetic firing does not increment manual sample count",
+    "Regression: native weapon swap aborts hit but cleans original weapon",
+    "Regression: mixed HP window counted separately",
+    "All four suites PASS; guard 27/27; live proxy download SHA256 matches; active; health 200"
+  ],
+  "device_status": "Pending. These fixes address proven code/telemetry issues; occasional client-only damage root cause is not established. Inventory sync/ammo/native shot sequence still unobserved.",
+  "rollback": "cp backup/pre-R12.10/okmod-R8-AIM-ESP.bin build/okmod-R8-AIM-ESP.bin && systemctl restart okmod-1297"
+}

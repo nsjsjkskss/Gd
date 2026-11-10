@@ -1,0 +1,17 @@
+{
+  "version": "R11.94",
+  "bytes": 293613,
+  "sha256": "b641cbcf6287ee2e1aac935ef08b96614499b81a1970670dc8dcf2243429a1c7",
+  "packed_sha1": "Z2O9mAhvERbwx/siBLCaU1CUmq8=",
+  "raw_sha1": "wwnZvE9hzTOWaMgmCeIx5fmc07U=",
+  "fixes": 87,
+  "guard": "PASS 27/27",
+  "cause": "R11.93 logged pc= but the AimKill log overlay had no way to open it: AimKillLogRow/AimKillCopyRow existed in the source but were never called from DrawAimMenu, so the pc= line was unreachable in game.",
+  "change": "AimKill section now has a row 40 'Xem log' that opens the full-screen AimKill log (scroll max 2592 -> 2664). The log overlay gained a COPY button next to DONG that copies BuildAimKillLog() to the system clipboard and reports DA COPY / COPY LOI.",
+  "note": "AimKill still calls HBIBDMMOOOK.CIHHEOKFADJ(hit, enemy, 0f) with the UnityEngine.MonoBehaviour signature from R11.93; nothing else in the damage chain changed.",
+  "rollback": "cp backup/patches/patch.pre-clean-20261024T113016Z.bin build/okmod-R8-AIM-ESP.bin && systemctl restart okmod-1297",
+  "verified": "core_guard PASS 27/27, AimKill suite PASS, deploy health=200, service active",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ]
+}

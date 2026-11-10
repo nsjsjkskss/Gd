@@ -1,0 +1,14 @@
+{
+  "version": "R11.79",
+  "bytes": 292720,
+  "sha256": "648fa6e36eabe6f664fecb905f55dbb2dbbaf4d90b2e0b90165e3cf80d7d5c04",
+  "fixes": 87,
+  "guard": "PASS 27/27",
+  "heightMetric": "R11.78 logged pk (max vertical speed, sampled at launch) which cannot show apex changes. R11.79 records GetAttackableCenterWS().y at takeoff and its maximum while airborne, and uploads h=(apexY-startY)*100. History rows show 'h<height> v<peak>'.",
+  "observedR1178": "x=100 -> pk 368/369/368/368; x=300 -> pk 369/369/369/369; rs=0 on every jump (RisingGravity never called during a jump); god counts are global (all Player instances) so they cannot prove the local ascent path.",
+  "note": "deploy health=000 was the 5s check racing mitmproxy startup; service active and / returned 200 afterwards.",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261024T031346Z.bin"
+}

@@ -1,0 +1,22 @@
+{
+  "version": "R12.01",
+  "mode": "native-recovery",
+  "bytes": 292815,
+  "sha256": "c89cacdde31110cf6b42a759a380ffcbb84fdce902ba13fa2ddc8f7a2ab933dc",
+  "packed_sha1": "YgF+B+JM1jz0wB+ZJlBv7nMpgdI=",
+  "raw_sha1": "NMjLAS1pFNzXS1E/nJ1aHtvJrnQ=",
+  "raw_bytes": 783387,
+  "cause": "R12.00 still invoked synthetic StartFiring/StartWholeBodyFiring then StopFire, mutated the game's shared hit object, forced free ammo and refills. The IsFiring test did not establish ownership of the native trigger. Other active combat/movement modifications and default 1.3 speed also made symptoms hard to isolate. Client/proxy logs do not establish the cause of the game timeout.",
+  "change": "Synthetic damage is temporarily suspended, explicitly labelled in the menu as recovery rather than working AimKill. With the existing AimKill toggle enabled, conflicting fire/reload/ammo/swap/speed/gravity modifications are suppressed and previously applied values restored. Recovery does not scan targets, mutate shared hit data or call firing/damage methods. Existing preferences are retained. Speed default is 1.0, automatic reports limited to 10s, ASCII/space URL encoding no longer concatenates Char values.",
+  "verification": [
+    "HUD reachable graph has no StartFiring, StartWholeBodyFiring, StopFire, FullWeaponAmmo, TakeDamage, LHNJLFOINDO, NPLMKLBKJPE or JGIEOGCGFEP calls",
+    "500 recovery ticks alternating manual fire preserve trigger, ammo and hit-info; applied speed/reload/gravity restored",
+    "AimKill recovery/transport, HUD, visuals and HitFly suites PASS",
+    "Core guard PASS 27/27",
+    "Fetched payload through live proxy: SHA256 matches built artifact",
+    "Proxy and nginx active; health 200"
+  ],
+  "device_status": "Pending R12.01 device confirmation. Do not claim timeout or stutter resolved based only on stub tests.",
+  "backup": "backup/stability-pre-R12.01/",
+  "rollback": "cp backup/stability-pre-R12.01/okmod-R8-AIM-ESP.bin build/okmod-R8-AIM-ESP.bin && systemctl restart okmod-1297"
+}

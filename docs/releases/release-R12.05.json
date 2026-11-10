@@ -1,0 +1,24 @@
+{
+  "version": "R12.05",
+  "purpose": "diagnose ineffective isolated damage; no claim of fixed server acceptance",
+  "bytes": 296770,
+  "sha256": "7ea2113a66c7a39d8b8fc61b539f3cf18b5bcf2bfe84fb855ce122c304375ab4",
+  "packed_sha1": "GEWzY/elSpTUZtAJc9foe2LHA5Q=",
+  "raw_sha1": "WdZLRZ/ZnfvnciwXeydkvSZjUMM=",
+  "raw_bytes": 801323,
+  "changes": [
+    "Recovery exit clears stale chainError/chainStage rather than mixing paused errors with current ready status",
+    "Checks target PlayerAttributes.IsInvincible without changing invulnerability state",
+    "Checks resolved OGKFEMJNCGM gameObject against selected target before dispatch",
+    "Logs immediate HP before/after TakeDamage independently from delayed probe",
+    "Counts observed HP increases separately as probeHealed; marks hpObservationOnly=1"
+  ],
+  "verified": [
+    "Native/metadata contract checks for IsInvincible and interface getter",
+    "Regression tests: invincible target, wrong resolved target, unchanged immediate HP, healed delayed HP, recovery resume",
+    "All four suites PASS; guard 27/27",
+    "Proxy download SHA256 matches artifact; health 200; service active"
+  ],
+  "remaining": "Need device report and match mode. R12.04 observations include 89->140 HP recovery and 200->200; neither proves damage attribution or server acceptance.",
+  "rollback": "cp backup/pre-R12.05/okmod-R8-AIM-ESP.bin build/okmod-R8-AIM-ESP.bin && systemctl restart okmod-1297"
+}

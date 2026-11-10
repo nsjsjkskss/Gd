@@ -1,0 +1,13 @@
+{
+  "version": "R11.77",
+  "bytes": 292512,
+  "sha256": "ed17830d5dbdd3752a5f179e3f716247ffc8fbb9d1e23e519a3a19a8374f8e86",
+  "fixes": 87,
+  "guard": "PASS 27/27",
+  "autoLog": "Each real takeoff (grounded==0 && GetVelocity().y > 1.0) starts an entry tagged with the current jump slider. On landing the entry is closed: x<scale> peak<max vy> god<CustomGravity calls during it> rise<...> fall<...> st<PhysXState>. The last 5 entries are shown on MOVE rows 35-39 (scroll max raised to 2520) and are also included in the clipboard snapshot on row 21.",
+  "purpose": "Compare peak vy between jumpScale 1.0 and 3.0 without any manual copying.",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261024T030840Z.bin"
+}

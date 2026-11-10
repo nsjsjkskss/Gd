@@ -1,0 +1,15 @@
+{
+  "version": "R11.74",
+  "bytes": 291841,
+  "sha256": "808ae9c4c7346d7f9b36803260d189bbd2e7a8e3d8179ca00bf74efefcb8e256",
+  "fixes": 87,
+  "guard": "PASS 27/27",
+  "jump": "New mechanism. get_RisingGravity is no longer scaled at all (that was the jitter/lower-jump bug). Instead the local player's Player.get_LastStartJumpTime() is watched each frame; when it changes, get_CustomGravity returns gravity/JumpScale for the next 18 frames, so the ascent decelerates less. The launch speed stays vanilla, the fall speed is unaffected, and the gravity value is constant inside the window (no per-frame oscillation).",
+  "sliders": {
+    "jump": "Nhảy cao x (1.0-3.0, step 0.2)",
+    "bay": "Bay gravity (9.8 = off)",
+    "speed": "Tốc chạy x (1.0-2.0)"
+  },
+  "published_to": ["http://217.217.255.156:1297/"],
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261024T023358Z.bin"
+}

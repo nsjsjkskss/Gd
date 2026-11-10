@@ -1,0 +1,22 @@
+{
+  "version": "R12.11",
+  "bytes": 298077,
+  "sha256": "0159965495608cefbd46376a172abc0bef0b132898bf02e8dba05ef5517cebac",
+  "packed_sha1": "jdj3jeeeJdaCuw1d1xzVCn/2p/4=",
+  "raw_sha1": "AA4vXLhQMIoifmoXxubAt3mZAd8=",
+  "raw_bytes": 808819,
+  "change": "Optional, default-OFF inventory sync after a positive-return engine hit and successful synchronous stop/aim cleanup. Uses message.EOBFCLNNIJH fields BEADLMGGGGL (player id) and FIKKBFDEJOK (captured weapon instance UID), GameFacade.Send(108, packet, 2, false). Rechecks match/local/alive/recovery/native firing/reload/on-hand reference and captured UID. Max one attempt per 250ms, no queue, no retry burst. Sync exceptions and false returns remain separate from hit/cleanup outcome.",
+  "menu": "AIM row 42: Thử đồng bộ súng 108; scroll max 2808",
+  "preference": "OKMOD.Aim.Sync108",
+  "diagnostics": ["sync108", "attempts", "sent", "failed", "skipped", "sync108State", "uniqueId", "error"],
+  "verified": [
+    "Exact metadata/native constructor, GameFacade.Send signature and message uint fields at offsets 20/24",
+    "Tests default off; successful positive hit sends after cleanup; captured instance uid not data id",
+    "Tests no burst, false/exception, UID changed, no sync after cleanup failure",
+    "All four suites PASS; core guard 27/27",
+    "Live proxy download hash matches; active; health 200"
+  ],
+  "historical_note": "R11.36 recorded device feedback that 108 OFF was more stable; this release is an opt-in A/B experiment with the newer shot path, not a proven damage fix.",
+  "device_status": "Pending; Send=true is not a server ACK or damage confirmation.",
+  "rollback": "cp backup/pre-R12.11/okmod-R8-AIM-ESP.bin build/okmod-R8-AIM-ESP.bin && systemctl restart okmod-1297"
+}

@@ -1,0 +1,21 @@
+{
+  "version": "R11.62",
+  "bytes": 291687,
+  "sha256": "e7b085225ac7db2c49be996551461622840a418e5a6939ececf809f65e2b3154",
+  "raw_bytes": 778899,
+  "raw_sha1": "TVsSjiGg212a1xyntKxiVZXp+Ac=",
+  "packed_sha1": "Wsmnro1sXbBCthJDf/ETxpZJryA=",
+  "fixes": 85,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,TVsSjiGg212a1xyntKxiVZXp+Ac=,778899,0,Wsmnro1sXbBCthJDf/ETxpZJryA=,291687,True,0",
+  "backup_tag": "pre-clean-20261023T135234Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "aimkill": "menu cleanup: removed debug/copy/view-log/send-log/auto-test rows; AIM rows are now AimKill, delay, status, require-fire, rotate, source-parity; scroll 2304",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261023T135234Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

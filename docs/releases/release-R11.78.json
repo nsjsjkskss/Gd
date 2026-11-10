@@ -1,0 +1,14 @@
+{
+  "version": "R11.78",
+  "bytes": 292650,
+  "sha256": "eca5f99cf40730f0b75d3be5d4c779c2c3bfe49177fb0fa6e8bc0c4575093cd4",
+  "fixes": 87,
+  "guard": "PASS 27/27",
+  "autoUpload": "Every finalized jump entry is GET-uploaded to https://okmod.sbs/aimlog?v=11.78&jump=1&x=..&pk=..&god=..&rs=..&fl=..&st=..&n=..&bay=..&spd=.. (rate limited to one per 0.6 s). nginx writes it to /var/log/nginx/aimlog.log (location = /aimlog -> 204, access_log). No manual copy needed.",
+  "fields": "x=slider*100, pk=max vertical speed*100, god=CustomGravity calls during the jump, rs=RisingGravity calls, fl=FallingGravity calls, st=PhysXState, n=jump counter, bay=bay gravity*100, spd=speed slider*100",
+  "verified": "curl to the endpoint returned 204 and the line appeared in /var/log/nginx/aimlog.log",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261024T031346Z.bin"
+}

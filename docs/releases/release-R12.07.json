@@ -1,0 +1,20 @@
+{
+  "version": "R12.07",
+  "bytes": 296392,
+  "sha256": "f14d4b630abfe8f326e46ab393932e86bb885a2f59b5fe388805bdf886ba804a",
+  "packed_sha1": "imwSYRSnfpe0Xun05r88G8WoE5k=",
+  "raw_sha1": "HF7513vkoq36/8ytib1XZevcWFI=",
+  "raw_bytes": 800195,
+  "change": "Separate 50ms candidate polling from weapon-aware hit deadlines. User intervals are 120/200/300/500ms, actual interval is max(user, engine-selected native interval). Use LDKCJEMDAMC or BDHMJJIADFG selected by KENANOGLPJO, following the native firing condition. Remove 700ms HP probe as a global fire gate; preserve one pending observation per target without overwriting its deadline. Never catch up with bursts after frame stalls. Add cadenceMs user/native/effective/lastGap, workMs call/scan and probeDropped.",
+  "audit": "docs/AIMKILL-MECHANISM-R12.07.md",
+  "native_evidence": "docs/aimkill-cadence-R12.07-disassembly.txt",
+  "verification": [
+    "Exact native/metadata signatures for all three cadence getters",
+    "Regression: user/native max, repeat branch, invalid native fallback, pending observation nonblocking and deduped deadline",
+    "Existing manual-fire/cover/recovery/isolated-hit/engine-mode/no-duplicate-damage tests PASS",
+    "All four suites PASS; core guard 27/27",
+    "Live proxy download SHA256 matches; health 200; service active"
+  ],
+  "limitations": "No server implementation/ack is available. Native interval is a lower-bound heuristic, not a proven allowed server rate. Probe counters represent HP observation windows, not per-shot acceptance or accuracy. Device effectiveness/stutter/timeout at faster rates remains to be tested.",
+  "rollback": "cp backup/pre-R12.07/okmod-R8-AIM-ESP.bin build/okmod-R8-AIM-ESP.bin && systemctl restart okmod-1297"
+}

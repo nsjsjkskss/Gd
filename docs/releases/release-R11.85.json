@@ -1,0 +1,13 @@
+{
+  "version": "R11.85",
+  "bytes": 292700,
+  "sha256": "051a0e47f1f0f6401873d4ee4d301dcd0a4a53fd3ea02f5f2cbffc900a6c7e18",
+  "fixes": 87,
+  "guard": "PASS 27/27",
+  "removed": "L\u01b0\u1edbt Khi B\u1eafn (FireDash): menu toggle row, the right-column 'L\u01b0\u1edbt b\u1eafn' speed slider, the whole runtime block in UpdateCombat (ForceSetRunAndDashSpeed pulse while firing) and its R7Dash* state fields. Rows after it shift up by one; log rows are now 34-38.",
+  "kept": "Nh\u1ea3y cao x3.0 (row 20 core / 21) and Bay l\u01a1 l\u1eedng x3.0 + 0.3 remain, mutually exclusive.",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261024T035236Z.bin"
+}

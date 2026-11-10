@@ -1,0 +1,20 @@
+{
+  "version": "R11.21",
+  "bytes": 287099,
+  "sha256": "352ac7458c799007f65dac68e712fe2995a35f7ff2d8b13f85b2b3faa4dfcdd9",
+  "raw_bytes": 756731,
+  "raw_sha1": "PqNmcj4yaWWCpXLy4NCx1uwAs5Y=",
+  "packed_sha1": "6OHcXqhmFRCpjfJv5zlJKe6V6ck=",
+  "fixes": 84,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,PqNmcj4yaWWCpXLy4NCx1uwAs5Y=,756731,0,6OHcXqhmFRCpjfJv5zlJKe6V6ck=,287099,True,0",
+  "backup_tag": "pre-r1121-20261022T080811Z",
+  "published_to": [
+    "aimtest",
+    "proxy"
+  ],
+  "device_test": "pending",
+  "native_map_overlay": "visible as requested",
+  "feature_updates": "independent of menu/map",
+  "proxy_download_verified": true
+}

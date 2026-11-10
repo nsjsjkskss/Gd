@@ -1,0 +1,19 @@
+{
+  "version": "R11.93",
+  "bytes": 293271,
+  "sha256": "2ea2e26dd1ca0da190c4f16658edbd052e58bf929c320d9a0a78d433ed1cac3f",
+  "packed_sha1": "ScO7Kc5wBuRi6QEy2EOJQWEaOUU=",
+  "raw_sha1": "yLghEB3cvZ/nARYHty8ecDmhgWg=",
+  "fixes": 87,
+  "guard": "PASS 27/27",
+  "cause": "R11.92 called weapon.LHNJLFOINDO(hit), which only computes the local damage number (CIHHEOKFADJ is its only non-thunk caller). Damage popups appeared but the server never applied damage, so AimKill never killed.",
+  "change": "AimKill now calls the engine weapon-hit entry HBIBDMMOOOK.CIHHEOKFADJ(hit, player, 0f) - the 1297 equivalent of the PC AimKill call to original_WeaponFire - so damage, hit effects and the server send all run through the game's own pipeline. LHNJLFOINDO stays as a fallback if the engine call throws. New R7AimKillPC diagnostic shows which path ran (1 = engine entry, 0 = fallback).",
+  "binding": "R11.90 failed because the second parameter was passed as a GameObject. The registered parameter type is UnityEngine.MonoBehaviour: type index 44163 -> class table tix 40942 -> UnityEngine.MonoBehaviour. The already-working first slot validates the mapping (type index 25633 -> tix 34207 -> COW.GamePlay.CGKJLKPMGDJ). Candidate extern now matches the registration byte for byte.",
+  "stub": "build/stubs.cs declares UnityEngine.Behaviour : Component and UnityEngine.MonoBehaviour : Behaviour, and Player now derives from UnityEngine.MonoBehaviour (real chain: Player -> AttackableEntity -> COWReplicationEntity -> ReplicationEntity -> Entity -> MonoBehaviour), so no runtime castclass is emitted.",
+  "infra": "Service runs from /root/okmod-1297-clean (no /opt copy). PAC served from /var/www/okmod-1297 by nginx. Rollback payloads in backup/patches/.",
+  "verified": "core_guard PASS 27/27, AimKill recording-stub suite PASS, deploy.sh health=200, service active.",
+  "rollback": "cp backup/patches/patch.pre-clean-20261024T112041Z.bin build/okmod-R8-AIM-ESP.bin && systemctl restart okmod-1297",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "version": "R12.13",
+  "bytes": 298276,
+  "sha256": "e2a38ed826a5f59d664721ae122b632de40d1ef8b3633e2e1685dbb775b23453",
+  "packed_sha1": "BcOd+9+hF/Y1ynCFMhuqMvcsM7c=",
+  "raw_sha1": "1mrsECiBAD9WELZ7kArNqWKgxMM=",
+  "raw_bytes": 809627,
+  "change": "Remove application-imposed max(user,native) delay floor. AimKill scheduling uses the chosen 80/120/200/300/500ms only. Native getters remain diagnostic; invalid/throwing observation yields -1, does not introduce fallback wait. Preserve cover checks, manual-fire/reload priority, owned cleanup, bounded polling and no catch-up bursts. Update UI/status and log cadencePolicy=selected-delay nativeIsDiagnostic=1.",
+  "correction": "Native disassembly showed getters used in one native firing branch, not a mandatory lower bound for every direct LHNJLFOINDO call. The previous floor was an OKMOD policy, not a proven server requirement.",
+  "verified": [
+    "Regression selected 80ms deadline remains 80ms with native 1820ms",
+    "Regression repeat, invalid and throwing native getters never change selected interval",
+    "Repeated pass at same timestamp does not submit extra hit",
+    "All four suites PASS; core guard 27/27",
+    "Live proxy download SHA256 matches; service active; health 200"
+  ],
+  "limitations": "Chosen delay schedules attempts, not guaranteed effective damage or server acceptance. Actual spacing can exceed selection due to frames, manual input, cover, reload and error backoff. Faster device behavior and disconnects require testing.",
+  "rollback": "cp backup/pre-R12.13/okmod-R8-AIM-ESP.bin build/okmod-R8-AIM-ESP.bin && systemctl restart okmod-1297"
+}

@@ -1,0 +1,22 @@
+{
+  "version": "R11.35",
+  "bytes": 289700,
+  "sha256": "f7af5c6038c83428135db57d37427dc5b1c540ff9d207b6e884ff85b8c0c54d3",
+  "raw_bytes": 769539,
+  "raw_sha1": "YRb6k7fLmPOQASxV+nm5zSpwGxs=",
+  "packed_sha1": "9UZEtSheuMkq4uiYGpl3+6meXCs=",
+  "fixes": 84,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,YRb6k7fLmPOQASxV+nm5zSpwGxs=,769539,0,9UZEtSheuMkq4uiYGpl3+6meXCs=,289700,True,0",
+  "backup_tag": "pre-r1135-20261022T171539Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "aimkill": "center target selection (dot to camera ray), optional 108 toggle (default off), hit group from the actual collider (head only when the head collider was used), 0/20/40/80 ms delay cycle, 0-150% lead multiplier",
+  "pullenemy": "removed in R11.34",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-r1135-20261022T171539Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

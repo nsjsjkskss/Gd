@@ -1,0 +1,20 @@
+{
+  "version": "R11.17",
+  "bytes": 287579,
+  "sha256": "6c8a40c8099dbde3181d3b19e66dcf4b92b2886ad0f46bb9274b39c99903a249",
+  "raw_bytes": 758139,
+  "raw_sha1": "vLJyBjDrDP32LYKUvI9jSIQVwvw=",
+  "packed_sha1": "pduf7xHLyewtAcBDwL2Ddv40jac=",
+  "fixes": 84,
+  "guard": "PASS 27/27",
+  "device_test": "pending",
+  "server_acceptance": "unverified",
+  "no_fall_damage": "not shipped: base proxy bypasses original network implementation",
+  "manifest_row": "codepatch/assembly-csharp-patch,vLJyBjDrDP32LYKUvI9jSIQVwvw=,758139,0,pduf7xHLyewtAcBDwL2Ddv40jac=,287579,True,0",
+  "backup_tag": "pre-r1117-20261022T071904Z",
+  "published_to": [
+    "aimtest",
+    "proxy"
+  ],
+  "proxy_download_verified": true
+}

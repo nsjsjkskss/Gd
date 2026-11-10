@@ -1,0 +1,20 @@
+{
+  "version": "R12.03",
+  "bytes": 296251,
+  "sha256": "57a457f292c7e39b5d32b7858ab785e89dc5342ed948a3a3f0ff7b83c65276a9",
+  "packed_sha1": "2jzTumFVHlH9jSD84dDukmP0gBs=",
+  "raw_sha1": "NbKbIYCK41Errpe2fZ1Ce3uoDk4=",
+  "raw_bytes": 799203,
+  "change": "Restored functional AimKill toggle at AIM row 31 and fixed AK ON/OFF header control. UpdateAimKill reaches the isolated damage chain when enabled and recovery is off. Explicit damage uses a new hit object, leaves native trigger/shared hit/ammo untouched, skips while the player is firing or reloading, checks cover and effective weapon range. LHNJLFOINDO is not combined with explicit TakeDamage. Scans rotate through 12 candidates per tick with 2.5ms cooperative budget. Delay options accurately show 500/1000/1500/2000ms; pending HP observations block repeat dispatch until processed.",
+  "verification": [
+    "HUD test: header visible at scroll 0 and toggles actual preference ON/OFF",
+    "Recording test: ON/OFF/ON reaches TakeDamage; isolated hit leaves shared native hit unchanged",
+    "Recording test: pending observation/manual fire/near-wall stop new dispatch; no Start/StopFire, refill or LHN effects",
+    "Exact runtime contract checked for 7 damage-chain methods",
+    "AimKill/recovery/transport, HUD, visuals and HitFly suites PASS",
+    "Core guard PASS 27/27",
+    "Live-proxy downloaded SHA256 matches built artifact; service active and health 200"
+  ],
+  "device_status": "Pending. Stub tests prove control flow, not remote server acceptance or absence of device stutter/timeouts.",
+  "rollback": "cp backup/pre-R12.03/okmod-R8-AIM-ESP.bin build/okmod-R8-AIM-ESP.bin && systemctl restart okmod-1297"
+}

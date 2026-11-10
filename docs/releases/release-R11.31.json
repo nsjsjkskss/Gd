@@ -1,0 +1,22 @@
+{
+  "version": "R11.31",
+  "bytes": 290505,
+  "sha256": "6a5416e68a36d6902af805bf0a398c7a86f66e697a9ecd62eb937b1abe973312",
+  "raw_bytes": 773907,
+  "raw_sha1": "EKzFps0Xw7NQX5pxsCfz9NTMGYo=",
+  "packed_sha1": "D56qH9VHjL0NwX/N1r5grIYE200=",
+  "fixes": 84,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,EKzFps0Xw7NQX5pxsCfz9NTMGYo=,773907,0,D56qH9VHjL0NwX/N1r5grIYE200=,290505,True,0",
+  "backup_tag": "pre-r1131-20261022T160343Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "pullenemy": "single target with write verification: next frame checks root within 2 m of written root and head within 2 m of aim point; failed (server snap-back / ghost) targets are blacklisted for 8 s and skipped; entities with MaxHP<=0 or PlayerID 0 are ignored",
+  "aimkill": "R11.25 parity test retained: object wipe + inventory opcode 108",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-r1131-20261022T160343Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

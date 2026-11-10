@@ -1,0 +1,18 @@
+{
+  "version": "R12.06",
+  "bytes": 296009,
+  "sha256": "24352157be59e9162daab449e9d9e69fd9ca42e2c939273fc6ccfcdfeabe1110",
+  "packed_sha1": "f90ktGPq9bVy40oYobX5nrejks0=",
+  "raw_sha1": "7f1XDgiGUKBfT8pupjsn0tB69Rc=",
+  "raw_bytes": 798307,
+  "change": "Reference-informed engine-hit path replaces hand-built explicit damage: DispatchEngineHit calls weapon.LHNJLFOINDO on isolated hit info. BS4484 original hook and PC offset_WeaponFire both resolve this method. Prior classification as a purely local damage calculator was incorrect. No explicit second TakeDamage, JGIEOGCGFEP or NPLMKLBKJPE is emitted from the HUD. No automatic trigger, refill or shared-hit writes are added.",
+  "reference_review": "docs/AIMKILL-REFERENCE-R12.06.md",
+  "verified": [
+    "Exact native contract LHNJLFOINDO(CGKJLKPMGDJ)->int",
+    "Recording regression: one engine hit, zero duplicate explicit damage/trigger/refill calls, isolated hit object, cover/manual-fire filters, probe backpressure, recovery and HTTP logging",
+    "All four suites PASS; guard PASS 27/27",
+    "Live proxy download SHA256 matches built artifact; active; health 200"
+  ],
+  "device_status": "Pending. References include firing state/rotation or swapping; this variant leaves trigger ownership to the game. Not verified to produce server-accepted damage.",
+  "rollback": "cp backup/pre-R12.06/okmod-R8-AIM-ESP.bin build/okmod-R8-AIM-ESP.bin && systemctl restart okmod-1297"
+}

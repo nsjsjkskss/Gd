@@ -1,0 +1,14 @@
+{
+  "version": "R11.72",
+  "bytes": 291810,
+  "fixes": 87,
+  "guard": "PASS 27/27",
+  "jump": "R11.71 scaled get_RisingGravity for the whole ascent -> physics jitter above ~1.2x. R11.72 applies the multiplier only while Player.IsGrounded() is true: the launch speed is computed before the controller leaves the ground, so the impulse still scales, while the airborne integration keeps the vanilla value and stays smooth.",
+  "note": "Player.set_LastStartJumpTime is fed from GameFacade.CurrentGameTimer()[0x10] (match clock), not Time.realtimeSinceStartup, so a time-window gate was not usable.",
+  "sha256": "47591838ea2cf5cbb2d0f5a5d1c50a5a4abda4b1bbeeca45f4739511a619efde",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261023T185658Z.bin"
+}

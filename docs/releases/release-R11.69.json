@@ -1,0 +1,12 @@
+{
+  "version": "R11.69",
+  "bytes": 291609,
+  "sha256": "9e11d897b20ef6112b949eab8f1a6c2dd45fa11ced70d462752e8499b85e594d",
+  "fixes": 87,
+  "guard": "PASS 27/27",
+  "groundhack": "Bay is now an adjustable gravity slider (0.00-9.80, step 0.25). 9.8 = vanilla/off, lower = float. Same get_CustomGravity / get_FallingGravity hooks; get_RisingGravity still returns vanilla so jump launch speed is untouched. Old X2 toggle key migrated once to 0.25.",
+  "jump": "not implemented: Player.get_MaxJumpHeight returns the live match config (CurrentMatch()[0x5B8][0x14]) when a match exists, not GameVarDef.MaxJumpHeight, so writing the static has no effect in-match.",
+  "published_to": ["http://217.217.255.156:1297/"],
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261023T181147Z.bin"
+}

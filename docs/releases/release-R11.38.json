@@ -1,0 +1,21 @@
+{
+  "version": "R11.38",
+  "bytes": 289580,
+  "sha256": "001b5edce483103d0c785d95aecd8f488d8f91566ad14056b3232f1cdb26a76f",
+  "raw_bytes": 769163,
+  "raw_sha1": "dGTMKnfFwELJhQ5h6WZyy0fc9FU=",
+  "packed_sha1": "sB7pG44FzAP+VpzmbTooq/yKGI0=",
+  "fixes": 84,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,dGTMKnfFwELJhQ5h6WZyy0fc9FU=,769163,0,sB7pG44FzAP+VpzmbTooq/yKGI0=,289580,True,0",
+  "backup_tag": "pre-r1138-20261022T180715Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "aimkill": "option A: StartFiring once and keep the fire state across ticks; per tick only LHNJLFOINDO; StopFire only on reload/death/feature-off/one second without a target; never stops a player-owned fire",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-r1138-20261022T180715Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

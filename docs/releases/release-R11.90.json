@@ -1,0 +1,14 @@
+{
+  "version": "R11.90",
+  "bytes": 293500,
+  "sha256": "402413bbd3e0408be4003e4a3674d55b02e6a6a3e3db2b415448b0d414eaf31f",
+  "fixes": 87,
+  "guard": "PASS 27/27",
+  "rootCause": "HBIBDMMOOOK.LHNJLFOINDO has exactly two callers, both inside HBIBDMMOOOK.CIHHEOKFADJ (slot 223, RVA 0x5C22FA8). LHNJLFOINDO is only the SetStartDamage/damage-calc sub-step. CIHHEOKFADJ is the real weapon-hit entry: it calls LHNJLFOINDO, runs UGCHardCodeManager/HandleCanWeaponHitEntity, applies hit effects and calls GameFacade.Send(...) to submit the hit to the server. Calling LHNJLFOINDO directly produced the local damage popup but never sent the hit, which is exactly 'damage numbers but no kill'.",
+  "change": "weapon.CIHHEOKFADJ(hit, hitObject, 0f) instead of weapon.LHNJLFOINDO(hit). Kept: own hit object Player.FDMIEDDNCEC, per-shot StartFiring/StopFire, 0.08 s cadence, target lock, FOV option, ammo assist (IsAmmoFree + 2 s top-up).",
+  "tests": "stub delegates CIHHEOKFADJ to LHNJLFOINDO so hit/sequence assertions still cover the call; 4/4 suites pass.",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261024T051616Z.bin"
+}

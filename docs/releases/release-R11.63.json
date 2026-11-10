@@ -1,0 +1,21 @@
+{
+  "version": "R11.63",
+  "bytes": 291382,
+  "sha256": "306d3567dde4f3db1bdb3dd8963fafb65e091c6ba71174bc906d6a375a29de69",
+  "raw_bytes": 777251,
+  "raw_sha1": "iW1M/8bzEverxu5kT4R/2Q+KDnw=",
+  "packed_sha1": "AII72nC6M3eM6ijqVAwZ2QL1jQM=",
+  "fixes": 85,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,iW1M/8bzEverxu5kT4R/2Q+KDnw=,777251,0,AII72nC6M3eM6ijqVAwZ2QL1jQM=,291382,True,0",
+  "backup_tag": "pre-clean-20261023T135901Z",
+  "published_to": [
+    "http://217.217.255.156:1297/"
+  ],
+  "device_test": "pending",
+  "aimkill": "source parity integrated unconditionally: every AimKill dispatch does StartFiring -> LHNJLFOINDO -> StopFire and uses normal=hitPoint; Rotate, RequireFire and Source toggles removed; menu has only AimKill, delay, status",
+  "proxy_download_verified": true,
+  "proxy_service": "okmod-1297.service",
+  "proxy_backup": "/opt/okmod-1297/patch.pre-clean-20261023T135901Z.bin",
+  "live_sha256": "a0958ad93ce28329f08ba7cb6bc0727f2de2bc506392ad84a4118caf425cd570"
+}

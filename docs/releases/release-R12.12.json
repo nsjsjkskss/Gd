@@ -1,0 +1,22 @@
+{
+  "version": "R12.12",
+  "bytes": 298229,
+  "sha256": "72c89ef25db954310114fac990632694744d63a4f8e6e55c6883f7dc05a60504",
+  "packed_sha1": "ErX7bYqVkOg3eHF5y2f7ws/vGLw=",
+  "raw_sha1": "cbGB0FdvP0ROP2KJmKxAfd1MOxg=",
+  "raw_bytes": 809483,
+  "observed": "R12.11 device log: selected 80ms, native 1820ms, effective 1820ms, lastGap 1848ms; sync108 attempts 4 / sent 0 / failed 4. Principal measured slowdown was native weapon interval, not native-call cost (0.37ms).",
+  "changes": [
+    "During weapon cooldown schedule next poll at due time if earlier than the next 50ms polling quantum",
+    "Separate cadence timestamp/weapon identity from historical lastDispatchAt; newly selected weapon does not inherit previous weapon deadline",
+    "Menu displays chosen vs effective interval; status 10 identifies weapon cooldown; log adds cooldownRemainingMs",
+    "Keep native weapon interval lower bound, no catch-up bursts or native-stat writes"
+  ],
+  "verification": [
+    "Regression first eligible frame at 130ms rather than extra 50ms; weapon switch does not inherit cooldown",
+    "All four suites PASS; guard 27/27",
+    "Live proxy downloaded artifact hash matches; active; health 200"
+  ],
+  "limitations": "This removes scheduler overhead, not the measured 1820ms native weapon interval. No claim of arbitrary 80ms server-accepted hits or fixed occasional local-only damage. Device test pending.",
+  "rollback": "cp backup/pre-R12.12/okmod-R8-AIM-ESP.bin build/okmod-R8-AIM-ESP.bin && systemctl restart okmod-1297"
+}

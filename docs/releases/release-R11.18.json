@@ -1,0 +1,15 @@
+{
+  "version": "R11.18",
+  "bytes": 287634,
+  "sha256": "d57936ac7601b0c38f43b9769862c5026804b54c70a0997e25f210de78fe0b23",
+  "raw_bytes": 758451,
+  "raw_sha1": "GeLFtdUVDEci3oaNomQLfqrHD5k=",
+  "packed_sha1": "7ZtfmeAu3x7fygQethWwAdoAVxI=",
+  "fixes": 84,
+  "guard": "PASS 27/27",
+  "manifest_row": "codepatch/assembly-csharp-patch,GeLFtdUVDEci3oaNomQLfqrHD5k=,758451,0,7ZtfmeAu3x7fygQethWwAdoAVxI=,287634,True,0",
+  "backup_tag": "pre-r1118-20261022T073820Z",
+  "device_test": "pending",
+  "server_acceptance": "unverified",
+  "live_unchanged": true
+}
