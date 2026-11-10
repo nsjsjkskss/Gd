@@ -1,0 +1,40 @@
+FNV1a('unityframework') ^ 0xa5c39f17 = 0xea7fd991 (expected 0xea7fd991)
+
+=== sub_b5218 / sub_b5310 Obfuscated Symbol Resolver Table (37 entries) ===
+  idx= 0 | id=0x375a | case_va=0x0b54f8 |                                            | mov x8, #0x59b9; movk x8, #0xce48, lsl #16; movk x8, #0x2d22, lsl #32
+  idx= 1 | id=0x375b | case_va=0x0b5344 | internal_func_0x130dec                     | adr x0, #0x130dec; nop ; b #0xb54f8
+  idx= 2 | id=0x3758 | case_va=0x0b5358 | internal_func_0x131014                     | adr x0, #0x131014; nop ; b #0xb54f8
+  idx= 3 | id=0x3759 | case_va=0x0b5364 | internal_func_0x133484                     | adr x0, #0x133484; nop ; b #0xb54f8
+  idx= 4 | id=0x375e | case_va=0x0b5370 | internal_func_0x133640                     | adr x0, #0x133640; nop ; b #0xb54f8
+  idx= 5 | id=0x375f | case_va=0x0b537c | internal_func_0x1338ac                     | adr x0, #0x1338ac; nop ; b #0xb54f8
+  idx= 6 | id=0x375c | case_va=0x0b5388 | internal_func_0x133b1c                     | adr x0, #0x133b1c; nop ; b #0xb54f8
+  idx= 7 | id=0x375d | case_va=0x0b5394 | internal_func_0x133c00                     | adr x0, #0x133c00; nop ; b #0xb54f8
+  idx= 8 | id=0x3752 | case_va=0x0b53a0 | internal_func_0x133cdc                     | adr x0, #0x133cdc; nop ; b #0xb54f8
+  idx= 9 | id=0x3753 | case_va=0x0b53ac | GOT[0xcc4c470] -> _vm_read_overwrite       | adrp x0, #0xcc4c000; ldr x0, [x0, #0x470]; b #0xb54f8
+  idx=10 | id=0x3750 | case_va=0x0b53b8 | GOT[0xcc4c480] -> _vm_write                | adrp x0, #0xcc4c000; ldr x0, [x0, #0x480]; b #0xb54f8
+  idx=11 | id=0x3751 | case_va=0x0b53c4 | GOT[0xcc4c468] -> _vm_protect              | adrp x0, #0xcc4c000; ldr x0, [x0, #0x468]; b #0xb54f8
+  idx=12 | id=0x3756 | case_va=0x0b53d0 | GOT[0xcc4c460] -> _vm_deallocate           | adrp x0, #0xcc4c000; ldr x0, [x0, #0x460]; b #0xb54f8
+  idx=13 | id=0x3757 | case_va=0x0b53dc | GOT[0xcc4c478] -> _vm_region_recurse_64    | adrp x0, #0xcc4c000; ldr x0, [x0, #0x478]; b #0xb54f8
+  idx=14 | id=0x3754 | case_va=0x0b53e8 | GOT[0xcc4c448] -> _task_threads            | adrp x0, #0xcc4c000; ldr x0, [x0, #0x448]; b #0xb54f8
+  idx=15 | id=0x3755 | case_va=0x0b53f4 | GOT[0xcc4c450] -> _thread_get_state        | adrp x0, #0xcc4c000; ldr x0, [x0, #0x450]; b #0xb54f8
+  idx=16 | id=0x374a | case_va=0x0b5400 | GOT[0xcc4c458] -> _thread_set_state        | adrp x0, #0xcc4c000; ldr x0, [x0, #0x458]; b #0xb54f8
+  idx=17 | id=0x374b | case_va=0x0b540c | GOT[0xcc4c440] -> _task_set_state          | adrp x0, #0xcc4c000; ldr x0, [x0, #0x440]; b #0xb54f8
+  idx=18 | id=0x3748 | case_va=0x0b5418 | GOT[0xcc4c438] -> _task_set_exception_ports | adrp x0, #0xcc4c000; ldr x0, [x0, #0x438]; b #0xb54f8
+  idx=19 | id=0x3749 | case_va=0x0b5424 | GOT[0xcc4c008] -> _CCCrypt                 | adrp x0, #0xcc4c000; ldr x0, [x0, #8]; b #0xb54f8
+  idx=20 | id=0x374e | case_va=0x0b5430 | GOT[0xcc4c010] -> _CCCryptorCreateWithMode | adrp x0, #0xcc4c000; ldr x0, [x0, #0x10]; b #0xb54f8
+  idx=21 | id=0x374f | case_va=0x0b543c | GOT[0xcc4c020] -> _CCCryptorUpdate         | adrp x0, #0xcc4c000; ldr x0, [x0, #0x20]; b #0xb54f8
+  idx=22 | id=0x374c | case_va=0x0b5448 | GOT[0xcc4c018] -> _CCCryptorRelease        | adrp x0, #0xcc4c000; ldr x0, [x0, #0x18]; b #0xb54f8
+  idx=23 | id=0x374d | case_va=0x0b5454 | GOT[0xcc4c0d8] -> _SecItemCopyMatching     | adrp x0, #0xcc4c000; ldr x0, [x0, #0xd8]; b #0xb54f8
+  idx=24 | id=0x3742 | case_va=0x0b5460 | GOT[0xcc4c0d0] -> _SecItemAdd              | adrp x0, #0xcc4c000; ldr x0, [x0, #0xd0]; b #0xb54f8
+  idx=25 | id=0x3743 | case_va=0x0b546c | GOT[0xcc4c0e8] -> _SecItemUpdate           | adrp x0, #0xcc4c000; ldr x0, [x0, #0xe8]; b #0xb54f8
+  idx=26 | id=0x3740 | case_va=0x0b5478 | GOT[0xcc4c0e0] -> _SecItemDelete           | adrp x0, #0xcc4c000; ldr x0, [x0, #0xe0]; b #0xb54f8
+  idx=27 | id=0x3741 | case_va=0x0b5484 | GOT[0xcc4c2c8] -> __dyld_image_count       | adrp x0, #0xcc4c000; ldr x0, [x0, #0x2c8]; b #0xb54f8
+  idx=28 | id=0x3746 | case_va=0x0b5490 | GOT[0xcc4c2b8] -> __dyld_get_image_name    | adrp x0, #0xcc4c000; ldr x0, [x0, #0x2b8]; b #0xb54f8
+  idx=29 | id=0x3747 | case_va=0x0b549c | GOT[0xcc4c2b0] -> __dyld_get_image_header  | adrp x0, #0xcc4c000; ldr x0, [x0, #0x2b0]; b #0xb54f8
+  idx=30 | id=0x3744 | case_va=0x0b54a8 | GOT[0xcc4c2c0] -> __dyld_get_image_vmaddr_slide | adrp x0, #0xcc4c000; ldr x0, [x0, #0x2c0]; b #0xb54f8
+  idx=31 | id=0x3745 | case_va=0x0b54b4 | GOT[0xcc4c2d0] -> __dyld_register_func_for_add_image | adrp x0, #0xcc4c000; ldr x0, [x0, #0x2d0]; b #0xb54f8
+  idx=32 | id=0x377a | case_va=0x0b54c0 | GOT[0xcc4c428] -> _sysctl                  | adrp x0, #0xcc4c000; ldr x0, [x0, #0x428]; b #0xb54f8
+  idx=33 | id=0x377b | case_va=0x0b54cc | GOT[0xcc4c430] -> _sysctlbyname            | adrp x0, #0xcc4c000; ldr x0, [x0, #0x430]; b #0xb54f8
+  idx=34 | id=0x3778 | case_va=0x0b54d8 | internal_func_0x133f08                     | adr x0, #0x133f08; nop ; b #0xb54f8
+  idx=35 | id=0x3779 | case_va=0x0b54e4 | internal_func_0x133e5c                     | adr x0, #0x133e5c; nop ; b #0xb54f8
+  idx=36 | id=0x377e | case_va=0x0b54f0 | internal_func_0x133dac                     | adr x0, #0x133dac; nop ; mov x8, #0x59b9
