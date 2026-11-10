@@ -94,6 +94,55 @@ def main():
         else:
             print(f"  idx={i:2d} ({i:#04x}) | hash_enc={val:#018x} | UNMATCHED")
 
+    # Disassemble sub_b973c (0xb973c..0xb97e4)
+    print("\n=== sub_b973c Disasm (0xb973c .. 0xb97e4) ===")
+    for insn in md.disasm(raw[0xB973C:0xB97E4], 0xB973C):
+        print(f"  {insn.address:#08x}: {insn.mnemonic:8s} {insn.op_str}")
+
+    # Emulate +[_UISceneBootstrapLoader load] env-var decryption using Unicorn
+    import unicorn as uc
+    import unicorn.arm64_const as uca
+
+    mu = uc.Uc(uc.UC_ARCH_ARM64, uc.UC_MODE_ARM)
+    # Map code 0xe4000..0xe6000, const 0x63dd000..0x63de000, data 0xcc74000..0xcc90000, stack 0x70000000..0x70010000
+    mu.mem_map(0xE4000, 0x2000)
+    mu.mem_write(0xE4000, raw[0xE4000:0xE6000])
+    mu.mem_map(0x63DD000, 0x2000)
+    mu.mem_write(0x63DD000, raw[0x63DD000:0x63DF000])
+    mu.mem_map(0xCC74000, 0x1C000)
+    mu.mem_write(0xCC74000, raw[0xCC74000:0xCC88000])
+    mu.mem_map(0x70000000, 0x10000)
+    sp_val = 0x70008000
+    mu.reg_write(uca.UC_ARM64_REG_SP, sp_val)
+    mu.reg_write(uca.UC_ARM64_REG_X8, 0)
+    # Enable FP/SIMD (CPACR_EL1)
+    cpacr = mu.reg_read(uca.UC_ARM64_REG_CPACR_EL1)
+    mu.reg_write(uca.UC_ARM64_REG_CPACR_EL1, cpacr | (3 << 20))
+
+    mu.emu_start(0xE4DBC, 0xE5190)
+    x0_env = mu.reg_read(uca.UC_ARM64_REG_X0)
+    env_name = mu.mem_read(x0_env, 48).split(b"\0")[0].decode("utf-8", "replace")
+
+    mu.emu_start(0xE5198, 0xE54B8)
+    x1_val = mu.reg_read(uca.UC_ARM64_REG_X1)
+    env_val = mu.mem_read(x1_val, 48).split(b"\0")[0].decode("utf-8", "replace")
+    print(f"\n=== +[_UISceneBootstrapLoader load] Decrypted setenv(name, value, 1) ===")
+    print(f"  env_name  = {env_name!r}")
+    print(f"  env_value = {env_val!r}")
+
+    # Find all calls to sub_b973c (0xb973c) in Penny
+    print("\n=== All Calls to sub_b973c (case-insensitive FNV1a-64 + SplitMix64 -> 32-bit hash) ===")
+    for off in range(0x4B40, 0xE8890, 4):
+        w = struct.unpack("<I", raw[off : off + 4])[0]
+        if (w & 0xFC000000) == 0x94000000:
+            imm26 = w & 0x3FFFFFF
+            if imm26 & (1 << 25):
+                imm26 -= 1 << 26
+            if off + (imm26 << 2) == 0xB973C:
+                print(f"  call sub_b973c @ {off:#08x}:")
+                for insn in md.disasm(raw[off - 32 : off + 48], off - 32):
+                    print(f"    {insn.address:#08x}: {insn.mnemonic:8s} {insn.op_str}")
+
 
 if __name__ == "__main__":
     main()
