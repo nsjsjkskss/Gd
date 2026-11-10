@@ -148,13 +148,26 @@ Phân tích tĩnh vùng hằng số `0x63dcb1c .. 0x63dcd24` trong `Penny` và 4
    - Runtime Objective-C gọi `+[_UISceneBootstrapLoader load]` (`0xe4d34`) và `+[_UIPaneHUDBox load]` (`0x219150`).
    - Trong `+[_UISceneBootstrapLoader load]`:
      - Kiểm tra các cờ trạng thái toàn cục (`0xcc74880`, `0xcc8f6b0`); nếu phát hiện bất thường sẽ nhảy tới nhánh xóa stack/frame (`0xe4da8`) và thực thi `brk #1`.
-     - Giải mã biến môi trường trên stack (`0xe4dbc .. 0xe5494`), kiểm tra `getenv` (`0xe5190`) và gọi `setenv(..., 1)` (`0xe54b8`) để đảm bảo luồng khởi tạo chỉ chạy một lần duy nhất trong tiến trình.
+     - Giải mã biến môi trường bằng máy trạng thái trên stack (`0xe4dbc .. 0xe5494`, xác minh bằng trình giả lập Unicorn `arm64`): gọi `getenv("_UISceneTraitBootToken")` (`0xe5190`), nếu chưa tồn tại thì giải mã giá trị `"1"` và gọi `setenv("_UISceneTraitBootToken", "1", 1)` (`0xe54b8`) để đảm bảo luồng khởi tạo chỉ chạy một lần duy nhất trong tiến trình.
      - Gọi `[_UIContextAssertionCoordinator _configureSystemContextAssertions]` (`0xe54cc`) và đặt lịch `dispatch_after` trên `dispatch_main_q` với block toàn cục tại `0xcc4d0e8` (`0xe5540`).
    - Tiếp theo, `dyld` chạy 9 hàm trong `__mod_init_func` (`0xcc4c490`): khởi tạo các biến toàn cục (`0xad7c8`), đặt lịch gắn ViewController (`0xe8828`), và chạy các hàm tự kiểm tra đầu hàm của SDK `PPAPIKey` (`0x14a140 .. 0x218f5c`).
 
 2. **Giai đoạn kích hoạt Xác thực và Khởi tạo Giao diện (`0xe5540 .. 0xe5800` & `0xba000 .. 0xbdbdc`):**
-   - Block `0xcc4d0e8` (`0xe5540`) gọi `[_UIContextAssertionCoordinator _performDeferredTraitSyncWithCompletion:]` với block `0xcc4d108` (`0xe55b4`).
-   - Tại `0xba000 .. 0xbdbdc`, `Penny` thiết lập cấu hình cho `_UIKites` (`[PPAPIKey shared]`) thông qua các hàm C Bridge (`setTokenC` tại `0x12fccc`, `setENC` tại `0x130dec`, `setVerC` tại `0x130e7c`, `loadingC` tại `0x133214`, `packageData` tại `0x132fb4`).
+   - Block `0xcc4d0e8` (`0xe5540`) gọi `+[_UIContextAssertionCoordinator _performDeferredTraitSyncWithCompletion:]` (`0xbb224`) với completion block `0xcc4d108` (`0xe55b4`).
+   - `0xbb224` chuyển thực thi về main thread và gọi block `0xbb368`:
+     1. Dùng `sub_b5218` lấy địa chỉ 4 hàm C Bridge nội bộ: `0x130dec` (`setTokenC` wrapper, mã `0x375a`/`0x375b`), `0x131014` (`setENC` wrapper, mã `0x3758`), `0x133484` (`loadingC` wrapper, mã `0x3759`), `0x133640` (`packageData` wrapper, mã `0x375e`).
+     2. Quét 19 lệnh đầu của từng hàm C Bridge (`0xbb530 .. 0xbc198`) để kiểm tra chống hook.
+     3. Giải mã **Package Token dài 100 ký tự** từ 4 con trỏ tại `0xcc4d078` kết hợp `0x63dd250` và 4 opcode đầu của C Bridge (`0xbbcf4 .. 0xbbda8`):
+        `qAQerzzfWtOxTWsLTmNgBaUXwXaeealpNJhbipLLIyZgrQsVpEfjByqDrWGpRtOZRnFPgTTiyTxpLDcGRkOhpZJABxFBLsBhChjE`
+     4. Giải mã chuỗi phiên bản từ `0x63dbca8` (`0xbbdb4 .. 0xbbdec`): `"1.132.1"`.
+     5. Gọi tuần tự: `setTokenC("<100-char token>")` (`0xbbe64`), `setENC(0)` (`0xbbe74`), `setVerC("1.132.1")` (`0xbbe88`), tính băm FNV-1a 64-bit của cả token + version lưu vào `[0xcc8f6a8] = 0x527fd45f68599f17` (`0xbc1e4`), xóa sạch chuỗi token/version trên stack (`0xbc1e8 .. 0xbc218`), rồi gọi `loadingC` (`0x133484`) với completion block `0xbdeb8` (`0xbc268`).
+   - Khi `loadingC` xác thực key thành công, nó gọi `0xbdeb8`, hàm này lấy `0x133640` (`packageData` wrapper) và gọi kèm callback `0xbdfb8(id data)` (`0xbdf88`).
+   - `0xbdfb8` chuyển `data` vào `sub_bc2f8(data, lr)` (`0xbe038`):
+     - Trong `sub_bc2f8`, `Penny` quét danh sách dylib đang nạp để phát hiện các chuỗi giải mã bằng `sub_b5090` (`seed = 0x4031cc15`): `'frida'` (`0xbc668`), `'gadget'` (`0xbc6f8`), `'cycript'` (`0xbc77c`), `'ffz.dylib'` (`0xbc808`).
+     - Giải mã gói `packageData` (các khóa JSON `'packageData'`, `'package_data'`, `'data'`, `'value'`, `'content'`, `'skin_field'` tại `0xe0c68 .. 0xe0e24`) và lưu vào `[0xcc90ad0]`.
+     - Tại `0xbdb38 .. 0xbdbbc`, giải mã bảng nhảy 7 mục tại `0xcc4d040` và gọi `sub_cdad8` (`0xcdad8`) cùng `sub_cf1a4` (`0xcf1a4`).
+   - Nếu `sub_bc2f8` trả về `1`, `0xbdfb8` (`0xbe054 .. 0xbe0a4`) đẩy block `0xbe0dc` lên `dispatch_main_q` để gọi completion block ban đầu `0xe55b4`.
+   - Tại `0xe55b4 .. 0xe57ec`, `Penny` kiểm tra lại chữ ký `sub_62a90 == 0x8842428c`, đăng ký observer cho `UIApplicationDidBecomeActiveNotification`, và gọi `[_UISceneBootstrapLoader _installHUDControlView]` (`0xe6e7c`) trên main thread để gắn nút điều khiển nổi (`_UIDragInteractionContainerView`) và bộ nhận diện cử chỉ chạm đa điểm (`_UISystemMultitouchEventRecognizer`) vào cửa sổ chính.
    - Sau khi xác thực và nhận dữ liệu gói (`packageData`), luồng callback tại `0xbdb38 .. 0xbdbbc` giải mã bảng nhảy 7 mục tại `0xcc4d040` (`0xbc518`, `0xbcab8`, `0xbcf98`, `0xbc904`, `0xbdb7c`, `0xbcb30`, `0xbd2b4`) để nạp cấu hình vào `0xcc90ad0`, sau đó gọi tuần tự các hàm hậu xác thực: `sub_cdad8` (`0xcdad8`), `sub_cf1a4` (`0xcf1a4`), `sub_d47a0`, `sub_d6ac8`, `sub_d7a10`, `sub_d8fc4`, `sub_db5d0`.
    - Khi hoàn tất, `[_UISceneBootstrapLoader _installHUDControlView]` (`0xe6e7c`) được gọi trên main thread để gắn nút điều khiển nổi (`_UIDragInteractionContainerView`) và bộ nhận diện cử chỉ chạm đa điểm (`_UISystemMultitouchEventRecognizer`) vào cửa sổ chính, đồng thời tạo `NSTimer` lặp lại mỗi `2.0` giây (`0xe700c`) gọi `_synchronizeWindowGestureRecognizers` để giữ giao diện luôn nằm trên cùng.
 

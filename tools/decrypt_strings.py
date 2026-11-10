@@ -4,12 +4,13 @@ import sys
 import capstone
 
 SEED_B497C = 0x2FDDD4D1
+SEED_B5090 = 0x4031CC15
 M32 = 0xFFFFFFFF
 
 
-def dec_b497c(enc, w2):
+def dec_stream(enc, w2, seed=SEED_B497C):
     w8 = 0
-    w9 = (SEED_B497C ^ w2) & M32
+    w9 = (seed ^ w2) & M32
     out = bytearray()
     for b in enc:
         w17 = (w9 ^ w8) & M32
@@ -23,7 +24,8 @@ def dec_b497c(enc, w2):
     return bytes(out)
 
 
-def dump_b497c(raw, md):
+def dump_stream_calls(raw, md, target_fn, seed, label):
+    print(f"=== {label} (fn={target_fn:#x}, seed={seed:#010x}) ===")
     hits = []
     for off in range(0x4B40, 0xE8890, 4):
         w = struct.unpack("<I", raw[off : off + 4])[0]
@@ -31,7 +33,7 @@ def dump_b497c(raw, md):
             imm26 = w & 0x3FFFFFF
             if imm26 & (1 << 25):
                 imm26 -= 1 << 26
-            if off + (imm26 << 2) == 0xB497C:
+            if off + (imm26 << 2) == target_fn:
                 hits.append(off)
 
     for call_va in hits:
@@ -99,7 +101,7 @@ def dump_b497c(raw, md):
         length = regs.get("w1", 0)
         w2 = regs.get("w2", 0)
         if 0 < length < 256 and 0 <= buf_ptr < len(mem) - length:
-            dec = dec_b497c(mem[buf_ptr : buf_ptr + length], w2)
+            dec = dec_stream(mem[buf_ptr : buf_ptr + length], w2, seed=seed)
             print(f"  {call_va:#07x} (len={length:2d}, w2={w2:#010x}): {dec.decode('utf-8', 'replace')!r}")
 
 
@@ -112,4 +114,36 @@ if __name__ == "__main__":
     with open(target, "rb") as f:
         raw_bytes = f.read()
     cs = capstone.Cs(capstone.CS_ARCH_ARM64, capstone.CS_MODE_ARM)
-    dump_b497c(raw_bytes, cs)
+    dump_stream_calls(raw_bytes, cs, 0xB497C, SEED_B497C, "sub_b497c Strings")
+    print()
+    dump_stream_calls(raw_bytes, cs, 0xB5090, SEED_B5090, "sub_b5090 Strings")
+
+    # Decode 100-char Package Token (0xbbcf4..0xbbdb0) and Version string (0xbbdb4..0xbbdec)
+    r32 = lambda va: struct.unpack("<I", raw_bytes[va : va + 4])[0]
+    r64 = lambda va: struct.unpack("<Q", raw_bytes[va : va + 8])[0] & 0xFFFFFFFFFFFF
+    w9 = (r32(0x12FCCC) ^ ((r32(0x133484) << 1) & M32) ^ r32(0x133640) ^ r32(0x130DEC)) & M32
+    w12 = 0x81DB2006
+    tok_out = bytearray()
+    for chunk_i in range(4):
+        w16 = (w9 ^ r32(0x63DD250 + chunk_i * 4) ^ w12) & M32
+        ptr = r64(0xCC4D078 + chunk_i * 8)
+        w14 = 0
+        for j in range(25):
+            b = raw_bytes[ptr + j] ^ ((w16 ^ w14) & 0xFF)
+            tok_out.append(b)
+            w14 = (w14 + 0xB9) & M32
+            w16 = (w16 + 0x3B) & M32
+    ver_out = bytearray()
+    x8 = 0
+    w9_v = 0xB9
+    for k in range(8):
+        b = raw_bytes[0x63DBCA8 + k] ^ ((w9_v ^ x8) & 0xFF)
+        if b == 0:
+            break
+        ver_out.append(b)
+        x8 += 0xB9
+        w9_v = (w9_v + 0x3B) & M32
+    print("\n=== Decrypted C-Bridge Auth Credentials (0xbbcf4 .. 0xbbe88) ===")
+    print(f"  setTokenC(token) [100 chars] : {tok_out.decode('utf-8', 'replace')!r}")
+    print(f"  setENC(0)                    : 0 (Vietnamese default)")
+    print(f"  setVerC(ver)                 : {ver_out.decode('utf-8', 'replace')!r}")
