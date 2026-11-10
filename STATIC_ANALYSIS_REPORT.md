@@ -246,3 +246,38 @@ Giao diện điều khiển chính do lớp `_UISceneLayoutRenderController` (`0
 
 4. **Kiểm tra Chống Hook / Anti-Swizzle kết hợp Syscall Trực tiếp:**
    - Các hàm trong `PPAPIKey` kiểm tra `method_getImplementation` so với địa chỉ hàm tĩnh và quét opcode đầu hàm để tìm lệnh nhảy/breakpoint (`sub_2184e4`, `sub_2184f0`, `sub_20fca4`). Khi phát hiện hook, chúng gọi trực tiếp `mov w16, #1; svc #<imm>` (`SYS_exit`) để thoát tiến trình ngay lập tức.
+
+---
+
+## 12. Bản đồ Phân vùng Đầy đủ của `__TEXT.__text` (`0x4b40 .. 0x39f19c`) và Liên kết `UnityFramework`
+
+### 12.1. Bản đồ Địa chỉ Toàn bộ `3.77 MB` Mã thực thi (`__TEXT.__text` trong `Penny`)
+Phân tích toàn bộ dải `0x4b40 .. 0x39f19c` (xem chi tiết tại `artifacts/uf_bridge_map.txt`) chia không gian mã máy của `Penny` thành 5 phân khu rõ rệt:
+
+| Dải địa chỉ (VA) | Mật độ `BRK #1` / `SVC` | Thành phần và Chức năng Đo đạc |
+| :--- | :--- | :--- |
+| `0x004b40 .. 0x0e8890` | `1.387` lệnh `brk #1`, `16` lệnh `svc` | **Mã thực thi của Tweak & Giao diện Menu:** Chứa các hàm hook/tính năng (`0x4b40 .. 0x2a490`), lớp giao diện menu `_UISceneLayoutRenderController` (`0x2a498 .. 0x60b00`), hàm băm toàn vẹn `sub_62a90`, hàm giải mã chuỗi `sub_b497c`, bảng ẩn symbol `sub_b5218`, luồng khởi tạo xác thực (`0xb9994 .. 0xbdbdc`), các hàm hậu xác thực (`0xcdad8 .. 0xdb5d0`), 44 hàm `orig_thunk` (`0xdb5d0 .. 0xdc280`), và `_UISceneBootstrapLoader` (`0xe4d34 .. 0xe8890`). |
+| `0x0e8890 .. 0x218f5c` | `39` lệnh `brk #1`, `2.495` lệnh `svc` | **Lõi SDK `PPAPIKey` (`libPPAPIKey_full.a`):** Chứa hàm giải mã XOR `sub_ec874`, 32 lớp `_UIKite*` (`_UIKites`, `_UIKiteKeyView`, `_UIKiteGlassKeyView`, `_UIKiteUDIDView`, `_UIKiteSSEC`, ...), 12 lớp `_UIFlow*`, các hàm kiểm tra chống swizzle/inline hook và thoát trực tiếp qua `mov w16, #1; svc #<imm>`. |
+| `0x218f5c .. 0x224b40` | `0` lệnh `brk #1`, `98` lệnh `svc` | **Hệ thống HUD (`_UIPaneHUD*`):** Chứa 14 lớp `_UIPaneHUDBox` và các lớp con biểu diễn vòng xoay tiến trình / thông báo trạng thái. |
+| `0x224b40 .. 0x39ec8c` | `1` lệnh `brk #1`, `0` lệnh `svc` | **Thư viện Mật mã & TLS Tĩnh (BoringSSL / OpenSSL `libcrypto` + `libssl`):** Được liên kết tĩnh vào `libPPAPIKey_full.a` để thực hiện mã hóa tầng truyền tải độc lập và xác minh chữ ký số X.509 / ChaCha20-Poly1305 (`ChaCha20 for ARMv8, CRYPTOGAMS` tại `0x66f2d40`) cùng trạng thái bảo vệ tại `__DATA.__ppguard` (`0xcc85000`). |
+| `0x39ec8c .. 0x39f19c` | `12` lệnh `brk #1` / `udf #0` | **Trạm Xử lý Cờ Độc Trung tâm (`sub_39ec8c` Poison Sink):** Được gọi khi phát hiện vi phạm toàn vẹn (`bl #0x39ec8c` tại `0xb566c`, `0x39ee50`, ...). Ghi đè hằng số báo lỗi `0xdead10cc58632790` vào `[0xcc74870]` và `[0xcc74878]`, ghi `0xdead10cd` vào `[0xcc74890]`, xóa `[0xcc8f6b8]` và `[0xcc8f6c0]` về `0`, bật bit `0x80000003` tại `[0xcc74880]`, sau đó xóa toàn bộ thanh ghi `x0, x1, x29, x30, sp` về `0` và gọi `brk #1`. |
+
+### 12.2. Liên kết Trực tiếp giữa 130 RVA của `Penny` và 139 Điểm Nhảy Tĩnh trong `UnityFramework`
+Quét toàn bộ vùng `__TEXT.__text` của `UnityFramework` (`0x4000 .. 0xa19aeb4`) và đối chiếu với 3 bảng RVA trong `Penny` (`artifacts/uf_bridge_map.txt`) xác nhận cơ chế nối kết hai chiều:
+
+1. **Cấu trúc Điểm Nhảy tại `rva - 4` trong `UnityFramework`:**
+   - Mọi địa chỉ `rva` trong `Table 1` (15 mục), `Table 2` (19 mục) và `Table 3` (96 mục) đều trỏ tới **lệnh thứ hai** (offset `+4`) của hàm mục tiêu trong `UnityFramework`.
+   - Lệnh đầu tiên của các hàm đó (tại địa chỉ `rva - 4`) đã được sửa tĩnh trong tệp `UnityFramework` thành lệnh nhảy:
+     - **Nhóm nhảy trực tiếp bằng `b #<stub_va>` (120/130 mục):**
+       - Toàn bộ **96/96 mục của `Table 3`** và **4 mục của `Table 1`/`Table 2`** (`t1[2]`, `t2[2]`, `t2[3]`, `t2[4]`) có lệnh tại `rva - 4` là `b #<stub_va>` nhảy thẳng tới đúng **100 trampoline stub** trong `__TEXT_EXEC.__objc_tramp` (`0xc388100 .. 0xc389c40`). Không có bất kỳ nhánh dư thừa nào ngoài 100 điểm này (`Unmatched __TEXT_EXEC branches = 0`).
+       - **12 mục của `Table 1`** (`t1[3..14]`) và **8 mục của `Table 2`** (`t2[7..14]`) có lệnh tại `rva - 4` là `b #<auth_stub_va>` nhảy tới **20 trampoline stub** trong `__AUTH_EXEC.__auth_stubs` (`0xc39c100 .. 0xc39cc00`). Ngoài ra còn **19 điểm nhảy khác** trong `UnityFramework` (tại `0x5632f7c`, `0x5632fe0` và dải `0x6bfe764 .. 0x6c00b70`) nhảy tới 19 stub còn lại trong `__AUTH_EXEC` (tổng cộng `39` điểm nhảy tĩnh vào `__AUTH_EXEC`).
+     - **Nhóm nhảy qua thanh ghi `br x16` (10/130 mục):**
+       - Gồm `t1[0..1]` (`0x21e8d20`, `0x15cb050`) và `t2[0..1, 5..6, 15..18]` (`0x20f2d94`, `0x21ebd24`, `0x21ea8c8`, `0x21eab34`, `0x3421fc0 .. 0x34225c4`), nơi đoạn đầu hàm dùng chuỗi nạp địa chỉ vào `x16` kết thúc bằng `br x16` tại `rva - 4`.
+
+2. **Cơ chế Gọi Hàm Gốc qua 44 `Orig-Call Thunks` trong `Penny` (`0xdb5d0 .. 0xdc280`):**
+   - Khi hàm xử lý trong `Penny` cần gọi lại hàm gốc của `UnityFramework` (vốn đã bị ghi đè lệnh đầu tiên tại `rva - 4`), nó gọi qua dải thunk tại `0xdb5d0 .. 0xdc280`.
+   - Mỗi thunk thực hiện:
+     1. Kiểm tra bit dấu của `[0xcc74880]` (`tbnz w17, #0x1f`) và ghi hằng số `0x7c3a4f9b` vào `[0xcc74880]`.
+     2. Đọc con trỏ đã mã hóa từ bảng BSS `0xcc8f6c8` (`Table 1`) hoặc `0xcc8f740` (`Table 2`) (do `sub_ba558` nạp tại `0xbad34 .. 0xbae60`).
+     3. Giải mã địa chỉ `rva` bằng cách XOR với địa chỉ hiện tại cộng hằng số (`adr x16, #...; add x16, x16, #...`) và khóa phiên 64-bit tại `[0xcc74888]`.
+     4. Thực thi **lệnh prologue bị ghi đè** (ví dụ `stp x20, x19, [sp, #-0x20]!`, `sub sp, sp, #0x60`, ...) ngay trước khi thực hiện `br x17` để nhảy vào `rva` (tức `func_start + 4` trong `UnityFramework`).
