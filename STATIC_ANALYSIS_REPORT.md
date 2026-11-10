@@ -140,3 +140,109 @@ Phân tích tĩnh vùng hằng số `0x63dcb1c .. 0x63dcd24` trong `Penny` và 4
      b    #0x5632fe4             ; Nhánh mặc định khi slot chưa được nạp dữ liệu
      ```
    - Trong tệp tĩnh trên đĩa, các vùng dữ liệu `__DATA_DIRTY` (`0xc398100 ..`) và `__AUTH_DATA` (`0xc3a0080 ..`) tại các địa chỉ `<slot_va>` đều đang mang giá trị `0`, cho thấy các cặp giá trị `(con_trỏ_mã_hóa, khóa_XOR)` chỉ được ghi vào bộ nhớ ở thời điểm chạy (runtime).
+
+## 11. Phân tích Toàn diện 5 Hệ thống Cốt lõi: Luồng Thực thi, UUID/UDID, Auth, Menu và Anti-Tamper
+
+### 11.1. Luồng Thực thi Tổng thể (End-to-End Execution Flow)
+1. **Giai đoạn nạp Dylib (`dyld` Image Load):**
+   - Runtime Objective-C gọi `+[_UISceneBootstrapLoader load]` (`0xe4d34`) và `+[_UIPaneHUDBox load]` (`0x219150`).
+   - Trong `+[_UISceneBootstrapLoader load]`:
+     - Kiểm tra các cờ trạng thái toàn cục (`0xcc74880`, `0xcc8f6b0`); nếu phát hiện bất thường sẽ nhảy tới nhánh xóa stack/frame (`0xe4da8`) và thực thi `brk #1`.
+     - Giải mã biến môi trường trên stack (`0xe4dbc .. 0xe5494`), kiểm tra `getenv` (`0xe5190`) và gọi `setenv(..., 1)` (`0xe54b8`) để đảm bảo luồng khởi tạo chỉ chạy một lần duy nhất trong tiến trình.
+     - Gọi `[_UIContextAssertionCoordinator _configureSystemContextAssertions]` (`0xe54cc`) và đặt lịch `dispatch_after` trên `dispatch_main_q` với block toàn cục tại `0xcc4d0e8` (`0xe5540`).
+   - Tiếp theo, `dyld` chạy 9 hàm trong `__mod_init_func` (`0xcc4c490`): khởi tạo các biến toàn cục (`0xad7c8`), đặt lịch gắn ViewController (`0xe8828`), và chạy các hàm tự kiểm tra đầu hàm của SDK `PPAPIKey` (`0x14a140 .. 0x218f5c`).
+
+2. **Giai đoạn kích hoạt Xác thực và Khởi tạo Giao diện (`0xe5540 .. 0xe5800` & `0xba000 .. 0xbdbdc`):**
+   - Block `0xcc4d0e8` (`0xe5540`) gọi `[_UIContextAssertionCoordinator _performDeferredTraitSyncWithCompletion:]` với block `0xcc4d108` (`0xe55b4`).
+   - Tại `0xba000 .. 0xbdbdc`, `Penny` thiết lập cấu hình cho `_UIKites` (`[PPAPIKey shared]`) thông qua các hàm C Bridge (`setTokenC` tại `0x12fccc`, `setENC` tại `0x130dec`, `setVerC` tại `0x130e7c`, `loadingC` tại `0x133214`, `packageData` tại `0x132fb4`).
+   - Sau khi xác thực và nhận dữ liệu gói (`packageData`), luồng callback tại `0xbdb38 .. 0xbdbbc` giải mã bảng nhảy 7 mục tại `0xcc4d040` (`0xbc518`, `0xbcab8`, `0xbcf98`, `0xbc904`, `0xbdb7c`, `0xbcb30`, `0xbd2b4`) để nạp cấu hình vào `0xcc90ad0`, sau đó gọi tuần tự các hàm hậu xác thực: `sub_cdad8` (`0xcdad8`), `sub_cf1a4` (`0xcf1a4`), `sub_d47a0`, `sub_d6ac8`, `sub_d7a10`, `sub_d8fc4`, `sub_db5d0`.
+   - Khi hoàn tất, `[_UISceneBootstrapLoader _installHUDControlView]` (`0xe6e7c`) được gọi trên main thread để gắn nút điều khiển nổi (`_UIDragInteractionContainerView`) và bộ nhận diện cử chỉ chạm đa điểm (`_UISystemMultitouchEventRecognizer`) vào cửa sổ chính, đồng thời tạo `NSTimer` lặp lại mỗi `2.0` giây (`0xe700c`) gọi `_synchronizeWindowGestureRecognizers` để giữ giao diện luôn nằm trên cùng.
+
+---
+
+### 11.2. Hệ thống Định danh Thiết bị (UUID / UDID) và Reset Guest
+Tệp nhị phân `Penny` kết hợp hai cơ chế định danh thiết bị riêng biệt:
+
+1. **Định danh phần cứng / phiên bản của SDK `PPAPIKey` (`-[_UIKites getDeviceID]` tại `0x131adc` và `_UIKiteUDIDView`):**
+   - **Mobileconfig Enrollment (`getudid`):** Khi thiết bị chưa có UDID gắn với khóa, lớp `_UIKiteUDIDView` hiển thị hộp thoại yêu cầu lấy UDID và mở đường dẫn `https://udid3.ppdeveloper.xyz/getudid` (trong `SafariServices` / `UIApplication openURL:`) để lấy UDID phần cứng rồi truy vấn `https://api6.ppdeveloper.xyz/api/v1/udid/find` và `https://api6.ppdeveloper.xyz/api/v1/udid/uuid_key`.
+   - **Fallback `identifierForVendor` (`0xda420 .. 0xda560`):** Giải mã động tên lớp `UIDevice` (`0xda440`), selector `currentDevice` (`0xda484`), `identifierForVendor` (`0xda4d4`) và `UUIDString` (`0xda524`) bằng hàm `sub_b497c`, sau đó gọi chuỗi `[[[UIDevice currentDevice] identifierForVendor] UUIDString]` để lấy chuỗi UUID chuẩn 36 ký tự (có dấu gạch ngang `-` tại các vị trí `8, 13, 18, 23` được kiểm tra tại `0xda404 .. 0xda418`).
+   - **Lưu trữ bền vững trong Keychain (`0x5e150 .. 0x5e3b0`):** Sử dụng `SecItemCopyMatching` / `SecItemAdd` / `SecItemUpdate` với `kSecClassGenericPassword`, `kSecAttrService` và `kSecAttrAccount` dưới các khóa giải mã bằng `sub_b497c`:
+     - `com.dts.freefireth` (`0x5e1a0`)
+     - `pp.device.seed` (`0x5e21c`)
+     - `PP-DEVICEID-v1` (`0x5e290`)
+     - `PP-VUUID-v1` (`0x5e2f4`)
+
+2. **Cơ chế Xóa Tài khoản Khách (`ResetGuest` tại `0x5e334 .. 0x5f800`):**
+   - Khi người dùng kích hoạt mục `Xóa Khách (Reset Guest)` trên menu:
+     - Xóa các mục Keychain (`SecItemDelete`) của tài khoản guest trong ứng dụng.
+     - Xóa các tệp lưu dữ liệu định danh khách trong thư mục `Documents` (`0xba1c8`), bao gồm 8 tên tệp được giải mã tại `0x5e868 .. 0x5ead4`: `guest.dat`, `guest_id.dat`, `guest_token.dat`, `guest_account.dat`, `garena_guest.dat`, `guest_uuid.dat`, `guest_info.json`, `guest_auth.dat`.
+
+---
+
+### 11.3. Hệ thống Xác thực (`Auth`), Giao tiếp Máy chủ và Luồng `SSE`
+1. **Lớp Quản lý Xác thực `_UIKites` (`0xcc73a10`):**
+   - Là tên đã làm rối (obfuscated name) của lớp `PPAPIKey`, cung cấp các phương thức: `+[shared]` (`0x12f7cc`), `-[setToken:]` (`0x12f940`), `-[setEN:]` (`0x130d04`), `-[setVer:]` (`0x130e7c`), `-[getDeviceKey]` (`0x13110c`), `-[getKeyExpire]` (`0x131608`), `-[getKeyAmount]` (`0x13185c`), `-[getDeviceID]` (`0x131adc`), `-[getAppBundle]` (`0x131cd4`), `-[exitKey:]` (`0x131e34`), `-[copyKey:]` (`0x132de4`), `-[packageData:]` (`0x132fb4`), `-[loading:]` (`0x133214`).
+   - Bộ kiểm tra phiên cục bộ `_UISceneSessionActivationValidator` (`0xbf5a0`) đối chiếu chuỗi phiên bản `"1.0.0"` (`0xbf690`) và giải mã dữ liệu cấu hình phiên qua `sub_b56cc` (`0xbf758`).
+
+2. **Các Endpoint Giao tiếp Mạng:**
+   - `https://api6.ppdeveloper.xyz/api/v2/package` & `https://api6.ppdeveloper.xyz/api/v2/package/packagedata`: Xác thực token của gói (package token), kiểm tra chữ ký băm Anti-Hex và tải gói dữ liệu cấu hình/khóa giải mã (`ui_pkg_data` tại `0x1330ec`).
+   - `https://api6.ppdeveloper.xyz/api/v3/key`: Kiểm tra license key do người dùng nhập qua `_UIKiteKeyView` hoặc `_UIKiteGlassKeyView`, kiểm tra hạn dùng (`Expires`) và số lượng thiết bị (`Quota`).
+   - `https://api6.ppdeveloper.xyz/api/v1/udid/uuid_key` & `https://api6.ppdeveloper.xyz/api/v1/udid/find`: Đối chiếu liên kết giữa UDID/UUID thiết bị và license key.
+
+3. **Kênh Điều khiển Thời gian thực `SSE` (`_UIKiteSSEC` tại `0xcc739c0`):**
+   - Sau khi xác thực thành công, `_UIKiteSSEC` mở kết nối Server-Sent Events giữ liên lạc liên tục với máy chủ (`[SSE] connected http=%d` tại `0x12c464`).
+   - Lắng nghe sự kiện điều khiển trực tiếp (`[SSE] event pk_thongbao=%d debstatus=%d hide=%d k_thongbao=%d k_khoamay=%d k_hethan=%d` tại `0x12d5b4`), cho phép máy chủ từ xa:
+     - Đẩy thông báo (`pk_thongbao`, `k_thongbao`).
+     - Ẩn/hiện giao diện tức thì (`hide` -> `[SSE] shouldHideView changed -> %d (live apply)` tại `0x12d4fc`).
+     - Khóa thiết bị (`k_khoamay`), báo hết hạn key (`k_hethan`) hoặc vô hiệu hóa gói (`debstatus`) ngay khi đang chạy.
+
+---
+
+### 11.4. Hệ thống Giao diện Menu (`_UISceneLayoutRenderController`)
+Giao diện điều khiển chính do lớp `_UISceneLayoutRenderController` (`0xcc73060`) quản lý, được mở thông qua nút nổi `_UIDragInteractionContainerView` (`0xe2914`, lưu tọa độ `JHDragView_X`, `JHDragView_Y`) hoặc cử chỉ chạm đa điểm `_UISystemMultitouchEventRecognizer` (`0xe4458`).
+
+1. **Bố cục 5 Tab Điều hướng (`_constructNavigationRailView` tại `0x33578` & `_populateViewportForSectionIndex:` tại `0x39ad0`):**
+   - **Tab 1 — `AIMBOT` / `AIM` (`_buildTraitSectionLayout_01:width:padding:` tại `0x3a6b8` & `_03` tại `0x3c3ac`):**
+     - Công tắc: `Bật Aimbot` (`Aimbot`), `Aim Line` (`AimLine`), `Hiện Vòng FOV` (`ShowFOV`), `Bỏ Qua Bot` (`IgnoreBot`), `Bỏ Qua Gục` (`IgnoreKnocked2`).
+     - Thanh trượt (`_appendContinuousValueRow:...` tại `0x4ce1c`): `Bán Kính FOV` (`AimFov`), `Độ Dày FOV` (`AimbotFOVThickness`).
+     - Bộ chọn phân đoạn:
+       - `Điều Kiện Kích Hoạt` (`AimWhen`): `Luôn Luôn` (`Always`), `Khi Bắn` (`Firing`), `Khi Ngắm` (`Scope`).
+       - `Vị Trí Ngắm` (`Target`): `Đầu` (`Head`), `Cổ` (`Neck`), `Thân` (`Body`).
+       - `Ưu Tiên Mục Tiêu` (`TargetPriority`): `Gần Nhất` (`Closest`), `Máu Thấp` (`Lowest HP`), `Trúng Đầu` (`Headshot`).
+       - `Màu Vòng FOV` (`AimbotFOVColor`): `Branco`, `Vermelho`, `Azul`, `Verde`, `Rosa`.
+   - **Tab 2 — `ESP` (`_buildTraitSectionLayout_02:width:padding:` tại `0x3a9dc`):**
+     - Công tắc: `Bật ESP` (`Enable`), `Khung ESP` (`Box`), `Đường Kẻ ESP` (`Lines`), `Bộ Xương` (`Skeleton`), `Thanh Máu` (`Health`), `Khoảng Cách` (`Distance`), `Tên ESP` (`Name`), `Viền ESP` (`Outline`), `Số Lượng Địch` (`EnemyCount` — hiển thị chuỗi `ENEMIES: %d (%d K)` tại `0x1f210`), `Hiệu Ứng Phát Sáng` (`Glow`).
+     - Bộ chọn màu (`_appendTintSwatchControlAtY:...` tại `0x44900`): `ESPLineColor`, `ESPBoxColor`, `ESPSkeletonColor`, `ESPNameColor`.
+   - **Tab 3 & 4 — `KHÁC` / `OTHER` (`_buildTraitSectionLayout_04:width:padding:` tại `0x3d9bc`):**
+     - `Fast Switch` (`Troca Rápida` — kèm nút nổi riêng lưu tọa độ `FSW_%@_X`, `FSW_%@_Y` và các khóa `qsw_send`, `qsw_dame`, `qsw_keo` tại `0xaf304 .. 0xb1f60`).
+     - `Chế Độ Stream` (`StreamMode` — ẩn lớp phủ khi quay màn hình / chụp ảnh bằng thuộc tính `disableUpdateMask` / secure container).
+     - `Xóa Khách (Reset Guest)` (`ResetGuest`).
+     - Các tính năng có hộp thoại cảnh báo xác nhận (`⚠️ CẢNH BÁO: Chức năng nguy hiểm, bạn có chắc muốn kích hoạt?` tại `0x4ebc4 .. 0x4f7f4`): `Aim Silent` (`AimSilent`), `Thay Đạn Nhanh` (`FastReload`).
+     - Nhóm mở khóa ngoại hình cục bộ (`0x3e308 .. 0x413bc`): `Mở Khóa Súng Lv7 (Evo Gun)` (`UnlockGunLv7`), `Mở Khóa Skin Nắm Đấm` (`UnlockFistSkin`), `Mở Khóa Trang Phục & Combo Đồ` (`UnlockOutfit` với 5 gói combo cài sẵn tại `0x72be8 .. 0x72fd8` và 8 vị trí bộ phận `0..7` từ `Mũ/Tóc` đến `Phụ Kiện`), `Đổi Hành Động Hello -> Emote Lv7` (`UnlockEmoteLv7`).
+   - **Tab 5 — `THÔNG TIN` / `INFO` (`_buildTraitSectionLayout_05:width:padding:` tại `0x472a8`):**
+     - Hiển thị `FPS`, `Thời Gian` (`Time`), `Thiết Bị` (`Device`), `Hệ Điều Hành` (`iOS`), `Tên Máy` (`Name`), `UDID`, `Key`, `Trạng Thái` (`Đã Kích Hoạt` / `Chưa Kích Hoạt`), `Hạn Dùng` (`Expires`), liên kết hỗ trợ (`https://t.me/pennyioshehehe`) và bộ chọn `Ngôn Ngữ` (`Tiếng Việt` / `English`) cùng nút chuyển chế độ Sáng/Tối (`ModMenuDarkMode`).
+
+2. **Cơ chế Lưu trữ Cấu hình Menu (`_writeTraitConfigurationArchive` tại `0x2aab8` & `_readTraitConfigurationArchive` tại `0x2be54`):**
+   - Lưu song song vào tệp `Documents/menu_settings.txt` (`0xa7824`), `NSUserDefaults` (`ModMenuCurrentTab`, `ModMenuDarkMode`, `ModMenuLanguage`, `ModMenuPanelX`, `ModMenuPanelY`) và mục Keychain `keychain://com.apple.uikit.traitcollection.storage/UITraitArchivePayloadV2` (`0x2aa44`).
+
+---
+
+### 11.5. Hệ thống Bảo vệ Đa tầng (`Anti-Tamper`, `Anti-Hook`, `Symbol Obfuscation`)
+1. **Trình Phân giải Symbol Ẩn (`sub_b5218` / `sub_b5310`):**
+   - Thay vì gọi trực tiếp các hàm hệ thống nhạy cảm qua bảng PLT/stubs thông thường, `Penny` dùng `sub_b5218(uint32_t id)` với 37 mã định danh (`0x3740 .. 0x377e`) và làm rối địa chỉ trả về bằng phép nhân `0xdf442d22ce4859b9` kết hợp XOR `0xbf58476d1ce4e5b9` (`0xb54f8 .. 0xb5530`).
+   - Danh mục các hàm được ẩn qua `sub_b5218`:
+     - **Thao tác bộ nhớ Mach VM:** `vm_read_overwrite` (`0x3753`), `vm_write` (`0x3750`), `vm_protect` (`0x3751`), `vm_deallocate` (`0x3756`), `vm_region_recurse_64` (`0x3757`).
+     - **Kiểm soát Thread & Exception Port (chống debug):** `task_threads` (`0x3754`), `thread_get_state` (`0x3755`), `thread_set_state` (`0x374a`), `task_set_state` (`0x374b`), `task_set_exception_ports` (`0x3748`).
+     - **Mật mã & Keychain:** `CCCrypt` (`0x3749`), `CCCryptorCreateWithMode` (`0x374e`), `CCCryptorUpdate` (`0x374f`), `CCCryptorRelease` (`0x374c`), `SecItemCopyMatching` (`0x374d`), `SecItemAdd` (`0x3742`), `SecItemUpdate` (`0x3743`), `SecItemDelete` (`0x3740`).
+     - **Kiểm tra Image & Hệ thống:** `_dyld_image_count` (`0x3741`), `_dyld_get_image_name` (`0x3746` — đối chiếu FNV hash của `'unityframework'` XOR `0xa5c39f17 == 0xea7fd991`), `_dyld_get_image_header` (`0x3747`), `_dyld_get_image_vmaddr_slide` (`0x3744`), `_dyld_register_func_for_add_image` (`0x3745`), `sysctl` (`0x377a`), `sysctlbyname` (`0x377b`).
+
+2. **Kiểm tra Toàn vẹn Mã máy và Ràng buộc Khóa (Code-Integrity Binding):**
+   - Mọi hàm trọng yếu (như `sub_9290` tại `0x9318 .. 0x93c8`, `sub_b5100`, `sub_b9994` tại `0xb9ad4 .. 0xb9b68`) đều đọc trực tiếp 4 byte lệnh máy đầu tiên tại 4 địa chỉ cố định của các hàm C Bridge (`0x12fccc`, `0x133484`, `0x133640`, `0x130dec`), trộn với giá trị tại `0xcc74890` (`0x0000034e89abcdef`) và bảng trạng thái xác thực tại `0xcc8faf0` để tính ra offset hoặc khóa giải mã tiếp theo. Nếu bất kỳ hàm nào trong 4 hàm trên bị đặt breakpoint hoặc patch ở đầu hàm, kết quả tính địa chỉ sẽ trỏ sang vùng nhớ sai và làm hỏng luồng thực thi mà không cần báo lỗi rõ ràng.
+
+3. **Kiểm tra Chữ ký Vùng nhớ và Cờ Độc (`Poison Flags` tại `sub_b5534` & `sub_cdad8`):**
+   - Hàm `sub_b5534` (`0xb5534 .. 0xb5658`) đọc 3 biến 64-bit tại `0xcc74870`, `0xcc8f6b8`, `0xcc74878`, trộn với `0xca4a91b8985a3c96` và `0xbf58476d1ce4e5b9`, rồi gọi hàm băm `sub_62a90(..., 0x31415927)` để so sánh kết quả với hằng số `0x8842428c`.
+   - Nếu giá trị băm không khớp `0x8842428c` (`0xb5614`), hàm không làm sập ngay tại chỗ mà bật **cờ độc (poison bits)**: gán bit `0x8000` vào `[0xcc8f6b0]`, gán bit dấu `0x80000000` vào `[0xcc74880]` và xóa `[0xcc8f6c0]` về `0` (`0xb563c .. 0xb5654`).
+   - Khi các cờ độc này bị bật, bất kỳ hàm giao diện hoặc hàm hậu xử lý nào chạy sau đó (như `+[_UISceneBootstrapLoader load]`, `_installHUDControlView`, `sub_cdad8`) khi kiểm tra `tbz w8, #0x1f` và `cbz w9` sẽ nhảy vào bẫy xóa `x29 = 0`, `x30 = 0`, `sp = 0` rồi thực thi `brk #1` / `udf #0`.
+
+4. **Kiểm tra Chống Hook / Anti-Swizzle kết hợp Syscall Trực tiếp:**
+   - Các hàm trong `PPAPIKey` kiểm tra `method_getImplementation` so với địa chỉ hàm tĩnh và quét opcode đầu hàm để tìm lệnh nhảy/breakpoint (`sub_2184e4`, `sub_2184f0`, `sub_20fca4`). Khi phát hiện hook, chúng gọi trực tiếp `mov w16, #1; svc #<imm>` (`SYS_exit`) để thoát tiến trình ngay lập tức.
