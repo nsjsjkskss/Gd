@@ -1,138 +1,138 @@
 === Table1 (15 entries) ===
-  [ 0] rva=0x021e8d20 bss=0xcc8f6c8 | 0x21e8d1c: br x16; 0x21e8d20: add x29, sp, #0x20; 0x21e8d24: mov x19, x0
-  [ 1] rva=0x015cb050 bss=0xcc8f6d0 | 0x15cb04c: br x16; 0x15cb050: stp x22, x21, [sp, #0x70]; 0x15cb054: stp x20, x19, [sp, #0x80]
-  [ 2] rva=0x04644998 bss=0xcc8f6d8 | 0x4644994: b #0xc388a40; 0x4644998: stp x20, x19, [sp, #0x10]; 0x464499c: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388a40 [ldr x17, #0xc3986c0; cbz x17, #0xc388a58; ldr x16, #0xc3986c8; eor x17, x17, x16; ror x17, x17, #0x1d; br x17; stp d11, d10, [sp, #-0x40]!]
-  [ 3] rva=0x04630914 bss=0xcc8f6e0 | 0x4630910: b #0xc39cb00; 0x4630914: stp x24, x23, [sp, #0x20]; 0x4630918: stp x22, x21, [sp, #0x30] -> __AUTH_EXEC stub@0xc39cb00 [ldr x17, #0xc3a01a0; cbz x17, #0xc39cb18; ldr x16, #0xc3a01a8; eor x17, x17, x16; ror x17, x17, #0x22; br x17; stp d11, d10, [sp, #-0x40]!]
-  [ 4] rva=0x08de4fe0 bss=0xcc8f6e8 | 0x8de4fdc: b #0xc39ca80; 0x8de4fe0: stp d15, d14, [sp, #0x10]; 0x8de4fe4: stp d13, d12, [sp, #0x20] -> __AUTH_EXEC stub@0xc39ca80 [ldr x17, #0xc3a01b0; cbz x17, #0xc39ca98; ldr x16, #0xc3a01b8; eor x17, x17, x16; ror x17, x17, #0x3c; br x17; stp d11, d10, [sp, #-0x40]!]
-  [ 5] rva=0x05624598 bss=0xcc8f6f0 | 0x5624594: b #0xc39c600; 0x5624598: stp x29, x30, [sp, #0x10]; 0x562459c: add x29, sp, #0x10 -> __AUTH_EXEC stub@0xc39c600 [ldr x17, #0xc3a00b0; cbz x17, #0xc39c618; ldr x16, #0xc3a00b8; eor x17, x17, x16; ror x17, x17, #2; br x17; stp d11, d10, [sp, #-0x40]!]
-  [ 6] rva=0x056a55ec bss=0xcc8f6f8 | 0x56a55e8: b #0xc39c580; 0x56a55ec: stp x29, x30, [sp, #0x10]; 0x56a55f0: add x29, sp, #0x10 -> __AUTH_EXEC stub@0xc39c580 [ldr x17, #0xc3a0250; cbz x17, #0xc39c598; ldr x16, #0xc3a0258; eor x17, x17, x16; ror x17, x17, #0x1f; br x17; stp d11, d10, [sp, #-0x40]!]
-  [ 7] rva=0x05918b20 bss=0xcc8f700 | 0x5918b1c: b #0xc39c8c0; 0x5918b20: stp x29, x30, [sp, #0x10]; 0x5918b24: add x29, sp, #0x10 -> __AUTH_EXEC stub@0xc39c8c0 [ldr x17, #0xc3a0140; cbz x17, #0xc39c8d8; ldr x16, #0xc3a0148; eor x17, x17, x16; ror x17, x17, #0x39; br x17; stp d11, d10, [sp, #-0x40]!]
-  [ 8] rva=0x05916994 bss=0xcc8f708 | 0x5916990: b #0xc39c900; 0x5916994: stp x29, x30, [sp, #0x10]; 0x5916998: add x29, sp, #0x10 -> __AUTH_EXEC stub@0xc39c900 [ldr x17, #0xc3a0190; cbz x17, #0xc39c918; ldr x16, #0xc3a0198; eor x17, x17, x16; ror x17, x17, #0x19; br x17; stp d11, d10, [sp, #-0x40]!]
-  [ 9] rva=0x06cea014 bss=0xcc8f710 | 0x6cea010: b #0xc39c3c0; 0x6cea014: stp x26, x25, [sp, #0x10]; 0x6cea018: stp x24, x23, [sp, #0x20] -> __AUTH_EXEC stub@0xc39c3c0 [ldr x17, #0xc3a00a0; cbz x17, #0xc39c3d8; ldr x16, #0xc3a00a8; eor x17, x17, x16; ror x17, x17, #0xd; br x17; stp d11, d10, [sp, #-0x40]!]
-  [10] rva=0x06ce9e28 bss=0xcc8f718 | 0x6ce9e24: b #0xc39c680; 0x6ce9e28: stp x20, x19, [sp, #0x10]; 0x6ce9e2c: stp x29, x30, [sp, #0x20] -> __AUTH_EXEC stub@0xc39c680 [ldr x17, #0xc3a0240; cbz x17, #0xc39c698; ldr x16, #0xc3a0248; eor x17, x17, x16; ror x17, x17, #0x2d; br x17; stp d11, d10, [sp, #-0x40]!]
-  [11] rva=0x06cea2c4 bss=0xcc8f720 | 0x6cea2c0: b #0xc39cb40; 0x6cea2c4: stp x24, x23, [sp, #0x10]; 0x6cea2c8: stp x22, x21, [sp, #0x20] -> __AUTH_EXEC stub@0xc39cb40 [ldr x17, #0xc3a02a0; cbz x17, #0xc39cb58; ldr x16, #0xc3a02a8; eor x17, x17, x16; ror x17, x17, #0x2a; br x17; stp d11, d10, [sp, #-0x40]!]
-  [12] rva=0x06cea478 bss=0xcc8f728 | 0x6cea474: b #0xc39c4c0; 0x6cea478: stp x20, x19, [sp, #0x10]; 0x6cea47c: stp x29, x30, [sp, #0x20] -> __AUTH_EXEC stub@0xc39c4c0 [ldr x17, #0xc3a0150; cbz x17, #0xc39c4d8; ldr x16, #0xc3a0158; eor x17, x17, x16; ror x17, x17, #0xa; br x17; stp d11, d10, [sp, #-0x40]!]
-  [13] rva=0x06cea618 bss=0xcc8f730 | 0x6cea614: b #0xc39c2c0; 0x6cea618: stp x26, x25, [sp, #0x50]; 0x6cea61c: stp x24, x23, [sp, #0x60] -> __AUTH_EXEC stub@0xc39c2c0 [ldr x17, #0xc3a0120; cbz x17, #0xc39c2d8; ldr x16, #0xc3a0128; eor x17, x17, x16; ror x17, x17, #0x27; br x17; stp d11, d10, [sp, #-0x40]!]
-  [14] rva=0x06ceadc4 bss=0xcc8f738 | 0x6ceadc0: b #0xc39cbc0; 0x6ceadc4: stp x22, x21, [sp, #0x10]; 0x6ceadc8: stp x20, x19, [sp, #0x20] -> __AUTH_EXEC stub@0xc39cbc0 [ldr x17, #0xc3a0110; cbz x17, #0xc39cbd8; ldr x16, #0xc3a0118; eor x17, x17, x16; ror x17, x17, #7; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 0] rva=0x021e8d20 bss=0xcc8f6c8 | 0x21e8d10: bl #0xa111500; 0x21e8d14: adrp x16, #0xc389000; 0x21e8d18: add x16, x16, #0x180; 0x21e8d1c: br x16; 0x21e8d20: add x29, sp, #0x20; 0x21e8d24: mov x19, x0 -> __TEXT_EXEC (12B long-branch) stub@0xc389180 [ldr x17, #0xc398520; cbz x17, #0xc389198; ldr x16, #0xc398528; eor x17, x17, x16; ror x17, x17, #0x19; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 1] rva=0x015cb050 bss=0xcc8f6d0 | 0x15cb040: bl #0x7c08160; 0x15cb044: adrp x16, #0xc389000; 0x15cb048: add x16, x16, #0x3c0; 0x15cb04c: br x16; 0x15cb050: stp x22, x21, [sp, #0x70]; 0x15cb054: stp x20, x19, [sp, #0x80] -> __TEXT_EXEC (12B long-branch) stub@0xc3893c0 [ldr x17, #0xc3980d0; cbz x17, #0xc3893d8; ldr x16, #0xc3980d8; eor x17, x17, x16; ror x17, x17, #0xc; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 2] rva=0x04644998 bss=0xcc8f6d8 | 0x4644988: add sp, sp, #0x40; 0x464498c: ret ; 0x4644990: bl #0xa111500; 0x4644994: b #0xc388a40; 0x4644998: stp x20, x19, [sp, #0x10]; 0x464499c: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388a40 [ldr x17, #0xc3986c0; cbz x17, #0xc388a58; ldr x16, #0xc3986c8; eor x17, x17, x16; ror x17, x17, #0x1d; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 3] rva=0x04630914 bss=0xcc8f6e0 | 0x4630904: ldp x24, x23, [sp], #0x40; 0x4630908: br x3; 0x463090c: bl #0xa111500; 0x4630910: b #0xc39cb00; 0x4630914: stp x24, x23, [sp, #0x20]; 0x4630918: stp x22, x21, [sp, #0x30] -> __AUTH_EXEC stub@0xc39cb00 [ldr x17, #0xc3a01a0; cbz x17, #0xc39cb18; ldr x16, #0xc3a01a8; eor x17, x17, x16; ror x17, x17, #0x22; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 4] rva=0x08de4fe0 bss=0xcc8f6e8 | 0x8de4fd0: ldp d15, d14, [sp, #0x20]; 0x8de4fd4: add sp, sp, #0xa0; 0x8de4fd8: ret ; 0x8de4fdc: b #0xc39ca80; 0x8de4fe0: stp d15, d14, [sp, #0x10]; 0x8de4fe4: stp d13, d12, [sp, #0x20] -> __AUTH_EXEC stub@0xc39ca80 [ldr x17, #0xc3a01b0; cbz x17, #0xc39ca98; ldr x16, #0xc3a01b8; eor x17, x17, x16; ror x17, x17, #0x3c; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 5] rva=0x05624598 bss=0xcc8f6f0 | 0x5624588: ldp x20, x19, [sp], #0x20; 0x562458c: ret ; 0x5624590: bl #0xa111500; 0x5624594: b #0xc39c600; 0x5624598: stp x29, x30, [sp, #0x10]; 0x562459c: add x29, sp, #0x10 -> __AUTH_EXEC stub@0xc39c600 [ldr x17, #0xc3a00b0; cbz x17, #0xc39c618; ldr x16, #0xc3a00b8; eor x17, x17, x16; ror x17, x17, #2; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 6] rva=0x056a55ec bss=0xcc8f6f8 | 0x56a55dc: ldp x24, x23, [sp, #0x20]; 0x56a55e0: add sp, sp, #0x60; 0x56a55e4: ret ; 0x56a55e8: b #0xc39c580; 0x56a55ec: stp x29, x30, [sp, #0x10]; 0x56a55f0: add x29, sp, #0x10 -> __AUTH_EXEC stub@0xc39c580 [ldr x17, #0xc3a0250; cbz x17, #0xc39c598; ldr x16, #0xc3a0258; eor x17, x17, x16; ror x17, x17, #0x1f; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 7] rva=0x05918b20 bss=0xcc8f700 | 0x5918b10: add sp, sp, #0x40; 0x5918b14: ret ; 0x5918b18: bl #0xa111500; 0x5918b1c: b #0xc39c8c0; 0x5918b20: stp x29, x30, [sp, #0x10]; 0x5918b24: add x29, sp, #0x10 -> __AUTH_EXEC stub@0xc39c8c0 [ldr x17, #0xc3a0140; cbz x17, #0xc39c8d8; ldr x16, #0xc3a0148; eor x17, x17, x16; ror x17, x17, #0x39; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 8] rva=0x05916994 bss=0xcc8f708 | 0x5916984: mov x0, x19; 0x5916988: bl #0xa19ddd0; 0x591698c: bl #0x9644; 0x5916990: b #0xc39c900; 0x5916994: stp x29, x30, [sp, #0x10]; 0x5916998: add x29, sp, #0x10 -> __AUTH_EXEC stub@0xc39c900 [ldr x17, #0xc3a0190; cbz x17, #0xc39c918; ldr x16, #0xc3a0198; eor x17, x17, x16; ror x17, x17, #0x19; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 9] rva=0x06cea014 bss=0xcc8f710 | 0x6cea004: ldp x29, x30, [sp, #0x10]; 0x6cea008: ldp x20, x19, [sp], #0x20; 0x6cea00c: ret ; 0x6cea010: b #0xc39c3c0; 0x6cea014: stp x26, x25, [sp, #0x10]; 0x6cea018: stp x24, x23, [sp, #0x20] -> __AUTH_EXEC stub@0xc39c3c0 [ldr x17, #0xc3a00a0; cbz x17, #0xc39c3d8; ldr x16, #0xc3a00a8; eor x17, x17, x16; ror x17, x17, #0xd; br x17; stp d11, d10, [sp, #-0x40]!]
+  [10] rva=0x06ce9e28 bss=0xcc8f718 | 0x6ce9e18: ldp x22, x21, [sp], #0x30; 0x6ce9e1c: b #0x6ce9e24; 0x6ce9e20: bl #0xa111500; 0x6ce9e24: b #0xc39c680; 0x6ce9e28: stp x20, x19, [sp, #0x10]; 0x6ce9e2c: stp x29, x30, [sp, #0x20] -> __AUTH_EXEC stub@0xc39c680 [ldr x17, #0xc3a0240; cbz x17, #0xc39c698; ldr x16, #0xc3a0248; eor x17, x17, x16; ror x17, x17, #0x2d; br x17; stp d11, d10, [sp, #-0x40]!]
+  [11] rva=0x06cea2c4 bss=0xcc8f720 | 0x6cea2b4: mov x1, #0; 0x6cea2b8: blr x9; 0x6cea2bc: bl #0xa111500; 0x6cea2c0: b #0xc39cb40; 0x6cea2c4: stp x24, x23, [sp, #0x10]; 0x6cea2c8: stp x22, x21, [sp, #0x20] -> __AUTH_EXEC stub@0xc39cb40 [ldr x17, #0xc3a02a0; cbz x17, #0xc39cb58; ldr x16, #0xc3a02a8; eor x17, x17, x16; ror x17, x17, #0x2a; br x17; stp d11, d10, [sp, #-0x40]!]
+  [12] rva=0x06cea478 bss=0xcc8f728 | 0x6cea468: mov w1, #0; 0x6cea46c: bl #0x831b1c4; 0x6cea470: bl #0xa111500; 0x6cea474: b #0xc39c4c0; 0x6cea478: stp x20, x19, [sp, #0x10]; 0x6cea47c: stp x29, x30, [sp, #0x20] -> __AUTH_EXEC stub@0xc39c4c0 [ldr x17, #0xc3a0150; cbz x17, #0xc39c4d8; ldr x16, #0xc3a0158; eor x17, x17, x16; ror x17, x17, #0xa; br x17; stp d11, d10, [sp, #-0x40]!]
+  [13] rva=0x06cea618 bss=0xcc8f730 | 0x6cea608: b #0x8aa2588; 0x6cea60c: bl #0xa11150c; 0x6cea610: bl #0xa111500; 0x6cea614: b #0xc39c2c0; 0x6cea618: stp x26, x25, [sp, #0x50]; 0x6cea61c: stp x24, x23, [sp, #0x60] -> __AUTH_EXEC stub@0xc39c2c0 [ldr x17, #0xc3a0120; cbz x17, #0xc39c2d8; ldr x16, #0xc3a0128; eor x17, x17, x16; ror x17, x17, #0x27; br x17; stp d11, d10, [sp, #-0x40]!]
+  [14] rva=0x06ceadc4 bss=0xcc8f738 | 0x6ceadb4: cmp w22, #1; 0x6ceadb8: b.eq #0x6cead44; 0x6ceadbc: b #0x6ceada0; 0x6ceadc0: b #0xc39cbc0; 0x6ceadc4: stp x22, x21, [sp, #0x10]; 0x6ceadc8: stp x20, x19, [sp, #0x20] -> __AUTH_EXEC stub@0xc39cbc0 [ldr x17, #0xc3a0110; cbz x17, #0xc39cbd8; ldr x16, #0xc3a0118; eor x17, x17, x16; ror x17, x17, #7; br x17; stp d11, d10, [sp, #-0x40]!]
 
 === Table2 (19 entries) ===
-  [ 0] rva=0x020f2d94 bss=0xcc8f740 | 0x20f2d90: br x16; 0x20f2d94: stp x20, x19, [sp, #0x30]; 0x20f2d98: stp x29, x30, [sp, #0x40]
-  [ 1] rva=0x021ebd24 bss=0xcc8f748 | 0x21ebd20: br x16; 0x21ebd24: stp x22, x21, [sp, #0x50]; 0x21ebd28: stp x20, x19, [sp, #0x60]
-  [ 2] rva=0x046447cc bss=0xcc8f750 | 0x46447c8: b #0xc3885c0; 0x46447cc: stp x20, x19, [sp, #0x10]; 0x46447d0: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc3885c0 [ldr x17, #0xc3981f0; cbz x17, #0xc3885d8; ldr x16, #0xc3981f8; eor x17, x17, x16; ror x17, x17, #0x10; br x17; stp d11, d10, [sp, #-0x40]!]
-  [ 3] rva=0x046448cc bss=0xcc8f758 | 0x46448c8: b #0xc388e00; 0x46448cc: stp x22, x21, [sp, #0x10]; 0x46448d0: stp x20, x19, [sp, #0x20] -> __TEXT_EXEC stub@0xc388e00 [ldr x17, #0xc3983b0; cbz x17, #0xc388e18; ldr x16, #0xc3983b8; eor x17, x17, x16; ror x17, x17, #0x35; br x17; stp d11, d10, [sp, #-0x40]!]
-  [ 4] rva=0x086ff118 bss=0xcc8f760 | 0x86ff114: b #0xc389280; 0x86ff118: stp x20, x19, [sp, #0x10]; 0x86ff11c: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc389280 [ldr x17, #0xc3984c0; cbz x17, #0xc389298; ldr x16, #0xc3984c8; eor x17, x17, x16; ror x17, x17, #5; br x17; stp d11, d10, [sp, #-0x40]!]
-  [ 5] rva=0x021ea8c8 bss=0xcc8f768 | 0x21ea8c4: br x16; 0x21ea8c8: stp x22, x21, [sp, #0x50]; 0x21ea8cc: stp x20, x19, [sp, #0x60]
-  [ 6] rva=0x021eab34 bss=0xcc8f770 | 0x21eab30: br x16; 0x21eab34: stp x24, x23, [sp, #0x30]; 0x21eab38: stp x22, x21, [sp, #0x40]
-  [ 7] rva=0x0451a004 bss=0xcc8f778 | 0x451a000: b #0xc39c440; 0x451a004: stp x29, x30, [sp, #0x10]; 0x451a008: add x29, sp, #0x10 -> __AUTH_EXEC stub@0xc39c440 [ldr x17, #0xc3a02e0; cbz x17, #0xc39c458; ldr x16, #0xc3a02e8; eor x17, x17, x16; ror x17, x17, #5; br x17; stp d11, d10, [sp, #-0x40]!]
-  [ 8] rva=0x05926d7c bss=0xcc8f780 | 0x5926d78: b #0xc39c740; 0x5926d7c: stp x22, x21, [sp, #0x10]; 0x5926d80: stp x20, x19, [sp, #0x20] -> __AUTH_EXEC stub@0xc39c740 [ldr x17, #0xc3a0220; cbz x17, #0xc39c758; ldr x16, #0xc3a0228; eor x17, x17, x16; ror x17, x17, #0x1c; br x17; stp d11, d10, [sp, #-0x40]!]
-  [ 9] rva=0x08df4d74 bss=0xcc8f788 | 0x8df4d70: b #0xc39c500; 0x8df4d74: stp x20, x19, [sp, #0x10]; 0x8df4d78: stp x29, x30, [sp, #0x20] -> __AUTH_EXEC stub@0xc39c500 [ldr x17, #0xc3a01f0; cbz x17, #0xc39c518; ldr x16, #0xc3a01f8; eor x17, x17, x16; ror x17, x17, #0x36; br x17; stp d11, d10, [sp, #-0x40]!]
-  [10] rva=0x08df4f14 bss=0xcc8f790 | 0x8df4f10: b #0xc39c640; 0x8df4f14: stp x29, x30, [sp, #0x10]; 0x8df4f18: add x29, sp, #0x10 -> __AUTH_EXEC stub@0xc39c640 [ldr x17, #0xc3a0090; cbz x17, #0xc39c658; ldr x16, #0xc3a0098; eor x17, x17, x16; ror x17, x17, #0x16; br x17; stp d11, d10, [sp, #-0x40]!]
-  [11] rva=0x0646d8cc bss=0xcc8f798 | 0x646d8c8: b #0xc39c380; 0x646d8cc: stp x22, x21, [sp, #0x10]; 0x646d8d0: stp x20, x19, [sp, #0x20] -> __AUTH_EXEC stub@0xc39c380 [ldr x17, #0xc3a0170; cbz x17, #0xc39c398; ldr x16, #0xc3a0178; eor x17, x17, x16; ror x17, x17, #0x33; br x17; stp d11, d10, [sp, #-0x40]!]
-  [12] rva=0x0562b65c bss=0xcc8f7a0 | 0x562b658: b #0xc39c800; 0x562b65c: stp x29, x30, [sp, #0x10]; 0x562b660: add x29, sp, #0x10 -> __AUTH_EXEC stub@0xc39c800 [ldr x17, #0xc3a01c0; cbz x17, #0xc39c818; ldr x16, #0xc3a01c8; eor x17, x17, x16; ror x17, x17, #0x13; br x17; stp d11, d10, [sp, #-0x40]!]
-  [13] rva=0x05ce758c bss=0xcc8f7a8 | 0x5ce7588: b #0xc39c940; 0x5ce758c: stp x26, x25, [sp, #0xb0]; 0x5ce7590: stp x24, x23, [sp, #0xc0] -> __AUTH_EXEC stub@0xc39c940 [ldr x17, #0xc3a0100; cbz x17, #0xc39c958; ldr x16, #0xc3a0108; eor x17, x17, x16; ror x17, x17, #0x30; br x17; stp d11, d10, [sp, #-0x40]!]
-  [14] rva=0x05ddc990 bss=0xcc8f7b0 | 0x5ddc98c: b #0xc39ca00; 0x5ddc990: stp x20, x19, [sp, #0x10]; 0x5ddc994: stp x29, x30, [sp, #0x20] -> __AUTH_EXEC stub@0xc39ca00 [ldr x17, #0xc3a00d0; cbz x17, #0xc39ca18; ldr x16, #0xc3a00d8; eor x17, x17, x16; ror x17, x17, #0x10; br x17; stp d11, d10, [sp, #-0x40]!]
-  [15] rva=0x03421fc0 bss=0xcc8f7b8 | 0x3421fbc: br x16; 0x3421fc0: stp x22, x21, [sp, #0x30]; 0x3421fc4: stp x20, x19, [sp, #0x40]
-  [16] rva=0x03422264 bss=0xcc8f7c0 | 0x3422260: br x16; 0x3422264: stp x29, x30, [sp, #0x30]; 0x3422268: add x29, sp, #0x30
-  [17] rva=0x03422330 bss=0xcc8f7c8 | 0x342232c: br x16; 0x3422330: stp x22, x21, [sp, #0x30]; 0x3422334: stp x20, x19, [sp, #0x40]
-  [18] rva=0x034225c4 bss=0xcc8f7d0 | 0x34225c0: br x16; 0x34225c4: stp d9, d8, [sp, #0x30]; 0x34225c8: stp x22, x21, [sp, #0x40]
+  [ 0] rva=0x020f2d94 bss=0xcc8f740 | 0x20f2d84: b #0x8b7c230; 0x20f2d88: adrp x16, #0xc388000; 0x20f2d8c: add x16, x16, #0xc80; 0x20f2d90: br x16; 0x20f2d94: stp x20, x19, [sp, #0x30]; 0x20f2d98: stp x29, x30, [sp, #0x40] -> __TEXT_EXEC (12B long-branch) stub@0xc388c80 [ldr x17, #0xc3983c0; cbz x17, #0xc388c98; ldr x16, #0xc3983c8; eor x17, x17, x16; ror x17, x17, #0x31; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 1] rva=0x021ebd24 bss=0xcc8f748 | 0x21ebd14: bl #0xa11150c; 0x21ebd18: adrp x16, #0xc388000; 0x21ebd1c: add x16, x16, #0xbc0; 0x21ebd20: br x16; 0x21ebd24: stp x22, x21, [sp, #0x50]; 0x21ebd28: stp x20, x19, [sp, #0x60] -> __TEXT_EXEC (12B long-branch) stub@0xc388bc0 [ldr x17, #0xc3985b0; cbz x17, #0xc388bd8; ldr x16, #0xc3985b8; eor x17, x17, x16; ror x17, x17, #1; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 2] rva=0x046447cc bss=0xcc8f750 | 0x46447bc: ldp x22, x21, [sp], #0x30; 0x46447c0: b #0x6d2cd4c; 0x46447c4: bl #0xa111500; 0x46447c8: b #0xc3885c0; 0x46447cc: stp x20, x19, [sp, #0x10]; 0x46447d0: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc3885c0 [ldr x17, #0xc3981f0; cbz x17, #0xc3885d8; ldr x16, #0xc3981f8; eor x17, x17, x16; ror x17, x17, #0x10; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 3] rva=0x046448cc bss=0xcc8f758 | 0x46448bc: ldp x22, x21, [sp], #0x30; 0x46448c0: ret ; 0x46448c4: bl #0xa111500; 0x46448c8: b #0xc388e00; 0x46448cc: stp x22, x21, [sp, #0x10]; 0x46448d0: stp x20, x19, [sp, #0x20] -> __TEXT_EXEC stub@0xc388e00 [ldr x17, #0xc3983b0; cbz x17, #0xc388e18; ldr x16, #0xc3983b8; eor x17, x17, x16; ror x17, x17, #0x35; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 4] rva=0x086ff118 bss=0xcc8f760 | 0x86ff108: ldp x20, x19, [sp, #0x10]; 0x86ff10c: add sp, sp, #0x30; 0x86ff110: br x2; 0x86ff114: b #0xc389280; 0x86ff118: stp x20, x19, [sp, #0x10]; 0x86ff11c: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc389280 [ldr x17, #0xc3984c0; cbz x17, #0xc389298; ldr x16, #0xc3984c8; eor x17, x17, x16; ror x17, x17, #5; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 5] rva=0x021ea8c8 bss=0xcc8f768 | 0x21ea8b8: bl #0xa1114f4; 0x21ea8bc: adrp x16, #0xc39c000; 0x21ea8c0: add x16, x16, #0x6c0; 0x21ea8c4: br x16; 0x21ea8c8: stp x22, x21, [sp, #0x50]; 0x21ea8cc: stp x20, x19, [sp, #0x60] -> __AUTH_EXEC (12B long-branch) stub@0xc39c6c0 [ldr x17, #0xc3a0280; cbz x17, #0xc39c6d8; ldr x16, #0xc3a0288; eor x17, x17, x16; ror x17, x17, #8; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 6] rva=0x021eab34 bss=0xcc8f770 | 0x21eab24: bl #0xa111500; 0x21eab28: adrp x16, #0xc39c000; 0x21eab2c: add x16, x16, #0x480; 0x21eab30: br x16; 0x21eab34: stp x24, x23, [sp, #0x30]; 0x21eab38: stp x22, x21, [sp, #0x40] -> __AUTH_EXEC (12B long-branch) stub@0xc39c480 [ldr x17, #0xc3a02c0; cbz x17, #0xc39c498; ldr x16, #0xc3a02c8; eor x17, x17, x16; ror x17, x17, #0x25; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 7] rva=0x0451a004 bss=0xcc8f778 | 0x4519ff4: ldp x20, x19, [sp], #0x20; 0x4519ff8: b #0x6caf660; 0x4519ffc: bl #0xa111500; 0x451a000: b #0xc39c440; 0x451a004: stp x29, x30, [sp, #0x10]; 0x451a008: add x29, sp, #0x10 -> __AUTH_EXEC stub@0xc39c440 [ldr x17, #0xc3a02e0; cbz x17, #0xc39c458; ldr x16, #0xc3a02e8; eor x17, x17, x16; ror x17, x17, #5; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 8] rva=0x05926d7c bss=0xcc8f780 | 0x5926d6c: ldp x22, x21, [sp], #0x30; 0x5926d70: br x2; 0x5926d74: bl #0xa111500; 0x5926d78: b #0xc39c740; 0x5926d7c: stp x22, x21, [sp, #0x10]; 0x5926d80: stp x20, x19, [sp, #0x20] -> __AUTH_EXEC stub@0xc39c740 [ldr x17, #0xc3a0220; cbz x17, #0xc39c758; ldr x16, #0xc3a0228; eor x17, x17, x16; ror x17, x17, #0x1c; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 9] rva=0x08df4d74 bss=0xcc8f788 | 0x8df4d64: ldp x20, x19, [sp, #0x10]; 0x8df4d68: ldp x22, x21, [sp], #0x30; 0x8df4d6c: br x2; 0x8df4d70: b #0xc39c500; 0x8df4d74: stp x20, x19, [sp, #0x10]; 0x8df4d78: stp x29, x30, [sp, #0x20] -> __AUTH_EXEC stub@0xc39c500 [ldr x17, #0xc3a01f0; cbz x17, #0xc39c518; ldr x16, #0xc3a01f8; eor x17, x17, x16; ror x17, x17, #0x36; br x17; stp d11, d10, [sp, #-0x40]!]
+  [10] rva=0x08df4f14 bss=0xcc8f790 | 0x8df4f04: ldp x20, x19, [sp, #0x10]; 0x8df4f08: ldp x22, x21, [sp], #0x30; 0x8df4f0c: br x2; 0x8df4f10: b #0xc39c640; 0x8df4f14: stp x29, x30, [sp, #0x10]; 0x8df4f18: add x29, sp, #0x10 -> __AUTH_EXEC stub@0xc39c640 [ldr x17, #0xc3a0090; cbz x17, #0xc39c658; ldr x16, #0xc3a0098; eor x17, x17, x16; ror x17, x17, #0x16; br x17; stp d11, d10, [sp, #-0x40]!]
+  [11] rva=0x0646d8cc bss=0xcc8f798 | 0x646d8bc: add sp, sp, #0xe0; 0x646d8c0: ret ; 0x646d8c4: bl #0xa111500; 0x646d8c8: b #0xc39c380; 0x646d8cc: stp x22, x21, [sp, #0x10]; 0x646d8d0: stp x20, x19, [sp, #0x20] -> __AUTH_EXEC stub@0xc39c380 [ldr x17, #0xc3a0170; cbz x17, #0xc39c398; ldr x16, #0xc3a0178; eor x17, x17, x16; ror x17, x17, #0x33; br x17; stp d11, d10, [sp, #-0x40]!]
+  [12] rva=0x0562b65c bss=0xcc8f7a0 | 0x562b64c: ldp x20, x19, [sp], #0x20; 0x562b650: ret ; 0x562b654: bl #0xa111500; 0x562b658: b #0xc39c800; 0x562b65c: stp x29, x30, [sp, #0x10]; 0x562b660: add x29, sp, #0x10 -> __AUTH_EXEC stub@0xc39c800 [ldr x17, #0xc3a01c0; cbz x17, #0xc39c818; ldr x16, #0xc3a01c8; eor x17, x17, x16; ror x17, x17, #0x13; br x17; stp d11, d10, [sp, #-0x40]!]
+  [13] rva=0x05ce758c bss=0xcc8f7a8 | 0x5ce757c: add sp, sp, #0x80; 0x5ce7580: ret ; 0x5ce7584: bl #0xa111500; 0x5ce7588: b #0xc39c940; 0x5ce758c: stp x26, x25, [sp, #0xb0]; 0x5ce7590: stp x24, x23, [sp, #0xc0] -> __AUTH_EXEC stub@0xc39c940 [ldr x17, #0xc3a0100; cbz x17, #0xc39c958; ldr x16, #0xc3a0108; eor x17, x17, x16; ror x17, x17, #0x30; br x17; stp d11, d10, [sp, #-0x40]!]
+  [14] rva=0x05ddc990 bss=0xcc8f7b0 | 0x5ddc980: add sp, sp, #0x80; 0x5ddc984: ret ; 0x5ddc988: bl #0xa111500; 0x5ddc98c: b #0xc39ca00; 0x5ddc990: stp x20, x19, [sp, #0x10]; 0x5ddc994: stp x29, x30, [sp, #0x20] -> __AUTH_EXEC stub@0xc39ca00 [ldr x17, #0xc3a00d0; cbz x17, #0xc39ca18; ldr x16, #0xc3a00d8; eor x17, x17, x16; ror x17, x17, #0x10; br x17; stp d11, d10, [sp, #-0x40]!]
+  [15] rva=0x03421fc0 bss=0xcc8f7b8 | 0x3421fb0: bl #0xa111500; 0x3421fb4: adrp x16, #0xc39c000; 0x3421fb8: add x16, x16, #0x700; 0x3421fbc: br x16; 0x3421fc0: stp x22, x21, [sp, #0x30]; 0x3421fc4: stp x20, x19, [sp, #0x40] -> __AUTH_EXEC (12B long-branch) stub@0xc39c700 [ldr x17, #0xc3a0130; cbz x17, #0xc39c718; ldr x16, #0xc3a0138; eor x17, x17, x16; ror x17, x17, #0x26; br x17; stp d11, d10, [sp, #-0x40]!]
+  [16] rva=0x03422264 bss=0xcc8f7c0 | 0x3422254: bl #0xa111500; 0x3422258: adrp x16, #0xc39c000; 0x342225c: add x16, x16, #0x340; 0x3422260: br x16; 0x3422264: stp x29, x30, [sp, #0x30]; 0x3422268: add x29, sp, #0x30 -> __AUTH_EXEC (12B long-branch) stub@0xc39c340 [ldr x17, #0xc3a0330; cbz x17, #0xc39c358; ldr x16, #0xc3a0338; eor x17, x17, x16; ror x17, x17, #6; br x17; stp d11, d10, [sp, #-0x40]!]
+  [17] rva=0x03422330 bss=0xcc8f7c8 | 0x3422320: bl #0xa111500; 0x3422324: adrp x16, #0xc39c000; 0x3422328: add x16, x16, #0x200; 0x342232c: br x16; 0x3422330: stp x22, x21, [sp, #0x30]; 0x3422334: stp x20, x19, [sp, #0x40] -> __AUTH_EXEC (12B long-branch) stub@0xc39c200 [ldr x17, #0xc3a0260; cbz x17, #0xc39c218; ldr x16, #0xc3a0268; eor x17, x17, x16; ror x17, x17, #0x23; br x17; stp d11, d10, [sp, #-0x40]!]
+  [18] rva=0x034225c4 bss=0xcc8f7d0 | 0x34225b4: bl #0xa111500; 0x34225b8: adrp x16, #0xc39c000; 0x34225bc: add x16, x16, #0x9c0; 0x34225c0: br x16; 0x34225c4: stp d9, d8, [sp, #0x30]; 0x34225c8: stp x22, x21, [sp, #0x40] -> __AUTH_EXEC (12B long-branch) stub@0xc39c9c0 [ldr x17, #0xc3a0290; cbz x17, #0xc39c9d8; ldr x16, #0xc3a0298; eor x17, x17, x16; ror x17, x17, #3; br x17; stp d11, d10, [sp, #-0x40]!]
 
 === Table3 (96 entries) ===
-  [ 0] rva=0x044b7528 bss=0xcc8f7e8 | 0x44b7524: b #0xc388340; 0x44b7528: stp x24, x23, [sp, #0x10]; 0x44b752c: stp x22, x21, [sp, #0x20] -> __TEXT_EXEC stub@0xc388340 [ldr x17, #0xc398380; cbz x17, #0xc388358; ldr x16, #0xc398388; eor x17, x17, x16; ror x17, x17, #0x2a; br x17; stp d11, d10, [sp, #-0x40]!]
-  [ 1] rva=0x045399ec bss=0xcc8f7f0 | 0x45399e8: b #0xc388580; 0x45399ec: stp x29, x30, [sp, #0x10]; 0x45399f0: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388580 [ldr x17, #0xc3985c0; cbz x17, #0xc388598; ldr x16, #0xc3985c8; eor x17, x17, x16; ror x17, x17, #0x12; br x17; stp d11, d10, [sp, #-0x40]!]
-  [ 2] rva=0x045cb6c4 bss=0xcc8f7f8 | 0x45cb6c0: b #0xc389600; 0x45cb6c4: stp x22, x21, [sp, #0x10]; 0x45cb6c8: stp x20, x19, [sp, #0x20] -> __TEXT_EXEC stub@0xc389600 [ldr x17, #0xc3984d0; cbz x17, #0xc389618; ldr x16, #0xc3984d8; eor x17, x17, x16; ror x17, x17, #0x37; br x17; stp d11, d10, [sp, #-0x40]!]
-  [ 3] rva=0x046beb54 bss=0xcc8f800 | 0x46beb50: b #0xc389140; 0x46beb54: stp x29, x30, [sp, #0x10]; 0x46beb58: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389140 [ldr x17, #0xc3986f0; cbz x17, #0xc389158; ldr x16, #0xc3986f8; eor x17, x17, x16; ror x17, x17, #0x1f; br x17; stp d11, d10, [sp, #-0x40]!]
-  [ 4] rva=0x04726c04 bss=0xcc8f808 | 0x4726c00: b #0xc388d00; 0x4726c04: stp x20, x19, [sp, #0x10]; 0x4726c08: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388d00 [ldr x17, #0xc398320; cbz x17, #0xc388d18; ldr x16, #0xc398328; eor x17, x17, x16; ror x17, x17, #7; br x17; stp d11, d10, [sp, #-0x40]!]
-  [ 5] rva=0x047ab154 bss=0xcc8f810 | 0x47ab150: b #0xc388dc0; 0x47ab154: stp x29, x30, [sp, #0x10]; 0x47ab158: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388dc0 [ldr x17, #0xc3980f0; cbz x17, #0xc388dd8; ldr x16, #0xc3980f8; eor x17, x17, x16; ror x17, x17, #0x2c; br x17; stp d11, d10, [sp, #-0x40]!]
-  [ 6] rva=0x048e6f1c bss=0xcc8f818 | 0x48e6f18: b #0xc389a40; 0x48e6f1c: stp x29, x30, [sp, #0x10]; 0x48e6f20: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389a40 [ldr x17, #0xc398160; cbz x17, #0xc389a58; ldr x16, #0xc398168; eor x17, x17, x16; ror x17, x17, #0x14; br x17; stp d11, d10, [sp, #-0x40]!]
-  [ 7] rva=0x04a0de78 bss=0xcc8f820 | 0x4a0de74: b #0xc388300; 0x4a0de78: stp x29, x30, [sp, #0x10]; 0x4a0de7c: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388300 [ldr x17, #0xc398440; cbz x17, #0xc388318; ldr x16, #0xc398448; eor x17, x17, x16; ror x17, x17, #0x39; br x17; stp d11, d10, [sp, #-0x40]!]
-  [ 8] rva=0x04a8d60c bss=0xcc8f828 | 0x4a8d608: b #0xc388fc0; 0x4a8d60c: stp x29, x30, [sp, #0x10]; 0x4a8d610: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388fc0 [ldr x17, #0xc3983d0; cbz x17, #0xc388fd8; ldr x16, #0xc3983d8; eor x17, x17, x16; ror x17, x17, #0x21; br x17; stp d11, d10, [sp, #-0x40]!]
-  [ 9] rva=0x04b48f44 bss=0xcc8f830 | 0x4b48f40: b #0xc388280; 0x4b48f44: stp x29, x30, [sp, #0x10]; 0x4b48f48: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388280 [ldr x17, #0xc398110; cbz x17, #0xc388298; ldr x16, #0xc398118; eor x17, x17, x16; ror x17, x17, #9; br x17; stp d11, d10, [sp, #-0x40]!]
-  [10] rva=0x05036fa8 bss=0xcc8f838 | 0x5036fa4: b #0xc389580; 0x5036fa8: stp x29, x30, [sp, #0x10]; 0x5036fac: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389580 [ldr x17, #0xc3981b0; cbz x17, #0xc389598; ldr x16, #0xc3981b8; eor x17, x17, x16; ror x17, x17, #0x2e; br x17; stp d11, d10, [sp, #-0x40]!]
-  [11] rva=0x0510d27c bss=0xcc8f840 | 0x510d278: b #0xc389c40; 0x510d27c: stp x29, x30, [sp, #0x10]; 0x510d280: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389c40 [ldr x17, #0xc398640; cbz x17, #0xc389c58; ldr x16, #0xc398648; eor x17, x17, x16; ror x17, x17, #0x16; br x17; stp d11, d10, [sp, #-0x40]!]
-  [12] rva=0x051c28c8 bss=0xcc8f848 | 0x51c28c4: b #0xc388c00; 0x51c28c8: stp x29, x30, [sp, #0x10]; 0x51c28cc: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388c00 [ldr x17, #0xc398580; cbz x17, #0xc388c18; ldr x16, #0xc398588; eor x17, x17, x16; ror x17, x17, #0x3b; br x17; stp d11, d10, [sp, #-0x40]!]
-  [13] rva=0x052d0dcc bss=0xcc8f850 | 0x52d0dc8: b #0xc3888c0; 0x52d0dcc: stp x20, x19, [sp, #0x10]; 0x52d0dd0: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc3888c0 [ldr x17, #0xc398540; cbz x17, #0xc3888d8; ldr x16, #0xc398548; eor x17, x17, x16; ror x17, x17, #0x23; br x17; stp d11, d10, [sp, #-0x40]!]
-  [14] rva=0x05332d70 bss=0xcc8f858 | 0x5332d6c: b #0xc388a80; 0x5332d70: stp x29, x30, [sp, #0x10]; 0x5332d74: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388a80 [ldr x17, #0xc3983e0; cbz x17, #0xc388a98; ldr x16, #0xc3983e8; eor x17, x17, x16; ror x17, x17, #0xb; br x17; stp d11, d10, [sp, #-0x40]!]
-  [15] rva=0x053b94e8 bss=0xcc8f860 | 0x53b94e4: b #0xc389980; 0x53b94e8: stp x29, x30, [sp, #0x10]; 0x53b94ec: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389980 [ldr x17, #0xc3984e0; cbz x17, #0xc389998; ldr x16, #0xc3984e8; eor x17, x17, x16; ror x17, x17, #0x30; br x17; stp d11, d10, [sp, #-0x40]!]
-  [16] rva=0x0548d618 bss=0xcc8f868 | 0x548d614: b #0xc388540; 0x548d618: stp x29, x30, [sp, #0x10]; 0x548d61c: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388540 [ldr x17, #0xc398690; cbz x17, #0xc388558; ldr x16, #0xc398698; eor x17, x17, x16; ror x17, x17, #0x18; br x17; stp d11, d10, [sp, #-0x40]!]
-  [17] rva=0x0550b8cc bss=0xcc8f870 | 0x550b8c8: b #0xc388680; 0x550b8cc: stp x20, x19, [sp, #0x10]; 0x550b8d0: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388680 [ldr x17, #0xc398250; cbz x17, #0xc388698; ldr x16, #0xc398258; eor x17, x17, x16; ror x17, x17, #0x3d; br x17; stp d11, d10, [sp, #-0x40]!]
-  [18] rva=0x055cf118 bss=0xcc8f878 | 0x55cf114: b #0xc388640; 0x55cf118: stp x29, x30, [sp, #0x10]; 0x55cf11c: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388640 [ldr x17, #0xc398600; cbz x17, #0xc388658; ldr x16, #0xc398608; eor x17, x17, x16; ror x17, x17, #0x25; br x17; stp d11, d10, [sp, #-0x40]!]
-  [19] rva=0x056f5ad4 bss=0xcc8f880 | 0x56f5ad0: b #0xc389240; 0x56f5ad4: stp x29, x30, [sp, #0x10]; 0x56f5ad8: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389240 [ldr x17, #0xc398130; cbz x17, #0xc389258; ldr x16, #0xc398138; eor x17, x17, x16; ror x17, x17, #0xd; br x17; stp d11, d10, [sp, #-0x40]!]
-  [20] rva=0x057b9374 bss=0xcc8f888 | 0x57b9370: b #0xc389ac0; 0x57b9374: stp x20, x19, [sp, #0x10]; 0x57b9378: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc389ac0 [ldr x17, #0xc398150; cbz x17, #0xc389ad8; ldr x16, #0xc398158; eor x17, x17, x16; ror x17, x17, #0x32; br x17; stp d11, d10, [sp, #-0x40]!]
-  [21] rva=0x0583aec8 bss=0xcc8f890 | 0x583aec4: b #0xc389640; 0x583aec8: stp x29, x30, [sp, #0x10]; 0x583aecc: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389640 [ldr x17, #0xc398710; cbz x17, #0xc389658; ldr x16, #0xc398718; eor x17, x17, x16; ror x17, x17, #0x1a; br x17; stp d11, d10, [sp, #-0x40]!]
-  [22] rva=0x0583d4b8 bss=0xcc8f898 | 0x583d4b4: b #0xc389880; 0x583d4b8: stp x29, x30, [sp, #0x10]; 0x583d4bc: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389880 [ldr x17, #0xc398180; cbz x17, #0xc389898; ldr x16, #0xc398188; eor x17, x17, x16; ror x17, x17, #2; br x17; stp d11, d10, [sp, #-0x40]!]
-  [23] rva=0x05848df4 bss=0xcc8f8a0 | 0x5848df0: b #0xc388940; 0x5848df4: stp x20, x19, [sp, #0x10]; 0x5848df8: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388940 [ldr x17, #0xc398390; cbz x17, #0xc388958; ldr x16, #0xc398398; eor x17, x17, x16; ror x17, x17, #0x27; br x17; stp d11, d10, [sp, #-0x40]!]
-  [24] rva=0x05968ed4 bss=0xcc8f8a8 | 0x5968ed0: b #0xc388100; 0x5968ed4: stp x29, x30, [sp, #0x10]; 0x5968ed8: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388100 [ldr x17, #0xc3982f0; cbz x17, #0xc388118; ldr x16, #0xc3982f8; eor x17, x17, x16; ror x17, x17, #0xf; br x17; stp d11, d10, [sp, #-0x40]!]
-  [25] rva=0x059f1290 bss=0xcc8f8b0 | 0x59f128c: b #0xc3892c0; 0x59f1290: stp x22, x21, [sp, #0x20]; 0x59f1294: stp x20, x19, [sp, #0x30] -> __TEXT_EXEC stub@0xc3892c0 [ldr x17, #0xc398740; cbz x17, #0xc3892d8; ldr x16, #0xc398748; eor x17, x17, x16; ror x17, x17, #0x34; br x17; stp d11, d10, [sp, #-0x40]!]
-  [26] rva=0x05aba024 bss=0xcc8f8b8 | 0x5aba020: b #0xc389400; 0x5aba024: stp x29, x30, [sp, #0x10]; 0x5aba028: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389400 [ldr x17, #0xc398310; cbz x17, #0xc389418; ldr x16, #0xc398318; eor x17, x17, x16; ror x17, x17, #0x1c; br x17; stp d11, d10, [sp, #-0x40]!]
-  [27] rva=0x05b71dbc bss=0xcc8f8c0 | 0x5b71db8: b #0xc389680; 0x5b71dbc: stp x29, x30, [sp, #0x10]; 0x5b71dc0: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389680 [ldr x17, #0xc398200; cbz x17, #0xc389698; ldr x16, #0xc398208; eor x17, x17, x16; ror x17, x17, #4; br x17; stp d11, d10, [sp, #-0x40]!]
-  [28] rva=0x05c153b0 bss=0xcc8f8c8 | 0x5c153ac: b #0xc389780; 0x5c153b0: stp x29, x30, [sp, #0x10]; 0x5c153b4: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389780 [ldr x17, #0xc398230; cbz x17, #0xc389798; ldr x16, #0xc398238; eor x17, x17, x16; ror x17, x17, #0x29; br x17; stp d11, d10, [sp, #-0x40]!]
-  [29] rva=0x05cdfd14 bss=0xcc8f8d0 | 0x5cdfd10: b #0xc389080; 0x5cdfd14: stp x20, x19, [sp, #0x10]; 0x5cdfd18: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc389080 [ldr x17, #0xc398350; cbz x17, #0xc389098; ldr x16, #0xc398358; eor x17, x17, x16; ror x17, x17, #0x11; br x17; stp d11, d10, [sp, #-0x40]!]
-  [30] rva=0x05f7ecf4 bss=0xcc8f8d8 | 0x5f7ecf0: b #0xc388f80; 0x5f7ecf4: stp x24, x23, [sp, #0x20]; 0x5f7ecf8: stp x22, x21, [sp, #0x30] -> __TEXT_EXEC stub@0xc388f80 [ldr x17, #0xc3985a0; cbz x17, #0xc388f98; ldr x16, #0xc3985a8; eor x17, x17, x16; ror x17, x17, #0x36; br x17; stp d11, d10, [sp, #-0x40]!]
-  [31] rva=0x060ad2b4 bss=0xcc8f8e0 | 0x60ad2b0: b #0xc389b40; 0x60ad2b4: stp x20, x19, [sp, #0x10]; 0x60ad2b8: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc389b40 [ldr x17, #0xc3986e0; cbz x17, #0xc389b58; ldr x16, #0xc3986e8; eor x17, x17, x16; ror x17, x17, #0x1e; br x17; stp d11, d10, [sp, #-0x40]!]
-  [32] rva=0x06127e74 bss=0xcc8f8e8 | 0x6127e70: b #0xc3887c0; 0x6127e74: stp x29, x30, [sp, #0x10]; 0x6127e78: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc3887c0 [ldr x17, #0xc398260; cbz x17, #0xc3887d8; ldr x16, #0xc398268; eor x17, x17, x16; ror x17, x17, #6; br x17; stp d11, d10, [sp, #-0x40]!]
-  [33] rva=0x06191854 bss=0xcc8f8f0 | 0x6191850: b #0xc3884c0; 0x6191854: stp x29, x30, [sp, #0x10]; 0x6191858: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc3884c0 [ldr x17, #0xc398670; cbz x17, #0xc3884d8; ldr x16, #0xc398678; eor x17, x17, x16; ror x17, x17, #0x2b; br x17; stp d11, d10, [sp, #-0x40]!]
-  [34] rva=0x063086cc bss=0xcc8f8f8 | 0x63086c8: b #0xc389440; 0x63086cc: stp x29, x30, [sp, #0x10]; 0x63086d0: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389440 [ldr x17, #0xc398570; cbz x17, #0xc389458; ldr x16, #0xc398578; eor x17, x17, x16; ror x17, x17, #0x13; br x17; stp d11, d10, [sp, #-0x40]!]
-  [35] rva=0x063d8d4c bss=0xcc8f900 | 0x63d8d48: b #0xc388840; 0x63d8d4c: stp x22, x21, [sp, #0x10]; 0x63d8d50: stp x20, x19, [sp, #0x20] -> __TEXT_EXEC stub@0xc388840 [ldr x17, #0xc3980b0; cbz x17, #0xc388858; ldr x16, #0xc3980b8; eor x17, x17, x16; ror x17, x17, #0x38; br x17; stp d11, d10, [sp, #-0x40]!]
-  [36] rva=0x0643c6cc bss=0xcc8f908 | 0x643c6c8: b #0xc389480; 0x643c6cc: stp x29, x30, [sp, #0x10]; 0x643c6d0: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389480 [ldr x17, #0xc398280; cbz x17, #0xc389498; ldr x16, #0xc398288; eor x17, x17, x16; ror x17, x17, #0x20; br x17; stp d11, d10, [sp, #-0x40]!]
-  [37] rva=0x06467718 bss=0xcc8f910 | 0x6467714: b #0xc388500; 0x6467718: stp x29, x30, [sp, #0x10]; 0x646771c: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388500 [ldr x17, #0xc398120; cbz x17, #0xc388518; ldr x16, #0xc398128; eor x17, x17, x16; ror x17, x17, #8; br x17; stp d11, d10, [sp, #-0x40]!]
-  [38] rva=0x064c02d0 bss=0xcc8f918 | 0x64c02cc: b #0xc389000; 0x64c02d0: stp x29, x30, [sp, #0x10]; 0x64c02d4: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389000 [ldr x17, #0xc398340; cbz x17, #0xc389018; ldr x16, #0xc398348; eor x17, x17, x16; ror x17, x17, #0x2d; br x17; stp d11, d10, [sp, #-0x40]!]
-  [39] rva=0x065b16e4 bss=0xcc8f920 | 0x65b16e0: b #0xc389bc0; 0x65b16e4: stp x29, x30, [sp, #0x10]; 0x65b16e8: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389bc0 [ldr x17, #0xc3986b0; cbz x17, #0xc389bd8; ldr x16, #0xc3986b8; eor x17, x17, x16; ror x17, x17, #0x15; br x17; stp d11, d10, [sp, #-0x40]!]
-  [40] rva=0x065ff518 bss=0xcc8f928 | 0x65ff514: b #0xc389740; 0x65ff518: stp x29, x30, [sp, #0x10]; 0x65ff51c: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389740 [ldr x17, #0xc398170; cbz x17, #0xc389758; ldr x16, #0xc398178; eor x17, x17, x16; ror x17, x17, #0x3a; br x17; stp d11, d10, [sp, #-0x40]!]
-  [41] rva=0x06641160 bss=0xcc8f930 | 0x664115c: b #0xc388240; 0x6641160: stp x20, x19, [sp, #0x10]; 0x6641164: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388240 [ldr x17, #0xc398530; cbz x17, #0xc388258; ldr x16, #0xc398538; eor x17, x17, x16; ror x17, x17, #0x22; br x17; stp d11, d10, [sp, #-0x40]!]
-  [42] rva=0x066903f0 bss=0xcc8f938 | 0x66903ec: b #0xc389100; 0x66903f0: stp x29, x30, [sp, #0x10]; 0x66903f4: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389100 [ldr x17, #0xc398210; cbz x17, #0xc389118; ldr x16, #0xc398218; eor x17, x17, x16; ror x17, x17, #0xa; br x17; stp d11, d10, [sp, #-0x40]!]
-  [43] rva=0x06865600 bss=0xcc8f940 | 0x68655fc: b #0xc388b80; 0x6865600: stp x29, x30, [sp, #0x10]; 0x6865604: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388b80 [ldr x17, #0xc398650; cbz x17, #0xc388b98; ldr x16, #0xc398658; eor x17, x17, x16; ror x17, x17, #0x2f; br x17; stp d11, d10, [sp, #-0x40]!]
-  [44] rva=0x06941fc4 bss=0xcc8f948 | 0x6941fc0: b #0xc388400; 0x6941fc4: stp x22, x21, [sp, #0x20]; 0x6941fc8: stp x20, x19, [sp, #0x30] -> __TEXT_EXEC stub@0xc388400 [ldr x17, #0xc3982c0; cbz x17, #0xc388418; ldr x16, #0xc3982c8; eor x17, x17, x16; ror x17, x17, #0x17; br x17; stp d11, d10, [sp, #-0x40]!]
-  [45] rva=0x069eb03c bss=0xcc8f950 | 0x69eb038: b #0xc389840; 0x69eb03c: stp x20, x19, [sp, #0x10]; 0x69eb040: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc389840 [ldr x17, #0xc3981e0; cbz x17, #0xc389858; ldr x16, #0xc3981e8; eor x17, x17, x16; ror x17, x17, #0x3c; br x17; stp d11, d10, [sp, #-0x40]!]
-  [46] rva=0x06a9a8c0 bss=0xcc8f958 | 0x6a9a8bc: b #0xc389540; 0x6a9a8c0: stp x29, x30, [sp, #0x10]; 0x6a9a8c4: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389540 [ldr x17, #0xc3985d0; cbz x17, #0xc389558; ldr x16, #0xc3985d8; eor x17, x17, x16; ror x17, x17, #0x24; br x17; stp d11, d10, [sp, #-0x40]!]
-  [47] rva=0x06a9f9b8 bss=0xcc8f960 | 0x6a9f9b4: b #0xc389200; 0x6a9f9b8: stp x29, x30, [sp, #0x10]; 0x6a9f9bc: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389200 [ldr x17, #0xc398370; cbz x17, #0xc389218; ldr x16, #0xc398378; eor x17, x17, x16; ror x17, x17, #0xc; br x17; stp d11, d10, [sp, #-0x40]!]
-  [48] rva=0x06af7c84 bss=0xcc8f968 | 0x6af7c80: b #0xc3886c0; 0x6af7c84: stp x20, x19, [sp, #0x10]; 0x6af7c88: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc3886c0 [ldr x17, #0xc398730; cbz x17, #0xc3886d8; ldr x16, #0xc398738; eor x17, x17, x16; ror x17, x17, #0x31; br x17; stp d11, d10, [sp, #-0x40]!]
-  [49] rva=0x06b34120 bss=0xcc8f970 | 0x6b3411c: b #0xc389b80; 0x6b34120: stp x20, x19, [sp, #0x10]; 0x6b34124: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc389b80 [ldr x17, #0xc398430; cbz x17, #0xc389b98; ldr x16, #0xc398438; eor x17, x17, x16; ror x17, x17, #0x19; br x17; stp d11, d10, [sp, #-0x40]!]
-  [50] rva=0x06b4aa58 bss=0xcc8f978 | 0x6b4aa54: b #0xc388900; 0x6b4aa58: stp x20, x19, [sp, #0x10]; 0x6b4aa5c: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388900 [ldr x17, #0xc398630; cbz x17, #0xc388918; ldr x16, #0xc398638; eor x17, x17, x16; ror x17, x17, #1; br x17; stp d11, d10, [sp, #-0x40]!]
-  [51] rva=0x06b5ed78 bss=0xcc8f980 | 0x6b5ed74: b #0xc3894c0; 0x6b5ed78: stp x20, x19, [sp, #0x10]; 0x6b5ed7c: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc3894c0 [ldr x17, #0xc398420; cbz x17, #0xc3894d8; ldr x16, #0xc398428; eor x17, x17, x16; ror x17, x17, #0x26; br x17; stp d11, d10, [sp, #-0x40]!]
-  [52] rva=0x06b6c968 bss=0xcc8f988 | 0x6b6c964: b #0xc388a00; 0x6b6c968: stp x20, x19, [sp, #0x10]; 0x6b6c96c: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388a00 [ldr x17, #0xc3986a0; cbz x17, #0xc388a18; ldr x16, #0xc3986a8; eor x17, x17, x16; ror x17, x17, #0xe; br x17; stp d11, d10, [sp, #-0x40]!]
-  [53] rva=0x06b6f478 bss=0xcc8f990 | 0x6b6f474: b #0xc388f40; 0x6b6f478: stp x20, x19, [sp, #0x10]; 0x6b6f47c: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388f40 [ldr x17, #0xc3984f0; cbz x17, #0xc388f58; ldr x16, #0xc3984f8; eor x17, x17, x16; ror x17, x17, #0x33; br x17; stp d11, d10, [sp, #-0x40]!]
-  [54] rva=0x06b7ac34 bss=0xcc8f998 | 0x6b7ac30: b #0xc3890c0; 0x6b7ac34: stp x29, x30, [sp, #0x10]; 0x6b7ac38: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc3890c0 [ldr x17, #0xc398220; cbz x17, #0xc3890d8; ldr x16, #0xc398228; eor x17, x17, x16; ror x17, x17, #0x1b; br x17; stp d11, d10, [sp, #-0x40]!]
-  [55] rva=0x06b7c35c bss=0xcc8f9a0 | 0x6b7c358: b #0xc388d40; 0x6b7c35c: stp x22, x21, [sp, #0x10]; 0x6b7c360: stp x20, x19, [sp, #0x20] -> __TEXT_EXEC stub@0xc388d40 [ldr x17, #0xc3980e0; cbz x17, #0xc388d58; ldr x16, #0xc3980e8; eor x17, x17, x16; ror x17, x17, #3; br x17; stp d11, d10, [sp, #-0x40]!]
-  [56] rva=0x06b8068c bss=0xcc8f9a8 | 0x6b80688: b #0xc388e40; 0x6b8068c: stp x20, x19, [sp, #0x10]; 0x6b80690: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388e40 [ldr x17, #0xc398270; cbz x17, #0xc388e58; ldr x16, #0xc398278; eor x17, x17, x16; ror x17, x17, #0x28; br x17; stp d11, d10, [sp, #-0x40]!]
-  [57] rva=0x06b879d8 bss=0xcc8f9b0 | 0x6b879d4: b #0xc388ac0; 0x6b879d8: stp x29, x30, [sp, #0x10]; 0x6b879dc: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388ac0 [ldr x17, #0xc398100; cbz x17, #0xc388ad8; ldr x16, #0xc398108; eor x17, x17, x16; ror x17, x17, #0x10; br x17; stp d11, d10, [sp, #-0x40]!]
-  [58] rva=0x06b8fdb4 bss=0xcc8f9b8 | 0x6b8fdb0: b #0xc3882c0; 0x6b8fdb4: stp x20, x19, [sp, #0x10]; 0x6b8fdb8: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc3882c0 [ldr x17, #0xc398410; cbz x17, #0xc3882d8; ldr x16, #0xc398418; eor x17, x17, x16; ror x17, x17, #0x35; br x17; stp d11, d10, [sp, #-0x40]!]
-  [59] rva=0x06b9ee84 bss=0xcc8f9c0 | 0x6b9ee80: b #0xc388980; 0x6b9ee84: stp x20, x19, [sp, #0x10]; 0x6b9ee88: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388980 [ldr x17, #0xc3982b0; cbz x17, #0xc388998; ldr x16, #0xc3982b8; eor x17, x17, x16; ror x17, x17, #0x1d; br x17; stp d11, d10, [sp, #-0x40]!]
-  [60] rva=0x06ba6694 bss=0xcc8f9c8 | 0x6ba6690: b #0xc3883c0; 0x6ba6694: stp x22, x21, [sp, #0x10]; 0x6ba6698: stp x20, x19, [sp, #0x20] -> __TEXT_EXEC stub@0xc3883c0 [ldr x17, #0xc3982a0; cbz x17, #0xc3883d8; ldr x16, #0xc3982a8; eor x17, x17, x16; ror x17, x17, #5; br x17; stp d11, d10, [sp, #-0x40]!]
-  [61] rva=0x06baaef8 bss=0xcc8f9d0 | 0x6baaef4: b #0xc3891c0; 0x6baaef8: stp x22, x21, [sp, #0x10]; 0x6baaefc: stp x20, x19, [sp, #0x20] -> __TEXT_EXEC stub@0xc3891c0 [ldr x17, #0xc3980c0; cbz x17, #0xc3891d8; ldr x16, #0xc3980c8; eor x17, x17, x16; ror x17, x17, #0x2a; br x17; stp d11, d10, [sp, #-0x40]!]
-  [62] rva=0x06bca588 bss=0xcc8f9d8 | 0x6bca584: b #0xc3881c0; 0x6bca588: stp x24, x23, [sp, #0x30]; 0x6bca58c: stp x22, x21, [sp, #0x40] -> __TEXT_EXEC stub@0xc3881c0 [ldr x17, #0xc398140; cbz x17, #0xc3881d8; ldr x16, #0xc398148; eor x17, x17, x16; ror x17, x17, #0x12; br x17; stp d11, d10, [sp, #-0x40]!]
-  [63] rva=0x06bd8250 bss=0xcc8f9e0 | 0x6bd824c: b #0xc388b40; 0x6bd8250: stp x20, x19, [sp, #0x10]; 0x6bd8254: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388b40 [ldr x17, #0xc398700; cbz x17, #0xc388b58; ldr x16, #0xc398708; eor x17, x17, x16; ror x17, x17, #0x37; br x17; stp d11, d10, [sp, #-0x40]!]
-  [64] rva=0x06c04a48 bss=0xcc8f9e8 | 0x6c04a44: b #0xc388b00; 0x6c04a48: stp x20, x19, [sp, #0x10]; 0x6c04a4c: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388b00 [ldr x17, #0xc3985e0; cbz x17, #0xc388b18; ldr x16, #0xc3985e8; eor x17, x17, x16; ror x17, x17, #0x1f; br x17; stp d11, d10, [sp, #-0x40]!]
-  [65] rva=0x06c0f398 bss=0xcc8f9f0 | 0x6c0f394: b #0xc389040; 0x6c0f398: stp x22, x21, [sp, #0x10]; 0x6c0f39c: stp x20, x19, [sp, #0x20] -> __TEXT_EXEC stub@0xc389040 [ldr x17, #0xc3981a0; cbz x17, #0xc389058; ldr x16, #0xc3981a8; eor x17, x17, x16; ror x17, x17, #7; br x17; stp d11, d10, [sp, #-0x40]!]
-  [66] rva=0x06c2486c bss=0xcc8f9f8 | 0x6c24868: b #0xc389b00; 0x6c2486c: stp x29, x30, [sp, #0x10]; 0x6c24870: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389b00 [ldr x17, #0xc398080; cbz x17, #0xc389b18; ldr x16, #0xc398088; eor x17, x17, x16; ror x17, x17, #0x2c; br x17; stp d11, d10, [sp, #-0x40]!]
-  [67] rva=0x06c36e6c bss=0xcc8fa00 | 0x6c36e68: b #0xc389a80; 0x6c36e6c: stp x22, x21, [sp, #0x10]; 0x6c36e70: stp x20, x19, [sp, #0x20] -> __TEXT_EXEC stub@0xc389a80 [ldr x17, #0xc398470; cbz x17, #0xc389a98; ldr x16, #0xc398478; eor x17, x17, x16; ror x17, x17, #0x14; br x17; stp d11, d10, [sp, #-0x40]!]
-  [68] rva=0x06c7b354 bss=0xcc8fa08 | 0x6c7b350: b #0xc389300; 0x6c7b354: stp x29, x30, [sp, #0x10]; 0x6c7b358: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389300 [ldr x17, #0xc398660; cbz x17, #0xc389318; ldr x16, #0xc398668; eor x17, x17, x16; ror x17, x17, #0x39; br x17; stp d11, d10, [sp, #-0x40]!]
-  [69] rva=0x06c7fe68 bss=0xcc8fa10 | 0x6c7fe64: b #0xc388480; 0x6c7fe68: stp x29, x30, [sp, #0x10]; 0x6c7fe6c: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388480 [ldr x17, #0xc398550; cbz x17, #0xc388498; ldr x16, #0xc398558; eor x17, x17, x16; ror x17, x17, #0x21; br x17; stp d11, d10, [sp, #-0x40]!]
-  [70] rva=0x06cafc94 bss=0xcc8fa18 | 0x6cafc90: b #0xc388140; 0x6cafc94: stp x20, x19, [sp, #0x10]; 0x6cafc98: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388140 [ldr x17, #0xc398590; cbz x17, #0xc388158; ldr x16, #0xc398598; eor x17, x17, x16; ror x17, x17, #9; br x17; stp d11, d10, [sp, #-0x40]!]
-  [71] rva=0x06cbc434 bss=0xcc8fa20 | 0x6cbc430: b #0xc3895c0; 0x6cbc434: stp x22, x21, [sp, #0x10]; 0x6cbc438: stp x20, x19, [sp, #0x20] -> __TEXT_EXEC stub@0xc3895c0 [ldr x17, #0xc398400; cbz x17, #0xc3895d8; ldr x16, #0xc398408; eor x17, x17, x16; ror x17, x17, #0x2e; br x17; stp d11, d10, [sp, #-0x40]!]
-  [72] rva=0x06cd8260 bss=0xcc8fa28 | 0x6cd825c: b #0xc389900; 0x6cd8260: stp x22, x21, [sp, #0x30]; 0x6cd8264: stp x20, x19, [sp, #0x40] -> __TEXT_EXEC stub@0xc389900 [ldr x17, #0xc398720; cbz x17, #0xc389918; ldr x16, #0xc398728; eor x17, x17, x16; ror x17, x17, #0x16; br x17; stp d11, d10, [sp, #-0x40]!]
-  [73] rva=0x06ce6358 bss=0xcc8fa30 | 0x6ce6354: b #0xc389500; 0x6ce6358: stp x29, x30, [sp, #0x10]; 0x6ce635c: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389500 [ldr x17, #0xc398360; cbz x17, #0xc389518; ldr x16, #0xc398368; eor x17, x17, x16; ror x17, x17, #0x3b; br x17; stp d11, d10, [sp, #-0x40]!]
-  [74] rva=0x06cfc158 bss=0xcc8fa38 | 0x6cfc154: b #0xc388800; 0x6cfc158: stp x22, x21, [sp, #0x40]; 0x6cfc15c: stp x20, x19, [sp, #0x50] -> __TEXT_EXEC stub@0xc388800 [ldr x17, #0xc398480; cbz x17, #0xc388818; ldr x16, #0xc398488; eor x17, x17, x16; ror x17, x17, #0x23; br x17; stp d11, d10, [sp, #-0x40]!]
-  [75] rva=0x07112814 bss=0xcc8fa40 | 0x7112810: b #0xc3896c0; 0x7112814: stp x20, x19, [sp, #0x10]; 0x7112818: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc3896c0 [ldr x17, #0xc3984b0; cbz x17, #0xc3896d8; ldr x16, #0xc3984b8; eor x17, x17, x16; ror x17, x17, #0xb; br x17; stp d11, d10, [sp, #-0x40]!]
-  [76] rva=0x0715de98 bss=0xcc8fa48 | 0x715de94: b #0xc388e80; 0x715de98: stp x20, x19, [sp, #0x10]; 0x715de9c: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388e80 [ldr x17, #0xc3985f0; cbz x17, #0xc388e98; ldr x16, #0xc3985f8; eor x17, x17, x16; ror x17, x17, #0x30; br x17; stp d11, d10, [sp, #-0x40]!]
-  [77] rva=0x0717c1d4 bss=0xcc8fa50 | 0x717c1d0: b #0xc388ec0; 0x717c1d4: stp x29, x30, [sp, #0x10]; 0x717c1d8: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388ec0 [ldr x17, #0xc398330; cbz x17, #0xc388ed8; ldr x16, #0xc398338; eor x17, x17, x16; ror x17, x17, #0x18; br x17; stp d11, d10, [sp, #-0x40]!]
-  [78] rva=0x0724d73c bss=0xcc8fa58 | 0x724d738: b #0xc3899c0; 0x724d73c: stp x24, x23, [sp, #0x40]; 0x724d740: stp x22, x21, [sp, #0x50] -> __TEXT_EXEC stub@0xc3899c0 [ldr x17, #0xc398190; cbz x17, #0xc3899d8; ldr x16, #0xc398198; eor x17, x17, x16; ror x17, x17, #0x3d; br x17; stp d11, d10, [sp, #-0x40]!]
-  [79] rva=0x0725c878 bss=0xcc8fa60 | 0x725c874: b #0xc389c00; 0x725c878: stp x29, x30, [sp, #0x10]; 0x725c87c: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389c00 [ldr x17, #0xc398620; cbz x17, #0xc389c18; ldr x16, #0xc398628; eor x17, x17, x16; ror x17, x17, #0x25; br x17; stp d11, d10, [sp, #-0x40]!]
-  [80] rva=0x0727ddc0 bss=0xcc8fa68 | 0x727ddbc: b #0xc388380; 0x727ddc0: stp x20, x19, [sp, #0x10]; 0x727ddc4: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388380 [ldr x17, #0xc398090; cbz x17, #0xc388398; ldr x16, #0xc398098; eor x17, x17, x16; ror x17, x17, #0xd; br x17; stp d11, d10, [sp, #-0x40]!]
-  [81] rva=0x073d6950 bss=0xcc8fa70 | 0x73d694c: b #0xc389a00; 0x73d6950: stp x20, x19, [sp, #0x10]; 0x73d6954: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc389a00 [ldr x17, #0xc398300; cbz x17, #0xc389a18; ldr x16, #0xc398308; eor x17, x17, x16; ror x17, x17, #0x32; br x17; stp d11, d10, [sp, #-0x40]!]
-  [82] rva=0x0745577c bss=0xcc8fa78 | 0x7455778: b #0xc389380; 0x745577c: stp x20, x19, [sp, #0x10]; 0x7455780: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc389380 [ldr x17, #0xc3980a0; cbz x17, #0xc389398; ldr x16, #0xc3980a8; eor x17, x17, x16; ror x17, x17, #0x1a; br x17; stp d11, d10, [sp, #-0x40]!]
-  [83] rva=0x0746a6e0 bss=0xcc8fa80 | 0x746a6dc: b #0xc388740; 0x746a6e0: stp x28, x27, [sp, #0x10]; 0x746a6e4: stp x26, x25, [sp, #0x20] -> __TEXT_EXEC stub@0xc388740 [ldr x17, #0xc398490; cbz x17, #0xc388758; ldr x16, #0xc398498; eor x17, x17, x16; ror x17, x17, #2; br x17; stp d11, d10, [sp, #-0x40]!]
-  [84] rva=0x074964a4 bss=0xcc8fa88 | 0x74964a0: b #0xc388880; 0x74964a4: stp x29, x30, [sp, #0x10]; 0x74964a8: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388880 [ldr x17, #0xc3981d0; cbz x17, #0xc388898; ldr x16, #0xc3981d8; eor x17, x17, x16; ror x17, x17, #0x27; br x17; stp d11, d10, [sp, #-0x40]!]
-  [85] rva=0x0751909c bss=0xcc8fa90 | 0x7519098: b #0xc3889c0; 0x751909c: stp x29, x30, [sp, #0x10]; 0x75190a0: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc3889c0 [ldr x17, #0xc3981c0; cbz x17, #0xc3889d8; ldr x16, #0xc3981c8; eor x17, x17, x16; ror x17, x17, #0xf; br x17; stp d11, d10, [sp, #-0x40]!]
-  [86] rva=0x0751954c bss=0xcc8fa98 | 0x7519548: b #0xc388780; 0x751954c: stp x29, x30, [sp, #0x10]; 0x7519550: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388780 [ldr x17, #0xc3982e0; cbz x17, #0xc388798; ldr x16, #0xc3982e8; eor x17, x17, x16; ror x17, x17, #0x34; br x17; stp d11, d10, [sp, #-0x40]!]
-  [87] rva=0x07519984 bss=0xcc8faa0 | 0x7519980: b #0xc388180; 0x7519984: stp x29, x30, [sp, #0x10]; 0x7519988: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388180 [ldr x17, #0xc398240; cbz x17, #0xc388198; ldr x16, #0xc398248; eor x17, x17, x16; ror x17, x17, #0x1c; br x17; stp d11, d10, [sp, #-0x40]!]
-  [88] rva=0x0751c560 bss=0xcc8faa8 | 0x751c55c: b #0xc389940; 0x751c560: stp x24, x23, [sp, #0x30]; 0x751c564: stp x22, x21, [sp, #0x40] -> __TEXT_EXEC stub@0xc389940 [ldr x17, #0xc398450; cbz x17, #0xc389958; ldr x16, #0xc398458; eor x17, x17, x16; ror x17, x17, #4; br x17; stp d11, d10, [sp, #-0x40]!]
-  [89] rva=0x07661598 bss=0xcc8fab0 | 0x7661594: b #0xc389700; 0x7661598: stp x29, x30, [sp, #0x10]; 0x766159c: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389700 [ldr x17, #0xc3986d0; cbz x17, #0xc389718; ldr x16, #0xc3986d8; eor x17, x17, x16; ror x17, x17, #0x29; br x17; stp d11, d10, [sp, #-0x40]!]
-  [90] rva=0x076663f4 bss=0xcc8fab8 | 0x76663f0: b #0xc388200; 0x76663f4: stp x29, x30, [sp, #0x10]; 0x76663f8: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388200 [ldr x17, #0xc398460; cbz x17, #0xc388218; ldr x16, #0xc398468; eor x17, x17, x16; ror x17, x17, #0x11; br x17; stp d11, d10, [sp, #-0x40]!]
-  [91] rva=0x07688308 bss=0xcc8fac0 | 0x7688304: b #0xc388f00; 0x7688308: stp x20, x19, [sp, #0x10]; 0x768830c: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388f00 [ldr x17, #0xc3983f0; cbz x17, #0xc388f18; ldr x16, #0xc3983f8; eor x17, x17, x16; ror x17, x17, #0x36; br x17; stp d11, d10, [sp, #-0x40]!]
-  [92] rva=0x076bdae0 bss=0xcc8fac8 | 0x76bdadc: b #0xc388600; 0x76bdae0: stp x22, x21, [sp, #0x20]; 0x76bdae4: stp x20, x19, [sp, #0x30] -> __TEXT_EXEC stub@0xc388600 [ldr x17, #0xc398500; cbz x17, #0xc388618; ldr x16, #0xc398508; eor x17, x17, x16; ror x17, x17, #0x1e; br x17; stp d11, d10, [sp, #-0x40]!]
-  [93] rva=0x076ea334 bss=0xcc8fad0 | 0x76ea330: b #0xc388700; 0x76ea334: stp x20, x19, [sp, #0x10]; 0x76ea338: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388700 [ldr x17, #0xc398750; cbz x17, #0xc388718; ldr x16, #0xc398758; eor x17, x17, x16; ror x17, x17, #6; br x17; stp d11, d10, [sp, #-0x40]!]
-  [94] rva=0x077256a0 bss=0xcc8fad8 | 0x772569c: b #0xc388440; 0x77256a0: stp x29, x30, [sp, #0x10]; 0x77256a4: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388440 [ldr x17, #0xc398510; cbz x17, #0xc388458; ldr x16, #0xc398518; eor x17, x17, x16; ror x17, x17, #0x2b; br x17; stp d11, d10, [sp, #-0x40]!]
-  [95] rva=0x07737840 bss=0xcc8fae0 | 0x773783c: b #0xc388cc0; 0x7737840: stp x22, x21, [sp, #0x10]; 0x7737844: stp x20, x19, [sp, #0x20] -> __TEXT_EXEC stub@0xc388cc0 [ldr x17, #0xc3982d0; cbz x17, #0xc388cd8; ldr x16, #0xc3982d8; eor x17, x17, x16; ror x17, x17, #0x13; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 0] rva=0x044b7528 bss=0xcc8f7e8 | 0x44b7518: ret ; 0x44b751c: str w1, [x0, #0x28]; 0x44b7520: ret ; 0x44b7524: b #0xc388340; 0x44b7528: stp x24, x23, [sp, #0x10]; 0x44b752c: stp x22, x21, [sp, #0x20] -> __TEXT_EXEC stub@0xc388340 [ldr x17, #0xc398380; cbz x17, #0xc388358; ldr x16, #0xc398388; eor x17, x17, x16; ror x17, x17, #0x2a; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 1] rva=0x045399ec bss=0xcc8f7f0 | 0x45399dc: ret ; 0x45399e0: str w1, [x0, #0x3c]; 0x45399e4: ret ; 0x45399e8: b #0xc388580; 0x45399ec: stp x29, x30, [sp, #0x10]; 0x45399f0: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388580 [ldr x17, #0xc3985c0; cbz x17, #0xc388598; ldr x16, #0xc3985c8; eor x17, x17, x16; ror x17, x17, #0x12; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 2] rva=0x045cb6c4 bss=0xcc8f7f8 | 0x45cb6b4: ldp x29, x30, [sp, #0x10]; 0x45cb6b8: ldp x20, x19, [sp], #0x20; 0x45cb6bc: ret ; 0x45cb6c0: b #0xc389600; 0x45cb6c4: stp x22, x21, [sp, #0x10]; 0x45cb6c8: stp x20, x19, [sp, #0x20] -> __TEXT_EXEC stub@0xc389600 [ldr x17, #0xc3984d0; cbz x17, #0xc389618; ldr x16, #0xc3984d8; eor x17, x17, x16; ror x17, x17, #0x37; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 3] rva=0x046beb54 bss=0xcc8f800 | 0x46beb44: ret ; 0x46beb48: str w1, [x0, #0x238]; 0x46beb4c: ret ; 0x46beb50: b #0xc389140; 0x46beb54: stp x29, x30, [sp, #0x10]; 0x46beb58: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389140 [ldr x17, #0xc3986f0; cbz x17, #0xc389158; ldr x16, #0xc3986f8; eor x17, x17, x16; ror x17, x17, #0x1f; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 4] rva=0x04726c04 bss=0xcc8f808 | 0x4726bf4: ret ; 0x4726bf8: mov w0, #0; 0x4726bfc: ret ; 0x4726c00: b #0xc388d00; 0x4726c04: stp x20, x19, [sp, #0x10]; 0x4726c08: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388d00 [ldr x17, #0xc398320; cbz x17, #0xc388d18; ldr x16, #0xc398328; eor x17, x17, x16; ror x17, x17, #7; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 5] rva=0x047ab154 bss=0xcc8f810 | 0x47ab144: ldp x26, x25, [sp, #0x10]; 0x47ab148: add sp, sp, #0x60; 0x47ab14c: ret ; 0x47ab150: b #0xc388dc0; 0x47ab154: stp x29, x30, [sp, #0x10]; 0x47ab158: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388dc0 [ldr x17, #0xc3980f0; cbz x17, #0xc388dd8; ldr x16, #0xc3980f8; eor x17, x17, x16; ror x17, x17, #0x2c; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 6] rva=0x048e6f1c bss=0xcc8f818 | 0x48e6f0c: ldp x29, x30, [sp, #0x10]; 0x48e6f10: ldp x20, x19, [sp], #0x20; 0x48e6f14: ret ; 0x48e6f18: b #0xc389a40; 0x48e6f1c: stp x29, x30, [sp, #0x10]; 0x48e6f20: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389a40 [ldr x17, #0xc398160; cbz x17, #0xc389a58; ldr x16, #0xc398168; eor x17, x17, x16; ror x17, x17, #0x14; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 7] rva=0x04a0de78 bss=0xcc8f820 | 0x4a0de68: ldp x29, x30, [sp, #0x10]; 0x4a0de6c: ldp x20, x19, [sp], #0x20; 0x4a0de70: ret ; 0x4a0de74: b #0xc388300; 0x4a0de78: stp x29, x30, [sp, #0x10]; 0x4a0de7c: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388300 [ldr x17, #0xc398440; cbz x17, #0xc388318; ldr x16, #0xc398448; eor x17, x17, x16; ror x17, x17, #0x39; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 8] rva=0x04a8d60c bss=0xcc8f828 | 0x4a8d5fc: bl #0xa1113ac; 0x4a8d600: ldr x0, [x0, #0x18]; 0x4a8d604: ret ; 0x4a8d608: b #0xc388fc0; 0x4a8d60c: stp x29, x30, [sp, #0x10]; 0x4a8d610: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388fc0 [ldr x17, #0xc3983d0; cbz x17, #0xc388fd8; ldr x16, #0xc3983d8; eor x17, x17, x16; ror x17, x17, #0x21; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 9] rva=0x04b48f44 bss=0xcc8f830 | 0x4b48f34: ldp x22, x21, [sp, #0x20]; 0x4b48f38: add sp, sp, #0x50; 0x4b48f3c: ret ; 0x4b48f40: b #0xc388280; 0x4b48f44: stp x29, x30, [sp, #0x10]; 0x4b48f48: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388280 [ldr x17, #0xc398110; cbz x17, #0xc388298; ldr x16, #0xc398118; eor x17, x17, x16; ror x17, x17, #9; br x17; stp d11, d10, [sp, #-0x40]!]
+  [10] rva=0x05036fa8 bss=0xcc8f838 | 0x5036f98: ldp x20, x19, [sp, #0x10]; 0x5036f9c: ldp d9, d8, [sp], #0x30; 0x5036fa0: ret ; 0x5036fa4: b #0xc389580; 0x5036fa8: stp x29, x30, [sp, #0x10]; 0x5036fac: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389580 [ldr x17, #0xc3981b0; cbz x17, #0xc389598; ldr x16, #0xc3981b8; eor x17, x17, x16; ror x17, x17, #0x2e; br x17; stp d11, d10, [sp, #-0x40]!]
+  [11] rva=0x0510d27c bss=0xcc8f840 | 0x510d26c: bl #0xa1113ac; 0x510d270: ldr x0, [x0, #0x18]; 0x510d274: ret ; 0x510d278: b #0xc389c40; 0x510d27c: stp x29, x30, [sp, #0x10]; 0x510d280: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389c40 [ldr x17, #0xc398640; cbz x17, #0xc389c58; ldr x16, #0xc398648; eor x17, x17, x16; ror x17, x17, #0x16; br x17; stp d11, d10, [sp, #-0x40]!]
+  [12] rva=0x051c28c8 bss=0xcc8f848 | 0x51c28b8: ldp d13, d12, [sp, #0x10]; 0x51c28bc: add sp, sp, #0x80; 0x51c28c0: ret ; 0x51c28c4: b #0xc388c00; 0x51c28c8: stp x29, x30, [sp, #0x10]; 0x51c28cc: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388c00 [ldr x17, #0xc398580; cbz x17, #0xc388c18; ldr x16, #0xc398588; eor x17, x17, x16; ror x17, x17, #0x3b; br x17; stp d11, d10, [sp, #-0x40]!]
+  [13] rva=0x052d0dcc bss=0xcc8f850 | 0x52d0dbc: ldp x29, x30, [sp, #0x10]; 0x52d0dc0: ldp x20, x19, [sp], #0x20; 0x52d0dc4: ret ; 0x52d0dc8: b #0xc3888c0; 0x52d0dcc: stp x20, x19, [sp, #0x10]; 0x52d0dd0: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc3888c0 [ldr x17, #0xc398540; cbz x17, #0xc3888d8; ldr x16, #0xc398548; eor x17, x17, x16; ror x17, x17, #0x23; br x17; stp d11, d10, [sp, #-0x40]!]
+  [14] rva=0x05332d70 bss=0xcc8f858 | 0x5332d60: bl #0xa1113ac; 0x5332d64: ldr x0, [x0, #0x18]; 0x5332d68: ret ; 0x5332d6c: b #0xc388a80; 0x5332d70: stp x29, x30, [sp, #0x10]; 0x5332d74: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388a80 [ldr x17, #0xc3983e0; cbz x17, #0xc388a98; ldr x16, #0xc3983e8; eor x17, x17, x16; ror x17, x17, #0xb; br x17; stp d11, d10, [sp, #-0x40]!]
+  [15] rva=0x053b94e8 bss=0xcc8f860 | 0x53b94d8: ldp x24, x23, [sp, #0x10]; 0x53b94dc: ldp x26, x25, [sp], #0x50; 0x53b94e0: ret ; 0x53b94e4: b #0xc389980; 0x53b94e8: stp x29, x30, [sp, #0x10]; 0x53b94ec: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389980 [ldr x17, #0xc3984e0; cbz x17, #0xc389998; ldr x16, #0xc3984e8; eor x17, x17, x16; ror x17, x17, #0x30; br x17; stp d11, d10, [sp, #-0x40]!]
+  [16] rva=0x0548d618 bss=0xcc8f868 | 0x548d608: ret ; 0x548d60c: strb w1, [x0, #0x60]; 0x548d610: ret ; 0x548d614: b #0xc388540; 0x548d618: stp x29, x30, [sp, #0x10]; 0x548d61c: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388540 [ldr x17, #0xc398690; cbz x17, #0xc388558; ldr x16, #0xc398698; eor x17, x17, x16; ror x17, x17, #0x18; br x17; stp d11, d10, [sp, #-0x40]!]
+  [17] rva=0x0550b8cc bss=0xcc8f870 | 0x550b8bc: bl #0xa111500; 0x550b8c0: str s0, [x0, #0x148]; 0x550b8c4: ret ; 0x550b8c8: b #0xc388680; 0x550b8cc: stp x20, x19, [sp, #0x10]; 0x550b8d0: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388680 [ldr x17, #0xc398250; cbz x17, #0xc388698; ldr x16, #0xc398258; eor x17, x17, x16; ror x17, x17, #0x3d; br x17; stp d11, d10, [sp, #-0x40]!]
+  [18] rva=0x055cf118 bss=0xcc8f878 | 0x55cf108: ldp x20, x19, [sp, #0x10]; 0x55cf10c: ldp x22, x21, [sp], #0x30; 0x55cf110: ret ; 0x55cf114: b #0xc388640; 0x55cf118: stp x29, x30, [sp, #0x10]; 0x55cf11c: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388640 [ldr x17, #0xc398600; cbz x17, #0xc388658; ldr x16, #0xc398608; eor x17, x17, x16; ror x17, x17, #0x25; br x17; stp d11, d10, [sp, #-0x40]!]
+  [19] rva=0x056f5ad4 bss=0xcc8f880 | 0x56f5ac4: mov w8, #0x1014; 0x56f5ac8: strb w1, [x0, x8]; 0x56f5acc: ret ; 0x56f5ad0: b #0xc389240; 0x56f5ad4: stp x29, x30, [sp, #0x10]; 0x56f5ad8: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389240 [ldr x17, #0xc398130; cbz x17, #0xc389258; ldr x16, #0xc398138; eor x17, x17, x16; ror x17, x17, #0xd; br x17; stp d11, d10, [sp, #-0x40]!]
+  [20] rva=0x057b9374 bss=0xcc8f888 | 0x57b9364: mov w8, #0x1e45; 0x57b9368: strb w1, [x0, x8]; 0x57b936c: ret ; 0x57b9370: b #0xc389ac0; 0x57b9374: stp x20, x19, [sp, #0x10]; 0x57b9378: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc389ac0 [ldr x17, #0xc398150; cbz x17, #0xc389ad8; ldr x16, #0xc398158; eor x17, x17, x16; ror x17, x17, #0x32; br x17; stp d11, d10, [sp, #-0x40]!]
+  [21] rva=0x0583aec8 bss=0xcc8f890 | 0x583aeb8: bl #0xa1113ac; 0x583aebc: ldr x0, [x0, #0x18]; 0x583aec0: ret ; 0x583aec4: b #0xc389640; 0x583aec8: stp x29, x30, [sp, #0x10]; 0x583aecc: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389640 [ldr x17, #0xc398710; cbz x17, #0xc389658; ldr x16, #0xc398718; eor x17, x17, x16; ror x17, x17, #0x1a; br x17; stp d11, d10, [sp, #-0x40]!]
+  [22] rva=0x0583d4b8 bss=0xcc8f898 | 0x583d4a8: bl #0xa1113ac; 0x583d4ac: ldr x0, [x0, #0x18]; 0x583d4b0: ret ; 0x583d4b4: b #0xc389880; 0x583d4b8: stp x29, x30, [sp, #0x10]; 0x583d4bc: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389880 [ldr x17, #0xc398180; cbz x17, #0xc389898; ldr x16, #0xc398188; eor x17, x17, x16; ror x17, x17, #2; br x17; stp d11, d10, [sp, #-0x40]!]
+  [23] rva=0x05848df4 bss=0xcc8f8a0 | 0x5848de4: ldp x20, x19, [sp, #0x10]; 0x5848de8: ldp x22, x21, [sp], #0x30; 0x5848dec: ret ; 0x5848df0: b #0xc388940; 0x5848df4: stp x20, x19, [sp, #0x10]; 0x5848df8: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388940 [ldr x17, #0xc398390; cbz x17, #0xc388958; ldr x16, #0xc398398; eor x17, x17, x16; ror x17, x17, #0x27; br x17; stp d11, d10, [sp, #-0x40]!]
+  [24] rva=0x05968ed4 bss=0xcc8f8a8 | 0x5968ec4: ldp x29, x30, [sp, #0x10]; 0x5968ec8: ldp x20, x19, [sp], #0x20; 0x5968ecc: ret ; 0x5968ed0: b #0xc388100; 0x5968ed4: stp x29, x30, [sp, #0x10]; 0x5968ed8: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388100 [ldr x17, #0xc3982f0; cbz x17, #0xc388118; ldr x16, #0xc3982f8; eor x17, x17, x16; ror x17, x17, #0xf; br x17; stp d11, d10, [sp, #-0x40]!]
+  [25] rva=0x059f1290 bss=0xcc8f8b0 | 0x59f1280: stp s0, s1, [x0, #0x38]; 0x59f1284: str s2, [x0, #0x40]; 0x59f1288: ret ; 0x59f128c: b #0xc3892c0; 0x59f1290: stp x22, x21, [sp, #0x20]; 0x59f1294: stp x20, x19, [sp, #0x30] -> __TEXT_EXEC stub@0xc3892c0 [ldr x17, #0xc398740; cbz x17, #0xc3892d8; ldr x16, #0xc398748; eor x17, x17, x16; ror x17, x17, #0x34; br x17; stp d11, d10, [sp, #-0x40]!]
+  [26] rva=0x05aba024 bss=0xcc8f8b8 | 0x5aba014: ret ; 0x5aba018: str w1, [x0, #0x90]; 0x5aba01c: ret ; 0x5aba020: b #0xc389400; 0x5aba024: stp x29, x30, [sp, #0x10]; 0x5aba028: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389400 [ldr x17, #0xc398310; cbz x17, #0xc389418; ldr x16, #0xc398318; eor x17, x17, x16; ror x17, x17, #0x1c; br x17; stp d11, d10, [sp, #-0x40]!]
+  [27] rva=0x05b71dbc bss=0xcc8f8c0 | 0x5b71dac: ldp x29, x30, [sp, #0x10]; 0x5b71db0: ldp x20, x19, [sp], #0x20; 0x5b71db4: ret ; 0x5b71db8: b #0xc389680; 0x5b71dbc: stp x29, x30, [sp, #0x10]; 0x5b71dc0: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389680 [ldr x17, #0xc398200; cbz x17, #0xc389698; ldr x16, #0xc398208; eor x17, x17, x16; ror x17, x17, #4; br x17; stp d11, d10, [sp, #-0x40]!]
+  [28] rva=0x05c153b0 bss=0xcc8f8c8 | 0x5c153a0: ldp x29, x30, [sp, #0x10]; 0x5c153a4: ldp x20, x19, [sp], #0x20; 0x5c153a8: ret ; 0x5c153ac: b #0xc389780; 0x5c153b0: stp x29, x30, [sp, #0x10]; 0x5c153b4: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389780 [ldr x17, #0xc398230; cbz x17, #0xc389798; ldr x16, #0xc398238; eor x17, x17, x16; ror x17, x17, #0x29; br x17; stp d11, d10, [sp, #-0x40]!]
+  [29] rva=0x05cdfd14 bss=0xcc8f8d0 | 0x5cdfd04: ldp x29, x30, [sp, #0x10]; 0x5cdfd08: ldp x20, x19, [sp], #0x20; 0x5cdfd0c: ret ; 0x5cdfd10: b #0xc389080; 0x5cdfd14: stp x20, x19, [sp, #0x10]; 0x5cdfd18: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc389080 [ldr x17, #0xc398350; cbz x17, #0xc389098; ldr x16, #0xc398358; eor x17, x17, x16; ror x17, x17, #0x11; br x17; stp d11, d10, [sp, #-0x40]!]
+  [30] rva=0x05f7ecf4 bss=0xcc8f8d8 | 0x5f7ece4: ldp d11, d10, [sp, #0x90]; 0x5f7ece8: add sp, sp, #0xf0; 0x5f7ecec: ret ; 0x5f7ecf0: b #0xc388f80; 0x5f7ecf4: stp x24, x23, [sp, #0x20]; 0x5f7ecf8: stp x22, x21, [sp, #0x30] -> __TEXT_EXEC stub@0xc388f80 [ldr x17, #0xc3985a0; cbz x17, #0xc388f98; ldr x16, #0xc3985a8; eor x17, x17, x16; ror x17, x17, #0x36; br x17; stp d11, d10, [sp, #-0x40]!]
+  [31] rva=0x060ad2b4 bss=0xcc8f8e0 | 0x60ad2a4: ldp x29, x30, [sp, #0x10]; 0x60ad2a8: ldp x20, x19, [sp], #0x20; 0x60ad2ac: ret ; 0x60ad2b0: b #0xc389b40; 0x60ad2b4: stp x20, x19, [sp, #0x10]; 0x60ad2b8: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc389b40 [ldr x17, #0xc3986e0; cbz x17, #0xc389b58; ldr x16, #0xc3986e8; eor x17, x17, x16; ror x17, x17, #0x1e; br x17; stp d11, d10, [sp, #-0x40]!]
+  [32] rva=0x06127e74 bss=0xcc8f8e8 | 0x6127e64: ldp x22, x21, [sp, #0x10]; 0x6127e68: add sp, sp, #0x40; 0x6127e6c: ret ; 0x6127e70: b #0xc3887c0; 0x6127e74: stp x29, x30, [sp, #0x10]; 0x6127e78: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc3887c0 [ldr x17, #0xc398260; cbz x17, #0xc3887d8; ldr x16, #0xc398268; eor x17, x17, x16; ror x17, x17, #6; br x17; stp d11, d10, [sp, #-0x40]!]
+  [33] rva=0x06191854 bss=0xcc8f8f0 | 0x6191844: ldp d9, d8, [sp, #0x10]; 0x6191848: add sp, sp, #0x60; 0x619184c: ret ; 0x6191850: b #0xc3884c0; 0x6191854: stp x29, x30, [sp, #0x10]; 0x6191858: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc3884c0 [ldr x17, #0xc398670; cbz x17, #0xc3884d8; ldr x16, #0xc398678; eor x17, x17, x16; ror x17, x17, #0x2b; br x17; stp d11, d10, [sp, #-0x40]!]
+  [34] rva=0x063086cc bss=0xcc8f8f8 | 0x63086bc: ret ; 0x63086c0: str w1, [x0, #0x6c]; 0x63086c4: ret ; 0x63086c8: b #0xc389440; 0x63086cc: stp x29, x30, [sp, #0x10]; 0x63086d0: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389440 [ldr x17, #0xc398570; cbz x17, #0xc389458; ldr x16, #0xc398578; eor x17, x17, x16; ror x17, x17, #0x13; br x17; stp d11, d10, [sp, #-0x40]!]
+  [35] rva=0x063d8d4c bss=0xcc8f900 | 0x63d8d3c: ldp x20, x19, [sp, #0x10]; 0x63d8d40: ldp x22, x21, [sp], #0x30; 0x63d8d44: ret ; 0x63d8d48: b #0xc388840; 0x63d8d4c: stp x22, x21, [sp, #0x10]; 0x63d8d50: stp x20, x19, [sp, #0x20] -> __TEXT_EXEC stub@0xc388840 [ldr x17, #0xc3980b0; cbz x17, #0xc388858; ldr x16, #0xc3980b8; eor x17, x17, x16; ror x17, x17, #0x38; br x17; stp d11, d10, [sp, #-0x40]!]
+  [36] rva=0x0643c6cc bss=0xcc8f908 | 0x643c6bc: ldp x20, x19, [sp, #0x10]; 0x643c6c0: ldp x22, x21, [sp], #0x30; 0x643c6c4: ret ; 0x643c6c8: b #0xc389480; 0x643c6cc: stp x29, x30, [sp, #0x10]; 0x643c6d0: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389480 [ldr x17, #0xc398280; cbz x17, #0xc389498; ldr x16, #0xc398288; eor x17, x17, x16; ror x17, x17, #0x20; br x17; stp d11, d10, [sp, #-0x40]!]
+  [37] rva=0x06467718 bss=0xcc8f910 | 0x6467708: cmp x8, x1; 0x646770c: cset w0, eq; 0x6467710: ret ; 0x6467714: b #0xc388500; 0x6467718: stp x29, x30, [sp, #0x10]; 0x646771c: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388500 [ldr x17, #0xc398120; cbz x17, #0xc388518; ldr x16, #0xc398128; eor x17, x17, x16; ror x17, x17, #8; br x17; stp d11, d10, [sp, #-0x40]!]
+  [38] rva=0x064c02d0 bss=0xcc8f918 | 0x64c02c0: stur q0, [x1, #0x18]; 0x64c02c4: ret ; 0x64c02c8: ret ; 0x64c02cc: b #0xc389000; 0x64c02d0: stp x29, x30, [sp, #0x10]; 0x64c02d4: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389000 [ldr x17, #0xc398340; cbz x17, #0xc389018; ldr x16, #0xc398348; eor x17, x17, x16; ror x17, x17, #0x2d; br x17; stp d11, d10, [sp, #-0x40]!]
+  [39] rva=0x065b16e4 bss=0xcc8f920 | 0x65b16d4: strb w2, [x0, #0x11]; 0x65b16d8: strb w3, [x0, #0x12]; 0x65b16dc: ret ; 0x65b16e0: b #0xc389bc0; 0x65b16e4: stp x29, x30, [sp, #0x10]; 0x65b16e8: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389bc0 [ldr x17, #0xc3986b0; cbz x17, #0xc389bd8; ldr x16, #0xc3986b8; eor x17, x17, x16; ror x17, x17, #0x15; br x17; stp d11, d10, [sp, #-0x40]!]
+  [40] rva=0x065ff518 bss=0xcc8f928 | 0x65ff508: ret ; 0x65ff50c: str w1, [x0, #0x60]; 0x65ff510: ret ; 0x65ff514: b #0xc389740; 0x65ff518: stp x29, x30, [sp, #0x10]; 0x65ff51c: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389740 [ldr x17, #0xc398170; cbz x17, #0xc389758; ldr x16, #0xc398178; eor x17, x17, x16; ror x17, x17, #0x3a; br x17; stp d11, d10, [sp, #-0x40]!]
+  [41] rva=0x06641160 bss=0xcc8f930 | 0x6641150: ldp x20, x19, [sp, #0x10]; 0x6641154: ldp x22, x21, [sp], #0x30; 0x6641158: ret ; 0x664115c: b #0xc388240; 0x6641160: stp x20, x19, [sp, #0x10]; 0x6641164: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388240 [ldr x17, #0xc398530; cbz x17, #0xc388258; ldr x16, #0xc398538; eor x17, x17, x16; ror x17, x17, #0x22; br x17; stp d11, d10, [sp, #-0x40]!]
+  [42] rva=0x066903f0 bss=0xcc8f938 | 0x66903e0: ldp d9, d8, [sp, #0x20]; 0x66903e4: add sp, sp, #0x90; 0x66903e8: ret ; 0x66903ec: b #0xc389100; 0x66903f0: stp x29, x30, [sp, #0x10]; 0x66903f4: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389100 [ldr x17, #0xc398210; cbz x17, #0xc389118; ldr x16, #0xc398218; eor x17, x17, x16; ror x17, x17, #0xa; br x17; stp d11, d10, [sp, #-0x40]!]
+  [43] rva=0x06865600 bss=0xcc8f940 | 0x68655f0: bl #0xa1113ac; 0x68655f4: ldr x0, [x0, #0x18]; 0x68655f8: ret ; 0x68655fc: b #0xc388b80; 0x6865600: stp x29, x30, [sp, #0x10]; 0x6865604: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388b80 [ldr x17, #0xc398650; cbz x17, #0xc388b98; ldr x16, #0xc398658; eor x17, x17, x16; ror x17, x17, #0x2f; br x17; stp d11, d10, [sp, #-0x40]!]
+  [44] rva=0x06941fc4 bss=0xcc8f948 | 0x6941fb4: ldp x29, x30, [sp, #0x20]; 0x6941fb8: add sp, sp, #0x30; 0x6941fbc: ret ; 0x6941fc0: b #0xc388400; 0x6941fc4: stp x22, x21, [sp, #0x20]; 0x6941fc8: stp x20, x19, [sp, #0x30] -> __TEXT_EXEC stub@0xc388400 [ldr x17, #0xc3982c0; cbz x17, #0xc388418; ldr x16, #0xc3982c8; eor x17, x17, x16; ror x17, x17, #0x17; br x17; stp d11, d10, [sp, #-0x40]!]
+  [45] rva=0x069eb03c bss=0xcc8f950 | 0x69eb02c: ldp x22, x21, [sp, #0x10]; 0x69eb030: ldp x24, x23, [sp], #0x40; 0x69eb034: ret ; 0x69eb038: b #0xc389840; 0x69eb03c: stp x20, x19, [sp, #0x10]; 0x69eb040: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc389840 [ldr x17, #0xc3981e0; cbz x17, #0xc389858; ldr x16, #0xc3981e8; eor x17, x17, x16; ror x17, x17, #0x3c; br x17; stp d11, d10, [sp, #-0x40]!]
+  [46] rva=0x06a9a8c0 bss=0xcc8f958 | 0x6a9a8b0: ret ; 0x6a9a8b4: str s0, [x0, #0x10]; 0x6a9a8b8: ret ; 0x6a9a8bc: b #0xc389540; 0x6a9a8c0: stp x29, x30, [sp, #0x10]; 0x6a9a8c4: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389540 [ldr x17, #0xc3985d0; cbz x17, #0xc389558; ldr x16, #0xc3985d8; eor x17, x17, x16; ror x17, x17, #0x24; br x17; stp d11, d10, [sp, #-0x40]!]
+  [47] rva=0x06a9f9b8 bss=0xcc8f960 | 0x6a9f9a8: ldp x29, x30, [sp, #0x10]; 0x6a9f9ac: ldp x20, x19, [sp], #0x20; 0x6a9f9b0: ret ; 0x6a9f9b4: b #0xc389200; 0x6a9f9b8: stp x29, x30, [sp, #0x10]; 0x6a9f9bc: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389200 [ldr x17, #0xc398370; cbz x17, #0xc389218; ldr x16, #0xc398378; eor x17, x17, x16; ror x17, x17, #0xc; br x17; stp d11, d10, [sp, #-0x40]!]
+  [48] rva=0x06af7c84 bss=0xcc8f968 | 0x6af7c74: ldp x20, x19, [sp, #0x10]; 0x6af7c78: ldp x22, x21, [sp], #0x30; 0x6af7c7c: ret ; 0x6af7c80: b #0xc3886c0; 0x6af7c84: stp x20, x19, [sp, #0x10]; 0x6af7c88: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc3886c0 [ldr x17, #0xc398730; cbz x17, #0xc3886d8; ldr x16, #0xc398738; eor x17, x17, x16; ror x17, x17, #0x31; br x17; stp d11, d10, [sp, #-0x40]!]
+  [49] rva=0x06b34120 bss=0xcc8f970 | 0x6b34110: ldp x20, x19, [sp, #0x10]; 0x6b34114: ldp x22, x21, [sp], #0x30; 0x6b34118: ret ; 0x6b3411c: b #0xc389b80; 0x6b34120: stp x20, x19, [sp, #0x10]; 0x6b34124: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc389b80 [ldr x17, #0xc398430; cbz x17, #0xc389b98; ldr x16, #0xc398438; eor x17, x17, x16; ror x17, x17, #0x19; br x17; stp d11, d10, [sp, #-0x40]!]
+  [50] rva=0x06b4aa58 bss=0xcc8f978 | 0x6b4aa48: ldp x20, x19, [sp, #0x10]; 0x6b4aa4c: ldp x22, x21, [sp], #0x30; 0x6b4aa50: ret ; 0x6b4aa54: b #0xc388900; 0x6b4aa58: stp x20, x19, [sp, #0x10]; 0x6b4aa5c: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388900 [ldr x17, #0xc398630; cbz x17, #0xc388918; ldr x16, #0xc398638; eor x17, x17, x16; ror x17, x17, #1; br x17; stp d11, d10, [sp, #-0x40]!]
+  [51] rva=0x06b5ed78 bss=0xcc8f980 | 0x6b5ed68: ret ; 0x6b5ed6c: ldr w0, [x0, #0x98]; 0x6b5ed70: ret ; 0x6b5ed74: b #0xc3894c0; 0x6b5ed78: stp x20, x19, [sp, #0x10]; 0x6b5ed7c: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc3894c0 [ldr x17, #0xc398420; cbz x17, #0xc3894d8; ldr x16, #0xc398428; eor x17, x17, x16; ror x17, x17, #0x26; br x17; stp d11, d10, [sp, #-0x40]!]
+  [52] rva=0x06b6c968 bss=0xcc8f988 | 0x6b6c958: ccmp x0, x2, #0, eq; 0x6b6c95c: cset w0, ne; 0x6b6c960: ret ; 0x6b6c964: b #0xc388a00; 0x6b6c968: stp x20, x19, [sp, #0x10]; 0x6b6c96c: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388a00 [ldr x17, #0xc3986a0; cbz x17, #0xc388a18; ldr x16, #0xc3986a8; eor x17, x17, x16; ror x17, x17, #0xe; br x17; stp d11, d10, [sp, #-0x40]!]
+  [53] rva=0x06b6f478 bss=0xcc8f990 | 0x6b6f468: cset w0, ne; 0x6b6f46c: ldp x29, x30, [sp], #0x10; 0x6b6f470: ret ; 0x6b6f474: b #0xc388f40; 0x6b6f478: stp x20, x19, [sp, #0x10]; 0x6b6f47c: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388f40 [ldr x17, #0xc3984f0; cbz x17, #0xc388f58; ldr x16, #0xc3984f8; eor x17, x17, x16; ror x17, x17, #0x33; br x17; stp d11, d10, [sp, #-0x40]!]
+  [54] rva=0x06b7ac34 bss=0xcc8f998 | 0x6b7ac24: ldp x22, x21, [sp, #0x10]; 0x6b7ac28: add sp, sp, #0x40; 0x6b7ac2c: ret ; 0x6b7ac30: b #0xc3890c0; 0x6b7ac34: stp x29, x30, [sp, #0x10]; 0x6b7ac38: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc3890c0 [ldr x17, #0xc398220; cbz x17, #0xc3890d8; ldr x16, #0xc398228; eor x17, x17, x16; ror x17, x17, #0x1b; br x17; stp d11, d10, [sp, #-0x40]!]
+  [55] rva=0x06b7c35c bss=0xcc8f9a0 | 0x6b7c34c: ldp x24, x23, [sp, #0x10]; 0x6b7c350: ldp x26, x25, [sp], #0x50; 0x6b7c354: ret ; 0x6b7c358: b #0xc388d40; 0x6b7c35c: stp x22, x21, [sp, #0x10]; 0x6b7c360: stp x20, x19, [sp, #0x20] -> __TEXT_EXEC stub@0xc388d40 [ldr x17, #0xc3980e0; cbz x17, #0xc388d58; ldr x16, #0xc3980e8; eor x17, x17, x16; ror x17, x17, #3; br x17; stp d11, d10, [sp, #-0x40]!]
+  [56] rva=0x06b8068c bss=0xcc8f9a8 | 0x6b8067c: ldp x24, x23, [sp, #0x10]; 0x6b80680: add sp, sp, #0x50; 0x6b80684: ret ; 0x6b80688: b #0xc388e40; 0x6b8068c: stp x20, x19, [sp, #0x10]; 0x6b80690: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388e40 [ldr x17, #0xc398270; cbz x17, #0xc388e58; ldr x16, #0xc398278; eor x17, x17, x16; ror x17, x17, #0x28; br x17; stp d11, d10, [sp, #-0x40]!]
+  [57] rva=0x06b879d8 bss=0xcc8f9b0 | 0x6b879c8: ldp x29, x30, [sp, #0x10]; 0x6b879cc: ldp x20, x19, [sp], #0x20; 0x6b879d0: ret ; 0x6b879d4: b #0xc388ac0; 0x6b879d8: stp x29, x30, [sp, #0x10]; 0x6b879dc: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388ac0 [ldr x17, #0xc398100; cbz x17, #0xc388ad8; ldr x16, #0xc398108; eor x17, x17, x16; ror x17, x17, #0x10; br x17; stp d11, d10, [sp, #-0x40]!]
+  [58] rva=0x06b8fdb4 bss=0xcc8f9b8 | 0x6b8fda4: ldp x29, x30, [sp, #0x10]; 0x6b8fda8: ldp x20, x19, [sp], #0x20; 0x6b8fdac: ret ; 0x6b8fdb0: b #0xc3882c0; 0x6b8fdb4: stp x20, x19, [sp, #0x10]; 0x6b8fdb8: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc3882c0 [ldr x17, #0xc398410; cbz x17, #0xc3882d8; ldr x16, #0xc398418; eor x17, x17, x16; ror x17, x17, #0x35; br x17; stp d11, d10, [sp, #-0x40]!]
+  [59] rva=0x06b9ee84 bss=0xcc8f9c0 | 0x6b9ee74: ldp x29, x30, [sp, #0x10]; 0x6b9ee78: ldp x20, x19, [sp], #0x20; 0x6b9ee7c: ret ; 0x6b9ee80: b #0xc388980; 0x6b9ee84: stp x20, x19, [sp, #0x10]; 0x6b9ee88: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388980 [ldr x17, #0xc3982b0; cbz x17, #0xc388998; ldr x16, #0xc3982b8; eor x17, x17, x16; ror x17, x17, #0x1d; br x17; stp d11, d10, [sp, #-0x40]!]
+  [60] rva=0x06ba6694 bss=0xcc8f9c8 | 0x6ba6684: ldp x22, x21, [sp, #0x10]; 0x6ba6688: ldp x24, x23, [sp], #0x40; 0x6ba668c: ret ; 0x6ba6690: b #0xc3883c0; 0x6ba6694: stp x22, x21, [sp, #0x10]; 0x6ba6698: stp x20, x19, [sp, #0x20] -> __TEXT_EXEC stub@0xc3883c0 [ldr x17, #0xc3982a0; cbz x17, #0xc3883d8; ldr x16, #0xc3982a8; eor x17, x17, x16; ror x17, x17, #5; br x17; stp d11, d10, [sp, #-0x40]!]
+  [61] rva=0x06baaef8 bss=0xcc8f9d0 | 0x6baaee8: bl #0xa111500; 0x6baaeec: mov w0, #1; 0x6baaef0: ret ; 0x6baaef4: b #0xc3891c0; 0x6baaef8: stp x22, x21, [sp, #0x10]; 0x6baaefc: stp x20, x19, [sp, #0x20] -> __TEXT_EXEC stub@0xc3891c0 [ldr x17, #0xc3980c0; cbz x17, #0xc3891d8; ldr x16, #0xc3980c8; eor x17, x17, x16; ror x17, x17, #0x2a; br x17; stp d11, d10, [sp, #-0x40]!]
+  [62] rva=0x06bca588 bss=0xcc8f9d8 | 0x6bca578: ldp x29, x30, [sp, #0x10]; 0x6bca57c: ldp x20, x19, [sp], #0x20; 0x6bca580: ret ; 0x6bca584: b #0xc3881c0; 0x6bca588: stp x24, x23, [sp, #0x30]; 0x6bca58c: stp x22, x21, [sp, #0x40] -> __TEXT_EXEC stub@0xc3881c0 [ldr x17, #0xc398140; cbz x17, #0xc3881d8; ldr x16, #0xc398148; eor x17, x17, x16; ror x17, x17, #0x12; br x17; stp d11, d10, [sp, #-0x40]!]
+  [63] rva=0x06bd8250 bss=0xcc8f9e0 | 0x6bd8240: ldp x29, x30, [sp, #0x10]; 0x6bd8244: ldp x20, x19, [sp], #0x20; 0x6bd8248: ret ; 0x6bd824c: b #0xc388b40; 0x6bd8250: stp x20, x19, [sp, #0x10]; 0x6bd8254: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388b40 [ldr x17, #0xc398700; cbz x17, #0xc388b58; ldr x16, #0xc398708; eor x17, x17, x16; ror x17, x17, #0x37; br x17; stp d11, d10, [sp, #-0x40]!]
+  [64] rva=0x06c04a48 bss=0xcc8f9e8 | 0x6c04a38: ret ; 0x6c04a3c: ldr x0, [x0, #0x30]; 0x6c04a40: ret ; 0x6c04a44: b #0xc388b00; 0x6c04a48: stp x20, x19, [sp, #0x10]; 0x6c04a4c: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388b00 [ldr x17, #0xc3985e0; cbz x17, #0xc388b18; ldr x16, #0xc3985e8; eor x17, x17, x16; ror x17, x17, #0x1f; br x17; stp d11, d10, [sp, #-0x40]!]
+  [65] rva=0x06c0f398 bss=0xcc8f9f0 | 0x6c0f388: ret ; 0x6c0f38c: ldr w0, [x0, #0x38]; 0x6c0f390: ret ; 0x6c0f394: b #0xc389040; 0x6c0f398: stp x22, x21, [sp, #0x10]; 0x6c0f39c: stp x20, x19, [sp, #0x20] -> __TEXT_EXEC stub@0xc389040 [ldr x17, #0xc3981a0; cbz x17, #0xc389058; ldr x16, #0xc3981a8; eor x17, x17, x16; ror x17, x17, #7; br x17; stp d11, d10, [sp, #-0x40]!]
+  [66] rva=0x06c2486c bss=0xcc8f9f8 | 0x6c2485c: ret ; 0x6c24860: strb w1, [x0, #0x17a]; 0x6c24864: ret ; 0x6c24868: b #0xc389b00; 0x6c2486c: stp x29, x30, [sp, #0x10]; 0x6c24870: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389b00 [ldr x17, #0xc398080; cbz x17, #0xc389b18; ldr x16, #0xc398088; eor x17, x17, x16; ror x17, x17, #0x2c; br x17; stp d11, d10, [sp, #-0x40]!]
+  [67] rva=0x06c36e6c bss=0xcc8fa00 | 0x6c36e5c: bl #0x9644; 0x6c36e60: ldrb w0, [x0, #0xd9]; 0x6c36e64: ret ; 0x6c36e68: b #0xc389a80; 0x6c36e6c: stp x22, x21, [sp, #0x10]; 0x6c36e70: stp x20, x19, [sp, #0x20] -> __TEXT_EXEC stub@0xc389a80 [ldr x17, #0xc398470; cbz x17, #0xc389a98; ldr x16, #0xc398478; eor x17, x17, x16; ror x17, x17, #0x14; br x17; stp d11, d10, [sp, #-0x40]!]
+  [68] rva=0x06c7b354 bss=0xcc8fa08 | 0x6c7b344: bl #0xa111500; 0x6c7b348: mov w0, #0; 0x6c7b34c: ret ; 0x6c7b350: b #0xc389300; 0x6c7b354: stp x29, x30, [sp, #0x10]; 0x6c7b358: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389300 [ldr x17, #0xc398660; cbz x17, #0xc389318; ldr x16, #0xc398668; eor x17, x17, x16; ror x17, x17, #0x39; br x17; stp d11, d10, [sp, #-0x40]!]
+  [69] rva=0x06c7fe68 bss=0xcc8fa10 | 0x6c7fe58: sub w8, w8, #1; 0x6c7fe5c: str w8, [x0, #0x10]; 0x6c7fe60: ret ; 0x6c7fe64: b #0xc388480; 0x6c7fe68: stp x29, x30, [sp, #0x10]; 0x6c7fe6c: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388480 [ldr x17, #0xc398550; cbz x17, #0xc388498; ldr x16, #0xc398558; eor x17, x17, x16; ror x17, x17, #0x21; br x17; stp d11, d10, [sp, #-0x40]!]
+  [70] rva=0x06cafc94 bss=0xcc8fa18 | 0x6cafc84: ret ; 0x6cafc88: ret ; 0x6cafc8c: ret ; 0x6cafc90: b #0xc388140; 0x6cafc94: stp x20, x19, [sp, #0x10]; 0x6cafc98: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388140 [ldr x17, #0xc398590; cbz x17, #0xc388158; ldr x16, #0xc398598; eor x17, x17, x16; ror x17, x17, #9; br x17; stp d11, d10, [sp, #-0x40]!]
+  [71] rva=0x06cbc434 bss=0xcc8fa20 | 0x6cbc424: ldp x29, x30, [sp, #0x10]; 0x6cbc428: ldp x20, x19, [sp], #0x20; 0x6cbc42c: ret ; 0x6cbc430: b #0xc3895c0; 0x6cbc434: stp x22, x21, [sp, #0x10]; 0x6cbc438: stp x20, x19, [sp, #0x20] -> __TEXT_EXEC stub@0xc3895c0 [ldr x17, #0xc398400; cbz x17, #0xc3895d8; ldr x16, #0xc398408; eor x17, x17, x16; ror x17, x17, #0x2e; br x17; stp d11, d10, [sp, #-0x40]!]
+  [72] rva=0x06cd8260 bss=0xcc8fa28 | 0x6cd8250: bl #0xa111500; 0x6cd8254: ldr x0, [x0, #0x28]; 0x6cd8258: ret ; 0x6cd825c: b #0xc389900; 0x6cd8260: stp x22, x21, [sp, #0x30]; 0x6cd8264: stp x20, x19, [sp, #0x40] -> __TEXT_EXEC stub@0xc389900 [ldr x17, #0xc398720; cbz x17, #0xc389918; ldr x16, #0xc398728; eor x17, x17, x16; ror x17, x17, #0x16; br x17; stp d11, d10, [sp, #-0x40]!]
+  [73] rva=0x06ce6358 bss=0xcc8fa30 | 0x6ce6348: ret ; 0x6ce634c: ldrb w0, [x0, #0x48]; 0x6ce6350: ret ; 0x6ce6354: b #0xc389500; 0x6ce6358: stp x29, x30, [sp, #0x10]; 0x6ce635c: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389500 [ldr x17, #0xc398360; cbz x17, #0xc389518; ldr x16, #0xc398368; eor x17, x17, x16; ror x17, x17, #0x3b; br x17; stp d11, d10, [sp, #-0x40]!]
+  [74] rva=0x06cfc158 bss=0xcc8fa38 | 0x6cfc148: eor w8, w1, #1; 0x6cfc14c: strb w8, [x0, #0x28]; 0x6cfc150: ret ; 0x6cfc154: b #0xc388800; 0x6cfc158: stp x22, x21, [sp, #0x40]; 0x6cfc15c: stp x20, x19, [sp, #0x50] -> __TEXT_EXEC stub@0xc388800 [ldr x17, #0xc398480; cbz x17, #0xc388818; ldr x16, #0xc398488; eor x17, x17, x16; ror x17, x17, #0x23; br x17; stp d11, d10, [sp, #-0x40]!]
+  [75] rva=0x07112814 bss=0xcc8fa40 | 0x7112804: ldp x22, x21, [sp, #0x10]; 0x7112808: ldp x24, x23, [sp], #0x40; 0x711280c: ret ; 0x7112810: b #0xc3896c0; 0x7112814: stp x20, x19, [sp, #0x10]; 0x7112818: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc3896c0 [ldr x17, #0xc3984b0; cbz x17, #0xc3896d8; ldr x16, #0xc3984b8; eor x17, x17, x16; ror x17, x17, #0xb; br x17; stp d11, d10, [sp, #-0x40]!]
+  [76] rva=0x0715de98 bss=0xcc8fa48 | 0x715de88: ldp x22, x21, [sp, #0x10]; 0x715de8c: ldp x24, x23, [sp], #0x40; 0x715de90: ret ; 0x715de94: b #0xc388e80; 0x715de98: stp x20, x19, [sp, #0x10]; 0x715de9c: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388e80 [ldr x17, #0xc3985f0; cbz x17, #0xc388e98; ldr x16, #0xc3985f8; eor x17, x17, x16; ror x17, x17, #0x30; br x17; stp d11, d10, [sp, #-0x40]!]
+  [77] rva=0x0717c1d4 bss=0xcc8fa50 | 0x717c1c4: bl #0xa1113ac; 0x717c1c8: ldr x0, [x0, #0x18]; 0x717c1cc: ret ; 0x717c1d0: b #0xc388ec0; 0x717c1d4: stp x29, x30, [sp, #0x10]; 0x717c1d8: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388ec0 [ldr x17, #0xc398330; cbz x17, #0xc388ed8; ldr x16, #0xc398338; eor x17, x17, x16; ror x17, x17, #0x18; br x17; stp d11, d10, [sp, #-0x40]!]
+  [78] rva=0x0724d73c bss=0xcc8fa58 | 0x724d72c: ldp x29, x30, [sp, #0x10]; 0x724d730: add sp, sp, #0x20; 0x724d734: ret ; 0x724d738: b #0xc3899c0; 0x724d73c: stp x24, x23, [sp, #0x40]; 0x724d740: stp x22, x21, [sp, #0x50] -> __TEXT_EXEC stub@0xc3899c0 [ldr x17, #0xc398190; cbz x17, #0xc3899d8; ldr x16, #0xc398198; eor x17, x17, x16; ror x17, x17, #0x3d; br x17; stp d11, d10, [sp, #-0x40]!]
+  [79] rva=0x0725c878 bss=0xcc8fa60 | 0x725c868: ldp x20, x19, [sp, #0x10]; 0x725c86c: ldp x22, x21, [sp], #0x30; 0x725c870: ret ; 0x725c874: b #0xc389c00; 0x725c878: stp x29, x30, [sp, #0x10]; 0x725c87c: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389c00 [ldr x17, #0xc398620; cbz x17, #0xc389c18; ldr x16, #0xc398628; eor x17, x17, x16; ror x17, x17, #0x25; br x17; stp d11, d10, [sp, #-0x40]!]
+  [80] rva=0x0727ddc0 bss=0xcc8fa68 | 0x727ddb0: ldp x29, x30, [sp, #0x10]; 0x727ddb4: ldp x20, x19, [sp], #0x20; 0x727ddb8: ret ; 0x727ddbc: b #0xc388380; 0x727ddc0: stp x20, x19, [sp, #0x10]; 0x727ddc4: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388380 [ldr x17, #0xc398090; cbz x17, #0xc388398; ldr x16, #0xc398098; eor x17, x17, x16; ror x17, x17, #0xd; br x17; stp d11, d10, [sp, #-0x40]!]
+  [81] rva=0x073d6950 bss=0xcc8fa70 | 0x73d6940: mov w1, w1; 0x73d6944: ldp x29, x30, [sp], #0x10; 0x73d6948: ret ; 0x73d694c: b #0xc389a00; 0x73d6950: stp x20, x19, [sp, #0x10]; 0x73d6954: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc389a00 [ldr x17, #0xc398300; cbz x17, #0xc389a18; ldr x16, #0xc398308; eor x17, x17, x16; ror x17, x17, #0x32; br x17; stp d11, d10, [sp, #-0x40]!]
+  [82] rva=0x0745577c bss=0xcc8fa78 | 0x745576c: ldp x20, x19, [sp, #0x10]; 0x7455770: ldp x22, x21, [sp], #0x30; 0x7455774: ret ; 0x7455778: b #0xc389380; 0x745577c: stp x20, x19, [sp, #0x10]; 0x7455780: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc389380 [ldr x17, #0xc3980a0; cbz x17, #0xc389398; ldr x16, #0xc3980a8; eor x17, x17, x16; ror x17, x17, #0x1a; br x17; stp d11, d10, [sp, #-0x40]!]
+  [83] rva=0x0746a6e0 bss=0xcc8fa80 | 0x746a6d0: ldp x28, x27, [sp, #0x10]; 0x746a6d4: add sp, sp, #0x70; 0x746a6d8: ret ; 0x746a6dc: b #0xc388740; 0x746a6e0: stp x28, x27, [sp, #0x10]; 0x746a6e4: stp x26, x25, [sp, #0x20] -> __TEXT_EXEC stub@0xc388740 [ldr x17, #0xc398490; cbz x17, #0xc388758; ldr x16, #0xc398498; eor x17, x17, x16; ror x17, x17, #2; br x17; stp d11, d10, [sp, #-0x40]!]
+  [84] rva=0x074964a4 bss=0xcc8fa88 | 0x7496494: ldp x29, x30, [sp, #0x10]; 0x7496498: ldp x20, x19, [sp], #0x20; 0x749649c: ret ; 0x74964a0: b #0xc388880; 0x74964a4: stp x29, x30, [sp, #0x10]; 0x74964a8: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388880 [ldr x17, #0xc3981d0; cbz x17, #0xc388898; ldr x16, #0xc3981d8; eor x17, x17, x16; ror x17, x17, #0x27; br x17; stp d11, d10, [sp, #-0x40]!]
+  [85] rva=0x0751909c bss=0xcc8fa90 | 0x751908c: ldp x29, x30, [sp, #0x10]; 0x7519090: ldp x20, x19, [sp], #0x20; 0x7519094: ret ; 0x7519098: b #0xc3889c0; 0x751909c: stp x29, x30, [sp, #0x10]; 0x75190a0: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc3889c0 [ldr x17, #0xc3981c0; cbz x17, #0xc3889d8; ldr x16, #0xc3981c8; eor x17, x17, x16; ror x17, x17, #0xf; br x17; stp d11, d10, [sp, #-0x40]!]
+  [86] rva=0x0751954c bss=0xcc8fa98 | 0x751953c: ldp x29, x30, [sp, #0x10]; 0x7519540: ldp x20, x19, [sp], #0x20; 0x7519544: ret ; 0x7519548: b #0xc388780; 0x751954c: stp x29, x30, [sp, #0x10]; 0x7519550: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388780 [ldr x17, #0xc3982e0; cbz x17, #0xc388798; ldr x16, #0xc3982e8; eor x17, x17, x16; ror x17, x17, #0x34; br x17; stp d11, d10, [sp, #-0x40]!]
+  [87] rva=0x07519984 bss=0xcc8faa0 | 0x7519974: ldp x29, x30, [sp, #0x10]; 0x7519978: ldp x20, x19, [sp], #0x20; 0x751997c: ret ; 0x7519980: b #0xc388180; 0x7519984: stp x29, x30, [sp, #0x10]; 0x7519988: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388180 [ldr x17, #0xc398240; cbz x17, #0xc388198; ldr x16, #0xc398248; eor x17, x17, x16; ror x17, x17, #0x1c; br x17; stp d11, d10, [sp, #-0x40]!]
+  [88] rva=0x0751c560 bss=0xcc8faa8 | 0x751c550: ret ; 0x751c554: mov x0, #0; 0x751c558: ret ; 0x751c55c: b #0xc389940; 0x751c560: stp x24, x23, [sp, #0x30]; 0x751c564: stp x22, x21, [sp, #0x40] -> __TEXT_EXEC stub@0xc389940 [ldr x17, #0xc398450; cbz x17, #0xc389958; ldr x16, #0xc398458; eor x17, x17, x16; ror x17, x17, #4; br x17; stp d11, d10, [sp, #-0x40]!]
+  [89] rva=0x07661598 bss=0xcc8fab0 | 0x7661588: bl #0xa1113ac; 0x766158c: ldr x0, [x0, #0x18]; 0x7661590: ret ; 0x7661594: b #0xc389700; 0x7661598: stp x29, x30, [sp, #0x10]; 0x766159c: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389700 [ldr x17, #0xc3986d0; cbz x17, #0xc389718; ldr x16, #0xc3986d8; eor x17, x17, x16; ror x17, x17, #0x29; br x17; stp d11, d10, [sp, #-0x40]!]
+  [90] rva=0x076663f4 bss=0xcc8fab8 | 0x76663e4: ldp x20, x19, [sp, #0x20]; 0x76663e8: add sp, sp, #0x40; 0x76663ec: ret ; 0x76663f0: b #0xc388200; 0x76663f4: stp x29, x30, [sp, #0x10]; 0x76663f8: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388200 [ldr x17, #0xc398460; cbz x17, #0xc388218; ldr x16, #0xc398468; eor x17, x17, x16; ror x17, x17, #0x11; br x17; stp d11, d10, [sp, #-0x40]!]
+  [91] rva=0x07688308 bss=0xcc8fac0 | 0x76882f8: ldp x29, x30, [sp, #0x20]; 0x76882fc: add sp, sp, #0x30; 0x7688300: ret ; 0x7688304: b #0xc388f00; 0x7688308: stp x20, x19, [sp, #0x10]; 0x768830c: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388f00 [ldr x17, #0xc3983f0; cbz x17, #0xc388f18; ldr x16, #0xc3983f8; eor x17, x17, x16; ror x17, x17, #0x36; br x17; stp d11, d10, [sp, #-0x40]!]
+  [92] rva=0x076bdae0 bss=0xcc8fac8 | 0x76bdad0: str wzr, [x0, #0x18]; 0x76bdad4: str wzr, [x0, #0x38]; 0x76bdad8: ret ; 0x76bdadc: b #0xc388600; 0x76bdae0: stp x22, x21, [sp, #0x20]; 0x76bdae4: stp x20, x19, [sp, #0x30] -> __TEXT_EXEC stub@0xc388600 [ldr x17, #0xc398500; cbz x17, #0xc388618; ldr x16, #0xc398508; eor x17, x17, x16; ror x17, x17, #0x1e; br x17; stp d11, d10, [sp, #-0x40]!]
+  [93] rva=0x076ea334 bss=0xcc8fad0 | 0x76ea324: ret ; 0x76ea328: ldr x0, [x0, #0x20]; 0x76ea32c: ret ; 0x76ea330: b #0xc388700; 0x76ea334: stp x20, x19, [sp, #0x10]; 0x76ea338: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388700 [ldr x17, #0xc398750; cbz x17, #0xc388718; ldr x16, #0xc398758; eor x17, x17, x16; ror x17, x17, #6; br x17; stp d11, d10, [sp, #-0x40]!]
+  [94] rva=0x077256a0 bss=0xcc8fad8 | 0x7725690: ldp x29, x30, [sp, #0x10]; 0x7725694: ldp x20, x19, [sp], #0x20; 0x7725698: ret ; 0x772569c: b #0xc388440; 0x77256a0: stp x29, x30, [sp, #0x10]; 0x77256a4: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388440 [ldr x17, #0xc398510; cbz x17, #0xc388458; ldr x16, #0xc398518; eor x17, x17, x16; ror x17, x17, #0x2b; br x17; stp d11, d10, [sp, #-0x40]!]
+  [95] rva=0x07737840 bss=0xcc8fae0 | 0x7737830: ldp x29, x30, [sp, #0x10]; 0x7737834: ldp x20, x19, [sp], #0x20; 0x7737838: ret ; 0x773783c: b #0xc388cc0; 0x7737840: stp x22, x21, [sp, #0x10]; 0x7737844: stp x20, x19, [sp, #0x20] -> __TEXT_EXEC stub@0xc388cc0 [ldr x17, #0xc3982d0; cbz x17, #0xc388cd8; ldr x16, #0xc3982d8; eor x17, x17, x16; ror x17, x17, #0x13; br x17; stp d11, d10, [sp, #-0x40]!]
 
 === Penny Orig-Call Thunks (0xdb5d0 .. 0xdc230) ===
   thunk[ 0] @ 0x0db5d0 .. 0x0db62c: slot=() displaced=()
@@ -181,8 +181,41 @@
   thunk[43] @ 0x0dc224 .. 0x0dc280: slot=(x17, [x17, #0x10]) displaced=(stp x24, x23, [sp, #-0x40]!)
 
 === Summary of UnityFramework __TEXT.__text Static Branches ===
-  Branches to __TEXT_EXEC (0xc388000..0xc398000): 100
-  Branches to __AUTH_EXEC (0xc39c000..0xc3a0000): 39
+  Direct B/BL to __TEXT_EXEC: 100, 12B ADRP+ADD+BR to __TEXT_EXEC: 10 (Total: 110 / 110 stubs)
+  Direct B/BL to __AUTH_EXEC: 39, 12B ADRP+ADD+BR to __AUTH_EXEC: 6 (Total: 45 / 45 stubs)
+
+=== sub_de414 Jump Table @ 0x63dbc2c (31 entries) ===
+  case[ 0] -> 0x0de5b0: add w9, w0, #1; mov x10, #0x7c15; movk x10, #0x7f4a, lsl #16
+  case[ 1] -> 0x0de440: adr x8, #0xdbb10; nop ; b #0xde5b0
+  case[ 2] -> 0x0de458: adr x8, #0xd52b0; nop ; b #0xde5b0
+  case[ 3] -> 0x0de464: adr x8, #0xd55e8; nop ; b #0xde5b0
+  case[ 4] -> 0x0de470: adr x8, #0xdbb74; nop ; b #0xde5b0
+  case[ 5] -> 0x0de47c: adr x8, #0xd5310; nop ; b #0xde5b0
+  case[ 6] -> 0x0de488: adr x8, #0xd5118; nop ; b #0xde5b0
+  case[ 7] -> 0x0de494: adr x8, #0xdbbd8; nop ; b #0xde5b0
+  case[ 8] -> 0x0de4a0: adr x8, #0xd589c; nop ; b #0xde5b0
+  case[ 9] -> 0x0de4ac: adr x8, #0xd49ac; nop ; b #0xde5b0
+  case[10] -> 0x0de4b8: adr x8, #0xdbc34; nop ; b #0xde5b0
+  case[11] -> 0x0de4c4: adr x8, #0xd5b78; nop ; b #0xde5b0
+  case[12] -> 0x0de4d0: adr x8, #0xd48d8; nop ; b #0xde5b0
+  case[13] -> 0x0de4dc: adr x8, #0xdb7d4; nop ; b #0xde5b0
+  case[14] -> 0x0de4e8: adr x8, #0xdb830; nop ; b #0xde5b0
+  case[15] -> 0x0de4f4: adr x8, #0xd4d80; nop ; b #0xde5b0
+  case[16] -> 0x0de500: adr x8, #0xdb88c; nop ; b #0xde5b0
+  case[17] -> 0x0de50c: adr x8, #0xdb8e8; nop ; b #0xde5b0
+  case[18] -> 0x0de518: adr x8, #0xd4eec; nop ; b #0xde5b0
+  case[19] -> 0x0de524: adr x8, #0xdb944; nop ; b #0xde5b0
+  case[20] -> 0x0de530: adr x8, #0xdb9a0; nop ; b #0xde5b0
+  case[21] -> 0x0de53c: adr x8, #0xd5480; nop ; b #0xde5b0
+  case[22] -> 0x0de548: adr x8, #0xdb9fc; nop ; b #0xde5b0
+  case[23] -> 0x0de554: adr x8, #0xdba58; nop ; b #0xde5b0
+  case[24] -> 0x0de560: adr x8, #0xd5f6c; nop ; b #0xde5b0
+  case[25] -> 0x0de56c: adr x8, #0xdbab4; nop ; b #0xde5b0
+  case[26] -> 0x0de578: adr x8, #0xdbc90; nop ; b #0xde5b0
+  case[27] -> 0x0de584: adr x8, #0xd5e28; nop ; b #0xde5b0
+  case[28] -> 0x0de590: adr x8, #0xdbcf4; nop ; b #0xde5b0
+  case[29] -> 0x0de59c: adr x8, #0xd64d8; nop ; b #0xde5b0
+  case[30] -> 0x0de5a8: adr x8, #0xdbd58; nop ; add w9, w0, #1
   Unmatched __TEXT_EXEC branches (pc+4 not in Table1..3): 0
   Unmatched __AUTH_EXEC branches (pc+4 not in Table1..3): 19
     pc=0x05632f7c (rva=0x05632f80) -> 0x0c39c100
@@ -237,405 +270,610 @@
   0x384b40..0x39f19c: nonzero=0x192d7 RET= 267 BRK#1=   8 SVC=  0
 
 === High __TEXT.__text Sample Disassembly (0x35da20, 0x382300, 0x39ec8c) ===
---- sub_35da20_ppguard_ref @ 0x35da20 ---
-  0x35da20: ldp      x20, x19, [sp], #0x20
-  0x35da24: ret      
-  0x35da28: adrp     x0, #0xcc85000
-  0x35da2c: add      x0, x0, #0x80
-  0x35da30: bl       #0x36cf78
-  0x35da34: adrp     x8, #0xcc94000
-  0x35da38: ldr      x0, [x8, #0x1c8]
-  0x35da3c: cbz      x0, #0x35da80
-  0x35da40: adr      x2, #0x35e508
-  0x35da44: nop      
-  0x35da48: adr      x3, #0x35e514
-  0x35da4c: nop      
-  0x35da50: mov      x1, x19
-  0x35da54: bl       #0x35aa90
-  0x35da58: cbz      x0, #0x35da80
-  0x35da5c: mov      x20, x0
-  0x35da60: adrp     x0, #0xcc85000
-  0x35da64: add      x0, x0, #0x80
-  0x35da68: bl       #0x36cfb0
-  0x35da6c: add      x8, x20, #0x10
-  0x35da70: ldr      w0, [x8]
-  0x35da74: ldp      x29, x30, [sp, #0x10]
-  0x35da78: ldp      x20, x19, [sp], #0x20
-  0x35da7c: ret      
-  0x35da80: adrp     x0, #0xcc85000
-  0x35da84: add      x0, x0, #0x80
-  0x35da88: bl       #0x36cfb0
-  0x35da8c: adrp     x1, #0x66ea000
-  0x35da90: add      x1, x1, #0xd0c
-  0x35da94: adr      x4, #0x35dae4
-  0x35da98: nop      
-  0x35da9c: mov      x0, x19
-  0x35daa0: mov      w2, #0x376
-  0x35daa4: mov      w3, #2
-  0x35daa8: bl       #0x639f920
-  0x35daac: cbz      x0, #0x35da1c
---- sub_382300_ppguard_ref @ 0x382300 ---
-  0x382300: mov      x2, x1
-  0x382304: mov      x1, x0
-  0x382308: adrp     x0, #0xcc85000
-  0x38230c: add      x0, x0, #0x278
-  0x382310: b        #0x348160
-  0x382314: add      x0, x0, #0x70
-  0x382318: b        #0x348240
-  0x38231c: add      x0, x0, #0x70
-  0x382320: b        #0x3482cc
-  0x382324: ldr      w0, [x0, #0x4c]
-  0x382328: ret      
-  0x38232c: str      w1, [x0, #0x4c]
-  0x382330: ret      
-  0x382334: ldr      w0, [x0, #0x48]
-  0x382338: ret      
-  0x38233c: ldr      x0, [x0, #0x50]
-  0x382340: ret      
-  0x382344: ldr      x0, [x0, #0x40]
-  0x382348: ret      
-  0x38234c: ldr      x0, [x0, #0x40]
-  0x382350: ret      
-  0x382354: ldr      x0, [x0, #0x40]
-  0x382358: cbz      x0, #0x382360
-  0x38235c: b        #0x37dfc0
-  0x382360: ret      
-  0x382364: ldr      x0, [x0, #0x58]
-  0x382368: ret      
-  0x38236c: mov      x0, #0
-  0x382370: ret      
-  0x382374: str      x1, [x0, #0x10]
-  0x382378: ret      
-  0x38237c: ldr      x0, [x0, #0x10]
-  0x382380: ret      
-  0x382384: str      x1, [x0, #0x18]
-  0x382388: ret      
-  0x38238c: cbz      w1, #0x3823fc
---- sub_39ec8c_to_end @ 0x39ec8c ---
-  0x39ec8c: adrp     x8, #0xcc8f000
-  0x39ec90: ldr      w9, [x8, #0x6b0]
-  0x39ec94: orr      w9, w9, w0
-  0x39ec98: str      w9, [x8, #0x6b0]
-  0x39ec9c: adrp     x9, #0xcc74000
-  0x39eca0: ldr      w10, [x9, #0x890]
-  0x39eca4: mov      w11, #0xca6b
-  0x39eca8: movk     w11, #0x85eb, lsl #16
-  0x39ecac: mul      w11, w0, w11
-  0x39ecb0: eor      w10, w10, w11
-  0x39ecb4: and      w10, w10, #0xfffffffe
-  0x39ecb8: mov      w11, #0x10cd
-  0x39ecbc: movk     w11, #0xdead, lsl #16
-  0x39ecc0: eor      w10, w10, w11
-  0x39ecc4: str      w10, [x9, #0x890]
-  0x39ecc8: nop      
-  0x39eccc: ldr      w10, [x9, #0x880]
-  0x39ecd0: eor      w10, w10, w0
-  0x39ecd4: and      w10, w10, #0x7ffffffc
-  0x39ecd8: mov      w11, #-0x21530000
-  0x39ecdc: orr      w12, w11, #3
-  0x39ece0: eor      w10, w10, w12
-  0x39ece4: str      w10, [x9, #0x880]
-  0x39ece8: adrp     x10, #0xcc8f000
-  0x39ecec: add      x10, x10, #0x7d8
-  0x39ecf0: stp      xzr, xzr, [x10]
-  0x39ecf4: adrp     x10, #0xcc74000
-  0x39ecf8: mov      x12, #0x2790
-  0x39ecfc: movk     x12, #0x5863, lsl #16
-  0x39ed00: movk     x12, #0x10cc, lsl #32
-  0x39ed04: movk     x12, #0xdead, lsl #48
-  0x39ed08: str      x12, [x10, #0x870]
-  0x39ed0c: adrp     x10, #0xcc8f000
-  0x39ed10: str      xzr, [x10, #0x6b8]
-  0x39ed14: adrp     x10, #0xcc74000
-  0x39ed18: str      x12, [x10, #0x878]
-  0x39ed1c: adrp     x10, #0xcc8f000
-  0x39ed20: strb     wzr, [x10, #0x6c0]
-  0x39ed24: ldr      w12, [x8, #0x6b0]
-  0x39ed28: orr      w12, w12, w0
-  0x39ed2c: orr      w11, w12, w11
-  0x39ed30: str      w11, [x8, #0x6b0]
-  0x39ed34: ldr      w8, [x9, #0x880]
-  0x39ed38: orr      w8, w8, #0x80000003
-  0x39ed3c: str      w8, [x9, #0x880]
-  0x39ed40: strb     wzr, [x10, #0x6c0]
-  0x39ed44: mov      x0, #0
-  0x39ed48: mov      x1, #0
-  0x39ed4c: mov      x29, #0
-  0x39ed50: mov      x30, #0
-  0x39ed54: mov      sp, x0
-  0x39ed58: brk      #1
-  0x39ed5c: udf      #0
-  0x39ed60: brk      #1
-  0x39ed64: mov      x2, x30
-  0x39ed68: bl       #0xe28d8
-  0x39ed6c: mov      x30, x2
-  0x39ed70: adrp     x8, #0xcc74000
-  0x39ed74: ldr      w9, [x8, #0x880]
-  0x39ed78: orr      w9, w9, #0x80000003
-  0x39ed7c: str      w9, [x8, #0x880]
-  0x39ed80: adrp     x8, #0xcc8f000
-  0x39ed84: mov      x2, x30
-  0x39ed88: bl       #0xe28b0
-  0x39ed8c: mov      x30, x2
-  0x39ed90: mov      x2, x30
-  0x39ed94: bl       #0xe28d8
-  0x39ed98: mov      x30, x2
-  0x39ed9c: adrp     x8, #0xcc74000
-  0x39eda0: ldr      w9, [x8, #0x880]
-  0x39eda4: orr      w9, w9, #0x80000003
-  0x39eda8: str      w9, [x8, #0x880]
-  0x39edac: adrp     x8, #0xcc8f000
-  0x39edb0: mov      x2, x30
-  0x39edb4: bl       #0xe28b0
-  0x39edb8: mov      x30, x2
-  0x39edbc: mov      x2, x30
-  0x39edc0: bl       #0xe28d8
-  0x39edc4: mov      x30, x2
-  0x39edc8: adrp     x8, #0xcc74000
-  0x39edcc: ldr      w9, [x8, #0x880]
-  0x39edd0: orr      w9, w9, #0x80000003
-  0x39edd4: str      w9, [x8, #0x880]
-  0x39edd8: adrp     x8, #0xcc8f000
-  0x39eddc: mov      x2, x30
-  0x39ede0: bl       #0xe28b0
-  0x39ede4: mov      x30, x2
-  0x39ede8: mov      x2, x30
-  0x39edec: bl       #0xe28d8
-  0x39edf0: mov      x30, x2
-  0x39edf4: adrp     x8, #0xcc74000
-  0x39edf8: ldr      w9, [x8, #0x880]
-  0x39edfc: orr      w9, w9, #0x80000003
-  0x39ee00: str      w9, [x8, #0x880]
-  0x39ee04: adrp     x8, #0xcc8f000
-  0x39ee08: mov      x2, x30
-  0x39ee0c: bl       #0xe28b0
-  0x39ee10: mov      x30, x2
-  0x39ee14: mov      x2, x30
-  0x39ee18: bl       #0xe28d8
-  0x39ee1c: mov      x30, x2
-  0x39ee20: adrp     x8, #0xcc74000
-  0x39ee24: ldr      w9, [x8, #0x880]
-  0x39ee28: orr      w9, w9, #0x80000003
-  0x39ee2c: str      w9, [x8, #0x880]
-  0x39ee30: adrp     x8, #0xcc8f000
-  0x39ee34: mov      x2, x30
-  0x39ee38: bl       #0xe28b0
-  0x39ee3c: mov      x30, x2
-  0x39ee40: stp      x20, x19, [sp, #-0x20]!
-  0x39ee44: stp      x29, x30, [sp, #0x10]
-  0x39ee48: add      x29, sp, #0x10
-  0x39ee4c: mov      x19, x0
-  0x39ee50: bl       #0xb565c
-  0x39ee54: mov      w8, #-0x21530000
-  0x39ee58: orr      w0, w19, w8
-  0x39ee5c: bl       #0xb565c
-  0x39ee60: mov      x0, #0
-  0x39ee64: mov      x29, #0
-  0x39ee68: mov      x30, #0
-  0x39ee6c: mov      sp, x0
-  0x39ee70: brk      #1
-  0x39ee74: brk      #1
-  0x39ee78: mov      x2, x30
-  0x39ee7c: bl       #0xe28d8
-  0x39ee80: mov      x30, x2
-  0x39ee84: adrp     x8, #0xcc74000
-  0x39ee88: ldr      w9, [x8, #0x880]
-  0x39ee8c: orr      w9, w9, #0x80000003
-  0x39ee90: str      w9, [x8, #0x880]
-  0x39ee94: adrp     x8, #0xcc8f000
-  0x39ee98: mov      x2, x30
-  0x39ee9c: bl       #0xe28b0
-  0x39eea0: mov      x30, x2
-  0x39eea4: mov      x2, x30
-  0x39eea8: bl       #0xe28d8
-  0x39eeac: mov      x30, x2
-  0x39eeb0: adrp     x8, #0xcc74000
-  0x39eeb4: ldr      w9, [x8, #0x880]
-  0x39eeb8: orr      w9, w9, #0x80000003
-  0x39eebc: str      w9, [x8, #0x880]
-  0x39eec0: adrp     x8, #0xcc8f000
-  0x39eec4: mov      x2, x30
-  0x39eec8: bl       #0xe28b0
-  0x39eecc: mov      x30, x2
-  0x39eed0: mov      x2, x30
-  0x39eed4: bl       #0xe28d8
-  0x39eed8: mov      x30, x2
-  0x39eedc: adrp     x8, #0xcc74000
-  0x39eee0: ldr      w9, [x8, #0x880]
-  0x39eee4: orr      w9, w9, #0x80000003
-  0x39eee8: str      w9, [x8, #0x880]
-  0x39eeec: adrp     x8, #0xcc8f000
-  0x39eef0: mov      x2, x30
-  0x39eef4: bl       #0xe28b0
-  0x39eef8: mov      x30, x2
-  0x39eefc: mov      x2, x30
-  0x39ef00: bl       #0xe28d8
-  0x39ef04: mov      x30, x2
-  0x39ef08: adrp     x8, #0xcc74000
-  0x39ef0c: ldr      w9, [x8, #0x880]
-  0x39ef10: orr      w9, w9, #0x80000003
-  0x39ef14: str      w9, [x8, #0x880]
-  0x39ef18: adrp     x8, #0xcc8f000
-  0x39ef1c: mov      x2, x30
-  0x39ef20: bl       #0xe28b0
-  0x39ef24: mov      x30, x2
-  0x39ef28: mov      x2, x30
-  0x39ef2c: bl       #0xe28d8
-  0x39ef30: mov      x30, x2
-  0x39ef34: adrp     x8, #0xcc74000
-  0x39ef38: ldr      w9, [x8, #0x880]
-  0x39ef3c: orr      w9, w9, #0x80000003
-  0x39ef40: str      w9, [x8, #0x880]
-  0x39ef44: adrp     x8, #0xcc8f000
-  0x39ef48: mov      x2, x30
-  0x39ef4c: bl       #0xe28b0
-  0x39ef50: mov      x30, x2
-  0x39ef54: mov      x2, x30
-  0x39ef58: bl       #0xe28d8
-  0x39ef5c: mov      x30, x2
-  0x39ef60: adrp     x8, #0xcc74000
-  0x39ef64: ldr      w9, [x8, #0x880]
-  0x39ef68: orr      w9, w9, #0x80000003
-  0x39ef6c: str      w9, [x8, #0x880]
-  0x39ef70: adrp     x8, #0xcc8f000
-  0x39ef74: mov      x2, x30
-  0x39ef78: bl       #0xe28b0
-  0x39ef7c: mov      x30, x2
-  0x39ef80: stp      x20, x19, [sp, #-0x20]!
-  0x39ef84: stp      x29, x30, [sp, #0x10]
-  0x39ef88: add      x29, sp, #0x10
-  0x39ef8c: eor      w8, w0, w1
-  0x39ef90: mov      w9, #1
-  0x39ef94: movk     w9, #0xdead, lsl #16
-  0x39ef98: orr      w19, w8, w9
-  0x39ef9c: mov      x0, x19
-  0x39efa0: bl       #0xb565c
-  0x39efa4: mov      x0, x19
-  0x39efa8: bl       #0xb565c
-  0x39efac: mov      x0, #0
-  0x39efb0: mov      x29, #0
-  0x39efb4: mov      x30, #0
-  0x39efb8: mov      sp, x0
-  0x39efbc: brk      #1
-  0x39efc0: brk      #1
-  0x39efc4: mov      x2, x30
-  0x39efc8: bl       #0xe28d8
-  0x39efcc: mov      x30, x2
-  0x39efd0: adrp     x8, #0xcc74000
-  0x39efd4: ldr      w9, [x8, #0x880]
-  0x39efd8: orr      w9, w9, #0x80000003
-  0x39efdc: str      w9, [x8, #0x880]
-  0x39efe0: adrp     x8, #0xcc8f000
-  0x39efe4: mov      x2, x30
-  0x39efe8: bl       #0xe28b0
-  0x39efec: mov      x30, x2
-  0x39eff0: mov      x2, x30
-  0x39eff4: bl       #0xe28d8
-  0x39eff8: mov      x30, x2
-  0x39effc: adrp     x8, #0xcc74000
-  0x39f000: ldr      w9, [x8, #0x880]
-  0x39f004: orr      w9, w9, #0x80000003
-  0x39f008: str      w9, [x8, #0x880]
-  0x39f00c: adrp     x8, #0xcc8f000
-  0x39f010: mov      x2, x30
-  0x39f014: bl       #0xe28b0
-  0x39f018: mov      x30, x2
-  0x39f01c: mov      x2, x30
-  0x39f020: bl       #0xe28d8
-  0x39f024: mov      x30, x2
-  0x39f028: adrp     x8, #0xcc74000
-  0x39f02c: ldr      w9, [x8, #0x880]
-  0x39f030: orr      w9, w9, #0x80000003
-  0x39f034: str      w9, [x8, #0x880]
-  0x39f038: adrp     x8, #0xcc8f000
-  0x39f03c: mov      x2, x30
-  0x39f040: bl       #0xe28b0
-  0x39f044: mov      x30, x2
-  0x39f048: mov      x2, x30
-  0x39f04c: bl       #0xe28d8
-  0x39f050: mov      x30, x2
-  0x39f054: adrp     x8, #0xcc74000
-  0x39f058: ldr      w9, [x8, #0x880]
-  0x39f05c: orr      w9, w9, #0x80000003
-  0x39f060: str      w9, [x8, #0x880]
-  0x39f064: adrp     x8, #0xcc8f000
-  0x39f068: mov      x2, x30
-  0x39f06c: bl       #0xe28b0
-  0x39f070: mov      x30, x2
-  0x39f074: mov      x2, x30
-  0x39f078: bl       #0xe28d8
-  0x39f07c: mov      x30, x2
-  0x39f080: adrp     x8, #0xcc74000
-  0x39f084: ldr      w9, [x8, #0x880]
-  0x39f088: orr      w9, w9, #0x80000003
-  0x39f08c: str      w9, [x8, #0x880]
-  0x39f090: adrp     x8, #0xcc8f000
-  0x39f094: mov      x2, x30
-  0x39f098: bl       #0xe28b0
-  0x39f09c: mov      x30, x2
-  0x39f0a0: adrp     x8, #0xb3000
-  0x39f0a4: add      x8, x8, #0x514
-  0x39f0a8: eor      w8, w0, w8
-  0x39f0ac: adrp     x9, #0xcc8f000
-  0x39f0b0: add      x9, x9, #0x6b0
-  0x39f0b4: ldr      w10, [x9]
-  0x39f0b8: orr      w8, w8, w10
-  0x39f0bc: mov      w10, #-0x21530000
-  0x39f0c0: orr      w8, w8, w10
-  0x39f0c4: str      w8, [x9]
-  0x39f0c8: adrp     x8, #0xcc74000
-  0x39f0cc: add      x8, x8, #0x880
-  0x39f0d0: ldr      w9, [x8]
-  0x39f0d4: orr      w9, w9, #0x80000003
-  0x39f0d8: str      w9, [x8]
-  0x39f0dc: adrp     x8, #0xcc8f000
-  0x39f0e0: nop      
-  0x39f0e4: strb     wzr, [x8, #0x6c0]
-  0x39f0e8: mov      x2, x30
-  0x39f0ec: bl       #0xe8510
-  0x39f0f0: mov      x30, x2
-  0x39f0f4: adrp     x8, #0xb5000
-  0x39f0f8: add      x8, x8, #0x534
-  0x39f0fc: eor      w8, w0, w8
-  0x39f100: adrp     x9, #0xcc8f000
-  0x39f104: add      x9, x9, #0x6b0
-  0x39f108: ldr      w10, [x9]
-  0x39f10c: orr      w8, w8, w10
-  0x39f110: mov      w10, #-0x21530000
-  0x39f114: orr      w8, w8, w10
-  0x39f118: str      w8, [x9]
-  0x39f11c: adrp     x8, #0xcc74000
-  0x39f120: add      x8, x8, #0x880
-  0x39f124: ldr      w9, [x8]
-  0x39f128: orr      w9, w9, #0x80000003
-  0x39f12c: str      w9, [x8]
-  0x39f130: adrp     x8, #0xcc8f000
-  0x39f134: nop      
-  0x39f138: strb     wzr, [x8, #0x6c0]
-  0x39f13c: mov      x2, x30
-  0x39f140: bl       #0xe8510
-  0x39f144: mov      x30, x2
-  0x39f148: adrp     x8, #0xb5000
-  0x39f14c: add      x8, x8, #0x534
-  0x39f150: eor      w8, w0, w8
-  0x39f154: adrp     x9, #0xcc8f000
-  0x39f158: add      x9, x9, #0x6b0
-  0x39f15c: ldr      w10, [x9]
-  0x39f160: orr      w8, w8, w10
-  0x39f164: mov      w10, #-0x21530000
-  0x39f168: orr      w8, w8, w10
-  0x39f16c: str      w8, [x9]
-  0x39f170: adrp     x8, #0xcc74000
-  0x39f174: add      x8, x8, #0x880
-  0x39f178: ldr      w9, [x8]
-  0x39f17c: orr      w9, w9, #0x80000003
-  0x39f180: str      w9, [x8]
-  0x39f184: adrp     x8, #0xcc8f000
-  0x39f188: nop      
-  0x39f18c: strb     wzr, [x8, #0x6c0]
-  0x39f190: mov      x2, x30
-  0x39f194: bl       #0xe8510
-  0x39f198: mov      x30, x2
+--- sub_de414_to_de800 @ 0xde414 ---
+  0x0de414: and      w9, w0, #0x1f
+  0x0de418: cmp      w9, #0x1e
+  0x0de41c: b.hi     #0xde44c
+  0x0de420: adr      x8, #0xd51dc
+  0x0de424: nop      
+  0x0de428: adrp     x10, #0x63db000
+  0x0de42c: add      x10, x10, #0xc2c
+  0x0de430: adr      x11, #0xde430
+  0x0de434: ldrsw    x12, [x10, x9, lsl #2]
+  0x0de438: add      x11, x11, x12
+  0x0de43c: br       x11
+  0x0de440: adr      x8, #0xdbb10
+  0x0de444: nop      
+  0x0de448: b        #0xde5b0
+  0x0de44c: adr      x8, #0xd5e90
+  0x0de450: nop      
+  0x0de454: b        #0xde5b0
+  0x0de458: adr      x8, #0xd52b0
+  0x0de45c: nop      
+  0x0de460: b        #0xde5b0
+  0x0de464: adr      x8, #0xd55e8
+  0x0de468: nop      
+  0x0de46c: b        #0xde5b0
+  0x0de470: adr      x8, #0xdbb74
+  0x0de474: nop      
+  0x0de478: b        #0xde5b0
+  0x0de47c: adr      x8, #0xd5310
+  0x0de480: nop      
+  0x0de484: b        #0xde5b0
+  0x0de488: adr      x8, #0xd5118
+  0x0de48c: nop      
+  0x0de490: b        #0xde5b0
+  0x0de494: adr      x8, #0xdbbd8
+  0x0de498: nop      
+  0x0de49c: b        #0xde5b0
+  0x0de4a0: adr      x8, #0xd589c
+  0x0de4a4: nop      
+  0x0de4a8: b        #0xde5b0
+  0x0de4ac: adr      x8, #0xd49ac
+  0x0de4b0: nop      
+  0x0de4b4: b        #0xde5b0
+  0x0de4b8: adr      x8, #0xdbc34
+  0x0de4bc: nop      
+  0x0de4c0: b        #0xde5b0
+  0x0de4c4: adr      x8, #0xd5b78
+  0x0de4c8: nop      
+  0x0de4cc: b        #0xde5b0
+  0x0de4d0: adr      x8, #0xd48d8
+  0x0de4d4: nop      
+  0x0de4d8: b        #0xde5b0
+  0x0de4dc: adr      x8, #0xdb7d4
+  0x0de4e0: nop      
+  0x0de4e4: b        #0xde5b0
+  0x0de4e8: adr      x8, #0xdb830
+  0x0de4ec: nop      
+  0x0de4f0: b        #0xde5b0
+  0x0de4f4: adr      x8, #0xd4d80
+  0x0de4f8: nop      
+  0x0de4fc: b        #0xde5b0
+  0x0de500: adr      x8, #0xdb88c
+  0x0de504: nop      
+  0x0de508: b        #0xde5b0
+  0x0de50c: adr      x8, #0xdb8e8
+  0x0de510: nop      
+  0x0de514: b        #0xde5b0
+  0x0de518: adr      x8, #0xd4eec
+  0x0de51c: nop      
+  0x0de520: b        #0xde5b0
+  0x0de524: adr      x8, #0xdb944
+  0x0de528: nop      
+  0x0de52c: b        #0xde5b0
+  0x0de530: adr      x8, #0xdb9a0
+  0x0de534: nop      
+  0x0de538: b        #0xde5b0
+  0x0de53c: adr      x8, #0xd5480
+  0x0de540: nop      
+  0x0de544: b        #0xde5b0
+  0x0de548: adr      x8, #0xdb9fc
+  0x0de54c: nop      
+  0x0de550: b        #0xde5b0
+  0x0de554: adr      x8, #0xdba58
+  0x0de558: nop      
+  0x0de55c: b        #0xde5b0
+  0x0de560: adr      x8, #0xd5f6c
+  0x0de564: nop      
+  0x0de568: b        #0xde5b0
+  0x0de56c: adr      x8, #0xdbab4
+  0x0de570: nop      
+  0x0de574: b        #0xde5b0
+  0x0de578: adr      x8, #0xdbc90
+  0x0de57c: nop      
+  0x0de580: b        #0xde5b0
+  0x0de584: adr      x8, #0xd5e28
+  0x0de588: nop      
+  0x0de58c: b        #0xde5b0
+  0x0de590: adr      x8, #0xdbcf4
+  0x0de594: nop      
+  0x0de598: b        #0xde5b0
+  0x0de59c: adr      x8, #0xd64d8
+  0x0de5a0: nop      
+  0x0de5a4: b        #0xde5b0
+  0x0de5a8: adr      x8, #0xdbd58
+  0x0de5ac: nop      
+  0x0de5b0: add      w9, w0, #1
+  0x0de5b4: mov      x10, #0x7c15
+  0x0de5b8: movk     x10, #0x7f4a, lsl #16
+  0x0de5bc: movk     x10, #0x79b9, lsl #32
+  0x0de5c0: movk     x10, #0x9e37, lsl #48
+  0x0de5c4: mul      x9, x9, x10
+  0x0de5c8: eor      x9, x9, x1
+  0x0de5cc: mul      x9, x9, x10
+  0x0de5d0: mov      x10, #0xe5b9
+  0x0de5d4: movk     x10, #0x1ce4, lsl #16
+  0x0de5d8: movk     x10, #0x476d, lsl #32
+  0x0de5dc: movk     x10, #0xbf58, lsl #48
+  0x0de5e0: eor      x9, x9, x10
+  0x0de5e4: eor      x15, x8, x9
+  0x0de5e8: and      x16, x8, x9
+  0x0de5ec: add      x8, x15, x16, lsl #1
+  0x0de5f0: sub      x8, x8, x9
+  0x0de5f4: mov      x0, x8
+  0x0de5f8: ret      
+  0x0de5fc: adrp     x16, #0xcc74000
+  0x0de600: add      x16, x16, #0x880
+  0x0de604: ldr      w17, [x16]
+  0x0de608: tbnz     w17, #0x1f, #0xde618
+  0x0de60c: mov      w17, #0x4f9b
+  0x0de610: movk     w17, #0x7c3a, lsl #16
+  0x0de614: str      w17, [x16]
+  0x0de618: adrp     x17, #0xcc8f000
+  0x0de61c: add      x17, x17, #0x7d8
+  0x0de620: ldr      x17, [x17]
+  0x0de624: cbz      x17, #0xde64c
+  0x0de628: adr      x16, #0xde5fc
+  0x0de62c: add      x16, x16, #0x250
+  0x0de630: eor      x17, x17, x16
+  0x0de634: adrp     x16, #0xcc74000
+  0x0de638: add      x16, x16, #0x888
+  0x0de63c: ldr      x16, [x16]
+  0x0de640: eor      x17, x17, x16
+  0x0de644: stp      x22, x21, [sp, #-0x30]!
+  0x0de648: br       x17
+  0x0de64c: mov      w0, #0
+  0x0de650: ret      
+  0x0de654: brk      #1
+  0x0de658: adrp     x16, #0xcc74000
+  0x0de65c: add      x16, x16, #0x880
+  0x0de660: ldr      w17, [x16]
+  0x0de664: tbnz     w17, #0x1f, #0xde674
+  0x0de668: mov      w17, #0x4f9b
+  0x0de66c: movk     w17, #0x7c3a, lsl #16
+  0x0de670: str      w17, [x16]
+  0x0de674: adrp     x17, #0xcc8f000
+  0x0de678: add      x17, x17, #0x7d8
+  0x0de67c: ldr      x17, [x17, #8]
+  0x0de680: cbz      x17, #0xde6a8
+  0x0de684: adr      x16, #0xde658
+  0x0de688: add      x16, x16, #0x275
+  0x0de68c: eor      x17, x17, x16
+  0x0de690: adrp     x16, #0xcc74000
+  0x0de694: add      x16, x16, #0x888
+  0x0de698: ldr      x16, [x16]
+  0x0de69c: eor      x17, x17, x16
+  0x0de6a0: sub      sp, sp, #0xa0
+  0x0de6a4: br       x17
+  0x0de6a8: mov      w0, #0
+  0x0de6ac: ret      
+  0x0de6b0: brk      #1
+  0x0de6b4: stp      x20, x19, [sp, #-0x20]!
+  0x0de6b8: stp      x29, x30, [sp, #0x10]
+  0x0de6bc: add      x29, sp, #0x10
+  0x0de6c0: ldr      x8, [x0, #0x20]
+  0x0de6c4: cbz      x8, #0xde720
+  0x0de6c8: adrp     x8, #0xcc8f000
+  0x0de6cc: ldrb     w8, [x8, #0x6c0]
+  0x0de6d0: cbz      w8, #0xde720
+  0x0de6d4: mov      x19, x0
+  0x0de6d8: mov      w0, #0
+  0x0de6dc: bl       #0xd9e44
+  0x0de6e0: cbz      x0, #0xde720
+  0x0de6e4: blr      x0
+  0x0de6e8: cbz      x0, #0xde720
+  0x0de6ec: mov      x20, x0
+  0x0de6f0: mov      w0, #1
+  0x0de6f4: bl       #0xd9e44
+  0x0de6f8: cbz      x0, #0xde708
+  0x0de6fc: mov      x8, x0
+  0x0de700: mov      x0, x20
+  0x0de704: blr      x8
+  0x0de708: ldr      x0, [x19, #0x20]
+  0x0de70c: bl       #0xd7a10
+  0x0de710: ldr      x0, [x19, #0x20]
+  0x0de714: ldp      x29, x30, [sp, #0x10]
+  0x0de718: ldp      x20, x19, [sp], #0x20
+  0x0de71c: b        #0xd6ac8
+  0x0de720: ldp      x29, x30, [sp, #0x10]
+  0x0de724: ldp      x20, x19, [sp], #0x20
+  0x0de728: ret      
+  0x0de72c: stp      x24, x23, [sp, #-0x40]!
+  0x0de730: stp      x22, x21, [sp, #0x10]
+  0x0de734: stp      x20, x19, [sp, #0x20]
+  0x0de738: stp      x29, x30, [sp, #0x30]
+  0x0de73c: add      x29, sp, #0x30
+  0x0de740: mov      x20, x1
+  0x0de744: bl       #0x639fd88
+  0x0de748: mov      x19, x0
+  0x0de74c: adrp     x21, #0xcc74000
+  0x0de750: ldr      w8, [x21, #0x880]
+  0x0de754: adrp     x22, #0xcc8f000
+  0x0de758: ldr      w9, [x22, #0x6b0]
+  0x0de75c: adr      x16, #0xde79c
+  0x0de760: adr      x17, #0xde788
+  0x0de764: orr      w15, w8, #1
+  0x0de768: and      w15, w15, #3
+  0x0de76c: cbz      w9, #0xde774
+  0x0de770: mov      w15, #2
+  0x0de774: tbz      w8, #0x1f, #0xde77c
+  0x0de778: mov      w15, #2
+  0x0de77c: cmp      w15, #2
+  0x0de780: csel     x16, x17, x16, eq
+  0x0de784: br       x16
+  0x0de788: mov      x29, #0
+  0x0de78c: mov      x30, #0
+  0x0de790: mov      sp, x29
+  0x0de794: brk      #1
+  0x0de798: udf      #0
+  0x0de79c: adrp     x8, #0xcc90000
+  0x0de7a0: ldrb     w8, [x8, #0xe70]
+  0x0de7a4: cbz      w8, #0xde894
+  0x0de7a8: ldr      w8, [x21, #0x880]
+  0x0de7ac: ldr      w9, [x22, #0x6b0]
+  0x0de7b0: adr      x16, #0xde7f0
+  0x0de7b4: adr      x17, #0xde7dc
+  0x0de7b8: orr      w15, w8, #1
+  0x0de7bc: and      w15, w15, #3
+  0x0de7c0: cbz      w9, #0xde7c8
+  0x0de7c4: mov      w15, #2
+  0x0de7c8: tbz      w8, #0x1f, #0xde7d0
+  0x0de7cc: mov      w15, #2
+  0x0de7d0: cmp      w15, #2
+  0x0de7d4: csel     x16, x17, x16, eq
+  0x0de7d8: br       x16
+  0x0de7dc: mov      x29, #0
+  0x0de7e0: mov      x30, #0
+  0x0de7e4: mov      sp, x29
+  0x0de7e8: brk      #1
+  0x0de7ec: udf      #0
+  0x0de7f0: adrp     x23, #0xcc8f000
+  0x0de7f4: ldrb     w8, [x23, #0x6c0]
+  0x0de7f8: cbz      w8, #0xde894
+  0x0de7fc: ldr      w8, [x22, #0x6b0]
+--- sub_d48a0_to_d5400 @ 0xd48a0 ---
+  0x0d48a0: add      w23, w23, #0x10
+  0x0d48a4: eor      w0, w24, w19
+  0x0d48a8: bl       #0xbfa44
+  0x0d48ac: eor      w8, w21, w19
+  0x0d48b0: eor      w0, w8, w23
+  0x0d48b4: bl       #0xb565c
+  0x0d48b8: mov      x0, x22
+  0x0d48bc: ldp      x29, x30, [sp, #0x50]
+  0x0d48c0: ldp      x20, x19, [sp, #0x40]
+  0x0d48c4: ldp      x22, x21, [sp, #0x30]
+  0x0d48c8: ldp      x24, x23, [sp, #0x20]
+  0x0d48cc: ldp      x26, x25, [sp, #0x10]
+  0x0d48d0: ldp      x28, x27, [sp], #0x60
+  0x0d48d4: ret      
+  0x0d48d8: stp      x20, x19, [sp, #-0x20]!
+  0x0d48dc: stp      x29, x30, [sp, #0x10]
+  0x0d48e0: add      x29, sp, #0x10
+  0x0d48e4: adrp     x8, #0xcc74000
+  0x0d48e8: ldr      w8, [x8, #0x880]
+  0x0d48ec: adrp     x9, #0xcc8f000
+  0x0d48f0: ldr      w9, [x9, #0x6b0]
+  0x0d48f4: adr      x16, #0xd4934
+  0x0d48f8: adr      x17, #0xd4920
+  0x0d48fc: orr      w15, w8, #1
+  0x0d4900: and      w15, w15, #3
+  0x0d4904: cbz      w9, #0xd490c
+  0x0d4908: mov      w15, #2
+  0x0d490c: tbz      w8, #0x1f, #0xd4914
+  0x0d4910: mov      w15, #2
+  0x0d4914: cmp      w15, #2
+  0x0d4918: csel     x16, x17, x16, eq
+  0x0d491c: br       x16
+  0x0d4920: mov      x29, #0
+  0x0d4924: mov      x30, #0
+  0x0d4928: mov      sp, x29
+  0x0d492c: brk      #1
+  0x0d4930: udf      #0
+  0x0d4934: adrp     x8, #0xcc8f000
+  0x0d4938: ldr      x9, [x8, #0xae8]
+  0x0d493c: cbz      x9, #0xd4958
+  0x0d4940: and      x8, x30, #0x7fffffffffff
+  0x0d4944: mov      w10, #0xd000000
+  0x0d4948: add      x10, x9, x10
+  0x0d494c: cmp      x8, x9
+  0x0d4950: ccmp     x8, x10, #2, hs
+  0x0d4954: b.hs     #0xd4984
+  0x0d4958: adrp     x20, #0xcc90000
+  0x0d495c: ldr      x0, [x20, #0xad0]
+  0x0d4960: bl       #0xd7a10
+  0x0d4964: bl       #0xd82bc
+  0x0d4968: mov      x19, x0
+  0x0d496c: ldr      x0, [x20, #0xad0]
+  0x0d4970: bl       #0xd6ac8
+  0x0d4974: mov      x0, x19
+  0x0d4978: ldp      x29, x30, [sp, #0x10]
+  0x0d497c: ldp      x20, x19, [sp], #0x20
+  0x0d4980: ret      
+  0x0d4984: adr      x9, #0xb3514
+  0x0d4988: nop      
+  0x0d498c: and      x9, x9, #0x7fffffffffff
+  0x0d4990: sub      x10, x9, x8
+  0x0d4994: subs     x8, x8, x9
+  0x0d4998: csel     x8, x8, x10, hi
+  0x0d499c: lsr      x8, x8, #0x18
+  0x0d49a0: cbz      x8, #0xd4958
+  0x0d49a4: mov      x0, #0
+  0x0d49a8: b        #0xd4978
+  0x0d49ac: stp      x22, x21, [sp, #-0x30]!
+  0x0d49b0: stp      x20, x19, [sp, #0x10]
+  0x0d49b4: stp      x29, x30, [sp, #0x20]
+  0x0d49b8: add      x29, sp, #0x20
+  0x0d49bc: adrp     x9, #0xcc74000
+  0x0d49c0: ldr      w8, [x9, #0x880]
+  0x0d49c4: adrp     x1, #0xcc8f000
+  0x0d49c8: ldr      w10, [x1, #0x6b0]
+  0x0d49cc: adr      x16, #0xd4a0c
+  0x0d49d0: adr      x17, #0xd49f8
+  0x0d49d4: orr      w15, w8, #1
+  0x0d49d8: and      w15, w15, #3
+  0x0d49dc: cbz      w10, #0xd49e4
+  0x0d49e0: mov      w15, #2
+  0x0d49e4: tbz      w8, #0x1f, #0xd49ec
+  0x0d49e8: mov      w15, #2
+  0x0d49ec: cmp      w15, #2
+  0x0d49f0: csel     x16, x17, x16, eq
+  0x0d49f4: br       x16
+  0x0d49f8: mov      x29, #0
+  0x0d49fc: mov      x30, #0
+  0x0d4a00: mov      sp, x29
+  0x0d4a04: brk      #1
+  0x0d4a08: udf      #0
+  0x0d4a0c: adrp     x8, #0xcc8f000
+  0x0d4a10: ldr      x10, [x8, #0xae8]
+  0x0d4a14: cbz      x10, #0xd4a30
+  0x0d4a18: and      x8, x30, #0x7fffffffffff
+  0x0d4a1c: mov      w11, #0xd000000
+  0x0d4a20: add      x11, x10, x11
+  0x0d4a24: cmp      x8, x10
+  0x0d4a28: ccmp     x8, x11, #2, hs
+  0x0d4a2c: b.hs     #0xd4d58
+  0x0d4a30: adrp     x20, #0xcc90000
+  0x0d4a34: ldr      x8, [x20, #0xad0]
+  0x0d4a38: cbz      x8, #0xd4c60
+  0x0d4a3c: mov      w8, #0xca6b
+  0x0d4a40: movk     w8, #0x85eb, lsl #16
+  0x0d4a44: adrp     x17, #0xcc8f000
+  0x0d4a48: ldrb     w0, [x17, #0x6c0]
+  0x0d4a4c: adrp     x15, #0xcc4c000
+  0x0d4a50: adr      x14, #0x12fccc
+  0x0d4a54: nop      
+  0x0d4a58: adr      x13, #0x133484
+  0x0d4a5c: nop      
+  0x0d4a60: adrp     x16, #0xcc74000
+  0x0d4a64: adr      x11, #0x133640
+  0x0d4a68: nop      
+  0x0d4a6c: adrp     x10, #0xcc74000
+  0x0d4a70: adr      x12, #0x130dec
+  0x0d4a74: nop      
+  0x0d4a78: cbz      w0, #0xd4b5c
+  0x0d4a7c: ldr      w0, [x1, #0x6b0]
+  0x0d4a80: cbz      w0, #0xd4a8c
+  0x0d4a84: mov      w0, #0
+  0x0d4a88: b        #0xd4b5c
+  0x0d4a8c: ldr      x0, [x16, #0x870]
+  0x0d4a90: adrp     x2, #0xcc8f000
+  0x0d4a94: ldr      x2, [x2, #0x6b8]
+  0x0d4a98: eor      x0, x2, x0
+  0x0d4a9c: adrp     x2, #0xcc74000
+  0x0d4aa0: ldr      x2, [x2, #0x878]
+  0x0d4aa4: cmp      x0, x2
+  0x0d4aa8: b.eq     #0xd4a84
+  0x0d4aac: mov      w0, #8
+  0x0d4ab0: ldr      w2, [x9, #0x880]
+  0x0d4ab4: tbnz     w2, #0x1f, #0xd4a84
+  0x0d4ab8: ldr      x3, [x15, #0x960]
+  0x0d4abc: ldr      x4, [x15, #0x960]
+  0x0d4ac0: lsr      x4, x4, #0x20
+  0x0d4ac4: ldr      x5, [x16, #0x870]
+  0x0d4ac8: ldr      x6, [x16, #0x870]
+  0x0d4acc: lsr      x6, x6, #0x20
+  0x0d4ad0: eor      w3, w4, w3
+  0x0d4ad4: eor      w3, w3, w5
+  0x0d4ad8: eor      w3, w3, w6
+  0x0d4adc: and      x4, x14, #0x7ffffffffffc
+  0x0d4ae0: ldr      w4, [x4]
+  0x0d4ae4: and      x5, x13, #0x7ffffffffffc
+  0x0d4ae8: ldr      w5, [x5]
+  0x0d4aec: and      x6, x11, #0x7ffffffffffc
+  0x0d4af0: ldr      w6, [x6]
+  0x0d4af4: and      x7, x12, #0x7ffffffffffc
+  0x0d4af8: ldr      w7, [x7]
+  0x0d4afc: ldr      w19, [x10, #0x890]
+  0x0d4b00: mov      w21, #0x79b9
+  0x0d4b04: movk     w21, #0x9e37, lsl #16
+  0x0d4b08: madd     w21, w0, w21, w21
+  0x0d4b0c: eor      w4, w21, w4
+  0x0d4b10: eor      w4, w4, w5, lsl #1
+  0x0d4b14: eor      w4, w4, w6
+  0x0d4b18: eor      w3, w4, w3
+  0x0d4b1c: eor      w3, w3, w7
+  0x0d4b20: eor      w3, w3, w19
+  0x0d4b24: mov      w4, #0x5449
+  0x0d4b28: movk     w4, #0x414e, lsl #16
+  0x0d4b2c: eor      w3, w3, w4
+  0x0d4b30: eor      w3, w3, w3, lsr #16
+  0x0d4b34: adrp     x4, #0xcc8f000
+  0x0d4b38: add      x4, x4, #0xaf0
+  0x0d4b3c: ldr      w0, [x4, w0, uxtw #2]
+  0x0d4b40: mul      w3, w3, w8
+  0x0d4b44: eor      w0, w2, w0
+  0x0d4b48: eor      w0, w0, w3
+  0x0d4b4c: eor      w0, w0, w3, lsr #13
+  0x0d4b50: mov      w2, #0x4f9b
+  0x0d4b54: movk     w2, #0x7c3a, lsl #16
+  0x0d4b58: eor      w0, w0, w2
+  0x0d4b5c: ldrb     w2, [x17, #0x6c0]
+  0x0d4b60: cbz      w2, #0xd4b6c
+  0x0d4b64: ldr      w1, [x1, #0x6b0]
+  0x0d4b68: cbz      w1, #0xd4c84
+  0x0d4b6c: mov      w19, #0
+  0x0d4b70: ldrb     w17, [x17, #0x6c0]
+  0x0d4b74: cbz      w17, #0xd4c60
+  0x0d4b78: ldr      w9, [x9, #0x880]
+  0x0d4b7c: tbnz     w9, #0x1f, #0xd4c60
+  0x0d4b80: adrp     x9, #0xcc90000
+  0x0d4b84: ldr      w9, [x9, #0xc88]
+  0x0d4b88: ldr      x17, [x15, #0x960]
+  0x0d4b8c: ldr      x1, [x15, #0x960]
+  0x0d4b90: ldr      x15, [x16, #0x870]
+  0x0d4b94: ldr      x16, [x16, #0x870]
+  0x0d4b98: and      x14, x14, #0x7ffffffffffc
+  0x0d4b9c: ldr      w14, [x14]
+  0x0d4ba0: and      x13, x13, #0x7ffffffffffc
+  0x0d4ba4: ldr      w13, [x13]
+  0x0d4ba8: and      x11, x11, #0x7ffffffffffc
+  0x0d4bac: ldr      w11, [x11]
+  0x0d4bb0: and      x12, x12, #0x7ffffffffffc
+  0x0d4bb4: ldr      w12, [x12]
+  0x0d4bb8: ldr      w10, [x10, #0x890]
+  0x0d4bbc: cbz      w0, #0xd4c60
+  0x0d4bc0: cbz      w19, #0xd4c60
+  0x0d4bc4: lsr      x1, x1, #0x20
+  0x0d4bc8: lsr      x16, x16, #0x20
+  0x0d4bcc: eor      w17, w1, w17
+  0x0d4bd0: eor      w15, w17, w15
+  0x0d4bd4: eor      w15, w15, w16
+  0x0d4bd8: eor      w13, w14, w13, lsl #1
+  0x0d4bdc: eor      w11, w13, w11
+  0x0d4be0: eor      w11, w11, w15
+  0x0d4be4: eor      w11, w11, w12
+  0x0d4be8: eor      w10, w11, w10
+  0x0d4bec: mov      w11, #0x5cf8
+  0x0d4bf0: movk     w11, #0xfc47, lsl #16
+  0x0d4bf4: eor      w10, w10, w11
+  0x0d4bf8: eor      w10, w10, w10, lsr #16
+  0x0d4bfc: mul      w8, w10, w8
+
+=== All Handler ADR Instructions in 0xcf930 .. 0xdb5d0 ===
+Total ADR instructions in 0xcf930..0xdb5d0: 132
+  0x0cfafc: adr x10, #0xdaf34
+  0x0cfcac: adr x10, #0xdbb10
+  0x0cfe5c: adr x10, #0xdab60
+  0x0d0018: adr x10, #0xdbb74
+  0x0d01d0: adr x11, #0xde3ec
+  0x0d0388: adr x11, #0xde3ec
+  0x0d0540: adr x11, #0xde3ec
+  0x0d06f0: adr x11, #0xde3ec
+  0x0d08a0: adr x11, #0xde3ec
+  0x0d0a50: adr x11, #0xde3ec
+  0x0d0bf8: adr x10, #0xdbbd8
+  0x0d0da8: adr x10, #0xdbc34
+  0x0d0f58: adr x10, #0xdb0f8
+  0x0d110c: adr x10, #0xcf878
+  0x0d14b0: adr x10, #0xdbc90
+  0x0d1660: adr x10, #0xdbcf4
+  0x0d182c: adr x10, #0xdbd58
+  0x0d19f4: adr x10, #0xdb51c
+  0x0d1a48: adr x9, #0xb9fe0
+  0x0d1c30: adr x9, #0xba03c
+  0x0d1f88: adr x10, #0xdb7d4
+  0x0d213c: adr x10, #0xcf8d4
+  0x0d22f0: adr x10, #0xdb830
+  0x0d24a4: adr x10, #0xdb88c
+  0x0d2660: adr x10, #0xdbdb4
+  0x0d2818: adr x10, #0xdbe10
+  0x0d29c8: adr x10, #0xdbe6c
+  0x0d2b7c: adr x10, #0xdbec8
+  0x0d2d30: adr x10, #0xdbf24
+  0x0d2ee8: adr x10, #0xdbf80
+  0x0d30a0: adr x10, #0xdb944
+  0x0d3254: adr x10, #0xdb8e8
+  0x0d340c: adr x10, #0xdb9a0
+  0x0d35c0: adr x10, #0xdb9fc
+  0x0d3774: adr x10, #0xdba58
+  0x0d3928: adr x10, #0xdbab4
+  0x0d3988: adr x21, #0xde3ec
+  0x0d3ca8: adr x10, #0xdbfdc
+  0x0d3e60: adr x10, #0xdc040
+  0x0d4020: adr x10, #0xdc0a4
+  0x0d41b4: adr x10, #0xdc108
+  0x0d4230: adr x12, #0x12fccc
+  0x0d4238: adr x11, #0x133484
+  0x0d4244: adr x9, #0x133640
+  0x0d4250: adr x10, #0x130dec
+  0x0d48f4: adr x16, #0xd4934
+  0x0d48f8: adr x17, #0xd4920
+  0x0d4984: adr x9, #0xb3514
+  0x0d49cc: adr x16, #0xd4a0c
+  0x0d49d0: adr x17, #0xd49f8
+  0x0d4a50: adr x14, #0x12fccc
+  0x0d4a58: adr x13, #0x133484
+  0x0d4a64: adr x11, #0x133640
+  0x0d4a70: adr x12, #0x130dec
+  0x0d4d58: adr x10, #0xb3514
+  0x0d4d90: adr x16, #0xd4dd0
+  0x0d4d94: adr x17, #0xd4dbc
+  0x0d4e38: adr x10, #0x12fccc
+  0x0d4e4c: adr x11, #0x133484
+  0x0d4e5c: adr x12, #0x133640
+  0x0d4e68: adr x13, #0x130dec
+  0x0d4ec4: adr x10, #0xb3514
+  0x0d4f08: adr x16, #0xd4f48
+  0x0d4f0c: adr x17, #0xd4f34
+  0x0d4fdc: adr x10, #0x12fccc
+  0x0d4fec: adr x10, #0x133484
+  0x0d4ffc: adr x10, #0x133640
+  0x0d500c: adr x10, #0x130dec
+  0x0d50f4: adr x11, #0xb3514
+  0x0d5130: adr x16, #0xd5170
+  0x0d5134: adr x17, #0xd515c
+  0x0d51b4: adr x9, #0xb3514
+  0x0d51fc: adr x16, #0xd523c
+  0x0d5200: adr x17, #0xd5228
+  0x0d5280: adr x9, #0xb3514
+  0x0d52c0: adr x16, #0xd5300
+  0x0d52c4: adr x17, #0xd52ec
+  0x0d5320: adr x16, #0xd5360
+  0x0d5324: adr x17, #0xd534c
+  0x0d53cc: adr x10, #0x12fccc
+  0x0d53dc: adr x11, #0x133484
+  0x0d53ec: adr x12, #0x133640
+  0x0d53fc: adr x13, #0x130dec
+  0x0d5458: adr x10, #0xb3514
+  0x0d5490: adr x16, #0xd54d0
+  0x0d5494: adr x17, #0xd54bc
+  0x0d553c: adr x10, #0x12fccc
+  0x0d554c: adr x11, #0x133484
+  0x0d555c: adr x12, #0x133640
+  0x0d556c: adr x13, #0x130dec
+  0x0d55c0: adr x10, #0xb3514
+  0x0d5608: adr x16, #0xd5648
+  0x0d560c: adr x17, #0xd5634
+  0x0d56bc: adr x14, #0x12fccc
+  0x0d56cc: adr x15, #0x133484
+  0x0d56dc: adr x16, #0x133640
+  0x0d56ec: adr x17, #0x130dec
+  0x0d5864: adr x11, #0xb3514
+  0x0d58d8: adr x16, #0xd5918
+  0x0d58dc: adr x17, #0xd5904
+  0x0d5938: adr x16, #0xd5978
+  0x0d593c: adr x17, #0xd5964
+  0x0d5ac4: adr x14, #0x12fccc
+  0x0d5ad4: adr x15, #0x133484
+  0x0d5ae4: adr x16, #0x133640
+  0x0d5af4: adr x17, #0x130dec
+  0x0d5b88: adr x16, #0xd5bc8
+  0x0d5b8c: adr x17, #0xd5bb4
+  0x0d5c3c: adr x14, #0x12fccc
+  0x0d5c4c: adr x15, #0x133484
+  0x0d5c5c: adr x16, #0x133640
+  0x0d5c6c: adr x17, #0x130dec
+  0x0d5d40: adr x14, #0x12fccc
+  0x0d5d54: adr x14, #0x133484
+  0x0d5d64: adr x15, #0x133640
+  0x0d5d70: adr x1, #0x130dec
+  0x0d5e38: adr x16, #0xd5e78
+  0x0d5e3c: adr x17, #0xd5e64
+  0x0d5ea0: adr x16, #0xd5ee0
+  0x0d5ea4: adr x17, #0xd5ecc
+  0x0d5f0c: adr x8, #0x12fccc
+  0x0d5f1c: adr x8, #0x133484
+  0x0d5f2c: adr x8, #0x133640
+  0x0d5f3c: adr x8, #0x130dec
+  0x0d5fa4: adr x16, #0xd5fe4
+  0x0d5fa8: adr x17, #0xd5fd0
+  0x0d614c: adr x5, #0x12fccc
+  0x0d615c: adr x6, #0x133484
+  0x0d616c: adr x7, #0x133640
+  0x0d617c: adr x30, #0x130dec
+  0x0d61e4: adr x16, #0xd622c
+  0x0d61e8: adr x17, #0xd6214
 
 === Strings in 0x66e0000..0x6700000 referenced by 0x220000..0x39ec8c ===
   0x66ea000:  ... ... ... ..."..."..."..."... (.. (.. (.. (.."(.."(.."(.."(..

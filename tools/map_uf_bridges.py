@@ -64,7 +64,7 @@ def main():
         entries = tables[tname]
         print(f"=== {tname} ({len(entries)} entries) ===")
         for idx, rva, bss_slot in entries:
-            ins_prev = list(md.disasm(uf[rva - 4 : rva + 8], rva - 4))
+            ins_prev = list(md.disasm(uf[rva - 16 : rva + 8], rva - 16))
             dis_str = "; ".join(f"{x.address:#x}: {x.mnemonic} {x.op_str}" for x in ins_prev)
             # If rva-4 is a direct branch to __TEXT_EXEC or __AUTH_EXEC, decode the stub!
             w_prev = struct.unpack("<I", uf[rva - 4 : rva])[0]
@@ -82,6 +82,20 @@ def main():
                     s_off = 0xBF58000 + (stub_va - 0xC39C000)
                     s_ins = list(md.disasm(uf[s_off : s_off + 0x20], stub_va))
                     stub_info = f" -> __AUTH_EXEC stub@{stub_va:#x} [{'; '.join(f'{x.mnemonic} {x.op_str}' for x in s_ins[:7])}]"
+            elif w_prev == 0xD61F0200 and len(ins_prev) >= 3:
+                # 3-instruction long branch at rva-12..rva: adrp x16, #page; add x16, x16, #off; br x16
+                if ins_prev[1].mnemonic == "adrp" and ins_prev[2].mnemonic == "add":
+                    page = int(ins_prev[1].op_str.split("#")[1], 16)
+                    off = int(ins_prev[2].op_str.split("#")[1], 16)
+                    stub_va = page + off
+                    if 0xC388000 <= stub_va < 0xC398000:
+                        s_off = 0xBF44000 + (stub_va - 0xC388000)
+                        s_ins = list(md.disasm(uf[s_off : s_off + 0x20], stub_va))
+                        stub_info = f" -> __TEXT_EXEC (12B long-branch) stub@{stub_va:#x} [{'; '.join(f'{x.mnemonic} {x.op_str}' for x in s_ins[:7])}]"
+                    elif 0xC39C000 <= stub_va < 0xC3A0000:
+                        s_off = 0xBF58000 + (stub_va - 0xC39C000)
+                        s_ins = list(md.disasm(uf[s_off : s_off + 0x20], stub_va))
+                        stub_info = f" -> __AUTH_EXEC (12B long-branch) stub@{stub_va:#x} [{'; '.join(f'{x.mnemonic} {x.op_str}' for x in s_ins[:7])}]"
             print(f"  [{idx:2d}] rva={rva:#010x} bss={bss_slot:#x} | {dis_str}{stub_info}")
         print()
 
@@ -115,6 +129,8 @@ def main():
     words.frombytes(uf[0x4000:0xA19AEB4])
     text_exec_branches = []
     auth_exec_branches = []
+    text_exec_long = []
+    auth_exec_long = []
     for i, w in enumerate(words):
         op = w >> 26
         if op == 0b000101 or op == 0b100101:
@@ -127,12 +143,39 @@ def main():
                 text_exec_branches.append((pc, target))
             elif 0xC39C000 <= target < 0xC3A0000:
                 auth_exec_branches.append((pc, target))
+        elif w == 0xD61F0200 and i >= 2:
+            w_adrp = words[i - 2]
+            w_add = words[i - 1]
+            if (w_adrp & 0x9F00001F) == 0x90000010 and (w_add & 0xFFC003FF) == 0x91000210:
+                immlo = (w_adrp >> 29) & 3
+                immhi = (w_adrp >> 5) & 0x7FFFF
+                imm = (immhi << 2) | immlo
+                if imm & (1 << 20):
+                    imm -= 1 << 21
+                pc_adrp = 0x4000 + ((i - 2) << 2)
+                page = (pc_adrp & ~0xFFF) + (imm << 12)
+                imm12 = (w_add >> 10) & 0xFFF
+                target = page + imm12
+                pc_br = 0x4000 + (i << 2)
+                if 0xC388000 <= target < 0xC398000:
+                    text_exec_long.append((pc_br, target))
+                elif 0xC39C000 <= target < 0xC3A0000:
+                    auth_exec_long.append((pc_br, target))
 
     print(
         f"\n=== Summary of UnityFramework __TEXT.__text Static Branches ==="
-        f"\n  Branches to __TEXT_EXEC (0xc388000..0xc398000): {len(text_exec_branches)}"
-        f"\n  Branches to __AUTH_EXEC (0xc39c000..0xc3a0000): {len(auth_exec_branches)}"
+        f"\n  Direct B/BL to __TEXT_EXEC: {len(text_exec_branches)}, 12B ADRP+ADD+BR to __TEXT_EXEC: {len(text_exec_long)} (Total: {len(text_exec_branches) + len(text_exec_long)} / 110 stubs)"
+        f"\n  Direct B/BL to __AUTH_EXEC: {len(auth_exec_branches)}, 12B ADRP+ADD+BR to __AUTH_EXEC: {len(auth_exec_long)} (Total: {len(auth_exec_branches) + len(auth_exec_long)} / 45 stubs)"
     )
+
+    # Decode 31-entry jump table in sub_de414 (0x63dbc2c)
+    print("\n=== sub_de414 Jump Table @ 0x63dbc2c (31 entries) ===")
+    for idx in range(31):
+        rel = struct.unpack("<i", penny[0x63DBC2C + idx * 4 : 0x63DBC30 + idx * 4])[0]
+        case_va = (0xDE430 + rel) & 0xFFFFFFFF
+        c_ins = list(md.disasm(penny[case_va : case_va + 12], case_va))
+        c_str = "; ".join(f"{x.mnemonic} {x.op_str}" for x in c_ins)
+        print(f"  case[{idx:2d}] -> {case_va:#08x}: {c_str}")
     rva_set = {rva for t in tables.values() for _, rva, _ in t}
     unmatched_text = [(pc, tgt) for pc, tgt in text_exec_branches if (pc + 4) not in rva_set]
     unmatched_auth = [(pc, tgt) for pc, tgt in auth_exec_branches if (pc + 4) not in rva_set]
@@ -163,13 +206,22 @@ def main():
     # Disassemble sample functions in high __text (0x35da20, 0x382300, 0x39ec8c)
     print("\n=== High __TEXT.__text Sample Disassembly (0x35da20, 0x382300, 0x39ec8c) ===")
     for name, va, sz in [
-        ("sub_35da20_ppguard_ref", 0x35DA20, 0x90),
-        ("sub_382300_ppguard_ref", 0x382300, 0x90),
-        ("sub_39ec8c_to_end", 0x39EC8C, 0x39F19C - 0x39EC8C),
+        ("sub_de414_to_de800", 0xDE414, 0x3EC),
+        ("sub_d48a0_to_d5400", 0xD48A0, 0x360),
     ]:
         print(f"--- {name} @ {va:#x} ---")
         for insn in md.disasm(penny[va : va + sz], va):
             print(f"  {insn.address:#08x}: {insn.mnemonic:8s} {insn.op_str}")
+
+    # Extract all ADR instructions inside 0xcf930 .. 0xdb5d0
+    print("\n=== All Handler ADR Instructions in 0xcf930 .. 0xdb5d0 ===")
+    adr_handlers = []
+    for insn in md.disasm(penny[0xCF930:0xDB5D0], 0xCF930):
+        if insn.mnemonic == "adr":
+            adr_handlers.append((insn.address, insn.op_str))
+    print(f"Total ADR instructions in 0xcf930..0xdb5d0: {len(adr_handlers)}")
+    for addr, op_s in adr_handlers:
+        print(f"  {addr:#08x}: adr {op_s}")
 
     print("\n=== Strings in 0x66e0000..0x6700000 referenced by 0x220000..0x39ec8c ===")
     for off in range(0x66EA000, 0x66F3000, 64):
