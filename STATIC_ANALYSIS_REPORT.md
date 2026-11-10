@@ -57,3 +57,39 @@ Bảng `__objc_classlist` (`va = 0xcc61500`, kích thước `0x248`) chứa 73 l
 ## 6. Trạng thái Xác minh
 - Toàn bộ thông tin trên được đo trực tiếp từ tệp nhị phân tĩnh.
 - Chưa xác minh hành vi lúc chạy (runtime) trên thiết bị thực tế và chưa có bản IPA gốc (clean build) cùng phiên bản để đối chiếu nhị phân (binary diff) đối với phần mã chính của `UnityFramework`.
+
+## 7. Đối chiếu Kiến trúc với SDK `pp7803/APIKey` (v6.0.5 – v6.1.0)
+Đối chiếu tài liệu công khai của `https://github.com/pp7803/APIKey` (`APIKey 6.1` của tác giả Phát Phạm / `@pdp7803`) với kết quả đo đạc tĩnh trên `Penny` cho thấy `Penny` liên kết tĩnh biến thể **Full (`libPPAPIKey_full.a` / `libPPAPIKey_custom_full.a`)** dành cho gói VIP3:
+
+1. **Kiến trúc tách biệt Tweak và Core qua C Bridge:**
+   - Tài liệu `APIKey 6.0+` định nghĩa các hàm C Bridge gồm `setTokenC(const char *)`, `setENC(int)`, `setVerC(const char *)`, `loadingC(void (^execute)(void))` và `packageData(void (^completion)(id data))`.
+   - Phần mã của tweak đăng ký callback khởi chạy (qua `CFNotificationCenterAddObserver` với `UIApplicationDidFinishLaunchingNotification`) và truyền completion block `execute` vào `loadingC`. Khối lệnh tạo giao diện chức năng chỉ được gọi sau khi `loadingC` hoàn tất xác thực với máy chủ.
+
+2. **Đối chiếu hệ thống Theme và Lớp Giao diện (`_UIKite*`, `_UIPaneHUD*`, `_UIFlow*`):**
+   - Các bản phát hành `APIKey 6.0.1` đến `6.1.0` cung cấp 13 theme (`ANDROID`, `CST`, `GLASS`, `HACKER`, `JG`, `LINUX`, `MAC`, `MBP`, `MINECRAFT`, `NEWYEAR2026`, `PGAM`, `SCL`, `XP`) cùng chế độ nhập key `UIAL` (UIKit Alert).
+   - Các chuỗi giải mã được trong `Penny` khớp trực tiếp với lịch sử thay đổi của `APIKey`:
+     - Chuỗi `[UIVERIFY] phase=%@ modalChrome=%d dimOverlay=%lu dimModal=%lu dimJg=%lu hide=%d loadingDim=%d enterkeyLive=%d keepDim=%d toast=%d anyHud=%d uialAlert=%p sclAlert=%p activeBlockModal=%p ppwinVisible=%d` (tại `0xef900`) tương ứng với cơ chế kiểm tra trạng thái modal/dim overlay được bổ sung ở bản `v6.0.5`.
+     - Chuỗi `[UI-Transition] SCL auto -> enterkey handoff begin | session=%ld` (tại `0x209b98`) và lớp `_UIKiteKeyHandoff` tương ứng với luồng chuyển tiếp từ màn hình kiểm tra key (`SCL`) sang màn hình nhập key (`ENTERKEY`).
+     - Chuỗi `[UI-Glass] contact btn label=%@ url=%@` (tại `0x112a3c`) và lớp `_UIKiteGlassKeyView` tương ứng với theme **Liquid Glass (`GLASS`)** được tinh chỉnh ở bản `v6.0.2` – `v6.0.4`.
+     - Lớp `_UIKiteSSEC` và các chuỗi `[SSE] connected http=%d`, `[SSE] event pk_thongbao=%d debstatus=%d hide=%d k_thongbao=%d k_khoamay=%d k_hethan=%d` (tại `0x12c464 .. 0x12d5b4`) là kênh nhận sự kiện thời gian thực từ portal quản lý khóa.
+     - Chuỗi `PPWindow` và `PPHideScreenShowView hitTest: miss subviews, returning nil (pass-through)` (tại `0xf1a30`) tương ứng với tính năng ẩn lớp phủ (`pp_isHide`).
+
+3. **Đối chiếu cơ chế `Anti-Hex` (`PPAPIKey Hash Generator`):**
+   - Tài liệu `pp7803/APIKey` mô tả hai cấp độ bảo vệ: **Anti-Hex Semi** (khai báo `IDF` và `Signature` hash trên Dashboard `Package Hash`) và **Anti-Hex Full** (đưa `Dylib` qua ứng dụng `PPAPIKey Hash Generator` dành cho VIP3).
+   - Trên tệp nhị phân `Penny`, lớp bảo vệ `Anti-Hex Full` thể hiện qua:
+     - Hai section làm phình kích thước chứa dữ liệu ngẫu nhiên/làm rối: `__TEXT.__objc_stubs` (`96 MB`) và `__TEXT.__swift5_types` (`100 MB`), cùng các thông tin `LC_FUNCTION_STARTS` và `LC_DATA_IN_CODE` đặt lệch khỏi `__LINKEDIT`.
+     - Section `__DATA.__ppguard` (`va = 0xcc85500`, `16 byte`).
+     - Các hàm băm kiểm tra toàn vẹn vùng mã (`sub_62a90`, `sub_b5100`) kết hợp khóa từ phản hồi máy chủ (`packagedata`) và các nhánh bẫy xóa thanh ghi `x29`, `x30`, `sp` trước khi gọi `brk #1` (`sub_cdad8`).
+
+## 8. Kiểm kê Công cụ Phân tích trong Môi trường Thực thi
+Kết quả kiểm tra trực tiếp trên môi trường container Linux (`x86_64`) hiện tại đối với danh sách công cụ:
+
+| Nhóm công cụ | Công cụ có sẵn và đã sử dụng | Công cụ không cài đặt sẵn hoặc phụ thuộc macOS/iOS |
+| :--- | :--- | :--- |
+| **Đọc cấu trúc Mach-O & Disassembly** | `lief` (Python), `capstone` (Python), `/usr/bin/objdump`, cùng bộ parser Mach-O / Objective-C tự viết (`tools/macho_inspect.py`, `tools/objc_dump.py`). | `r2` / `radare2` (`r2ghidra`), `ghidra`, `llvm-objdump`, `llvm-otool`, `jtool2`, `ipsw`, `dsdump`, `ktool` (`k2l`), `class-dump-z` / `class-dump-ng`, `Hopper Disassembler`, `Mach0kit`, `Malimite`. |
+| **Giả lập CPU & Symbolic Execution** | `unicorn` (Python `arm64` emulator). | `qiling`, `angr`, `triton`, `miasm`, `dynamorio`. |
+| **Gỡ lỗi động & Tracing** | Không khả dụng cho tệp Mach-O `arm64` iOS trên kernel Linux không có thiết bị iOS thực. | `lldb`, `gdb` + `pwndbg`, `rr`, `debugserver`, `objection`, `strace`, `bpftrace`. |
+| **Nhận diện mẫu & Deobfuscation** | Script giải mã tĩnh chuyên biệt theo thuật toán đo được từ mã máy (`0xb497c` Murmur3-32 stream và `0xec874` XOR). | `capa`, `Detect It Easy (diec)`, `yara`, `floss`, `D810G`, `VMP_DEVIRT`, `bindiff`, `kaitaistruct`. |
+
+**Lý do kỹ thuật ưu tiên dùng `lief` + `capstone` + parser Python tùy chỉnh trên bản build này:**
+- Tệp `Penny` bị công cụ `Anti-Hex` chèn gần `196 MB` dữ liệu nhiễu vào `__objc_stubs` và `__swift5_types`, đồng thời làm lệch header `LC_FUNCTION_STARTS` và `LC_DATA_IN_CODE`. Các công cụ tự động quét toàn bộ tệp hoặc phụ thuộc vào `LC_FUNCTION_STARTS` sẽ bị treo hoặc báo lỗi phân tích, trong khi parser Python đọc trực tiếp đúng địa chỉ ảo (`va`) của `__objc_classlist` (`0xcc61500`) và `__text` (`0x4b40 .. 0x39f19c`).
