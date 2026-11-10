@@ -64,7 +64,7 @@ def main():
         entries = tables[tname]
         print(f"=== {tname} ({len(entries)} entries) ===")
         for idx, rva, bss_slot in entries:
-            ins_prev = list(md.disasm(uf[rva - 4 : rva + 8], rva - 4))
+            ins_prev = list(md.disasm(uf[rva - 16 : rva + 8], rva - 16))
             dis_str = "; ".join(f"{x.address:#x}: {x.mnemonic} {x.op_str}" for x in ins_prev)
             # If rva-4 is a direct branch to __TEXT_EXEC or __AUTH_EXEC, decode the stub!
             w_prev = struct.unpack("<I", uf[rva - 4 : rva])[0]
@@ -165,11 +165,24 @@ def main():
     for name, va, sz in [
         ("sub_35da20_ppguard_ref", 0x35DA20, 0x90),
         ("sub_382300_ppguard_ref", 0x382300, 0x90),
-        ("sub_39ec8c_to_end", 0x39EC8C, 0x39F19C - 0x39EC8C),
+        ("sub_cf930_head", 0xCF930, 0x280),
+        ("sub_de3ec_table3_thunk", 0xDE3EC, 0x100),
+        ("sub_cf1a4_post_auth", 0xCF1A4, 0x1B0),
+        ("sub_d47a0_post_auth", 0xD47A0, 0x1B0),
     ]:
         print(f"--- {name} @ {va:#x} ---")
         for insn in md.disasm(penny[va : va + sz], va):
             print(f"  {insn.address:#08x}: {insn.mnemonic:8s} {insn.op_str}")
+
+    # Extract all ADR instructions inside 0xcf930 .. 0xdb5d0
+    print("\n=== All Handler ADR Instructions in 0xcf930 .. 0xdb5d0 ===")
+    adr_handlers = []
+    for insn in md.disasm(penny[0xCF930:0xDB5D0], 0xCF930):
+        if insn.mnemonic == "adr":
+            adr_handlers.append((insn.address, insn.op_str))
+    print(f"Total ADR instructions in 0xcf930..0xdb5d0: {len(adr_handlers)}")
+    for addr, op_s in adr_handlers:
+        print(f"  {addr:#08x}: adr {op_s}")
 
     print("\n=== Strings in 0x66e0000..0x6700000 referenced by 0x220000..0x39ec8c ===")
     for off in range(0x66EA000, 0x66F3000, 64):
