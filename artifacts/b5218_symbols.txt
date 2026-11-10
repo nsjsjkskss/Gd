@@ -38,3 +38,116 @@ FNV1a('unityframework') ^ 0xa5c39f17 = 0xea7fd991 (expected 0xea7fd991)
   idx=34 | id=0x3778 | case_va=0x0b54d8 | internal_func_0x133f08                     | adr x0, #0x133f08; nop ; b #0xb54f8
   idx=35 | id=0x3779 | case_va=0x0b54e4 | internal_func_0x133e5c                     | adr x0, #0x133e5c; nop ; b #0xb54f8
   idx=36 | id=0x377e | case_va=0x0b54f0 | internal_func_0x133dac                     | adr x0, #0x133dac; nop ; mov x8, #0x59b9
+
+=== sub_d9e44 / sub_da2e0 Disasm (0xda180 .. 0xda2e8) ===
+  0x0da180: cbz      x14, #0xd9f14
+  0x0da184: mov      x19, x14
+  0x0da188: ldr      w8, [x14, #0xc]
+  0x0da18c: cbz      w8, #0xd9f14
+  0x0da190: mov      x21, x8
+  0x0da194: mov      x8, #0
+  0x0da198: mov      w9, #0xa120
+  0x0da19c: movk     w9, #7, lsl #16
+  0x0da1a0: cmp      w21, w9
+  0x0da1a4: ccmp     x10, #0, #4, ls
+  0x0da1a8: b.eq     #0xd9ecc
+  0x0da1ac: eor      w9, w13, #1
+  0x0da1b0: tbnz     w9, #0, #0xd9ecc
+  0x0da1b4: mov      x22, #0
+  0x0da1b8: sub      x23, x0, x11
+  0x0da1bc: sub      x9, x10, x12
+  0x0da1c0: add      x11, x9, x23
+  0x0da1c4: mov      x9, x19
+  0x0da1c8: ldr      w10, [x19, #8]
+  0x0da1cc: add      x26, x11, x10
+  0x0da1d0: ldr      w12, [x19, #0x10]
+  0x0da1d4: add      x24, x11, x12
+  0x0da1d8: adrp     x25, #0x63dc000
+  0x0da1dc: add      x25, x25, #0xd28
+  0x0da1e0: mov      x12, x21
+  0x0da1e4: add      x13, x26, x22, lsl #4
+  0x0da1e8: ldrb     w14, [x13, #4]
+  0x0da1ec: mvn      w14, w14
+  0x0da1f0: tst      w14, #0xe
+  0x0da1f4: b.ne     #0xda2b0
+  0x0da1f8: ldr      x27, [x13, #8]
+  0x0da1fc: cbz      x27, #0xda2b0
+  0x0da200: lsl      x14, x22, #4
+  0x0da204: ldr      w14, [x26, x14]
+  0x0da208: ldr      w15, [x9, #0x14]
+  0x0da20c: cmp      w14, w15
+  0x0da210: b.hs     #0xda2b0
+  0x0da214: add      x14, x24, x14
+  0x0da218: mov      x15, x14
+  0x0da21c: ldrb     w16, [x15], #1
+  0x0da220: cmp      w16, #0x5f
+  0x0da224: csel     x0, x14, x15, ne
+  0x0da228: ldrb     w14, [x0]
+  0x0da22c: cmp      w14, #0x69
+  0x0da230: b.ne     #0xda2b0
+  0x0da234: ldrb     w14, [x0, #1]
+  0x0da238: cmp      w14, #0x6c
+  0x0da23c: b.ne     #0xda2b0
+  0x0da240: ldrb     w14, [x0, #2]
+  0x0da244: cmp      w14, #0x32
+  0x0da248: b.ne     #0xda2b0
+  0x0da24c: bl       #0xda2e4
+  0x0da250: mov      x12, x21
+  0x0da254: mov      x9, x19
+  0x0da258: mov      x13, #0
+  0x0da25c: ldr      x15, [sp, #8]
+  0x0da260: eor      x15, x0, x15
+  0x0da264: mov      x16, #0x7c15
+  0x0da268: movk     x16, #0x7f4a, lsl #16
+  0x0da26c: movk     x16, #0x79b9, lsl #32
+  0x0da270: movk     x16, #0x9e37, lsl #48
+  0x0da274: ldr      x17, [x25, x13]
+  0x0da278: cmp      x15, x17
+  0x0da27c: b.eq     #0xda294
+  0x0da280: add      x16, x16, x20
+  0x0da284: add      x13, x13, #8
+  0x0da288: cmp      x13, #0x98
+  0x0da28c: b.ne     #0xda274
+  0x0da290: b        #0xda2b0
+  0x0da294: add      x15, x27, x23
+  0x0da298: ldr      x14, [sp, #0x10]
+  0x0da29c: eor      x14, x15, x14
+  0x0da2a0: eor      x15, x14, x16
+  0x0da2a4: adrp     x14, #0xcc90000
+  0x0da2a8: add      x14, x14, #0xce8
+  0x0da2ac: str      x15, [x14, x13]
+  0x0da2b0: add      x22, x22, #1
+  0x0da2b4: cmp      x22, x12
+  0x0da2b8: b.ne     #0xda1e4
+  0x0da2bc: adrp     x8, #0xcc90000
+  0x0da2c0: add      x8, x8, #0xce8
+  0x0da2c4: ldr      x9, [x8, x28, lsl #3]
+  0x0da2c8: ldr      x8, [sp, #0x18]
+  0x0da2cc: eor      x8, x9, x8
+  0x0da2d0: cmp      x9, #0
+  0x0da2d4: csel     x8, xzr, x8, eq
+  0x0da2d8: b        #0xd9ecc
+  0x0da2dc: mov      w3, #0
+  0x0da2e0: b        #0xd9fe4
+  0x0da2e4: ldrb     w10, [x0]
+
+=== sub_d9e44 IL2CPP Export Table @ 0x63dcd28 (19 entries, mask=0x376d7964fb120108) ===
+  idx= 0 (0x00) | hash_enc=0x79da3afbf159fb4c | uf_va=0x0a10fefc | il2cpp_domain_get
+  idx= 1 (0x01) | hash_enc=0x6401cc92ef5d3d25 | uf_va=0x0a11043c | il2cpp_thread_attach
+  idx= 2 (0x02) | hash_enc=0x6e769723fd4e79b4 | uf_va=0x0a110408 | il2cpp_runtime_class_init
+  idx= 3 (0x03) | hash_enc=0x2357bbee2fe1b8ce | uf_va=0x0a1103b8 | il2cpp_object_new
+  idx= 4 (0x04) | hash_enc=0x4e290f95cc7e86da | uf_va=0x0a10f98c | il2cpp_array_new
+  idx= 5 (0x05) | hash_enc=0x98f828f4bd09e47c | uf_va=0x0a10f9d8 | il2cpp_class_from_name
+  idx= 6 (0x06) | hash_enc=0x2f01f9a855417225 | uf_va=0x0a10f96c | il2cpp_get_corlib
+  idx= 7 (0x07) | hash_enc=0x86dd3b93a4ff0070 | uf_va=0x0a110204 | il2cpp_gchandle_new
+  idx= 8 (0x08) | hash_enc=0x44aa960f287f4b0d | uf_va=0x0a110278 | il2cpp_gc_wbarrier_set_field
+  idx= 9 (0x09) | hash_enc=0xe267138b2706c982 | uf_va=0x0a110420 | il2cpp_string_new
+  idx=10 (0x0a) | hash_enc=0x01170a9a4000c61a | uf_va=0x0a10fa04 | il2cpp_class_get_method_from_name
+  idx=11 (0x0b) | hash_enc=0x37a3d5e1c8bead60 | uf_va=0x0a110404 | il2cpp_runtime_invoke
+  idx=12 (0x0c) | hash_enc=0x1161568e53a19d88 | uf_va=0x0a10f9fc | il2cpp_class_get_methods
+  idx=13 (0x0d) | hash_enc=0x565df362be6919bd | uf_va=0x0a1102e0 | il2cpp_method_get_name
+  idx=14 (0x0e) | hash_enc=0x5935f0d618c3c188 | uf_va=0x0a10ff08 | il2cpp_domain_get_assemblies
+  idx=15 (0x0f) | hash_enc=0x1655638cfe8569c6 | uf_va=0x0a10f9a0 | il2cpp_assembly_get_image
+  idx=16 (0x10) | hash_enc=0xb9c99cf8cd2eefea | uf_va=0x0a10f9f8 | il2cpp_class_get_field_from_name
+  idx=17 (0x11) | hash_enc=0xc15437eba954ff1b | uf_va=0x0a110128 | il2cpp_field_static_set_value
+  idx=18 (0x12) | hash_enc=0xde1720f481de6873 | uf_va=0x0a110124 | il2cpp_field_static_get_value
