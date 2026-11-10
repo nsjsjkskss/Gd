@@ -93,3 +93,50 @@ Kết quả kiểm tra trực tiếp trên môi trường container Linux (`x86_
 
 **Lý do kỹ thuật ưu tiên dùng `lief` + `capstone` + parser Python tùy chỉnh trên bản build này:**
 - Tệp `Penny` bị công cụ `Anti-Hex` chèn gần `196 MB` dữ liệu nhiễu vào `__objc_stubs` và `__swift5_types`, đồng thời làm lệch header `LC_FUNCTION_STARTS` và `LC_DATA_IN_CODE`. Các công cụ tự động quét toàn bộ tệp hoặc phụ thuộc vào `LC_FUNCTION_STARTS` sẽ bị treo hoặc báo lỗi phân tích, trong khi parser Python đọc trực tiếp đúng địa chỉ ảo (`va`) của `__objc_classlist` (`0xcc61500`) và `__text` (`0x4b40 .. 0x39f19c`).
+
+## 9. Phân tích Chuyên sâu Luồng Khởi tạo (`__mod_init_func` & `+load`)
+Khi `Penny` được nạp vào tiến trình, hệ thống khởi tạo chạy theo hai giai đoạn tĩnh:
+
+1. **Giai đoạn `+load` của Objective-C (`__objc_nlclslist` tại `0xcc61748`):**
+   - `+[_UISceneBootstrapLoader load]` (`imp = 0xe4d34`):
+     - Đầu hàm (`0xe4d64 .. 0xe4db8`) kiểm tra trạng thái toàn cục tại `0xcc74880` và `0xcc8f6b0`. Nếu phát hiện trạng thái bất thường, hàm nhảy tới `0xe4da8` để xóa `x29`, `x30`, `sp` về `0` và gọi `brk #1`.
+     - Tiếp theo (`0xe4dbc .. 0xe4e90`), hàm nạp vector 16 byte từ `0x63dd2f0` lên stack và thiết lập các hằng số khởi tạo cho bộ đệm trạng thái tại `0xcc8f000`.
+   - `+[_UIPaneHUDBox load]` (`imp = 0x219150`):
+     - Đăng ký các observer với `NSNotificationCenter.defaultCenter` cho các sự kiện bàn phím (`UIKeyboardWillChangeFrameNotification`, `UIKeyboardDidChangeFrameNotification`, `UIKeyboardDidHideNotification`) để căn chỉnh vị trí hộp thoại nhập key / HUD.
+
+2. **Giai đoạn Constructor C++ (`__mod_init_func` tại `0xcc4c490`, gồm 9 hàm):**
+   - `init_0` (`0xad7c8`): Khởi tạo vùng nhớ toàn cục tại `0xcc8f5a0 .. 0xcc8f5f8`, gán hệ số tỷ lệ float `1.0f` (`0x3f800000`) tại `0xcc8f5c0` và đăng ký các hàm dọn dẹp qua `__cxa_atexit` (`0x570c`, `0x5710`).
+   - `init_1` (`0xe8828`): Gọi `dispatch_time` và `dispatch_after` trên `dispatch_main_q` (`0xcc4c2a0`) với block toàn cục tại `0xcc4d168` để trì hoãn việc gắn giao diện điều khiển vào cửa sổ chính sau khi cảnh (scene) của ứng dụng hoạt động.
+   - `init_2` (`0x14a140`) đến `init_7` (`0x14b0a0`): Nhóm hàm khởi tạo của lõi `PPAPIKey` có gắn lớp tự kiểm tra mã lệnh (self-check) ở đầu hàm:
+     - Đọc lệnh đầu tiên của chính hàm đó (`ldr w8, #<func_va>`) và kiểm tra qua `sub_2184e4`, `sub_2184f0`, `sub_20fca4` để phát hiện breakpoint phần mềm (`brk`) hoặc lệnh nhảy (`b` / `ldr x16, #8; br x16`) do công cụ hook chèn vào.
+     - Nếu phát hiện đầu hàm bị sửa đổi, mã máy nạp `mov w16, #1` (`SYS_exit`) kèm lệnh `svc` (`#0xefc4`, `#0xd7f3`, `#0xc71`, `#0xc857`) để thoát tiến trình ngay lập tức ở mức syscall mà không đi qua hàm thư viện C (`exit`).
+   - `init_8` (`0x218f5c`): Kiểm tra toàn vẹn tương tự ở đầu hàm (`0x218f60 .. 0x218fa4`), sau đó nạp hằng số `UIBackgroundTaskInvalid` vào `0xcc91248`.
+
+3. **Kiểm tra chống Hook trên các phương thức C Bridge (`0x130dec .. 0x131214`):**
+   - Các hàm cầu nối như `fn_130dec`, `fn_130e7c` (`setVer:`), `fn_131014` đều gọi `objc_getClass("_UIKites")` và `method_getImplementation` để đối chiếu địa chỉ hàm thực thi thực tế với địa chỉ tĩnh (`adr x8, #0x130e7c`). Nếu con trỏ IMP của Objective-C bị swizzle sang địa chỉ khác, hàm thực thi `mov w16, #1; svc #0x851b` để dừng tiến trình.
+
+## 10. Cấu trúc Bảng Địa chỉ RVA Mã hóa và Trampoline trong `UnityFramework`
+Phân tích tĩnh vùng hằng số `0x63dcb1c .. 0x63dcd24` trong `Penny` và 4 phân vùng cuối trong `UnityFramework` cho thấy cơ chế liên kết giữa hai mô-đun:
+
+1. **Ba bảng địa chỉ RVA mã hóa trong `Penny` (`0x63dcb1c`, `0x63dcb58`, `0x63dcba4`):**
+   - Sử dụng hàm tạo mặt nạ 64-bit sang 32-bit (với các hằng số trộn `0x065afa27e8371494`, `0x9e3779b97f4a7c15`, `0xbf58476d1ce4e5b9`, `0xd6e8feb86659fd93`, `0x94d049bb133111eb`), `Penny` giải mã 3 bảng địa chỉ tương đối (RVA) trỏ vào đầu các hàm bên trong `UnityFramework` (đều bắt đầu bằng prologue chuẩn của ARM64 như `stp x29, x30, ...` hoặc `stp x22, x21, ...`):
+     - **Bảng 1 (`0x63dcb1c` -> giải mã ra `0xcc8f6c8`):** Gồm **15 mục** RVA (ví dụ: `0x021e8d20`, `0x015cb050`, `0x04644998`, `0x04630914`, `0x08de4fe0`, `0x05624598`, ..., `0x06ceadc4`).
+     - **Bảng 2 (`0x63dcb58` -> giải mã ra `0xcc8f740`):** Gồm **19 mục** RVA (ví dụ: `0x020f2d94`, `0x021ebd24`, `0x046447cc`, `0x046448cc`, `0x086ff118`, ..., `0x034225c4`).
+     - **Bảng 3 (`0x63dcba4` -> giải mã ra `0xcc8f7e8`):** Gồm **96 mục** RVA (từ `0x044b7528` đến `0x07737840`).
+
+2. **Cấu trúc Trampoline Stubs trong `UnityFramework` (`__TEXT_EXEC` & `__AUTH_EXEC`):**
+   - Phân vùng `__TEXT_EXEC` (`va = 0xc388000`, `foff = 0xbf44000`) chứa **110 trampoline stub** căn chỉnh theo bước `0x40` byte (từ `0xc388100` đến `0xc389c40`).
+   - Phân vùng `__AUTH_EXEC` (`va = 0xc39c000`, `foff = 0xbf58000`) chứa **45 trampoline stub** căn chỉnh theo bước `0x40` byte (từ `0xc39c100` đến `0xc39cc00`).
+   - Mỗi stub đều tuân theo cùng một mẫu lệnh máy 8 lệnh:
+     ```armasm
+     ldr  x17, #<slot_va>        ; Đọc giá trị con trỏ đã mã hóa trong __DATA_DIRTY (0xc398xxx) hoặc __AUTH_DATA (0xc3a0xxx)
+     cbz  x17, #<fallback_label> ; Nếu slot bằng 0 (chưa khởi tạo), nhảy sang nhánh fallback
+     ldr  x16, #<slot_va + 8>    ; Đọc khóa XOR 64-bit tại slot kế tiếp
+     eor  x17, x17, x16          ; Giải mã con trỏ hàm bằng phép XOR
+     ror  x17, x17, #<imm_rot>   ; Xoay phải bit (mỗi stub có số bit xoay #imm_rot riêng biệt)
+     br   x17                    ; Nhảy tới địa chỉ hàm đích sau khi giải mã
+     <fallback_label>:
+     stp  d11, d10, [sp, #-0x40]!
+     b    #0x5632fe4             ; Nhánh mặc định khi slot chưa được nạp dữ liệu
+     ```
+   - Trong tệp tĩnh trên đĩa, các vùng dữ liệu `__DATA_DIRTY` (`0xc398100 ..`) và `__AUTH_DATA` (`0xc3a0080 ..`) tại các địa chỉ `<slot_va>` đều đang mang giá trị `0`, cho thấy các cặp giá trị `(con_trỏ_mã_hóa, khóa_XOR)` chỉ được ghi vào bộ nhớ ở thời điểm chạy (runtime).
