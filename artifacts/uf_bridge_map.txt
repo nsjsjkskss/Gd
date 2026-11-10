@@ -1,0 +1,1182 @@
+=== Table1 (15 entries) ===
+  [ 0] rva=0x021e8d20 bss=0xcc8f6c8 | 0x21e8d1c: br x16; 0x21e8d20: add x29, sp, #0x20; 0x21e8d24: mov x19, x0
+  [ 1] rva=0x015cb050 bss=0xcc8f6d0 | 0x15cb04c: br x16; 0x15cb050: stp x22, x21, [sp, #0x70]; 0x15cb054: stp x20, x19, [sp, #0x80]
+  [ 2] rva=0x04644998 bss=0xcc8f6d8 | 0x4644994: b #0xc388a40; 0x4644998: stp x20, x19, [sp, #0x10]; 0x464499c: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388a40 [ldr x17, #0xc3986c0; cbz x17, #0xc388a58; ldr x16, #0xc3986c8; eor x17, x17, x16; ror x17, x17, #0x1d; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 3] rva=0x04630914 bss=0xcc8f6e0 | 0x4630910: b #0xc39cb00; 0x4630914: stp x24, x23, [sp, #0x20]; 0x4630918: stp x22, x21, [sp, #0x30] -> __AUTH_EXEC stub@0xc39cb00 [ldr x17, #0xc3a01a0; cbz x17, #0xc39cb18; ldr x16, #0xc3a01a8; eor x17, x17, x16; ror x17, x17, #0x22; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 4] rva=0x08de4fe0 bss=0xcc8f6e8 | 0x8de4fdc: b #0xc39ca80; 0x8de4fe0: stp d15, d14, [sp, #0x10]; 0x8de4fe4: stp d13, d12, [sp, #0x20] -> __AUTH_EXEC stub@0xc39ca80 [ldr x17, #0xc3a01b0; cbz x17, #0xc39ca98; ldr x16, #0xc3a01b8; eor x17, x17, x16; ror x17, x17, #0x3c; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 5] rva=0x05624598 bss=0xcc8f6f0 | 0x5624594: b #0xc39c600; 0x5624598: stp x29, x30, [sp, #0x10]; 0x562459c: add x29, sp, #0x10 -> __AUTH_EXEC stub@0xc39c600 [ldr x17, #0xc3a00b0; cbz x17, #0xc39c618; ldr x16, #0xc3a00b8; eor x17, x17, x16; ror x17, x17, #2; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 6] rva=0x056a55ec bss=0xcc8f6f8 | 0x56a55e8: b #0xc39c580; 0x56a55ec: stp x29, x30, [sp, #0x10]; 0x56a55f0: add x29, sp, #0x10 -> __AUTH_EXEC stub@0xc39c580 [ldr x17, #0xc3a0250; cbz x17, #0xc39c598; ldr x16, #0xc3a0258; eor x17, x17, x16; ror x17, x17, #0x1f; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 7] rva=0x05918b20 bss=0xcc8f700 | 0x5918b1c: b #0xc39c8c0; 0x5918b20: stp x29, x30, [sp, #0x10]; 0x5918b24: add x29, sp, #0x10 -> __AUTH_EXEC stub@0xc39c8c0 [ldr x17, #0xc3a0140; cbz x17, #0xc39c8d8; ldr x16, #0xc3a0148; eor x17, x17, x16; ror x17, x17, #0x39; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 8] rva=0x05916994 bss=0xcc8f708 | 0x5916990: b #0xc39c900; 0x5916994: stp x29, x30, [sp, #0x10]; 0x5916998: add x29, sp, #0x10 -> __AUTH_EXEC stub@0xc39c900 [ldr x17, #0xc3a0190; cbz x17, #0xc39c918; ldr x16, #0xc3a0198; eor x17, x17, x16; ror x17, x17, #0x19; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 9] rva=0x06cea014 bss=0xcc8f710 | 0x6cea010: b #0xc39c3c0; 0x6cea014: stp x26, x25, [sp, #0x10]; 0x6cea018: stp x24, x23, [sp, #0x20] -> __AUTH_EXEC stub@0xc39c3c0 [ldr x17, #0xc3a00a0; cbz x17, #0xc39c3d8; ldr x16, #0xc3a00a8; eor x17, x17, x16; ror x17, x17, #0xd; br x17; stp d11, d10, [sp, #-0x40]!]
+  [10] rva=0x06ce9e28 bss=0xcc8f718 | 0x6ce9e24: b #0xc39c680; 0x6ce9e28: stp x20, x19, [sp, #0x10]; 0x6ce9e2c: stp x29, x30, [sp, #0x20] -> __AUTH_EXEC stub@0xc39c680 [ldr x17, #0xc3a0240; cbz x17, #0xc39c698; ldr x16, #0xc3a0248; eor x17, x17, x16; ror x17, x17, #0x2d; br x17; stp d11, d10, [sp, #-0x40]!]
+  [11] rva=0x06cea2c4 bss=0xcc8f720 | 0x6cea2c0: b #0xc39cb40; 0x6cea2c4: stp x24, x23, [sp, #0x10]; 0x6cea2c8: stp x22, x21, [sp, #0x20] -> __AUTH_EXEC stub@0xc39cb40 [ldr x17, #0xc3a02a0; cbz x17, #0xc39cb58; ldr x16, #0xc3a02a8; eor x17, x17, x16; ror x17, x17, #0x2a; br x17; stp d11, d10, [sp, #-0x40]!]
+  [12] rva=0x06cea478 bss=0xcc8f728 | 0x6cea474: b #0xc39c4c0; 0x6cea478: stp x20, x19, [sp, #0x10]; 0x6cea47c: stp x29, x30, [sp, #0x20] -> __AUTH_EXEC stub@0xc39c4c0 [ldr x17, #0xc3a0150; cbz x17, #0xc39c4d8; ldr x16, #0xc3a0158; eor x17, x17, x16; ror x17, x17, #0xa; br x17; stp d11, d10, [sp, #-0x40]!]
+  [13] rva=0x06cea618 bss=0xcc8f730 | 0x6cea614: b #0xc39c2c0; 0x6cea618: stp x26, x25, [sp, #0x50]; 0x6cea61c: stp x24, x23, [sp, #0x60] -> __AUTH_EXEC stub@0xc39c2c0 [ldr x17, #0xc3a0120; cbz x17, #0xc39c2d8; ldr x16, #0xc3a0128; eor x17, x17, x16; ror x17, x17, #0x27; br x17; stp d11, d10, [sp, #-0x40]!]
+  [14] rva=0x06ceadc4 bss=0xcc8f738 | 0x6ceadc0: b #0xc39cbc0; 0x6ceadc4: stp x22, x21, [sp, #0x10]; 0x6ceadc8: stp x20, x19, [sp, #0x20] -> __AUTH_EXEC stub@0xc39cbc0 [ldr x17, #0xc3a0110; cbz x17, #0xc39cbd8; ldr x16, #0xc3a0118; eor x17, x17, x16; ror x17, x17, #7; br x17; stp d11, d10, [sp, #-0x40]!]
+
+=== Table2 (19 entries) ===
+  [ 0] rva=0x020f2d94 bss=0xcc8f740 | 0x20f2d90: br x16; 0x20f2d94: stp x20, x19, [sp, #0x30]; 0x20f2d98: stp x29, x30, [sp, #0x40]
+  [ 1] rva=0x021ebd24 bss=0xcc8f748 | 0x21ebd20: br x16; 0x21ebd24: stp x22, x21, [sp, #0x50]; 0x21ebd28: stp x20, x19, [sp, #0x60]
+  [ 2] rva=0x046447cc bss=0xcc8f750 | 0x46447c8: b #0xc3885c0; 0x46447cc: stp x20, x19, [sp, #0x10]; 0x46447d0: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc3885c0 [ldr x17, #0xc3981f0; cbz x17, #0xc3885d8; ldr x16, #0xc3981f8; eor x17, x17, x16; ror x17, x17, #0x10; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 3] rva=0x046448cc bss=0xcc8f758 | 0x46448c8: b #0xc388e00; 0x46448cc: stp x22, x21, [sp, #0x10]; 0x46448d0: stp x20, x19, [sp, #0x20] -> __TEXT_EXEC stub@0xc388e00 [ldr x17, #0xc3983b0; cbz x17, #0xc388e18; ldr x16, #0xc3983b8; eor x17, x17, x16; ror x17, x17, #0x35; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 4] rva=0x086ff118 bss=0xcc8f760 | 0x86ff114: b #0xc389280; 0x86ff118: stp x20, x19, [sp, #0x10]; 0x86ff11c: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc389280 [ldr x17, #0xc3984c0; cbz x17, #0xc389298; ldr x16, #0xc3984c8; eor x17, x17, x16; ror x17, x17, #5; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 5] rva=0x021ea8c8 bss=0xcc8f768 | 0x21ea8c4: br x16; 0x21ea8c8: stp x22, x21, [sp, #0x50]; 0x21ea8cc: stp x20, x19, [sp, #0x60]
+  [ 6] rva=0x021eab34 bss=0xcc8f770 | 0x21eab30: br x16; 0x21eab34: stp x24, x23, [sp, #0x30]; 0x21eab38: stp x22, x21, [sp, #0x40]
+  [ 7] rva=0x0451a004 bss=0xcc8f778 | 0x451a000: b #0xc39c440; 0x451a004: stp x29, x30, [sp, #0x10]; 0x451a008: add x29, sp, #0x10 -> __AUTH_EXEC stub@0xc39c440 [ldr x17, #0xc3a02e0; cbz x17, #0xc39c458; ldr x16, #0xc3a02e8; eor x17, x17, x16; ror x17, x17, #5; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 8] rva=0x05926d7c bss=0xcc8f780 | 0x5926d78: b #0xc39c740; 0x5926d7c: stp x22, x21, [sp, #0x10]; 0x5926d80: stp x20, x19, [sp, #0x20] -> __AUTH_EXEC stub@0xc39c740 [ldr x17, #0xc3a0220; cbz x17, #0xc39c758; ldr x16, #0xc3a0228; eor x17, x17, x16; ror x17, x17, #0x1c; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 9] rva=0x08df4d74 bss=0xcc8f788 | 0x8df4d70: b #0xc39c500; 0x8df4d74: stp x20, x19, [sp, #0x10]; 0x8df4d78: stp x29, x30, [sp, #0x20] -> __AUTH_EXEC stub@0xc39c500 [ldr x17, #0xc3a01f0; cbz x17, #0xc39c518; ldr x16, #0xc3a01f8; eor x17, x17, x16; ror x17, x17, #0x36; br x17; stp d11, d10, [sp, #-0x40]!]
+  [10] rva=0x08df4f14 bss=0xcc8f790 | 0x8df4f10: b #0xc39c640; 0x8df4f14: stp x29, x30, [sp, #0x10]; 0x8df4f18: add x29, sp, #0x10 -> __AUTH_EXEC stub@0xc39c640 [ldr x17, #0xc3a0090; cbz x17, #0xc39c658; ldr x16, #0xc3a0098; eor x17, x17, x16; ror x17, x17, #0x16; br x17; stp d11, d10, [sp, #-0x40]!]
+  [11] rva=0x0646d8cc bss=0xcc8f798 | 0x646d8c8: b #0xc39c380; 0x646d8cc: stp x22, x21, [sp, #0x10]; 0x646d8d0: stp x20, x19, [sp, #0x20] -> __AUTH_EXEC stub@0xc39c380 [ldr x17, #0xc3a0170; cbz x17, #0xc39c398; ldr x16, #0xc3a0178; eor x17, x17, x16; ror x17, x17, #0x33; br x17; stp d11, d10, [sp, #-0x40]!]
+  [12] rva=0x0562b65c bss=0xcc8f7a0 | 0x562b658: b #0xc39c800; 0x562b65c: stp x29, x30, [sp, #0x10]; 0x562b660: add x29, sp, #0x10 -> __AUTH_EXEC stub@0xc39c800 [ldr x17, #0xc3a01c0; cbz x17, #0xc39c818; ldr x16, #0xc3a01c8; eor x17, x17, x16; ror x17, x17, #0x13; br x17; stp d11, d10, [sp, #-0x40]!]
+  [13] rva=0x05ce758c bss=0xcc8f7a8 | 0x5ce7588: b #0xc39c940; 0x5ce758c: stp x26, x25, [sp, #0xb0]; 0x5ce7590: stp x24, x23, [sp, #0xc0] -> __AUTH_EXEC stub@0xc39c940 [ldr x17, #0xc3a0100; cbz x17, #0xc39c958; ldr x16, #0xc3a0108; eor x17, x17, x16; ror x17, x17, #0x30; br x17; stp d11, d10, [sp, #-0x40]!]
+  [14] rva=0x05ddc990 bss=0xcc8f7b0 | 0x5ddc98c: b #0xc39ca00; 0x5ddc990: stp x20, x19, [sp, #0x10]; 0x5ddc994: stp x29, x30, [sp, #0x20] -> __AUTH_EXEC stub@0xc39ca00 [ldr x17, #0xc3a00d0; cbz x17, #0xc39ca18; ldr x16, #0xc3a00d8; eor x17, x17, x16; ror x17, x17, #0x10; br x17; stp d11, d10, [sp, #-0x40]!]
+  [15] rva=0x03421fc0 bss=0xcc8f7b8 | 0x3421fbc: br x16; 0x3421fc0: stp x22, x21, [sp, #0x30]; 0x3421fc4: stp x20, x19, [sp, #0x40]
+  [16] rva=0x03422264 bss=0xcc8f7c0 | 0x3422260: br x16; 0x3422264: stp x29, x30, [sp, #0x30]; 0x3422268: add x29, sp, #0x30
+  [17] rva=0x03422330 bss=0xcc8f7c8 | 0x342232c: br x16; 0x3422330: stp x22, x21, [sp, #0x30]; 0x3422334: stp x20, x19, [sp, #0x40]
+  [18] rva=0x034225c4 bss=0xcc8f7d0 | 0x34225c0: br x16; 0x34225c4: stp d9, d8, [sp, #0x30]; 0x34225c8: stp x22, x21, [sp, #0x40]
+
+=== Table3 (96 entries) ===
+  [ 0] rva=0x044b7528 bss=0xcc8f7e8 | 0x44b7524: b #0xc388340; 0x44b7528: stp x24, x23, [sp, #0x10]; 0x44b752c: stp x22, x21, [sp, #0x20] -> __TEXT_EXEC stub@0xc388340 [ldr x17, #0xc398380; cbz x17, #0xc388358; ldr x16, #0xc398388; eor x17, x17, x16; ror x17, x17, #0x2a; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 1] rva=0x045399ec bss=0xcc8f7f0 | 0x45399e8: b #0xc388580; 0x45399ec: stp x29, x30, [sp, #0x10]; 0x45399f0: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388580 [ldr x17, #0xc3985c0; cbz x17, #0xc388598; ldr x16, #0xc3985c8; eor x17, x17, x16; ror x17, x17, #0x12; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 2] rva=0x045cb6c4 bss=0xcc8f7f8 | 0x45cb6c0: b #0xc389600; 0x45cb6c4: stp x22, x21, [sp, #0x10]; 0x45cb6c8: stp x20, x19, [sp, #0x20] -> __TEXT_EXEC stub@0xc389600 [ldr x17, #0xc3984d0; cbz x17, #0xc389618; ldr x16, #0xc3984d8; eor x17, x17, x16; ror x17, x17, #0x37; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 3] rva=0x046beb54 bss=0xcc8f800 | 0x46beb50: b #0xc389140; 0x46beb54: stp x29, x30, [sp, #0x10]; 0x46beb58: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389140 [ldr x17, #0xc3986f0; cbz x17, #0xc389158; ldr x16, #0xc3986f8; eor x17, x17, x16; ror x17, x17, #0x1f; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 4] rva=0x04726c04 bss=0xcc8f808 | 0x4726c00: b #0xc388d00; 0x4726c04: stp x20, x19, [sp, #0x10]; 0x4726c08: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388d00 [ldr x17, #0xc398320; cbz x17, #0xc388d18; ldr x16, #0xc398328; eor x17, x17, x16; ror x17, x17, #7; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 5] rva=0x047ab154 bss=0xcc8f810 | 0x47ab150: b #0xc388dc0; 0x47ab154: stp x29, x30, [sp, #0x10]; 0x47ab158: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388dc0 [ldr x17, #0xc3980f0; cbz x17, #0xc388dd8; ldr x16, #0xc3980f8; eor x17, x17, x16; ror x17, x17, #0x2c; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 6] rva=0x048e6f1c bss=0xcc8f818 | 0x48e6f18: b #0xc389a40; 0x48e6f1c: stp x29, x30, [sp, #0x10]; 0x48e6f20: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389a40 [ldr x17, #0xc398160; cbz x17, #0xc389a58; ldr x16, #0xc398168; eor x17, x17, x16; ror x17, x17, #0x14; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 7] rva=0x04a0de78 bss=0xcc8f820 | 0x4a0de74: b #0xc388300; 0x4a0de78: stp x29, x30, [sp, #0x10]; 0x4a0de7c: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388300 [ldr x17, #0xc398440; cbz x17, #0xc388318; ldr x16, #0xc398448; eor x17, x17, x16; ror x17, x17, #0x39; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 8] rva=0x04a8d60c bss=0xcc8f828 | 0x4a8d608: b #0xc388fc0; 0x4a8d60c: stp x29, x30, [sp, #0x10]; 0x4a8d610: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388fc0 [ldr x17, #0xc3983d0; cbz x17, #0xc388fd8; ldr x16, #0xc3983d8; eor x17, x17, x16; ror x17, x17, #0x21; br x17; stp d11, d10, [sp, #-0x40]!]
+  [ 9] rva=0x04b48f44 bss=0xcc8f830 | 0x4b48f40: b #0xc388280; 0x4b48f44: stp x29, x30, [sp, #0x10]; 0x4b48f48: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388280 [ldr x17, #0xc398110; cbz x17, #0xc388298; ldr x16, #0xc398118; eor x17, x17, x16; ror x17, x17, #9; br x17; stp d11, d10, [sp, #-0x40]!]
+  [10] rva=0x05036fa8 bss=0xcc8f838 | 0x5036fa4: b #0xc389580; 0x5036fa8: stp x29, x30, [sp, #0x10]; 0x5036fac: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389580 [ldr x17, #0xc3981b0; cbz x17, #0xc389598; ldr x16, #0xc3981b8; eor x17, x17, x16; ror x17, x17, #0x2e; br x17; stp d11, d10, [sp, #-0x40]!]
+  [11] rva=0x0510d27c bss=0xcc8f840 | 0x510d278: b #0xc389c40; 0x510d27c: stp x29, x30, [sp, #0x10]; 0x510d280: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389c40 [ldr x17, #0xc398640; cbz x17, #0xc389c58; ldr x16, #0xc398648; eor x17, x17, x16; ror x17, x17, #0x16; br x17; stp d11, d10, [sp, #-0x40]!]
+  [12] rva=0x051c28c8 bss=0xcc8f848 | 0x51c28c4: b #0xc388c00; 0x51c28c8: stp x29, x30, [sp, #0x10]; 0x51c28cc: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388c00 [ldr x17, #0xc398580; cbz x17, #0xc388c18; ldr x16, #0xc398588; eor x17, x17, x16; ror x17, x17, #0x3b; br x17; stp d11, d10, [sp, #-0x40]!]
+  [13] rva=0x052d0dcc bss=0xcc8f850 | 0x52d0dc8: b #0xc3888c0; 0x52d0dcc: stp x20, x19, [sp, #0x10]; 0x52d0dd0: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc3888c0 [ldr x17, #0xc398540; cbz x17, #0xc3888d8; ldr x16, #0xc398548; eor x17, x17, x16; ror x17, x17, #0x23; br x17; stp d11, d10, [sp, #-0x40]!]
+  [14] rva=0x05332d70 bss=0xcc8f858 | 0x5332d6c: b #0xc388a80; 0x5332d70: stp x29, x30, [sp, #0x10]; 0x5332d74: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388a80 [ldr x17, #0xc3983e0; cbz x17, #0xc388a98; ldr x16, #0xc3983e8; eor x17, x17, x16; ror x17, x17, #0xb; br x17; stp d11, d10, [sp, #-0x40]!]
+  [15] rva=0x053b94e8 bss=0xcc8f860 | 0x53b94e4: b #0xc389980; 0x53b94e8: stp x29, x30, [sp, #0x10]; 0x53b94ec: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389980 [ldr x17, #0xc3984e0; cbz x17, #0xc389998; ldr x16, #0xc3984e8; eor x17, x17, x16; ror x17, x17, #0x30; br x17; stp d11, d10, [sp, #-0x40]!]
+  [16] rva=0x0548d618 bss=0xcc8f868 | 0x548d614: b #0xc388540; 0x548d618: stp x29, x30, [sp, #0x10]; 0x548d61c: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388540 [ldr x17, #0xc398690; cbz x17, #0xc388558; ldr x16, #0xc398698; eor x17, x17, x16; ror x17, x17, #0x18; br x17; stp d11, d10, [sp, #-0x40]!]
+  [17] rva=0x0550b8cc bss=0xcc8f870 | 0x550b8c8: b #0xc388680; 0x550b8cc: stp x20, x19, [sp, #0x10]; 0x550b8d0: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388680 [ldr x17, #0xc398250; cbz x17, #0xc388698; ldr x16, #0xc398258; eor x17, x17, x16; ror x17, x17, #0x3d; br x17; stp d11, d10, [sp, #-0x40]!]
+  [18] rva=0x055cf118 bss=0xcc8f878 | 0x55cf114: b #0xc388640; 0x55cf118: stp x29, x30, [sp, #0x10]; 0x55cf11c: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388640 [ldr x17, #0xc398600; cbz x17, #0xc388658; ldr x16, #0xc398608; eor x17, x17, x16; ror x17, x17, #0x25; br x17; stp d11, d10, [sp, #-0x40]!]
+  [19] rva=0x056f5ad4 bss=0xcc8f880 | 0x56f5ad0: b #0xc389240; 0x56f5ad4: stp x29, x30, [sp, #0x10]; 0x56f5ad8: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389240 [ldr x17, #0xc398130; cbz x17, #0xc389258; ldr x16, #0xc398138; eor x17, x17, x16; ror x17, x17, #0xd; br x17; stp d11, d10, [sp, #-0x40]!]
+  [20] rva=0x057b9374 bss=0xcc8f888 | 0x57b9370: b #0xc389ac0; 0x57b9374: stp x20, x19, [sp, #0x10]; 0x57b9378: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc389ac0 [ldr x17, #0xc398150; cbz x17, #0xc389ad8; ldr x16, #0xc398158; eor x17, x17, x16; ror x17, x17, #0x32; br x17; stp d11, d10, [sp, #-0x40]!]
+  [21] rva=0x0583aec8 bss=0xcc8f890 | 0x583aec4: b #0xc389640; 0x583aec8: stp x29, x30, [sp, #0x10]; 0x583aecc: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389640 [ldr x17, #0xc398710; cbz x17, #0xc389658; ldr x16, #0xc398718; eor x17, x17, x16; ror x17, x17, #0x1a; br x17; stp d11, d10, [sp, #-0x40]!]
+  [22] rva=0x0583d4b8 bss=0xcc8f898 | 0x583d4b4: b #0xc389880; 0x583d4b8: stp x29, x30, [sp, #0x10]; 0x583d4bc: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389880 [ldr x17, #0xc398180; cbz x17, #0xc389898; ldr x16, #0xc398188; eor x17, x17, x16; ror x17, x17, #2; br x17; stp d11, d10, [sp, #-0x40]!]
+  [23] rva=0x05848df4 bss=0xcc8f8a0 | 0x5848df0: b #0xc388940; 0x5848df4: stp x20, x19, [sp, #0x10]; 0x5848df8: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388940 [ldr x17, #0xc398390; cbz x17, #0xc388958; ldr x16, #0xc398398; eor x17, x17, x16; ror x17, x17, #0x27; br x17; stp d11, d10, [sp, #-0x40]!]
+  [24] rva=0x05968ed4 bss=0xcc8f8a8 | 0x5968ed0: b #0xc388100; 0x5968ed4: stp x29, x30, [sp, #0x10]; 0x5968ed8: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388100 [ldr x17, #0xc3982f0; cbz x17, #0xc388118; ldr x16, #0xc3982f8; eor x17, x17, x16; ror x17, x17, #0xf; br x17; stp d11, d10, [sp, #-0x40]!]
+  [25] rva=0x059f1290 bss=0xcc8f8b0 | 0x59f128c: b #0xc3892c0; 0x59f1290: stp x22, x21, [sp, #0x20]; 0x59f1294: stp x20, x19, [sp, #0x30] -> __TEXT_EXEC stub@0xc3892c0 [ldr x17, #0xc398740; cbz x17, #0xc3892d8; ldr x16, #0xc398748; eor x17, x17, x16; ror x17, x17, #0x34; br x17; stp d11, d10, [sp, #-0x40]!]
+  [26] rva=0x05aba024 bss=0xcc8f8b8 | 0x5aba020: b #0xc389400; 0x5aba024: stp x29, x30, [sp, #0x10]; 0x5aba028: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389400 [ldr x17, #0xc398310; cbz x17, #0xc389418; ldr x16, #0xc398318; eor x17, x17, x16; ror x17, x17, #0x1c; br x17; stp d11, d10, [sp, #-0x40]!]
+  [27] rva=0x05b71dbc bss=0xcc8f8c0 | 0x5b71db8: b #0xc389680; 0x5b71dbc: stp x29, x30, [sp, #0x10]; 0x5b71dc0: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389680 [ldr x17, #0xc398200; cbz x17, #0xc389698; ldr x16, #0xc398208; eor x17, x17, x16; ror x17, x17, #4; br x17; stp d11, d10, [sp, #-0x40]!]
+  [28] rva=0x05c153b0 bss=0xcc8f8c8 | 0x5c153ac: b #0xc389780; 0x5c153b0: stp x29, x30, [sp, #0x10]; 0x5c153b4: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389780 [ldr x17, #0xc398230; cbz x17, #0xc389798; ldr x16, #0xc398238; eor x17, x17, x16; ror x17, x17, #0x29; br x17; stp d11, d10, [sp, #-0x40]!]
+  [29] rva=0x05cdfd14 bss=0xcc8f8d0 | 0x5cdfd10: b #0xc389080; 0x5cdfd14: stp x20, x19, [sp, #0x10]; 0x5cdfd18: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc389080 [ldr x17, #0xc398350; cbz x17, #0xc389098; ldr x16, #0xc398358; eor x17, x17, x16; ror x17, x17, #0x11; br x17; stp d11, d10, [sp, #-0x40]!]
+  [30] rva=0x05f7ecf4 bss=0xcc8f8d8 | 0x5f7ecf0: b #0xc388f80; 0x5f7ecf4: stp x24, x23, [sp, #0x20]; 0x5f7ecf8: stp x22, x21, [sp, #0x30] -> __TEXT_EXEC stub@0xc388f80 [ldr x17, #0xc3985a0; cbz x17, #0xc388f98; ldr x16, #0xc3985a8; eor x17, x17, x16; ror x17, x17, #0x36; br x17; stp d11, d10, [sp, #-0x40]!]
+  [31] rva=0x060ad2b4 bss=0xcc8f8e0 | 0x60ad2b0: b #0xc389b40; 0x60ad2b4: stp x20, x19, [sp, #0x10]; 0x60ad2b8: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc389b40 [ldr x17, #0xc3986e0; cbz x17, #0xc389b58; ldr x16, #0xc3986e8; eor x17, x17, x16; ror x17, x17, #0x1e; br x17; stp d11, d10, [sp, #-0x40]!]
+  [32] rva=0x06127e74 bss=0xcc8f8e8 | 0x6127e70: b #0xc3887c0; 0x6127e74: stp x29, x30, [sp, #0x10]; 0x6127e78: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc3887c0 [ldr x17, #0xc398260; cbz x17, #0xc3887d8; ldr x16, #0xc398268; eor x17, x17, x16; ror x17, x17, #6; br x17; stp d11, d10, [sp, #-0x40]!]
+  [33] rva=0x06191854 bss=0xcc8f8f0 | 0x6191850: b #0xc3884c0; 0x6191854: stp x29, x30, [sp, #0x10]; 0x6191858: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc3884c0 [ldr x17, #0xc398670; cbz x17, #0xc3884d8; ldr x16, #0xc398678; eor x17, x17, x16; ror x17, x17, #0x2b; br x17; stp d11, d10, [sp, #-0x40]!]
+  [34] rva=0x063086cc bss=0xcc8f8f8 | 0x63086c8: b #0xc389440; 0x63086cc: stp x29, x30, [sp, #0x10]; 0x63086d0: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389440 [ldr x17, #0xc398570; cbz x17, #0xc389458; ldr x16, #0xc398578; eor x17, x17, x16; ror x17, x17, #0x13; br x17; stp d11, d10, [sp, #-0x40]!]
+  [35] rva=0x063d8d4c bss=0xcc8f900 | 0x63d8d48: b #0xc388840; 0x63d8d4c: stp x22, x21, [sp, #0x10]; 0x63d8d50: stp x20, x19, [sp, #0x20] -> __TEXT_EXEC stub@0xc388840 [ldr x17, #0xc3980b0; cbz x17, #0xc388858; ldr x16, #0xc3980b8; eor x17, x17, x16; ror x17, x17, #0x38; br x17; stp d11, d10, [sp, #-0x40]!]
+  [36] rva=0x0643c6cc bss=0xcc8f908 | 0x643c6c8: b #0xc389480; 0x643c6cc: stp x29, x30, [sp, #0x10]; 0x643c6d0: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389480 [ldr x17, #0xc398280; cbz x17, #0xc389498; ldr x16, #0xc398288; eor x17, x17, x16; ror x17, x17, #0x20; br x17; stp d11, d10, [sp, #-0x40]!]
+  [37] rva=0x06467718 bss=0xcc8f910 | 0x6467714: b #0xc388500; 0x6467718: stp x29, x30, [sp, #0x10]; 0x646771c: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388500 [ldr x17, #0xc398120; cbz x17, #0xc388518; ldr x16, #0xc398128; eor x17, x17, x16; ror x17, x17, #8; br x17; stp d11, d10, [sp, #-0x40]!]
+  [38] rva=0x064c02d0 bss=0xcc8f918 | 0x64c02cc: b #0xc389000; 0x64c02d0: stp x29, x30, [sp, #0x10]; 0x64c02d4: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389000 [ldr x17, #0xc398340; cbz x17, #0xc389018; ldr x16, #0xc398348; eor x17, x17, x16; ror x17, x17, #0x2d; br x17; stp d11, d10, [sp, #-0x40]!]
+  [39] rva=0x065b16e4 bss=0xcc8f920 | 0x65b16e0: b #0xc389bc0; 0x65b16e4: stp x29, x30, [sp, #0x10]; 0x65b16e8: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389bc0 [ldr x17, #0xc3986b0; cbz x17, #0xc389bd8; ldr x16, #0xc3986b8; eor x17, x17, x16; ror x17, x17, #0x15; br x17; stp d11, d10, [sp, #-0x40]!]
+  [40] rva=0x065ff518 bss=0xcc8f928 | 0x65ff514: b #0xc389740; 0x65ff518: stp x29, x30, [sp, #0x10]; 0x65ff51c: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389740 [ldr x17, #0xc398170; cbz x17, #0xc389758; ldr x16, #0xc398178; eor x17, x17, x16; ror x17, x17, #0x3a; br x17; stp d11, d10, [sp, #-0x40]!]
+  [41] rva=0x06641160 bss=0xcc8f930 | 0x664115c: b #0xc388240; 0x6641160: stp x20, x19, [sp, #0x10]; 0x6641164: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388240 [ldr x17, #0xc398530; cbz x17, #0xc388258; ldr x16, #0xc398538; eor x17, x17, x16; ror x17, x17, #0x22; br x17; stp d11, d10, [sp, #-0x40]!]
+  [42] rva=0x066903f0 bss=0xcc8f938 | 0x66903ec: b #0xc389100; 0x66903f0: stp x29, x30, [sp, #0x10]; 0x66903f4: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389100 [ldr x17, #0xc398210; cbz x17, #0xc389118; ldr x16, #0xc398218; eor x17, x17, x16; ror x17, x17, #0xa; br x17; stp d11, d10, [sp, #-0x40]!]
+  [43] rva=0x06865600 bss=0xcc8f940 | 0x68655fc: b #0xc388b80; 0x6865600: stp x29, x30, [sp, #0x10]; 0x6865604: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388b80 [ldr x17, #0xc398650; cbz x17, #0xc388b98; ldr x16, #0xc398658; eor x17, x17, x16; ror x17, x17, #0x2f; br x17; stp d11, d10, [sp, #-0x40]!]
+  [44] rva=0x06941fc4 bss=0xcc8f948 | 0x6941fc0: b #0xc388400; 0x6941fc4: stp x22, x21, [sp, #0x20]; 0x6941fc8: stp x20, x19, [sp, #0x30] -> __TEXT_EXEC stub@0xc388400 [ldr x17, #0xc3982c0; cbz x17, #0xc388418; ldr x16, #0xc3982c8; eor x17, x17, x16; ror x17, x17, #0x17; br x17; stp d11, d10, [sp, #-0x40]!]
+  [45] rva=0x069eb03c bss=0xcc8f950 | 0x69eb038: b #0xc389840; 0x69eb03c: stp x20, x19, [sp, #0x10]; 0x69eb040: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc389840 [ldr x17, #0xc3981e0; cbz x17, #0xc389858; ldr x16, #0xc3981e8; eor x17, x17, x16; ror x17, x17, #0x3c; br x17; stp d11, d10, [sp, #-0x40]!]
+  [46] rva=0x06a9a8c0 bss=0xcc8f958 | 0x6a9a8bc: b #0xc389540; 0x6a9a8c0: stp x29, x30, [sp, #0x10]; 0x6a9a8c4: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389540 [ldr x17, #0xc3985d0; cbz x17, #0xc389558; ldr x16, #0xc3985d8; eor x17, x17, x16; ror x17, x17, #0x24; br x17; stp d11, d10, [sp, #-0x40]!]
+  [47] rva=0x06a9f9b8 bss=0xcc8f960 | 0x6a9f9b4: b #0xc389200; 0x6a9f9b8: stp x29, x30, [sp, #0x10]; 0x6a9f9bc: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389200 [ldr x17, #0xc398370; cbz x17, #0xc389218; ldr x16, #0xc398378; eor x17, x17, x16; ror x17, x17, #0xc; br x17; stp d11, d10, [sp, #-0x40]!]
+  [48] rva=0x06af7c84 bss=0xcc8f968 | 0x6af7c80: b #0xc3886c0; 0x6af7c84: stp x20, x19, [sp, #0x10]; 0x6af7c88: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc3886c0 [ldr x17, #0xc398730; cbz x17, #0xc3886d8; ldr x16, #0xc398738; eor x17, x17, x16; ror x17, x17, #0x31; br x17; stp d11, d10, [sp, #-0x40]!]
+  [49] rva=0x06b34120 bss=0xcc8f970 | 0x6b3411c: b #0xc389b80; 0x6b34120: stp x20, x19, [sp, #0x10]; 0x6b34124: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc389b80 [ldr x17, #0xc398430; cbz x17, #0xc389b98; ldr x16, #0xc398438; eor x17, x17, x16; ror x17, x17, #0x19; br x17; stp d11, d10, [sp, #-0x40]!]
+  [50] rva=0x06b4aa58 bss=0xcc8f978 | 0x6b4aa54: b #0xc388900; 0x6b4aa58: stp x20, x19, [sp, #0x10]; 0x6b4aa5c: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388900 [ldr x17, #0xc398630; cbz x17, #0xc388918; ldr x16, #0xc398638; eor x17, x17, x16; ror x17, x17, #1; br x17; stp d11, d10, [sp, #-0x40]!]
+  [51] rva=0x06b5ed78 bss=0xcc8f980 | 0x6b5ed74: b #0xc3894c0; 0x6b5ed78: stp x20, x19, [sp, #0x10]; 0x6b5ed7c: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc3894c0 [ldr x17, #0xc398420; cbz x17, #0xc3894d8; ldr x16, #0xc398428; eor x17, x17, x16; ror x17, x17, #0x26; br x17; stp d11, d10, [sp, #-0x40]!]
+  [52] rva=0x06b6c968 bss=0xcc8f988 | 0x6b6c964: b #0xc388a00; 0x6b6c968: stp x20, x19, [sp, #0x10]; 0x6b6c96c: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388a00 [ldr x17, #0xc3986a0; cbz x17, #0xc388a18; ldr x16, #0xc3986a8; eor x17, x17, x16; ror x17, x17, #0xe; br x17; stp d11, d10, [sp, #-0x40]!]
+  [53] rva=0x06b6f478 bss=0xcc8f990 | 0x6b6f474: b #0xc388f40; 0x6b6f478: stp x20, x19, [sp, #0x10]; 0x6b6f47c: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388f40 [ldr x17, #0xc3984f0; cbz x17, #0xc388f58; ldr x16, #0xc3984f8; eor x17, x17, x16; ror x17, x17, #0x33; br x17; stp d11, d10, [sp, #-0x40]!]
+  [54] rva=0x06b7ac34 bss=0xcc8f998 | 0x6b7ac30: b #0xc3890c0; 0x6b7ac34: stp x29, x30, [sp, #0x10]; 0x6b7ac38: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc3890c0 [ldr x17, #0xc398220; cbz x17, #0xc3890d8; ldr x16, #0xc398228; eor x17, x17, x16; ror x17, x17, #0x1b; br x17; stp d11, d10, [sp, #-0x40]!]
+  [55] rva=0x06b7c35c bss=0xcc8f9a0 | 0x6b7c358: b #0xc388d40; 0x6b7c35c: stp x22, x21, [sp, #0x10]; 0x6b7c360: stp x20, x19, [sp, #0x20] -> __TEXT_EXEC stub@0xc388d40 [ldr x17, #0xc3980e0; cbz x17, #0xc388d58; ldr x16, #0xc3980e8; eor x17, x17, x16; ror x17, x17, #3; br x17; stp d11, d10, [sp, #-0x40]!]
+  [56] rva=0x06b8068c bss=0xcc8f9a8 | 0x6b80688: b #0xc388e40; 0x6b8068c: stp x20, x19, [sp, #0x10]; 0x6b80690: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388e40 [ldr x17, #0xc398270; cbz x17, #0xc388e58; ldr x16, #0xc398278; eor x17, x17, x16; ror x17, x17, #0x28; br x17; stp d11, d10, [sp, #-0x40]!]
+  [57] rva=0x06b879d8 bss=0xcc8f9b0 | 0x6b879d4: b #0xc388ac0; 0x6b879d8: stp x29, x30, [sp, #0x10]; 0x6b879dc: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388ac0 [ldr x17, #0xc398100; cbz x17, #0xc388ad8; ldr x16, #0xc398108; eor x17, x17, x16; ror x17, x17, #0x10; br x17; stp d11, d10, [sp, #-0x40]!]
+  [58] rva=0x06b8fdb4 bss=0xcc8f9b8 | 0x6b8fdb0: b #0xc3882c0; 0x6b8fdb4: stp x20, x19, [sp, #0x10]; 0x6b8fdb8: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc3882c0 [ldr x17, #0xc398410; cbz x17, #0xc3882d8; ldr x16, #0xc398418; eor x17, x17, x16; ror x17, x17, #0x35; br x17; stp d11, d10, [sp, #-0x40]!]
+  [59] rva=0x06b9ee84 bss=0xcc8f9c0 | 0x6b9ee80: b #0xc388980; 0x6b9ee84: stp x20, x19, [sp, #0x10]; 0x6b9ee88: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388980 [ldr x17, #0xc3982b0; cbz x17, #0xc388998; ldr x16, #0xc3982b8; eor x17, x17, x16; ror x17, x17, #0x1d; br x17; stp d11, d10, [sp, #-0x40]!]
+  [60] rva=0x06ba6694 bss=0xcc8f9c8 | 0x6ba6690: b #0xc3883c0; 0x6ba6694: stp x22, x21, [sp, #0x10]; 0x6ba6698: stp x20, x19, [sp, #0x20] -> __TEXT_EXEC stub@0xc3883c0 [ldr x17, #0xc3982a0; cbz x17, #0xc3883d8; ldr x16, #0xc3982a8; eor x17, x17, x16; ror x17, x17, #5; br x17; stp d11, d10, [sp, #-0x40]!]
+  [61] rva=0x06baaef8 bss=0xcc8f9d0 | 0x6baaef4: b #0xc3891c0; 0x6baaef8: stp x22, x21, [sp, #0x10]; 0x6baaefc: stp x20, x19, [sp, #0x20] -> __TEXT_EXEC stub@0xc3891c0 [ldr x17, #0xc3980c0; cbz x17, #0xc3891d8; ldr x16, #0xc3980c8; eor x17, x17, x16; ror x17, x17, #0x2a; br x17; stp d11, d10, [sp, #-0x40]!]
+  [62] rva=0x06bca588 bss=0xcc8f9d8 | 0x6bca584: b #0xc3881c0; 0x6bca588: stp x24, x23, [sp, #0x30]; 0x6bca58c: stp x22, x21, [sp, #0x40] -> __TEXT_EXEC stub@0xc3881c0 [ldr x17, #0xc398140; cbz x17, #0xc3881d8; ldr x16, #0xc398148; eor x17, x17, x16; ror x17, x17, #0x12; br x17; stp d11, d10, [sp, #-0x40]!]
+  [63] rva=0x06bd8250 bss=0xcc8f9e0 | 0x6bd824c: b #0xc388b40; 0x6bd8250: stp x20, x19, [sp, #0x10]; 0x6bd8254: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388b40 [ldr x17, #0xc398700; cbz x17, #0xc388b58; ldr x16, #0xc398708; eor x17, x17, x16; ror x17, x17, #0x37; br x17; stp d11, d10, [sp, #-0x40]!]
+  [64] rva=0x06c04a48 bss=0xcc8f9e8 | 0x6c04a44: b #0xc388b00; 0x6c04a48: stp x20, x19, [sp, #0x10]; 0x6c04a4c: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388b00 [ldr x17, #0xc3985e0; cbz x17, #0xc388b18; ldr x16, #0xc3985e8; eor x17, x17, x16; ror x17, x17, #0x1f; br x17; stp d11, d10, [sp, #-0x40]!]
+  [65] rva=0x06c0f398 bss=0xcc8f9f0 | 0x6c0f394: b #0xc389040; 0x6c0f398: stp x22, x21, [sp, #0x10]; 0x6c0f39c: stp x20, x19, [sp, #0x20] -> __TEXT_EXEC stub@0xc389040 [ldr x17, #0xc3981a0; cbz x17, #0xc389058; ldr x16, #0xc3981a8; eor x17, x17, x16; ror x17, x17, #7; br x17; stp d11, d10, [sp, #-0x40]!]
+  [66] rva=0x06c2486c bss=0xcc8f9f8 | 0x6c24868: b #0xc389b00; 0x6c2486c: stp x29, x30, [sp, #0x10]; 0x6c24870: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389b00 [ldr x17, #0xc398080; cbz x17, #0xc389b18; ldr x16, #0xc398088; eor x17, x17, x16; ror x17, x17, #0x2c; br x17; stp d11, d10, [sp, #-0x40]!]
+  [67] rva=0x06c36e6c bss=0xcc8fa00 | 0x6c36e68: b #0xc389a80; 0x6c36e6c: stp x22, x21, [sp, #0x10]; 0x6c36e70: stp x20, x19, [sp, #0x20] -> __TEXT_EXEC stub@0xc389a80 [ldr x17, #0xc398470; cbz x17, #0xc389a98; ldr x16, #0xc398478; eor x17, x17, x16; ror x17, x17, #0x14; br x17; stp d11, d10, [sp, #-0x40]!]
+  [68] rva=0x06c7b354 bss=0xcc8fa08 | 0x6c7b350: b #0xc389300; 0x6c7b354: stp x29, x30, [sp, #0x10]; 0x6c7b358: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389300 [ldr x17, #0xc398660; cbz x17, #0xc389318; ldr x16, #0xc398668; eor x17, x17, x16; ror x17, x17, #0x39; br x17; stp d11, d10, [sp, #-0x40]!]
+  [69] rva=0x06c7fe68 bss=0xcc8fa10 | 0x6c7fe64: b #0xc388480; 0x6c7fe68: stp x29, x30, [sp, #0x10]; 0x6c7fe6c: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388480 [ldr x17, #0xc398550; cbz x17, #0xc388498; ldr x16, #0xc398558; eor x17, x17, x16; ror x17, x17, #0x21; br x17; stp d11, d10, [sp, #-0x40]!]
+  [70] rva=0x06cafc94 bss=0xcc8fa18 | 0x6cafc90: b #0xc388140; 0x6cafc94: stp x20, x19, [sp, #0x10]; 0x6cafc98: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388140 [ldr x17, #0xc398590; cbz x17, #0xc388158; ldr x16, #0xc398598; eor x17, x17, x16; ror x17, x17, #9; br x17; stp d11, d10, [sp, #-0x40]!]
+  [71] rva=0x06cbc434 bss=0xcc8fa20 | 0x6cbc430: b #0xc3895c0; 0x6cbc434: stp x22, x21, [sp, #0x10]; 0x6cbc438: stp x20, x19, [sp, #0x20] -> __TEXT_EXEC stub@0xc3895c0 [ldr x17, #0xc398400; cbz x17, #0xc3895d8; ldr x16, #0xc398408; eor x17, x17, x16; ror x17, x17, #0x2e; br x17; stp d11, d10, [sp, #-0x40]!]
+  [72] rva=0x06cd8260 bss=0xcc8fa28 | 0x6cd825c: b #0xc389900; 0x6cd8260: stp x22, x21, [sp, #0x30]; 0x6cd8264: stp x20, x19, [sp, #0x40] -> __TEXT_EXEC stub@0xc389900 [ldr x17, #0xc398720; cbz x17, #0xc389918; ldr x16, #0xc398728; eor x17, x17, x16; ror x17, x17, #0x16; br x17; stp d11, d10, [sp, #-0x40]!]
+  [73] rva=0x06ce6358 bss=0xcc8fa30 | 0x6ce6354: b #0xc389500; 0x6ce6358: stp x29, x30, [sp, #0x10]; 0x6ce635c: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389500 [ldr x17, #0xc398360; cbz x17, #0xc389518; ldr x16, #0xc398368; eor x17, x17, x16; ror x17, x17, #0x3b; br x17; stp d11, d10, [sp, #-0x40]!]
+  [74] rva=0x06cfc158 bss=0xcc8fa38 | 0x6cfc154: b #0xc388800; 0x6cfc158: stp x22, x21, [sp, #0x40]; 0x6cfc15c: stp x20, x19, [sp, #0x50] -> __TEXT_EXEC stub@0xc388800 [ldr x17, #0xc398480; cbz x17, #0xc388818; ldr x16, #0xc398488; eor x17, x17, x16; ror x17, x17, #0x23; br x17; stp d11, d10, [sp, #-0x40]!]
+  [75] rva=0x07112814 bss=0xcc8fa40 | 0x7112810: b #0xc3896c0; 0x7112814: stp x20, x19, [sp, #0x10]; 0x7112818: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc3896c0 [ldr x17, #0xc3984b0; cbz x17, #0xc3896d8; ldr x16, #0xc3984b8; eor x17, x17, x16; ror x17, x17, #0xb; br x17; stp d11, d10, [sp, #-0x40]!]
+  [76] rva=0x0715de98 bss=0xcc8fa48 | 0x715de94: b #0xc388e80; 0x715de98: stp x20, x19, [sp, #0x10]; 0x715de9c: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388e80 [ldr x17, #0xc3985f0; cbz x17, #0xc388e98; ldr x16, #0xc3985f8; eor x17, x17, x16; ror x17, x17, #0x30; br x17; stp d11, d10, [sp, #-0x40]!]
+  [77] rva=0x0717c1d4 bss=0xcc8fa50 | 0x717c1d0: b #0xc388ec0; 0x717c1d4: stp x29, x30, [sp, #0x10]; 0x717c1d8: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388ec0 [ldr x17, #0xc398330; cbz x17, #0xc388ed8; ldr x16, #0xc398338; eor x17, x17, x16; ror x17, x17, #0x18; br x17; stp d11, d10, [sp, #-0x40]!]
+  [78] rva=0x0724d73c bss=0xcc8fa58 | 0x724d738: b #0xc3899c0; 0x724d73c: stp x24, x23, [sp, #0x40]; 0x724d740: stp x22, x21, [sp, #0x50] -> __TEXT_EXEC stub@0xc3899c0 [ldr x17, #0xc398190; cbz x17, #0xc3899d8; ldr x16, #0xc398198; eor x17, x17, x16; ror x17, x17, #0x3d; br x17; stp d11, d10, [sp, #-0x40]!]
+  [79] rva=0x0725c878 bss=0xcc8fa60 | 0x725c874: b #0xc389c00; 0x725c878: stp x29, x30, [sp, #0x10]; 0x725c87c: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389c00 [ldr x17, #0xc398620; cbz x17, #0xc389c18; ldr x16, #0xc398628; eor x17, x17, x16; ror x17, x17, #0x25; br x17; stp d11, d10, [sp, #-0x40]!]
+  [80] rva=0x0727ddc0 bss=0xcc8fa68 | 0x727ddbc: b #0xc388380; 0x727ddc0: stp x20, x19, [sp, #0x10]; 0x727ddc4: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388380 [ldr x17, #0xc398090; cbz x17, #0xc388398; ldr x16, #0xc398098; eor x17, x17, x16; ror x17, x17, #0xd; br x17; stp d11, d10, [sp, #-0x40]!]
+  [81] rva=0x073d6950 bss=0xcc8fa70 | 0x73d694c: b #0xc389a00; 0x73d6950: stp x20, x19, [sp, #0x10]; 0x73d6954: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc389a00 [ldr x17, #0xc398300; cbz x17, #0xc389a18; ldr x16, #0xc398308; eor x17, x17, x16; ror x17, x17, #0x32; br x17; stp d11, d10, [sp, #-0x40]!]
+  [82] rva=0x0745577c bss=0xcc8fa78 | 0x7455778: b #0xc389380; 0x745577c: stp x20, x19, [sp, #0x10]; 0x7455780: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc389380 [ldr x17, #0xc3980a0; cbz x17, #0xc389398; ldr x16, #0xc3980a8; eor x17, x17, x16; ror x17, x17, #0x1a; br x17; stp d11, d10, [sp, #-0x40]!]
+  [83] rva=0x0746a6e0 bss=0xcc8fa80 | 0x746a6dc: b #0xc388740; 0x746a6e0: stp x28, x27, [sp, #0x10]; 0x746a6e4: stp x26, x25, [sp, #0x20] -> __TEXT_EXEC stub@0xc388740 [ldr x17, #0xc398490; cbz x17, #0xc388758; ldr x16, #0xc398498; eor x17, x17, x16; ror x17, x17, #2; br x17; stp d11, d10, [sp, #-0x40]!]
+  [84] rva=0x074964a4 bss=0xcc8fa88 | 0x74964a0: b #0xc388880; 0x74964a4: stp x29, x30, [sp, #0x10]; 0x74964a8: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388880 [ldr x17, #0xc3981d0; cbz x17, #0xc388898; ldr x16, #0xc3981d8; eor x17, x17, x16; ror x17, x17, #0x27; br x17; stp d11, d10, [sp, #-0x40]!]
+  [85] rva=0x0751909c bss=0xcc8fa90 | 0x7519098: b #0xc3889c0; 0x751909c: stp x29, x30, [sp, #0x10]; 0x75190a0: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc3889c0 [ldr x17, #0xc3981c0; cbz x17, #0xc3889d8; ldr x16, #0xc3981c8; eor x17, x17, x16; ror x17, x17, #0xf; br x17; stp d11, d10, [sp, #-0x40]!]
+  [86] rva=0x0751954c bss=0xcc8fa98 | 0x7519548: b #0xc388780; 0x751954c: stp x29, x30, [sp, #0x10]; 0x7519550: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388780 [ldr x17, #0xc3982e0; cbz x17, #0xc388798; ldr x16, #0xc3982e8; eor x17, x17, x16; ror x17, x17, #0x34; br x17; stp d11, d10, [sp, #-0x40]!]
+  [87] rva=0x07519984 bss=0xcc8faa0 | 0x7519980: b #0xc388180; 0x7519984: stp x29, x30, [sp, #0x10]; 0x7519988: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388180 [ldr x17, #0xc398240; cbz x17, #0xc388198; ldr x16, #0xc398248; eor x17, x17, x16; ror x17, x17, #0x1c; br x17; stp d11, d10, [sp, #-0x40]!]
+  [88] rva=0x0751c560 bss=0xcc8faa8 | 0x751c55c: b #0xc389940; 0x751c560: stp x24, x23, [sp, #0x30]; 0x751c564: stp x22, x21, [sp, #0x40] -> __TEXT_EXEC stub@0xc389940 [ldr x17, #0xc398450; cbz x17, #0xc389958; ldr x16, #0xc398458; eor x17, x17, x16; ror x17, x17, #4; br x17; stp d11, d10, [sp, #-0x40]!]
+  [89] rva=0x07661598 bss=0xcc8fab0 | 0x7661594: b #0xc389700; 0x7661598: stp x29, x30, [sp, #0x10]; 0x766159c: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc389700 [ldr x17, #0xc3986d0; cbz x17, #0xc389718; ldr x16, #0xc3986d8; eor x17, x17, x16; ror x17, x17, #0x29; br x17; stp d11, d10, [sp, #-0x40]!]
+  [90] rva=0x076663f4 bss=0xcc8fab8 | 0x76663f0: b #0xc388200; 0x76663f4: stp x29, x30, [sp, #0x10]; 0x76663f8: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388200 [ldr x17, #0xc398460; cbz x17, #0xc388218; ldr x16, #0xc398468; eor x17, x17, x16; ror x17, x17, #0x11; br x17; stp d11, d10, [sp, #-0x40]!]
+  [91] rva=0x07688308 bss=0xcc8fac0 | 0x7688304: b #0xc388f00; 0x7688308: stp x20, x19, [sp, #0x10]; 0x768830c: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388f00 [ldr x17, #0xc3983f0; cbz x17, #0xc388f18; ldr x16, #0xc3983f8; eor x17, x17, x16; ror x17, x17, #0x36; br x17; stp d11, d10, [sp, #-0x40]!]
+  [92] rva=0x076bdae0 bss=0xcc8fac8 | 0x76bdadc: b #0xc388600; 0x76bdae0: stp x22, x21, [sp, #0x20]; 0x76bdae4: stp x20, x19, [sp, #0x30] -> __TEXT_EXEC stub@0xc388600 [ldr x17, #0xc398500; cbz x17, #0xc388618; ldr x16, #0xc398508; eor x17, x17, x16; ror x17, x17, #0x1e; br x17; stp d11, d10, [sp, #-0x40]!]
+  [93] rva=0x076ea334 bss=0xcc8fad0 | 0x76ea330: b #0xc388700; 0x76ea334: stp x20, x19, [sp, #0x10]; 0x76ea338: stp x29, x30, [sp, #0x20] -> __TEXT_EXEC stub@0xc388700 [ldr x17, #0xc398750; cbz x17, #0xc388718; ldr x16, #0xc398758; eor x17, x17, x16; ror x17, x17, #6; br x17; stp d11, d10, [sp, #-0x40]!]
+  [94] rva=0x077256a0 bss=0xcc8fad8 | 0x772569c: b #0xc388440; 0x77256a0: stp x29, x30, [sp, #0x10]; 0x77256a4: add x29, sp, #0x10 -> __TEXT_EXEC stub@0xc388440 [ldr x17, #0xc398510; cbz x17, #0xc388458; ldr x16, #0xc398518; eor x17, x17, x16; ror x17, x17, #0x2b; br x17; stp d11, d10, [sp, #-0x40]!]
+  [95] rva=0x07737840 bss=0xcc8fae0 | 0x773783c: b #0xc388cc0; 0x7737840: stp x22, x21, [sp, #0x10]; 0x7737844: stp x20, x19, [sp, #0x20] -> __TEXT_EXEC stub@0xc388cc0 [ldr x17, #0xc3982d0; cbz x17, #0xc388cd8; ldr x16, #0xc3982d8; eor x17, x17, x16; ror x17, x17, #0x13; br x17; stp d11, d10, [sp, #-0x40]!]
+
+=== Penny Orig-Call Thunks (0xdb5d0 .. 0xdc230) ===
+  thunk[ 0] @ 0x0db5d0 .. 0x0db62c: slot=() displaced=()
+  thunk[ 1] @ 0x0db62c .. 0x0db640: slot=() displaced=()
+  thunk[ 2] @ 0x0db640 .. 0x0db69c: slot=() displaced=()
+  thunk[ 3] @ 0x0db69c .. 0x0db6f8: slot=() displaced=()
+  thunk[ 4] @ 0x0db6f8 .. 0x0db754: slot=() displaced=()
+  thunk[ 5] @ 0x0db754 .. 0x0db7b0: slot=() displaced=()
+  thunk[ 6] @ 0x0db7b0 .. 0x0db80c: slot=(x17, [x17, #0x20]) displaced=()
+  thunk[ 7] @ 0x0db80c .. 0x0db830: slot=() displaced=(sub sp, sp, #0x80)
+  thunk[ 8] @ 0x0db830 .. 0x0db88c: slot=(x17, [x17, #0x38]) displaced=(stp x20, x19, [sp, #-0x20]!)
+  thunk[ 9] @ 0x0db88c .. 0x0db8e8: slot=(x17, [x17, #0x40]) displaced=(stp x20, x19, [sp, #-0x20]!)
+  thunk[10] @ 0x0db8e8 .. 0x0db944: slot=(x17, [x17, #0x48]) displaced=(sub sp, sp, #0x60)
+  thunk[11] @ 0x0db944 .. 0x0db9a0: slot=(x17, [x17, #0x50]) displaced=(stp x22, x21, [sp, #-0x30]!)
+  thunk[12] @ 0x0db9a0 .. 0x0db9fc: slot=(x17, [x17, #0x58]) displaced=(stp x26, x25, [sp, #-0x50]!)
+  thunk[13] @ 0x0db9fc .. 0x0dba58: slot=(x17, [x17, #0x60]) displaced=(stp x22, x21, [sp, #-0x30]!)
+  thunk[14] @ 0x0dba58 .. 0x0dbab4: slot=(x17, [x17, #0x68]) displaced=(sub sp, sp, #0xa0)
+  thunk[15] @ 0x0dbab4 .. 0x0dbb10: slot=(x17, [x17, #0x70]) displaced=(stp x24, x23, [sp, #-0x40]!)
+  thunk[16] @ 0x0dbb10 .. 0x0dbb6c: slot=(x17, [x17]) displaced=(stp x22, x21, [sp, #0x20])
+  thunk[17] @ 0x0dbb6c .. 0x0dbb74: slot=() displaced=()
+  thunk[18] @ 0x0dbb74 .. 0x0dbbd0: slot=(x17, [x17, #8]) displaced=(stp x24, x23, [sp, #0x40])
+  thunk[19] @ 0x0dbbd0 .. 0x0dbbd8: slot=() displaced=()
+  thunk[20] @ 0x0dbbd8 .. 0x0dbc34: slot=(x17, [x17, #0x10]) displaced=(stp x22, x21, [sp, #-0x30]!)
+  thunk[21] @ 0x0dbc34 .. 0x0dbc90: slot=(x17, [x17, #0x18]) displaced=(sub sp, sp, #0x40)
+  thunk[22] @ 0x0dbc90 .. 0x0dbcec: slot=(x17, [x17, #0x28]) displaced=(stp x24, x23, [sp, #0x40])
+  thunk[23] @ 0x0dbcec .. 0x0dbcf4: slot=() displaced=()
+  thunk[24] @ 0x0dbcf4 .. 0x0dbd50: slot=(x17, [x17, #0x30]) displaced=(stp x26, x25, [sp, #0x20])
+  thunk[25] @ 0x0dbd50 .. 0x0dbd58: slot=() displaced=()
+  thunk[26] @ 0x0dbd58 .. 0x0dbdb4: slot=(x17, [x17, #0x38]) displaced=(stp x20, x19, [sp, #-0x20]!)
+  thunk[27] @ 0x0dbdb4 .. 0x0dbe10: slot=(x17, [x17, #0x48]) displaced=(sub sp, sp, #0x30)
+  thunk[28] @ 0x0dbe10 .. 0x0dbe6c: slot=(x17, [x17, #0x50]) displaced=(stp x20, x19, [sp, #-0x20]!)
+  thunk[29] @ 0x0dbe6c .. 0x0dbec8: slot=(x17, [x17, #0x58]) displaced=(stp x24, x23, [sp, #-0x40]!)
+  thunk[30] @ 0x0dbec8 .. 0x0dbf24: slot=(x17, [x17, #0x60]) displaced=(stp x20, x19, [sp, #-0x20]!)
+  thunk[31] @ 0x0dbf24 .. 0x0dbf80: slot=(x17, [x17, #0x68]) displaced=(sub sp, sp, #0x100)
+  thunk[32] @ 0x0dbf80 .. 0x0dbfdc: slot=(x17, [x17, #0x70]) displaced=(stp x22, x21, [sp, #-0x30]!)
+  thunk[33] @ 0x0dbfdc .. 0x0dc038: slot=(x17, [x17, #0x78]) displaced=(stp d9, d8, [sp, #0x20])
+  thunk[34] @ 0x0dc038 .. 0x0dc040: slot=() displaced=()
+  thunk[35] @ 0x0dc040 .. 0x0dc09c: slot=(x17, [x17, #0x80]) displaced=(stp x20, x19, [sp, #0x20])
+  thunk[36] @ 0x0dc09c .. 0x0dc0a4: slot=() displaced=()
+  thunk[37] @ 0x0dc0a4 .. 0x0dc100: slot=(x17, [x17, #0x88]) displaced=(stp d9, d8, [sp, #0x20])
+  thunk[38] @ 0x0dc100 .. 0x0dc108: slot=() displaced=()
+  thunk[39] @ 0x0dc108 .. 0x0dc164: slot=(x17, [x17, #0x90]) displaced=(stp d11, d10, [sp, #0x20])
+  thunk[40] @ 0x0dc164 .. 0x0dc16c: slot=() displaced=()
+  thunk[41] @ 0x0dc16c .. 0x0dc1c8: slot=(x17, [x17]) displaced=(stp x26, x25, [sp, #-0x50]!)
+  thunk[42] @ 0x0dc1c8 .. 0x0dc224: slot=(x17, [x17, #8]) displaced=(stp x20, x19, [sp, #-0x20]!)
+  thunk[43] @ 0x0dc224 .. 0x0dc280: slot=(x17, [x17, #0x10]) displaced=(stp x24, x23, [sp, #-0x40]!)
+
+=== Summary of UnityFramework __TEXT.__text Static Branches ===
+  Branches to __TEXT_EXEC (0xc388000..0xc398000): 100
+  Branches to __AUTH_EXEC (0xc39c000..0xc3a0000): 39
+  Unmatched __TEXT_EXEC branches (pc+4 not in Table1..3): 0
+  Unmatched __AUTH_EXEC branches (pc+4 not in Table1..3): 19
+    pc=0x05632f7c (rva=0x05632f80) -> 0x0c39c100
+    pc=0x05632fe0 (rva=0x05632fe4) -> 0x0c39c180
+    pc=0x06bfe764 (rva=0x06bfe768) -> 0x0c39c5c0
+    pc=0x06bfe7e0 (rva=0x06bfe7e4) -> 0x0c39c780
+    pc=0x06bfe8c0 (rva=0x06bfe8c4) -> 0x0c39ca40
+    pc=0x06bfec5c (rva=0x06bfec60) -> 0x0c39c1c0
+    pc=0x06bfede8 (rva=0x06bfedec) -> 0x0c39cc00
+    pc=0x06bff0d0 (rva=0x06bff0d4) -> 0x0c39c300
+    pc=0x06bff1e8 (rva=0x06bff1ec) -> 0x0c39c400
+    pc=0x06bff2f8 (rva=0x06bff2fc) -> 0x0c39c840
+    pc=0x06bff408 (rva=0x06bff40c) -> 0x0c39c540
+    pc=0x06bff488 (rva=0x06bff48c) -> 0x0c39cac0
+    pc=0x06bff6e0 (rva=0x06bff6e4) -> 0x0c39c880
+    pc=0x06bffac8 (rva=0x06bffacc) -> 0x0c39c280
+    pc=0x06bffb4c (rva=0x06bffb50) -> 0x0c39cb80
+    pc=0x06bffc18 (rva=0x06bffc1c) -> 0x0c39c980
+    pc=0x06c0002c (rva=0x06c00030) -> 0x0c39c140
+    pc=0x06c006d0 (rva=0x06c006d4) -> 0x0c39c7c0
+    pc=0x06c00b70 (rva=0x06c00b74) -> 0x0c39c240
+
+=== Penny __TEXT.__text Profile (0x4b40 .. 0x39f19c) ===
+  0x004b40..0x024b40: nonzero=0x1cffd RET= 111 BRK#1= 285 SVC=  0
+  0x024b40..0x044b40: nonzero=0x1d435 RET=  69 BRK#1=  96 SVC=  0
+  0x044b40..0x064b40: nonzero=0x1d5c5 RET= 143 BRK#1= 121 SVC=  0
+  0x064b40..0x084b40: nonzero=0x1d170 RET=  89 BRK#1= 276 SVC=  0
+  0x084b40..0x0a4b40: nonzero=0x1cec5 RET= 106 BRK#1= 283 SVC=  0
+  0x0a4b40..0x0c4b40: nonzero=0x1d145 RET= 145 BRK#1= 144 SVC= 16
+  0x0c4b40..0x0e4b40: nonzero=0x1e1e3 RET= 276 BRK#1= 182 SVC=  0
+  0x0e4b40..0x104b40: nonzero=0x1d137 RET=  41 BRK#1=  17 SVC=329
+  0x104b40..0x124b40: nonzero=0x1ce83 RET=   3 BRK#1=   2 SVC=471
+  0x124b40..0x144b40: nonzero=0x1cf7d RET=  14 BRK#1=   0 SVC=385
+  0x144b40..0x164b40: nonzero=0x1d333 RET=  22 BRK#1=   2 SVC=434
+  0x164b40..0x184b40: nonzero=0x1dc16 RET=  86 BRK#1=   0 SVC=189
+  0x184b40..0x1a4b40: nonzero=0x1df2a RET=  56 BRK#1=   1 SVC=141
+  0x1a4b40..0x1c4b40: nonzero=0x1d73d RET=  14 BRK#1=  10 SVC=149
+  0x1c4b40..0x1e4b40: nonzero=0x1c249 RET=  29 BRK#1=   4 SVC=188
+  0x1e4b40..0x204b40: nonzero=0x1c060 RET=  41 BRK#1=   7 SVC=209
+  0x204b40..0x224b40: nonzero=0x1cce4 RET=1760 BRK#1=   0 SVC= 98
+  0x224b40..0x244b40: nonzero=0x1ce53 RET= 489 BRK#1=   0 SVC=  0
+  0x244b40..0x264b40: nonzero=0x1c563 RET= 983 BRK#1=   0 SVC=  0
+  0x264b40..0x284b40: nonzero=0x1ca19 RET= 897 BRK#1=   1 SVC=  0
+  0x284b40..0x2a4b40: nonzero=0x1cd7f RET= 599 BRK#1=   0 SVC=  0
+  0x2a4b40..0x2c4b40: nonzero=0x1e575 RET= 264 BRK#1=   0 SVC=  0
+  0x2c4b40..0x2e4b40: nonzero=0x1d973 RET= 218 BRK#1=   0 SVC=  0
+  0x2e4b40..0x304b40: nonzero=0x1eaad RET=  50 BRK#1=   0 SVC=  0
+  0x304b40..0x324b40: nonzero=0x1d2a6 RET= 812 BRK#1=   0 SVC=  0
+  0x324b40..0x344b40: nonzero=0x1d629 RET= 729 BRK#1=   0 SVC=  0
+  0x344b40..0x364b40: nonzero=0x1dfc2 RET= 523 BRK#1=   0 SVC=  0
+  0x364b40..0x384b40: nonzero=0x1c9a7 RET= 974 BRK#1=   0 SVC=  0
+  0x384b40..0x39f19c: nonzero=0x192d7 RET= 267 BRK#1=   8 SVC=  0
+
+=== High __TEXT.__text Sample Disassembly (0x35da20, 0x382300, 0x39ec8c) ===
+--- sub_35da20_ppguard_ref @ 0x35da20 ---
+  0x35da20: ldp      x20, x19, [sp], #0x20
+  0x35da24: ret      
+  0x35da28: adrp     x0, #0xcc85000
+  0x35da2c: add      x0, x0, #0x80
+  0x35da30: bl       #0x36cf78
+  0x35da34: adrp     x8, #0xcc94000
+  0x35da38: ldr      x0, [x8, #0x1c8]
+  0x35da3c: cbz      x0, #0x35da80
+  0x35da40: adr      x2, #0x35e508
+  0x35da44: nop      
+  0x35da48: adr      x3, #0x35e514
+  0x35da4c: nop      
+  0x35da50: mov      x1, x19
+  0x35da54: bl       #0x35aa90
+  0x35da58: cbz      x0, #0x35da80
+  0x35da5c: mov      x20, x0
+  0x35da60: adrp     x0, #0xcc85000
+  0x35da64: add      x0, x0, #0x80
+  0x35da68: bl       #0x36cfb0
+  0x35da6c: add      x8, x20, #0x10
+  0x35da70: ldr      w0, [x8]
+  0x35da74: ldp      x29, x30, [sp, #0x10]
+  0x35da78: ldp      x20, x19, [sp], #0x20
+  0x35da7c: ret      
+  0x35da80: adrp     x0, #0xcc85000
+  0x35da84: add      x0, x0, #0x80
+  0x35da88: bl       #0x36cfb0
+  0x35da8c: adrp     x1, #0x66ea000
+  0x35da90: add      x1, x1, #0xd0c
+  0x35da94: adr      x4, #0x35dae4
+  0x35da98: nop      
+  0x35da9c: mov      x0, x19
+  0x35daa0: mov      w2, #0x376
+  0x35daa4: mov      w3, #2
+  0x35daa8: bl       #0x639f920
+  0x35daac: cbz      x0, #0x35da1c
+--- sub_382300_ppguard_ref @ 0x382300 ---
+  0x382300: mov      x2, x1
+  0x382304: mov      x1, x0
+  0x382308: adrp     x0, #0xcc85000
+  0x38230c: add      x0, x0, #0x278
+  0x382310: b        #0x348160
+  0x382314: add      x0, x0, #0x70
+  0x382318: b        #0x348240
+  0x38231c: add      x0, x0, #0x70
+  0x382320: b        #0x3482cc
+  0x382324: ldr      w0, [x0, #0x4c]
+  0x382328: ret      
+  0x38232c: str      w1, [x0, #0x4c]
+  0x382330: ret      
+  0x382334: ldr      w0, [x0, #0x48]
+  0x382338: ret      
+  0x38233c: ldr      x0, [x0, #0x50]
+  0x382340: ret      
+  0x382344: ldr      x0, [x0, #0x40]
+  0x382348: ret      
+  0x38234c: ldr      x0, [x0, #0x40]
+  0x382350: ret      
+  0x382354: ldr      x0, [x0, #0x40]
+  0x382358: cbz      x0, #0x382360
+  0x38235c: b        #0x37dfc0
+  0x382360: ret      
+  0x382364: ldr      x0, [x0, #0x58]
+  0x382368: ret      
+  0x38236c: mov      x0, #0
+  0x382370: ret      
+  0x382374: str      x1, [x0, #0x10]
+  0x382378: ret      
+  0x38237c: ldr      x0, [x0, #0x10]
+  0x382380: ret      
+  0x382384: str      x1, [x0, #0x18]
+  0x382388: ret      
+  0x38238c: cbz      w1, #0x3823fc
+--- sub_39ec8c_to_end @ 0x39ec8c ---
+  0x39ec8c: adrp     x8, #0xcc8f000
+  0x39ec90: ldr      w9, [x8, #0x6b0]
+  0x39ec94: orr      w9, w9, w0
+  0x39ec98: str      w9, [x8, #0x6b0]
+  0x39ec9c: adrp     x9, #0xcc74000
+  0x39eca0: ldr      w10, [x9, #0x890]
+  0x39eca4: mov      w11, #0xca6b
+  0x39eca8: movk     w11, #0x85eb, lsl #16
+  0x39ecac: mul      w11, w0, w11
+  0x39ecb0: eor      w10, w10, w11
+  0x39ecb4: and      w10, w10, #0xfffffffe
+  0x39ecb8: mov      w11, #0x10cd
+  0x39ecbc: movk     w11, #0xdead, lsl #16
+  0x39ecc0: eor      w10, w10, w11
+  0x39ecc4: str      w10, [x9, #0x890]
+  0x39ecc8: nop      
+  0x39eccc: ldr      w10, [x9, #0x880]
+  0x39ecd0: eor      w10, w10, w0
+  0x39ecd4: and      w10, w10, #0x7ffffffc
+  0x39ecd8: mov      w11, #-0x21530000
+  0x39ecdc: orr      w12, w11, #3
+  0x39ece0: eor      w10, w10, w12
+  0x39ece4: str      w10, [x9, #0x880]
+  0x39ece8: adrp     x10, #0xcc8f000
+  0x39ecec: add      x10, x10, #0x7d8
+  0x39ecf0: stp      xzr, xzr, [x10]
+  0x39ecf4: adrp     x10, #0xcc74000
+  0x39ecf8: mov      x12, #0x2790
+  0x39ecfc: movk     x12, #0x5863, lsl #16
+  0x39ed00: movk     x12, #0x10cc, lsl #32
+  0x39ed04: movk     x12, #0xdead, lsl #48
+  0x39ed08: str      x12, [x10, #0x870]
+  0x39ed0c: adrp     x10, #0xcc8f000
+  0x39ed10: str      xzr, [x10, #0x6b8]
+  0x39ed14: adrp     x10, #0xcc74000
+  0x39ed18: str      x12, [x10, #0x878]
+  0x39ed1c: adrp     x10, #0xcc8f000
+  0x39ed20: strb     wzr, [x10, #0x6c0]
+  0x39ed24: ldr      w12, [x8, #0x6b0]
+  0x39ed28: orr      w12, w12, w0
+  0x39ed2c: orr      w11, w12, w11
+  0x39ed30: str      w11, [x8, #0x6b0]
+  0x39ed34: ldr      w8, [x9, #0x880]
+  0x39ed38: orr      w8, w8, #0x80000003
+  0x39ed3c: str      w8, [x9, #0x880]
+  0x39ed40: strb     wzr, [x10, #0x6c0]
+  0x39ed44: mov      x0, #0
+  0x39ed48: mov      x1, #0
+  0x39ed4c: mov      x29, #0
+  0x39ed50: mov      x30, #0
+  0x39ed54: mov      sp, x0
+  0x39ed58: brk      #1
+  0x39ed5c: udf      #0
+  0x39ed60: brk      #1
+  0x39ed64: mov      x2, x30
+  0x39ed68: bl       #0xe28d8
+  0x39ed6c: mov      x30, x2
+  0x39ed70: adrp     x8, #0xcc74000
+  0x39ed74: ldr      w9, [x8, #0x880]
+  0x39ed78: orr      w9, w9, #0x80000003
+  0x39ed7c: str      w9, [x8, #0x880]
+  0x39ed80: adrp     x8, #0xcc8f000
+  0x39ed84: mov      x2, x30
+  0x39ed88: bl       #0xe28b0
+  0x39ed8c: mov      x30, x2
+  0x39ed90: mov      x2, x30
+  0x39ed94: bl       #0xe28d8
+  0x39ed98: mov      x30, x2
+  0x39ed9c: adrp     x8, #0xcc74000
+  0x39eda0: ldr      w9, [x8, #0x880]
+  0x39eda4: orr      w9, w9, #0x80000003
+  0x39eda8: str      w9, [x8, #0x880]
+  0x39edac: adrp     x8, #0xcc8f000
+  0x39edb0: mov      x2, x30
+  0x39edb4: bl       #0xe28b0
+  0x39edb8: mov      x30, x2
+  0x39edbc: mov      x2, x30
+  0x39edc0: bl       #0xe28d8
+  0x39edc4: mov      x30, x2
+  0x39edc8: adrp     x8, #0xcc74000
+  0x39edcc: ldr      w9, [x8, #0x880]
+  0x39edd0: orr      w9, w9, #0x80000003
+  0x39edd4: str      w9, [x8, #0x880]
+  0x39edd8: adrp     x8, #0xcc8f000
+  0x39eddc: mov      x2, x30
+  0x39ede0: bl       #0xe28b0
+  0x39ede4: mov      x30, x2
+  0x39ede8: mov      x2, x30
+  0x39edec: bl       #0xe28d8
+  0x39edf0: mov      x30, x2
+  0x39edf4: adrp     x8, #0xcc74000
+  0x39edf8: ldr      w9, [x8, #0x880]
+  0x39edfc: orr      w9, w9, #0x80000003
+  0x39ee00: str      w9, [x8, #0x880]
+  0x39ee04: adrp     x8, #0xcc8f000
+  0x39ee08: mov      x2, x30
+  0x39ee0c: bl       #0xe28b0
+  0x39ee10: mov      x30, x2
+  0x39ee14: mov      x2, x30
+  0x39ee18: bl       #0xe28d8
+  0x39ee1c: mov      x30, x2
+  0x39ee20: adrp     x8, #0xcc74000
+  0x39ee24: ldr      w9, [x8, #0x880]
+  0x39ee28: orr      w9, w9, #0x80000003
+  0x39ee2c: str      w9, [x8, #0x880]
+  0x39ee30: adrp     x8, #0xcc8f000
+  0x39ee34: mov      x2, x30
+  0x39ee38: bl       #0xe28b0
+  0x39ee3c: mov      x30, x2
+  0x39ee40: stp      x20, x19, [sp, #-0x20]!
+  0x39ee44: stp      x29, x30, [sp, #0x10]
+  0x39ee48: add      x29, sp, #0x10
+  0x39ee4c: mov      x19, x0
+  0x39ee50: bl       #0xb565c
+  0x39ee54: mov      w8, #-0x21530000
+  0x39ee58: orr      w0, w19, w8
+  0x39ee5c: bl       #0xb565c
+  0x39ee60: mov      x0, #0
+  0x39ee64: mov      x29, #0
+  0x39ee68: mov      x30, #0
+  0x39ee6c: mov      sp, x0
+  0x39ee70: brk      #1
+  0x39ee74: brk      #1
+  0x39ee78: mov      x2, x30
+  0x39ee7c: bl       #0xe28d8
+  0x39ee80: mov      x30, x2
+  0x39ee84: adrp     x8, #0xcc74000
+  0x39ee88: ldr      w9, [x8, #0x880]
+  0x39ee8c: orr      w9, w9, #0x80000003
+  0x39ee90: str      w9, [x8, #0x880]
+  0x39ee94: adrp     x8, #0xcc8f000
+  0x39ee98: mov      x2, x30
+  0x39ee9c: bl       #0xe28b0
+  0x39eea0: mov      x30, x2
+  0x39eea4: mov      x2, x30
+  0x39eea8: bl       #0xe28d8
+  0x39eeac: mov      x30, x2
+  0x39eeb0: adrp     x8, #0xcc74000
+  0x39eeb4: ldr      w9, [x8, #0x880]
+  0x39eeb8: orr      w9, w9, #0x80000003
+  0x39eebc: str      w9, [x8, #0x880]
+  0x39eec0: adrp     x8, #0xcc8f000
+  0x39eec4: mov      x2, x30
+  0x39eec8: bl       #0xe28b0
+  0x39eecc: mov      x30, x2
+  0x39eed0: mov      x2, x30
+  0x39eed4: bl       #0xe28d8
+  0x39eed8: mov      x30, x2
+  0x39eedc: adrp     x8, #0xcc74000
+  0x39eee0: ldr      w9, [x8, #0x880]
+  0x39eee4: orr      w9, w9, #0x80000003
+  0x39eee8: str      w9, [x8, #0x880]
+  0x39eeec: adrp     x8, #0xcc8f000
+  0x39eef0: mov      x2, x30
+  0x39eef4: bl       #0xe28b0
+  0x39eef8: mov      x30, x2
+  0x39eefc: mov      x2, x30
+  0x39ef00: bl       #0xe28d8
+  0x39ef04: mov      x30, x2
+  0x39ef08: adrp     x8, #0xcc74000
+  0x39ef0c: ldr      w9, [x8, #0x880]
+  0x39ef10: orr      w9, w9, #0x80000003
+  0x39ef14: str      w9, [x8, #0x880]
+  0x39ef18: adrp     x8, #0xcc8f000
+  0x39ef1c: mov      x2, x30
+  0x39ef20: bl       #0xe28b0
+  0x39ef24: mov      x30, x2
+  0x39ef28: mov      x2, x30
+  0x39ef2c: bl       #0xe28d8
+  0x39ef30: mov      x30, x2
+  0x39ef34: adrp     x8, #0xcc74000
+  0x39ef38: ldr      w9, [x8, #0x880]
+  0x39ef3c: orr      w9, w9, #0x80000003
+  0x39ef40: str      w9, [x8, #0x880]
+  0x39ef44: adrp     x8, #0xcc8f000
+  0x39ef48: mov      x2, x30
+  0x39ef4c: bl       #0xe28b0
+  0x39ef50: mov      x30, x2
+  0x39ef54: mov      x2, x30
+  0x39ef58: bl       #0xe28d8
+  0x39ef5c: mov      x30, x2
+  0x39ef60: adrp     x8, #0xcc74000
+  0x39ef64: ldr      w9, [x8, #0x880]
+  0x39ef68: orr      w9, w9, #0x80000003
+  0x39ef6c: str      w9, [x8, #0x880]
+  0x39ef70: adrp     x8, #0xcc8f000
+  0x39ef74: mov      x2, x30
+  0x39ef78: bl       #0xe28b0
+  0x39ef7c: mov      x30, x2
+  0x39ef80: stp      x20, x19, [sp, #-0x20]!
+  0x39ef84: stp      x29, x30, [sp, #0x10]
+  0x39ef88: add      x29, sp, #0x10
+  0x39ef8c: eor      w8, w0, w1
+  0x39ef90: mov      w9, #1
+  0x39ef94: movk     w9, #0xdead, lsl #16
+  0x39ef98: orr      w19, w8, w9
+  0x39ef9c: mov      x0, x19
+  0x39efa0: bl       #0xb565c
+  0x39efa4: mov      x0, x19
+  0x39efa8: bl       #0xb565c
+  0x39efac: mov      x0, #0
+  0x39efb0: mov      x29, #0
+  0x39efb4: mov      x30, #0
+  0x39efb8: mov      sp, x0
+  0x39efbc: brk      #1
+  0x39efc0: brk      #1
+  0x39efc4: mov      x2, x30
+  0x39efc8: bl       #0xe28d8
+  0x39efcc: mov      x30, x2
+  0x39efd0: adrp     x8, #0xcc74000
+  0x39efd4: ldr      w9, [x8, #0x880]
+  0x39efd8: orr      w9, w9, #0x80000003
+  0x39efdc: str      w9, [x8, #0x880]
+  0x39efe0: adrp     x8, #0xcc8f000
+  0x39efe4: mov      x2, x30
+  0x39efe8: bl       #0xe28b0
+  0x39efec: mov      x30, x2
+  0x39eff0: mov      x2, x30
+  0x39eff4: bl       #0xe28d8
+  0x39eff8: mov      x30, x2
+  0x39effc: adrp     x8, #0xcc74000
+  0x39f000: ldr      w9, [x8, #0x880]
+  0x39f004: orr      w9, w9, #0x80000003
+  0x39f008: str      w9, [x8, #0x880]
+  0x39f00c: adrp     x8, #0xcc8f000
+  0x39f010: mov      x2, x30
+  0x39f014: bl       #0xe28b0
+  0x39f018: mov      x30, x2
+  0x39f01c: mov      x2, x30
+  0x39f020: bl       #0xe28d8
+  0x39f024: mov      x30, x2
+  0x39f028: adrp     x8, #0xcc74000
+  0x39f02c: ldr      w9, [x8, #0x880]
+  0x39f030: orr      w9, w9, #0x80000003
+  0x39f034: str      w9, [x8, #0x880]
+  0x39f038: adrp     x8, #0xcc8f000
+  0x39f03c: mov      x2, x30
+  0x39f040: bl       #0xe28b0
+  0x39f044: mov      x30, x2
+  0x39f048: mov      x2, x30
+  0x39f04c: bl       #0xe28d8
+  0x39f050: mov      x30, x2
+  0x39f054: adrp     x8, #0xcc74000
+  0x39f058: ldr      w9, [x8, #0x880]
+  0x39f05c: orr      w9, w9, #0x80000003
+  0x39f060: str      w9, [x8, #0x880]
+  0x39f064: adrp     x8, #0xcc8f000
+  0x39f068: mov      x2, x30
+  0x39f06c: bl       #0xe28b0
+  0x39f070: mov      x30, x2
+  0x39f074: mov      x2, x30
+  0x39f078: bl       #0xe28d8
+  0x39f07c: mov      x30, x2
+  0x39f080: adrp     x8, #0xcc74000
+  0x39f084: ldr      w9, [x8, #0x880]
+  0x39f088: orr      w9, w9, #0x80000003
+  0x39f08c: str      w9, [x8, #0x880]
+  0x39f090: adrp     x8, #0xcc8f000
+  0x39f094: mov      x2, x30
+  0x39f098: bl       #0xe28b0
+  0x39f09c: mov      x30, x2
+  0x39f0a0: adrp     x8, #0xb3000
+  0x39f0a4: add      x8, x8, #0x514
+  0x39f0a8: eor      w8, w0, w8
+  0x39f0ac: adrp     x9, #0xcc8f000
+  0x39f0b0: add      x9, x9, #0x6b0
+  0x39f0b4: ldr      w10, [x9]
+  0x39f0b8: orr      w8, w8, w10
+  0x39f0bc: mov      w10, #-0x21530000
+  0x39f0c0: orr      w8, w8, w10
+  0x39f0c4: str      w8, [x9]
+  0x39f0c8: adrp     x8, #0xcc74000
+  0x39f0cc: add      x8, x8, #0x880
+  0x39f0d0: ldr      w9, [x8]
+  0x39f0d4: orr      w9, w9, #0x80000003
+  0x39f0d8: str      w9, [x8]
+  0x39f0dc: adrp     x8, #0xcc8f000
+  0x39f0e0: nop      
+  0x39f0e4: strb     wzr, [x8, #0x6c0]
+  0x39f0e8: mov      x2, x30
+  0x39f0ec: bl       #0xe8510
+  0x39f0f0: mov      x30, x2
+  0x39f0f4: adrp     x8, #0xb5000
+  0x39f0f8: add      x8, x8, #0x534
+  0x39f0fc: eor      w8, w0, w8
+  0x39f100: adrp     x9, #0xcc8f000
+  0x39f104: add      x9, x9, #0x6b0
+  0x39f108: ldr      w10, [x9]
+  0x39f10c: orr      w8, w8, w10
+  0x39f110: mov      w10, #-0x21530000
+  0x39f114: orr      w8, w8, w10
+  0x39f118: str      w8, [x9]
+  0x39f11c: adrp     x8, #0xcc74000
+  0x39f120: add      x8, x8, #0x880
+  0x39f124: ldr      w9, [x8]
+  0x39f128: orr      w9, w9, #0x80000003
+  0x39f12c: str      w9, [x8]
+  0x39f130: adrp     x8, #0xcc8f000
+  0x39f134: nop      
+  0x39f138: strb     wzr, [x8, #0x6c0]
+  0x39f13c: mov      x2, x30
+  0x39f140: bl       #0xe8510
+  0x39f144: mov      x30, x2
+  0x39f148: adrp     x8, #0xb5000
+  0x39f14c: add      x8, x8, #0x534
+  0x39f150: eor      w8, w0, w8
+  0x39f154: adrp     x9, #0xcc8f000
+  0x39f158: add      x9, x9, #0x6b0
+  0x39f15c: ldr      w10, [x9]
+  0x39f160: orr      w8, w8, w10
+  0x39f164: mov      w10, #-0x21530000
+  0x39f168: orr      w8, w8, w10
+  0x39f16c: str      w8, [x9]
+  0x39f170: adrp     x8, #0xcc74000
+  0x39f174: add      x8, x8, #0x880
+  0x39f178: ldr      w9, [x8]
+  0x39f17c: orr      w9, w9, #0x80000003
+  0x39f180: str      w9, [x8]
+  0x39f184: adrp     x8, #0xcc8f000
+  0x39f188: nop      
+  0x39f18c: strb     wzr, [x8, #0x6c0]
+  0x39f190: mov      x2, x30
+  0x39f194: bl       #0xe8510
+  0x39f198: mov      x30, x2
+
+=== Strings in 0x66e0000..0x6700000 referenced by 0x220000..0x39ec8c ===
+  0x66ea000:  ... ... ... ..."..."..."..."... (.. (.. (.. (.."(.."(.."(.."(..
+  0x66ea040: ................................  ##%%&&))**,,//1122447788;;==>>
+  0x66ea080: @@CCEEFFIIJJLLOOQQRRTTWWXX[[]]^^aabbddgghhkkmmnnppssuuvvyyzz||..
+  0x66ea240: ...@...........@...@.......@...........@.......@.......@...@....
+  0x66ea280: .......@...@...........@...........@.......@...@...@...........@
+  0x66ea2c0: .......@...@.......@.......@.......@...........@.......@.......@
+  0x66ea300: ...@...........@.......@.......@...@...........@...@.......@....
+  0x66ea440: ..@...........@.......@.......@...@...................@...@.....
+  0x66ea480: ..@...@...........@.......@...............@...@.......@...@...@.
+  0x66ea4c0: ..@.......@.......@...........@...............@.......@...@.....
+  0x66ea500: ......@...@...@...@...........@...@...@...@...................@.
+  0x66ea540: ............ ... ....... ........... ... ....... ... ...........
+  0x66ea580: ........ ... ....... ....... ... ... ... ... ........... .......
+  0x66ea5c0: .... ... ........... ... ............... ....... ........... ...
+  0x66ea600:  ........... ... ....... ........... ....... ... ... ....... ...
+  0x66ea640: @...@. ......  .@. .. ..@ .... .@ ..@  ..  ...... ..@..... .@  .
+  0x66ea680: .. .@ ..@. ...... ..@....  .@. .@  ... .....@ ..@....  .@  .. ..
+  0x66ea6c0: @ ....... ..@  ..  .@. ...... ....... ..@. ... .@. .@  ..  .@...
+  0x66ea700: @  ..  ... .@ ..@..... .@  ...... ..@...@ ...  ... .@ ..@...@. .
+  0x66ea740: .@...............B...@...B...................@.......B...@......
+  0x66ea780: .....@...@...B...............B...@...B...B.......B...@..........
+  0x66ea7c0: .B...@...@.......@...........@.......B...B......................
+  0x66ea800: .............B.......@...B.......B.......@...B.......B...@...@..
+  0x66ea840: ... ... ........... ....... ... ....... ............... ... ... 
+  0x66ea880: ............... ... ... ........... ....... ... ........... ....
+  0x66ea8c0: ........... ... ....... ........... ... ... ....... ........... 
+  0x66ea900: ... ....... ... ........... ... ....... ........... ... ........
+  0x66ea940: *.H.............*.H.............+...........@...`.H.e...........
+  0x66ea980: `.H.e...........`.H.e...........`.H.e...........*.H.=...........
+  0x66ea9c0: .......................................................HPKE-v1.K
+  0x66eaa00: EM..........R.v.i.P.&...........9...(...;.....8...5.......B.Y.?.
+  0x66eaa40: ..5.!.K...................x.1.!.(.{.....'.....4...b.W.9.......&.
+  0x66eaa80: ........G.Y.e.....L...f.......l.......s.....7.............T...!.
+  0x66eaac0: ....0.......w...*.m.'.?.....3.1..."...D.....w.f...v.....R...>.w.
+  0x66eab00: u.j.......8.G...Y...e...........L.......f.....0.........l.....:.
+  0x66eab40: ......Z.s...........7.....I...L.......V.......|.T.....$.!.......
+  0x66eab80: ....0.............m.w.......*...m...'...?.....,.....3...1....._.
+  0x66eabc0: ".......D.....n.....w...f.....*.v.....G...E.R.......>...w...u...
+  0x66eac00: j.....@.(.........../...E.....@.......K...........o...A.....=...
+  0x66eac40: r...s.6...W.y.8...........c.=...f.............0.H.w.......T.%.L.
+  0x66eac80: ................E.G...*.......n......._.......,.............m...
+  0x66eacc0: ..........$...|...V...L.I.........Z...:.......0.................
+  0x66ead00: 8........?......{.......|...z.Q.........}...............d.i.....
+  0x66ead40: ........j.k.[.\.]...^._.`.a.b.c.d.e.f.g.h.i.j.k.l.m.n.o.p.q.r.s.
+  0x66ead80: t...c.e.......u.v.w.x.y.z.{.|.......R.S.T.U.V.W.X...............
+  0x66eadc0: g.Y...Z...~.Y.....................~.............x.....`._.......
+  0x66eae00: ................................................ .!.".#.$.%.&.'.
+  0x66eae40: (.).*.+.,.-.../.0.1.2.3.4.5.6.7.8.9.:.;.<.=.>.?.@.A.B.C.D.E.F.G.
+  0x66eae80: H.I.J.K.L.M.N.O.P.Q.R.S.T.U.V.W.X.Y.Z.[.\.].^.l.m.n.o._.`.a.b.c.
+  0x66eaec0: d.e.f.g.h.i.j.k.|.....}.~...%.&.........h.....-...y.C.B.*. .).@.
+  0x66eaf00: F.s.u...........................................................
+  0x66eaf40: ......p.q.r.s.t.u.v.........................$...'.(.).*.+.,.-./.
+  0x66eaf80: 0.1.2...........w.................w.x.y.z.{...4.3.M.N.O.P.5.6.7.
+  0x66eafc0: 8.9.:.;.<.=.>.?.@.A.B.C.D.E.F.G.H.I.J.K.L.........t.q...........
+  0x66eb000: ......................................9.........................
+  0x66eb040: ....T.U.R.S.Q.V........./............... .!.%...,.x.............
+  0x66eb0c0: .............................. .!.".#.$...........%.........&.'.
+  0x66eb100: (.....).*.+.,.-.../.0.1.2.3.4.5.6.7.8...9.:.C.D.E.F.G.H.I.J.K.L.
+  0x66eb140: M.N.O.P.Q.R.S.T.U.V.W.X.Y.Z.[.Z.\.]._.`.a.b.c.d.e.f...g.h.i.j...
+  0x66eb180: ........k.l.......:.;.........l.p.............A.................
+  0x66eb1c0: ..............D.E.................0.1.2.3.4.5.6.7.8.............
+  0x66eb200: ......X...[.;.<.=.>.?.@.A.B.m.n.o.p.q.r.s.t.u.v.w...............
+  0x66eb280: ............".#...........G.H.I.J.K.L.M.N.O.....................
+  0x66eb3c0: ....................}.}...............................".l.......
+  0x66eb400: ......................................................[.].\.^...
+  0x66eb440: ....................................l.n.m.o.~.........o.........
+  0x66eb480: ...... .+.<.>.!.,.=.....?.-.P.|.t.B.q.F.C.).....c...W.....}.".#.
+  0x66eb4c0: $.......................X.......r._.....9.n.......{.............
+  0x66eb500: ............D.......E.......b...%.'.&.(...a...x.z.y.{.u.........
+  0x66eb540: `.h.w.*.A.s.....................).@...............d.............
+  0x66eb580: ....z.......}...!..... .p...k.x.......r.........Z.r.W.m.........
+  0x66eb5c0: ........................\.......................................
+  0x66eb600: ..q...............Y.s.6.........2.5...g.X.t.&.%.............{.k.
+  0x66eb640: g.............................~.w.|.......................".#...
+  0x66eb680: ............0...u.......8.~.t.c...Y........./.+.S.-...,.R.......
+  0x66eb6c0: .. .!...............y.....8.9.:.;.3.=.<.>.4.7.Q.H.I.J.K.L.V.G.1.
+  0x66eb700: @.A.B.C.D.E.F.?.M.N.O.P.2.6.5.'.U.(.T.*.....c.b.d...e.f.........
+  0x66eb740: ....................}.C.F.E.....D.........i.j.h.Q.....N.Z.J.P.O.
+  0x66eb780: S.R.H.I.Q.X.Y.W.M.U.V.T.L.G.K.............*.7./.,.6.4.3.8.-.5.+.
+  0x66eb7c0: 1.2...0...................................Z.[...`.a.\._.].......
+  0x66eb800: ..................g.......9.<.?.>.=.@.;.:.B.A...................
+  0x66eb8c0: e...e...&.'.(.V.......S...............).k...3...................
+  0x66eb900: ..............q...H.L.J.:.O.G.N.;.K.I...M.......l...v.p......._.
+  0x66eb940: ............................................/.....^.].....h.i.0.
+  0x66eb980: ..................T.v.............f...m.........y.......#.".$...
+  0x66eb9c0: [...............................................................
+  0x66eba00: ......n...i...s.q.....~.}.|................._.p.l.w.o.t.v.u.m.{.
+  0x66eba40: x.y.z.s.r.n.k.g.h.j.i.c.a.`.b.e.f.d...@.:.....;.<.......A.......
+  0x66eba80: B.C...=...X...P./.Q.W.V.D.E. .!.".F.G.H.#.$.%.I.....>.?...0.6.3.
+  0x66ebac0: S.T.4.5.U.J.K.&.'.(.L.M.N.).*.+.O.7...1.........,.-.........8.9.
+  0x66ebb00: ....R.2.^.Y.Z.\.[.].4.........U.....R.....z.j...`.b.a...%...j...
+  0x66ebb40: w...x.7.1.p...o.u...........................$.d.......k...p.....
+  0x66ebb80: ..m...........~.............t...-.Q./.S.R.+.1.,.2.).0.'.U.(.T.V.
+  0x66ebbc0: *.........z.&.'.(.......................................X.......
+  0x66ebc00: ..H.L.J.G.:.O.N.9.;.K.I.M.....r.o.q.n.s.....E.....Z.............
+  0x66ebc40: ......................w...............Z.W.g.X.....Y...~.Y...V...
+  0x66ebc80: S.........T.U...R.........!..... ...l.^.........................
+  0x66ebcc0: ........................................x...............r.[.].\.
+  0x66ebd00: ^...............................\...............................
+  0x66ebd40: ..........q.........................................l.n.m.o.....
+  0x66ebd80: ..s...6.....y.~.....2.5.....t.&.%...........{............. .+.<.
+  0x66ebdc0: >.!.,.=.....?.-.k.g.P.............................z.w.|.........
+  0x66ebe00: ..........|.....t.C.B.q.F.".#.)...............0.x.u.8.c.........
+  0x66ebe40: w...Y.c.....W............. .!.......y...}.8.9.:.;.3.=.<.>.4.7.H.
+  0x66ebe80: I.J.K.L.G.@.A.B.C.D.E.F.?.M.N.O.P.6.5...c.b.d...e.f.............
+  0x66ebec0: ....}.C.F.E.D.........i.j.h.Q.....N.Z.J.P.O.S.R.H.I.Q.X.Y.W.M.U.
+  0x66ebf00: V.T.L.G.K.............*.7./.,.6.4.3.8.-.5.+.1.2...0.............
+  0x66ebf40: ................[...`.a.\._.]...................g...9.<.?.>.=.@.
+  0x66ebf80: ;.:.B.A.........................................................
+  0x66ec000: ..................".#.$.......e.e.......o.......................
+  0x66ec040: ....................r.h..._.`.k.Z...3...............{.........l.
+  0x66ec080: ......v.m.....p...................D......._.....................
+  0x66ec0c0: ....................../.^.].....h.i.................v...........
+  0x66ec100: b...%.'.&.(...a...x.z.y.{.f...u.w...m...........y.........#.".$.
+  0x66ec140: ..[.............................................................
+  0x66ec180: ......{.n.........i.q.....~.}.|..........._.p.l.t.v.u.s.r.n.k.g.
+  0x66ec1c0: h.j.i.c.a.`.b.e.f.d...@.:.....;.<.......A.......B.C...=...X...P.
+  0x66ec200: /.Q.W.V.D.E. .!.".F.G.H.#.$.%.I.....>.?...0.6.3.S.T.4.5.U.J.K.&.
+  0x66ec240: '.(.L.M.N.).*.+.O.7...1.........,.-.........8.9.....R.2.\.[.].).
+  0x66ec280: @.s.A...................*.4.............z.j.d.`.b.a...%.j.....x.
+  0x66ec2c0: 7.1.p.....o.u...........................$.d.......}.*.H...*.H...
+  0x66ec300: .*.H.....*.H.....*.H.....*.H......*.H......*.H......*.H......*.H
+  0x66ec340: ......UU.U..U..U..U..U..U..U...*.H.....*.H......*.H......*.H....
+  0x66ec380: ..*.H......*.H......*.H......*.H.....*.H......+....+....+....+..
+  0x66ec3c0: ..+.....<....*.H.....+....+....*.H.....+....*.H.....*.H......*.H
+  0x66ec400: ......*.H......*.H......*.H......*.H......*.H......*.H......*.H.
+  0x66ec440: .....`.H...B`.H...B.`.H...B.+....*.H......+....+....*.H......*.H
+  0x66ec480: ......+....`.H...B..`.H...B..`.H...B..`.H...B..`.H...B..`.H...B.
+  0x66ec4c0: .`.H...B..`.H...B..`.H...B..U.U..U..U..U..U..U..U..U. U.#+.....U
+  0x66ec500: ..U..eU..dU.*U..U.+U..+....U..U..U..*.H..}.B.*.H..}.B.*.H.8..+..
+  0x66ec540: ..*.H.8..+$...+$....*.H.....*.H........U.%+.....+......+.......+
+  0x66ec580: .......+.......+.......+.......+.....7...+.....7...+.....7...+..
+  0x66ec5c0: ...7...+.....7...`.H...B..U..U..U..+e...*.H.......*.H.......*.H.
+  0x66ec600: ......*.H.......*.H.......*.H.......*.H........*.H........*.H...
+  0x66ec640: .....*.H........*.H........*.H........*.H......*.H......*.H.....
+  0x66ec680: ..*.H.......*.H.......*.H......*.H......*.H.....+.......+.......
+  0x66ec6c0: *.H......*.H......*.H......*.H......+.....7...*.H......U.)U..+..
+  0x66ec700: ....+.....0+.......+.....0.+.....0.+.......**.H*.H.8*.H.8.*.H...
+  0x66ec740: ..*.H.....*.H......*.H.......*.H.......*.H.......*.H.......*.H..
+  0x66ec780: .....*.H.......*.H.......*.H........*.H........*.H........*.H...
+  0x66ec7c0: .....*.H........*.H........*.H........*.H........*.H........*.H.
+  0x66ec800: .......*.H........*.H........*.H........*.H........*.H........*.
+  0x66ec840: H........*.H........*.H........*.H........*.H........*.H........
+  0x66ec880: *.H........*.H........*.H........*.H........*.H........*.H......
+  0x66ec8c0: ..*.H........*.H........*.H........*.H........*.H........*.H....
+  0x66ec900: ....*.H........*.H........*.H........*.H........*.H........*.H..
+  0x66ec940: ......*.H........*.H........*.H........*.H........*.H........*.H
+  0x66ec980: ........*.H........*.H........*.H........*.H........*.H........*
+  0x66ec9c0: .H........*.H........*.H........*.H........*.H........*.H.......
+  0x66eca00: .*.H........*.H........*.H........*.H........*.H........*.H.....
+  0x66eca40: +......+......+......+......+......+......+......+......+......+
+  0x66eca80: ......+......+.......+.......+.......+.......+.......+.......+..
+  0x66ecac0: .....+.......+.......+.......+.......+.......+.......+.......+..
+  0x66ecb00: .....+.......+.......+.......+.......+.......+.......+.......+..
+  0x66ecb40: .....+.......+.......+.......+.......+.......+.......+.......+..
+  0x66ecb80: .....+.......+.......+.......+.......+.......+.......+.......+..
+  0x66ecbc0: .....+.......+.......+.......+.......+.......+.......+.......+..
+  0x66ecc00: ......+........+........+........+........+........+........+...
+  0x66ecc40: .....+.......+.......+.......+.......+.......+.......+.......+..
+  0x66ecc80: .....+.......+.......+.......+.......+.......+.......+.......+..
+  0x66eccc0: .....+.......+.......+.......+.......+.......+.......+.......+..
+  0x66ecd00: .....+.......+.......+.......+.......+.......+.......+.......+..
+  0x66ecd40: .....+.......+.......+.......+.......+.......+.......+.......+..
+  0x66ecd80: ...0.+.....0.+.....0..+.....0..+.....0..+.....0..+.....0..+.....
+  0x66ecdc0: 0..+.....0..+.....0..+.....0..+.....0..+.....0..+...+....U.++.+.
+  0x66ece00: .+...+...+...+...+...+...+...+....+.....:.X..&...,d....&...,d..U
+  0x66ece40: ..U..7*.H......+.......+.......+.......U.HU.$U.7U.8*.H.=*.H.=..*
+  0x66ece80: .H.=..*.H.=..*.H.=...*.H.=...*.H.=...*.H.=...*.H.=...*.H.=...*.H
+  0x66ecec0: .=...*.H.=..+.....7..`.H.e....`.H.e....`.H.e....`.H.e....`.H.e..
+  0x66ecf00: ..`.H.e....`.H.e....`.H.e....`.H.e...)`.H.e...*`.H.e...+`.H.e...
+  0x66ecf40: ,U..*.H.8..*.H.8..*.H.8.....&..&...,..&...,d..&...,d...&...,d...
+  0x66ecf80: &...,d...&...,d...&...,d....&...,d....&...,d....&...,d....&...,d
+  0x66ecfc0: ....&...,d....&...,d....&...,d....&...,d....&...,d....&...,d....
+  0x66ed000: &...,d....&...,d....&...,d....&...,d....&...,d....&...,d....&...
+  0x66ed040: ,d....&...,d....&...,d....&...,d....&...,d....&...,d....&...,d..
+  0x66ed080: ..&...,d....&...,d....&...,d....&...,d....&...,d....&...,d....&.
+  0x66ed0c0: ..,d....&...,d....&...,d....&...,d....&...,d....&...,d....&...,d
+  0x66ed100: ....&...,d....&...,d....&...,d....&...,d....&...,d....&...,d.%..
+  0x66ed140: &...,d.&..&...,d.'..&...,d.(..&...,d.)..&...,d.*..&...,d.+..&...
+  0x66ed180: ,d.-..&...,d....&...,d./..&...,d.0..&...,d.1..&...,d.2..&...,d.3
+  0x66ed1c0: ..&...,d.4..&...,d.5..&...,d.6..&...,d.7..&...,d.8U.-+....+.....
+  0x66ed200: +.....+......+......U.,U.Ag*g*.g*.g*.g*.g*.g*.g*..g*..g*..g*..g*
+  0x66ed240: ..g*..g*..g*..g*..g*..g*..g*..g*..g*..g*..g*..g*..g*..g*..g*..g*
+  0x66ed280: ..g*..g*..g*..g*..g*..g*..g*..g*..g*..g*..g*. g*.!g*."g*.#g*.$g*
+  0x66ed2c0: .%g*.&g*.'g*.(g*.)g*.*g*.+g*.,g*.-g*..g*./g*.0g*.1g*.2g*.3g*.4g*
+  0x66ed300: .5g*.6g*.7g*.8g*.9g*.:g*.;g*.<g*.=g*.>g*.?g*.@g*.Ag*.Bg*.Cg*.Dg*
+  0x66ed340: .Eg*.Fg*.Gg*.Hg*.Ig*.Jg*.Kg*.Lg*.Mg*.Ng*.Og*.Pg*.Qg*.Rg*..g*..g*
+  0x66ed380: ..g*..g*..g*..g*..g*..g*..g*..g*..g*..g*..g*..g*..g*..g*..g*..g*
+  0x66ed3c0: ..g*..g*..g*..g*..g*...g*...g*...g*...g*...g*...g*...g*....g*...
+  0x66ed400: .g*....g*....g*....g*..g*..g*."g*.#g*..g*..g*..{*.H.....*.H.....
+  0x66ed440: .g+.....7...+.....7...U..U..+......+.......+.......+.......U..+.
+  0x66ed480: ......*.H......*.H......*.H......*.H......`.H.e....`.H.e....`.H.
+  0x66ed4c0: e....`.H.e....++..g+g+.*.H.=...*.H.=....*.H.=....*.H.=....*.H.=.
+  0x66ed500: ..*.H.=...*.H.=...*.H.=...*.H.=...*.H.=...*.H.=...*.H.=...*.H.=.
+  0x66ed540: ..*.H.=...*.H.=...*.H.=...*.H.=...*.H.=...*.H.=...*.H.=...*.H.=.
+  0x66ed580: ..*.H.=...*.H.=...*.H.=...+....+....+....+....+....+....+....+..
+  0x66ed5c0: ..+... +...!+....+..."+...#+....+....+....+....+....+....+....+.
+  0x66ed600: ...+....+....+....+....+....+....+...$+...%+...&+...'g+...g+...g
+  0x66ed640: +...g+...g+...g+...g+...g+...g+...g+...g+...U. .U.!U.6*....K=...
+  0x66ed680: .*....K=....*....K=......1.......1.......1....)..1.......1......
+  0x66ed6c0: .1....,..1.......1.......1....+U..U..U..*....D*....D..*....D..*.
+  0x66ed700: ...D..*....D..+.......+.......*.H..}.B.*.H..}.B.+.......+.....0.
+  0x66ed740: *.H........*.H........`.H.e....`.H.e....`.H.e...-*.H.=..*.H.=..*
+  0x66ed780: .H.=...*.H.=...*.H.=...*.H.=...*.H.....*.H.....*.H.....*.H.....*
+  0x66ed7c0: .H.....`.H.e....`.H.e....(....7*....*....*.....*.....*.....*....
+  0x66ed800: .*.....*.....*.....*.....*.....*....b*....c*......*......*......
+  0x66ed840: *......*......*......*......*......*......*......*......*......*
+  0x66ed880: .... .*.... .*.... .*.... .*.... .*....!.*....!.*....!.*....#.*.
+  0x66ed8c0: ...#.*....#.*....#.*....$.*....$.*......*......*......*......*..
+  0x66ed900: .....*.......*.......*.......*.......*.......+.....7..U..+......
+  0x66ed940: .U..U..U..U..U..U..U..U..U..U..U..U..U..U..U..U..U..U. U.!U."U.#
+  0x66ed980: U.$U.%U.&U.'U.(U./U.0U.1U.2U.3U.4U.5U.6*.H........`.H.e....`.H.e
+  0x66ed9c0: ....`.H.e....`.H.e....`.H.e....`.H.e....`.H.e....`.H.e.../`.H.e.
+  0x66eda00: ..0*....K=....*....K=....*....K=....U.%.*.H......*.H......*.H...
+  0x66eda40: ...*.H.>..+$.......+$.......+$.......+$.......+$.......+$.......
+  0x66eda80: +$.......+$.......+$.......+$.......+$.......+$.......+$.......+
+  0x66edac0: $.......*.H......+....H?..+.....+.....+.....+.....+....H?..+....
+  0x66edb00: .+.....+.....+.....+en+ep+eq+eo`.H.e....`.H.e....`.H.e....`.H.e.
+  0x66edb40: ...`.H.e....`.H.e...............................A...@...........
+  0x66edb80: ............................................q...@...t...F...@...
+  0x66edbc0: C...".......t...#.......t.......@...............................
+  0x66edc00: ................................................*.H......*.H....
+  0x66edc40: ..*.H......*.H......*.H.....*.H.....*.H......*.H........*.H.....
+  0x66edc80: ...*.H......*.H........*.H.......*.H......*.H...................
+  0x66edd40:  ...!..."...#...$...%...&...'...(...)...*...+...,...-......./...
+  0x66edd80: 0...1...2...3...4...5...6...7...8...9...:...;...<...=...>...?...
+  0x66eddc0: @...A...B...C...D...E...F...G...H...I...J...K...L...M...N...O...
+  0x66ede00: P...Q...R...S...T...U...V...W...X...Y...Z...[...\...]...^..._...
+  0x66ede40: `...a...b...c...d...e...f...g...h...i...j...k...l...m...n...o...
+  0x66ede80: p...q...r...s...t...u...v...w...x...y...z...{...|...}...~.......
+  0x66ee0c0: 04..0...`.H.e........0...*.H......0...`.H.e.......... 04..0...`.
+  0x66ee100: H.e........0...*.H......0...`.H.e..........004..0...`.H.e.......
+  0x66ee140: .0...*.H......0...`.H.e..........@*.H...........................
+  0x66ee180: .............n/...nU...$%y..;d.n.......3=../_.U.>C."N..e....\{..
+  0x66ee1c0: .....T}U..- .....9.)7.M..8.w...)..MI.KO...)+I.......P..63.Qh.M..
+  0x66ee200: `4...dI..en.....C...............C........................._._...
+  0x66ee240: ............?K<6NExxxQWxZT30]HxxxxxxxxxxxxBxxxxxxxxxxxxxxxxxxxxx
+  0x66ee280: x`xxxxxxxxxxxxx9fcxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-...........
+  0x66ee2c0: ...................................................."...........
+  0x66ee300: ....".......................A.......>.......?.......@.......C...
+  0x66ee340: ........................d.......................................
+  0x66ee4c0: \.//^\....2...2...3...3...4...4...5...5./.6.=.6.M.7.Z.7.j.8.u.8.
+  0x66ee500: ..9...9...:...:...;.!.;...2...2...3...3...4...4...5...5.;.6.N.6.
+  0x66ee540: m.7...7...8...8...9...9...:...:.*.;.E.;.k.<...<.|.=...=...>...>.
+  0x66ee580: ..?...?...@...@...A.,.A.F.B.V.B.j.C...C...D...D...E...E.5.F...F.
+  0x66ee5c0: ..G...G...H.".H...I.\.I.&.J...2...2...3...3...4...4...5...2.).2.
+  0x66ee600: ..3.?.3.S.4...4...5.r.5...6...6...7...7.#.8.3.8...9.C.9.i.:...:.
+  0x66ee640: +.;...;...<...<...=...=.-.>.?.>.h.?...?...@...@...A.}.A...B...B.
+  0x66ee680: X.C...C.h.D...D...E...E...2 ..2 ..2$..2$..3$..3$$.4$6.4$E.5$b.5$
+  0x66ee6c0: o.6$}.6$..7$..7$..8$..8$..9$..9$..2(+.2(..3(>.3(..4(..4(..5(..5(
+  0x66ee700: ..6(.42,..2,+43,=.3,Q44,c.4,~45,..5,.46,:.6,.47,..7,758,N.8,l59,
+  0x66ee740: |.9,.5:,..:,.5;,..;,..<,..<,.6=,8.=,A6>,O.>,g6?,..?,.6@,..@,.6A,
+  0x66ee780: ..A,..B,..B,m.C,..C,.5D,..D,.4E,..E,\5F,..F,.5G,4.G,.5H,..20..20
+  0x66ee7c0: ..308.30W.40q.40x.50..50..60..60..70..70..80..80..902.90G.:0[.:0
+  0x66ee800: o.;0..;0..<0..<0..=0..=0..>0..>0..?0$.?03.@0?.@0T.A0d.A0{.B0..B0
+  0x66ee840: ..C0..C0..D0..D0..E0..E0..F0:.F0r.G0..G0..H0..H0..I0..I0..J0..J0
+  0x66ee880: ..K0+.K06.L0G.L0S.M0i.M0w.N0..N0..O0..O0..P0..P0..Q0..Q0 .R05.R0
+  0x66ee8c0: M.S0a.S0y.T0..T0..U0..U0..V0..V0..W0..W0..X05.X0>.Y0S.Y0f.Z0u.Z0
+  0x66ee900: ..[0..[0..\0..\0..]0..]0).^0M.^0c._0m._0..`0J.`0W.a0:.a0..b0..24
+  0x66ee940: ..24!.344.34C.44..44..54`.54..2<h.2<..3<..3<..4<..4<..5<$.5<=.6<
+  0x66ee980: U.6<f.7<t.7<..8<..8<+.9<..9<..:<Z.:<..;<..;<..<<<.<<F.=<Z.=<h.><
+  0x66ee9c0: ..><T.?<v.?<..@<..@<..A<..A<..B<..B<..2@..2@..3@..3@..4@..4@!.5@
+  0x66eea00: 3.5@@.6@L.6@a.7@s.7@~.8@..8@..9@..9@..:@..:@..;@..;@q.<@..<@V.=@
+  0x66eea40: l.=@{.>@..>@..?@..?@..@@..@@Y.A@t.A@..B@..B@..C@..C@..D@..D@..E@
+  0x66eea80:  .E@D.F@d.F@r.G@..G@..H@..H@..I@..I@. J@:.J@R K@..K@. L@..L@. M@
+  0x66eeac0: ..M@.!N@".N@.!O@k.O@."P@..P@V#Q@f#R@..R@.#S@..S@.#T@..T@.$U@U.U@
+  0x66eeb00: z$V@..V@.$W@..W@.$X@..X@)%Y@i.Y@}.Z@.%[@..[@.%\@..\@.&]@*.]@h&^@
+  0x66eeb40: ..^@.&_@.._@.&`@..`@h'a@..a@.'b@..b@.(c@*.c@A(d@m.d@.(e@..e@.(f@
+  0x66eeb80: ..f@.)g@Q.g@.)h@..h@.)i@..i@;*j@[.j@.+k@..k@.,l@&.l@U/m@}.m@./n@
+  0x66eebc0: ..n@Q0o@..o@.0p@..p@M.q@..q@.0r@..r@,1s@!.s@@1t@Z.t@k1u@..u@.1v@
+  0x66eec00: ..v@.1w@..w@)2x@b.x@y2y@..y@.2z@..z@.2{@..{@&3|@/.|@.)}@..}@>2~@
+  0x66eec40: ..~@...@i..@.".@...@x#.@p..@./.@...@.$.@R..@...@B..@.%.@/..@J&.@
+  0x66eec80: ...@./.@}..@?..@d..@...@...@T,.@9..@.3.@f..@.%.@...@...@. .@5..@
+  0x66eecc0: x).@K..@-).@...@<,.@q..@...@...@.0.@...@...@m..@.'.@...@./.@...@
+  0x66eed00: >#.@9..@;..@...@30.@b..@.#.@U..@@..@k..@.1.@...@.!.@...@...@S..@
+  0x66eed40: ;".@3..@{".@S..@.!.@V..@.".@...@.'.@...@$#.@...@...@.+.A.+.A.*.A
+  0x66eed80: I..Aw..A'+.BI+.B...Bw*.B...B.*.B...B.*.Bg..B...B}..B0-.Bg..B.-.B
+  0x66eedc0: Z..B...B.-.B.-.B./!B=.&B..+B..+B..,B..,B.,-B..-B.,.B..0B..0B.&1B
+  0x66eee00: x.2D..2D..3D..3D..4D..4D..5D..5D..6D..6D..7D..7D-.8D5.8DM.9D[.9D
+  0x66eee40: n.:D..2H..2H..3H8.3Hu.2L..2L..3L..3L..4L..4L..5L..5L..6L..6L#.7L
+  0x66eee80: 1.7LF.8LR.8Lr.9L..9L..:L..:L5.;L..;L..<L..<L!.=L..=L..>L0.>L..?L
+  0x66eeec0: ..?LF.@La.@L~.AL..ALj.BLI.BL.62P..2P.73P..3P374PM.4P[75Pq.5P.76P
+  0x66eef00: ..6P.77P..7P.78P..8P.89P..9P78:PM.:Pe8;Pw.;P.8<P..<P.8=P..=P.8>P
+  0x66eef40: ..>P.9?P..?P!9@P1.@PK9APZ.APt9BP..BP.9CP..CP.9DPi.DP.9EP..EP.:FP
+  0x66eef80: ).FP;:GPP.GPv:HP..HP.:IP..IP.:JP..JP.:KP..KP(;LPV.LP.;MP..MP.;NP
+  0x66eefc0: ..NP.;OP..OP.<PP).PP"<QP..QPh;RP..2X..2h+.2h>.3h..3h..4h..4h..5h
+  0x66ef000: ..2l..2l..3l..3lf.2t..2t..3t..2x..2x..3x..3x..4x..4x/.5xQ.5xf.6x
+  0x66ef040: |.6x..7x..7x..8x..8x..9x..9x..:x!.:x+.;x?.;xV.<xk.<x..=x..=x..>x
+  0x66ef080: ..>x..2|..2...2..33...3..34.c.4..35...5..36.r.6..37.P.7..38...8.
+  0x66ef0c0: .39...2...2.............ASN1_LENGTH_MISMATCH.AUX_ERROR.BAD_GET_A
+  0x66ef100: SN1_OBJECT_CALL.BAD_OBJECT_HEADER.BAD_TEMPLATE.BMPSTRING_IS_WRON
+  0x66ef140: G_LENGTH.BN_LIB.BOOLEAN_IS_WRONG_LENGTH.BUFFER_TOO_SMALL.CONTEXT
+  0x66ef180: _NOT_INITIALISED.DECODE_ERROR.DEPTH_EXCEEDED.DIGEST_AND_KEY_TYPE
+  0x66ef1c0: _NOT_SUPPORTED.ENCODE_ERROR.ERROR_GETTING_TIME.EXPECTING_AN_ASN1
+  0x66ef200: _SEQUENCE.EXPECTING_AN_INTEGER.EXPECTING_AN_OBJECT.EXPECTING_A_B
+  0x66ef240: OOLEAN.EXPECTING_A_TIME.EXPLICIT_LENGTH_MISMATCH.EXPLICIT_TAG_NO
+  0x66ef280: T_CONSTRUCTED.FIELD_MISSING.FIRST_NUM_TOO_LARGE.HEADER_TOO_LONG.
+  0x66ef2c0: ILLEGAL_BITSTRING_FORMAT.ILLEGAL_BOOLEAN.ILLEGAL_CHARACTERS.ILLE
+  0x66ef300: GAL_FORMAT.ILLEGAL_HEX.ILLEGAL_IMPLICIT_TAG.ILLEGAL_INTEGER.ILLE
+  0x66ef340: GAL_NESTED_TAGGING.ILLEGAL_NULL.ILLEGAL_NULL_VALUE.ILLEGAL_OBJEC
+  0x66ef380: T.ILLEGAL_OPTIONAL_ANY.ILLEGAL_OPTIONS_ON_ITEM_TEMPLATE.ILLEGAL_
+  0x66ef3c0: TAGGED_ANY.ILLEGAL_TIME_VALUE.INTEGER_NOT_ASCII_FORMAT.INTEGER_T
+  0x66ef400: OO_LARGE_FOR_LONG.INVALID_BIT_STRING_BITS_LEFT.INVALID_BIT_STRIN
+  0x66ef440: G_PADDING.INVALID_BMPSTRING.INVALID_DIGIT.INVALID_INTEGER.INVALI
+  0x66ef480: D_MODIFIER.INVALID_NUMBER.INVALID_OBJECT_ENCODING.INVALID_SEPARA
+  0x66ef4c0: TOR.INVALID_TIME_FORMAT.INVALID_UNIVERSALSTRING.INVALID_UTF8STRI
+  0x66ef500: NG.LIST_ERROR.MISSING_ASN1_EOS.MISSING_EOC.MISSING_SECOND_NUMBER
+  0x66ef540: .MISSING_VALUE.MSTRING_NOT_UNIVERSAL.MSTRING_WRONG_TAG.NESTED_AS
+  0x66ef580: N1_ERROR.NESTED_ASN1_STRING.NESTED_TOO_DEEP.NON_HEX_CHARACTERS.N
+  0x66ef5c0: OT_ASCII_FORMAT.NOT_ENOUGH_DATA.NO_MATCHING_CHOICE_TYPE.NULL_IS_
+  0x66ef600: WRONG_LENGTH.OBJECT_NOT_ASCII_FORMAT.ODD_NUMBER_OF_CHARS.SECOND_
+  0x66ef640: NUMBER_TOO_LARGE.SEQUENCE_LENGTH_MISMATCH.SEQUENCE_NOT_CONSTRUCT
+  0x66ef680: ED.SEQUENCE_OR_SET_NEEDS_CONFIG.SHORT_LINE.STREAMING_NOT_SUPPORT
+  0x66ef6c0: ED.STRING_TOO_LONG.STRING_TOO_SHORT.TAG_VALUE_TOO_HIGH.TIME_NOT_
+  0x66ef700: ASCII_FORMAT.TOO_LONG.TYPE_NOT_CONSTRUCTED.TYPE_NOT_PRIMITIVE.UN
+  0x66ef740: EXPECTED_EOC.UNIVERSALSTRING_IS_WRONG_LENGTH.UNKNOWN_FORMAT.UNKN
+  0x66ef780: OWN_MESSAGE_DIGEST_ALGORITHM.UNKNOWN_SIGNATURE_ALGORITHM.UNKNOWN
+  0x66ef7c0: _TAG.UNSUPPORTED_ANY_DEFINED_BY_TYPE.UNSUPPORTED_PUBLIC_KEY_TYPE
+  0x66ef800: .UNSUPPORTED_TYPE.WRONG_INTEGER_TYPE.WRONG_PUBLIC_KEY_TYPE.WRONG
+  0x66ef840: _TAG.WRONG_TYPE.BAD_FOPEN_MODE.BROKEN_PIPE.CONNECT_ERROR.ERROR_S
+  0x66ef880: ETTING_NBIO.INVALID_ARGUMENT.IN_USE.KEEPALIVE.NBIO_CONNECT_ERROR
+  0x66ef8c0: .NO_HOSTNAME_SPECIFIED.NO_PORT_SPECIFIED.NO_SUCH_FILE.NULL_PARAM
+  0x66ef900: ETER.SYS_LIB.UNABLE_TO_CREATE_SOCKET.UNINITIALIZED.UNSUPPORTED_M
+  0x66ef940: ETHOD.WRITE_TO_READ_ONLY_BIO.ARG2_LT_ARG3.BAD_ENCODING.BAD_RECIP
+  0x66ef980: ROCAL.BIGNUM_TOO_LONG.BITS_TOO_SMALL.CALLED_WITH_EVEN_MODULUS.DI
+  0x66ef9c0: V_BY_ZERO.EXPAND_ON_STATIC_BIGNUM_DATA.INPUT_NOT_REDUCED.INVALID
+  0x66efa00: _INPUT.INVALID_RANGE.NEGATIVE_NUMBER.NOT_A_SQUARE.NOT_INITIALIZE
+  0x66efa40: D.NO_INVERSE.PRIVATE_KEY_TOO_LARGE.P_IS_NOT_PRIME.TOO_MANY_ITERA
+  0x66efa80: TIONS.TOO_MANY_TEMPORARY_VARIABLES.AES_KEY_SETUP_FAILED.BAD_DECR
+  0x66efac0: YPT.BAD_KEY_LENGTH.CTRL_NOT_IMPLEMENTED.CTRL_OPERATION_NOT_IMPLE
+  0x66efb00: MENTED.DATA_NOT_MULTIPLE_OF_BLOCK_LENGTH.INITIALIZATION_ERROR.IN
+  0x66efb40: PUT_NOT_INITIALIZED.INVALID_AD_SIZE.INVALID_KEY_LENGTH.INVALID_N
+  0x66efb80: ONCE.INVALID_NONCE_SIZE.INVALID_OPERATION.IV_TOO_LARGE.NO_CIPHER
+  0x66efbc0: _SET.NO_DIRECTION_SET.OUTPUT_ALIASES_INPUT.TAG_TOO_LARGE.TOO_LAR
+  0x66efc00: GE.UNSUPPORTED_AD_SIZE.UNSUPPORTED_INPUT_SIZE.UNSUPPORTED_KEY_SI
+  0x66efc40: ZE.UNSUPPORTED_NONCE_SIZE.UNSUPPORTED_TAG_SIZE.WRONG_FINAL_BLOCK
+  0x66efc80: _LENGTH.CERTIFICATE_HAS_NO_KEYID.PRIVATE_KEY_DOES_NOT_MATCH_CERT
+  0x66efcc0: IFICATE.LIST_CANNOT_BE_NULL.MISSING_CLOSE_SQUARE_BRACKET.MISSING
+  0x66efd00: _EQUAL_SIGN.NO_CLOSE_BRACE.UNABLE_TO_CREATE_NEW_SECTION.VARIABLE
+  0x66efd40: _EXPANSION_NOT_SUPPORTED.VARIABLE_EXPANSION_TOO_LONG.VARIABLE_HA
+  0x66efd80: S_NO_VALUE.BAD_GENERATOR.INVALID_PARAMETERS.INVALID_PUBKEY.MODUL
+  0x66efdc0: US_TOO_LARGE.NO_PRIVATE_VALUE.UNKNOWN_HASH.BAD_Q_VALUE.BAD_VERSI
+  0x66efe00: ON.MISSING_PARAMETERS.NEED_NEW_SETUP_VALUES.BIGNUM_OUT_OF_RANGE.
+  0x66efe40: COORDINATES_OUT_OF_RANGE.D2I_ECPKPARAMETERS_FAILURE.EC_GROUP_NEW
+  0x66efe80: _BY_NAME_FAILURE.GROUP2PKPARAMETERS_FAILURE.GROUP_MISMATCH.I2D_E
+  0x66efec0: CPKPARAMETERS_FAILURE.INCOMPATIBLE_OBJECTS.INVALID_COFACTOR.INVA
+  0x66eff00: LID_COMPRESSED_POINT.INVALID_COMPRESSION_BIT.INVALID_ENCODING.IN
+  0x66eff40: VALID_FIELD.INVALID_FORM.INVALID_GROUP_ORDER.INVALID_PRIVATE_KEY
+  0x66eff80: .INVALID_SCALAR.MISSING_PRIVATE_KEY.NON_NAMED_CURVE.PKPARAMETERS
+  0x66effc0: 2GROUP_FAILURE.POINT_AT_INFINITY.POINT_IS_NOT_ON_CURVE.PUBLIC_KE
+  0x66f0000: Y_VALIDATION_FAILED.SLOT_FULL.UNDEFINED_GENERATOR.UNKNOWN_GROUP.
+  0x66f0040: UNKNOWN_ORDER.WRONG_CURVE_PARAMETERS.WRONG_ORDER.KDF_FAILED.POIN
+  0x66f0080: T_ARITHMETIC_FAILURE.UNKNOWN_DIGEST_LENGTH.BAD_SIGNATURE.NOT_IMP
+  0x66f00c0: LEMENTED.RANDOM_NUMBER_GENERATION_FAILED.OPERATION_NOT_SUPPORTED
+  0x66f0100: .COMMAND_NOT_SUPPORTED.DIFFERENT_KEY_TYPES.DIFFERENT_PARAMETERS.
+  0x66f0140: EMPTY_PSK.EXPECTING_AN_RSA_KEY.EXPECTING_A_DH_KEY.EXPECTING_A_DS
+  0x66f0180: A_KEY.EXPECTING_A_EC_KEY.ILLEGAL_OR_UNSUPPORTED_PADDING_MODE.INV
+  0x66f01c0: ALID_BUFFER_SIZE.INVALID_DIGEST_LENGTH.INVALID_DIGEST_TYPE.INVAL
+  0x66f0200: ID_KEYBITS.INVALID_MGF1_MD.INVALID_PADDING_MODE.INVALID_PEER_KEY
+  0x66f0240: .INVALID_PSS_SALTLEN.INVALID_SIGNATURE.KEYS_NOT_SET.MEMORY_LIMIT
+  0x66f0280: _EXCEEDED.NOT_A_PRIVATE_KEY.NOT_XOF_OR_INVALID_LENGTH.NO_DEFAULT
+  0x66f02c0: _DIGEST.NO_KEY_SET.NO_MDC2_SUPPORT.NO_NID_FOR_CURVE.NO_OPERATION
+  0x66f0300: _SET.NO_PARAMETERS_SET.OPERATION_NOT_SUPPORTED_FOR_THIS_KEYTYPE.
+  0x66f0340: OPERATON_NOT_INITIALIZED.PRIVATE_KEY_WAS_NOT_SEED.UNKNOWN_PUBLIC
+  0x66f0380: _KEY_TYPE.UNSUPPORTED_ALGORITHM.OUTPUT_TOO_LARGE.INVALID_OID_STR
+  0x66f03c0: ING.UNKNOWN_NID.BAD_BASE64_DECODE.BAD_END_LINE.BAD_IV_CHARS.BAD_
+  0x66f0400: PASSWORD_READ.CIPHER_IS_NULL.ERROR_CONVERTING_PRIVATE_KEY.NOT_DE
+  0x66f0440: K_INFO.NOT_ENCRYPTED.NOT_PROC_TYPE.NO_START_LINE.READ_KEY.SHORT_
+  0x66f0480: HEADER.UNSUPPORTED_CIPHER.UNSUPPORTED_ENCRYPTION.UNSUPPORTED_PRO
+  0x66f04c0: C_TYPE_VERSION.BAD_PKCS7_VERSION.NOT_PKCS7_SIGNED_DATA.NO_CERTIF
+  0x66f0500: ICATES_INCLUDED.NO_CRLS_INCLUDED.AMBIGUOUS_FRIENDLY_NAME.BAD_ITE
+  0x66f0540: RATION_COUNT.BAD_PKCS12_DATA.BAD_PKCS12_VERSION.CIPHER_HAS_NO_OB
+  0x66f0580: JECT_IDENTIFIER.CRYPT_ERROR.ENCRYPT_ERROR.ERROR_SETTING_CIPHER_P
+  0x66f05c0: ARAMS.INCORRECT_PASSWORD.INVALID_CHARACTERS.KEYGEN_FAILURE.KEY_G
+  0x66f0600: EN_ERROR.METHOD_NOT_SUPPORTED.MISSING_MAC.MULTIPLE_PRIVATE_KEYS_
+  0x66f0640: IN_PKCS12.PKCS12_PUBLIC_KEY_INTEGRITY_NOT_SUPPORTED.PKCS12_TOO_D
+  0x66f0680: EEPLY_NESTED.PRIVATE_KEY_DECODE_ERROR.PRIVATE_KEY_ENCODE_ERROR.U
+  0x66f06c0: NKNOWN_ALGORITHM.UNKNOWN_CIPHER.UNKNOWN_CIPHER_ALGORITHM.UNKNOWN
+  0x66f0700: _DIGEST.UNSUPPORTED_KEYLENGTH.UNSUPPORTED_KEY_DERIVATION_FUNCTIO
+  0x66f0740: N.UNSUPPORTED_OPTIONS.UNSUPPORTED_PRF.UNSUPPORTED_PRIVATE_KEY_AL
+  0x66f0780: GORITHM.UNSUPPORTED_SALT_TYPE.BAD_E_VALUE.BAD_FIXED_HEADER_DECRY
+  0x66f07c0: PT.BAD_PAD_BYTE_COUNT.BAD_RSA_PARAMETERS.BLOCK_TYPE_IS_NOT_01.BL
+  0x66f0800: OCK_TYPE_IS_NOT_02.BN_NOT_INITIALIZED.CANNOT_RECOVER_MULTI_PRIME
+  0x66f0840: _KEY.CRT_PARAMS_ALREADY_GIVEN.CRT_VALUES_INCORRECT.DATA_LEN_NOT_
+  0x66f0880: EQUAL_TO_MOD_LEN.DATA_TOO_LARGE.DATA_TOO_LARGE_FOR_KEY_SIZE.DATA
+  0x66f08c0: _TOO_LARGE_FOR_MODULUS.DATA_TOO_SMALL.DATA_TOO_SMALL_FOR_KEY_SIZ
+  0x66f0900: E.DIGEST_TOO_BIG_FOR_RSA_KEY.D_E_NOT_CONGRUENT_TO_1.D_OUT_OF_RAN
+  0x66f0940: GE.EMPTY_PUBLIC_KEY.FIRST_OCTET_INVALID.INCONSISTENT_SET_OF_CRT_
+  0x66f0980: VALUES.INTERNAL_ERROR.INVALID_MESSAGE_LENGTH.KEY_SIZE_TOO_SMALL.
+  0x66f09c0: LAST_OCTET_INVALID.MUST_HAVE_AT_LEAST_TWO_PRIMES.NO_PUBLIC_EXPON
+  0x66f0a00: ENT.NULL_BEFORE_BLOCK_MISSING.N_NOT_EQUAL_P_Q.OAEP_DECODING_ERRO
+  0x66f0a40: R.ONLY_ONE_OF_P_Q_GIVEN.OUTPUT_BUFFER_TOO_SMALL.PADDING_CHECK_FA
+  0x66f0a80: ILED.PKCS_DECODING_ERROR.SLEN_CHECK_FAILED.SLEN_RECOVERY_FAILED.
+  0x66f0ac0: UNKNOWN_ALGORITHM_TYPE.UNKNOWN_PADDING_TYPE.VALUE_MISSING.WRONG_
+  0x66f0b00: SIGNATURE_LENGTH.ALPN_MISMATCH_ON_EARLY_DATA.ALPS_MISMATCH_ON_EA
+  0x66f0b40: RLY_DATA.APPLICATION_DATA_ON_SHUTDOWN.APP_DATA_IN_HANDSHAKE.ATTE
+  0x66f0b80: MPT_TO_REUSE_SESSION_IN_DIFFERENT_CONTEXT.BAD_ALERT.BAD_CHANGE_C
+  0x66f0bc0: IPHER_SPEC.BAD_DATA_RETURNED_BY_CALLBACK.BAD_DH_P_LENGTH.BAD_DIG
+  0x66f0c00: EST_LENGTH.BAD_ECC_CERT.BAD_ECPOINT.BAD_HANDSHAKE_RECORD.BAD_HEL
+  0x66f0c40: LO_REQUEST.BAD_LENGTH.BAD_PACKET_LENGTH.BAD_RSA_ENCRYPT.BAD_SRTP
+  0x66f0c80: _MKI_VALUE.BAD_SRTP_PROTECTION_PROFILE_LIST.BAD_SSL_FILETYPE.BAD
+  0x66f0cc0: _WRITE_RETRY.BIO_NOT_SET.BLOCK_CIPHER_PAD_IS_WRONG.CANNOT_HAVE_B
+  0x66f0d00: OTH_PRIVKEY_AND_METHOD.CANNOT_PARSE_LEAF_CERT.CA_DN_LENGTH_MISMA
+  0x66f0d40: TCH.CA_DN_TOO_LONG.CCS_RECEIVED_EARLY.CERTIFICATE_AND_PRIVATE_KE
+  0x66f0d80: Y_MISMATCH.CERTIFICATE_VERIFY_FAILED.CERT_CB_ERROR.CERT_DECOMPRE
+  0x66f0dc0: SSION_FAILED.CERT_LENGTH_MISMATCH.CHANNEL_ID_NOT_P256.CHANNEL_ID
+  0x66f0e00: _SIGNATURE_INVALID.CIPHER_MISMATCH_ON_EARLY_DATA.CIPHER_OR_HASH_
+  0x66f0e40: UNAVAILABLE.CLIENTHELLO_PARSE_FAILED.CLIENTHELLO_TLSEXT.CONNECTI
+  0x66f0e80: ON_REJECTED.CONNECTION_TYPE_NOT_SET.COULD_NOT_PARSE_HINTS.CUSTOM
+  0x66f0ec0: _EXTENSION_ERROR.DATA_LENGTH_TOO_LONG.DECRYPTION_FAILED.DECRYPTI
+  0x66f0f00: ON_FAILED_OR_BAD_RECORD_MAC.DH_PUBLIC_VALUE_LENGTH_IS_WRONG.DH_P
+  0x66f0f40: _TOO_LONG.DIGEST_CHECK_FAILED.DOWNGRADE_DETECTED.DTLS_MESSAGE_TO
+  0x66f0f80: O_BIG.DUPLICATE_EXTENSION.DUPLICATE_GROUP.DUPLICATE_KEY_SHARE.DU
+  0x66f0fc0: PLICATE_SIGNATURE_ALGORITHM.EARLY_DATA_NOT_IN_USE.ECC_CERT_NOT_F
+  0x66f1000: OR_SIGNING.ECH_REJECTED.ECH_SERVER_CONFIG_AND_PRIVATE_KEY_MISMAT
+  0x66f1040: CH.ECH_SERVER_CONFIG_UNSUPPORTED_EXTENSION.ECH_SERVER_WOULD_HAVE
+  0x66f1080: _NO_RETRY_CONFIGS.EMPTY_HELLO_RETRY_REQUEST.EMS_STATE_INCONSISTE
+  0x66f10c0: NT.ENCRYPTED_LENGTH_TOO_LONG.ERROR_ADDING_EXTENSION.ERROR_IN_REC
+  0x66f1100: EIVED_CIPHER_LIST.ERROR_PARSING_EXTENSION.EXCESSIVE_MESSAGE_SIZE
+  0x66f1140: .EXCESS_HANDSHAKE_DATA.EXTRA_DATA_IN_MESSAGE.FRAGMENT_MISMATCH.G
+  0x66f1180: OT_NEXT_PROTO_WITHOUT_EXTENSION.HANDSHAKE_FAILURE_ON_CLIENT_HELL
+  0x66f11c0: O.HANDSHAKE_NOT_COMPLETE.HTTPS_PROXY_REQUEST.HTTP_REQUEST.INAPPR
+  0x66f1200: OPRIATE_FALLBACK.INCONSISTENT_CLIENT_HELLO.INCONSISTENT_ECH_NEGO
+  0x66f1240: TIATION.INVALID_ALPN_PROTOCOL.INVALID_ALPN_PROTOCOL_LIST.INVALID
+  0x66f1280: _ALPS_CODEPOINT.INVALID_CERTIFICATE_PROPERTY_LIST.INVALID_CLIENT
+  0x66f12c0: _HELLO_INNER.INVALID_COMMAND.INVALID_COMPRESSION_LIST.INVALID_DE
+  0x66f1300: LEGATED_CREDENTIAL.INVALID_ECH_CONFIG_LIST.INVALID_ECH_PUBLIC_NA
+  0x66f1340: ME.INVALID_MESSAGE.INVALID_OUTER_EXTENSION.INVALID_OUTER_RECORD_
+  0x66f1380: TYPE.INVALID_SCT_LIST.INVALID_SIGNATURE_ALGORITHM.INVALID_SPAKE2
+  0x66f13c0: PLUSV1_VALUE.INVALID_SSL_SESSION.INVALID_TICKET_KEYS_LENGTH.INVA
+  0x66f1400: LID_TRUST_ANCHOR_LIST.KEY_USAGE_BIT_INCORRECT.LENGTH_MISMATCH.MI
+  0x66f1440: SSING_EXTENSION.MISSING_KEY_SHARE.MISSING_RSA_CERTIFICATE.MISSIN
+  0x66f1480: G_TMP_DH_KEY.MISSING_TMP_ECDH_KEY.MIXED_SPECIAL_OPERATOR_WITH_GR
+  0x66f14c0: OUPS.MTU_TOO_SMALL.NEGOTIATED_ALPS_WITHOUT_ALPN.NEGOTIATED_BOTH_
+  0x66f1500: NPN_AND_ALPN.NEGOTIATED_TB_WITHOUT_EMS_OR_RI.NESTED_GROUP.NO_APP
+  0x66f1540: LICATION_PROTOCOL.NO_CERTIFICATES_RETURNED.NO_CERTIFICATE_ASSIGN
+  0x66f1580: ED.NO_CERTIFICATE_SET.NO_CIPHERS_AVAILABLE.NO_CIPHERS_PASSED.NO_
+  0x66f15c0: CIPHERS_SPECIFIED.NO_CIPHER_MATCH.NO_COMMON_SIGNATURE_ALGORITHMS
+  0x66f1600: .NO_COMPRESSION_SPECIFIED.NO_GROUPS_SPECIFIED.NO_MATCHING_ISSUER
+  0x66f1640: .NO_METHOD_SPECIFIED.NO_PRIVATE_KEY_ASSIGNED.NO_RENEGOTIATION.NO
+  0x66f1680: _REQUIRED_DIGEST.NO_SHARED_CIPHER.NO_SHARED_GROUP.NO_SUPPORTED_V
+  0x66f16c0: ERSIONS_ENABLED.NULL_SSL_CTX.NULL_SSL_METHOD_PASSED.OCSP_CB_ERRO
+  0x66f1700: R.OLD_SESSION_CIPHER_NOT_RETURNED.OLD_SESSION_PRF_HASH_MISMATCH.
+  0x66f1740: OLD_SESSION_VERSION_NOT_RETURNED.PAKE_AND_KEY_SHARE_NOT_ALLOWED.
+  0x66f1780: PAKE_EXHAUSTED.PARSE_TLSEXT.PATH_TOO_LONG.PEER_DID_NOT_RETURN_A_
+  0x66f17c0: CERTIFICATE.PEER_ERROR_UNSUPPORTED_CERTIFICATE_TYPE.PEER_PAKE_MI
+  0x66f1800: SMATCH.PRE_SHARED_KEY_MUST_BE_LAST.PRIVATE_KEY_OPERATION_FAILED.
+  0x66f1840: PROTOCOL_IS_SHUTDOWN.PSK_IDENTITY_BINDER_COUNT_MISMATCH.PSK_IDEN
+  0x66f1880: TITY_NOT_FOUND.PSK_NO_CLIENT_CB.PSK_NO_SERVER_CB.QUIC_INTERNAL_E
+  0x66f18c0: RROR.QUIC_TRANSPORT_PARAMETERS_MISCONFIGURED.READ_TIMEOUT_EXPIRE
+  0x66f1900: D.RECORD_LENGTH_MISMATCH.RECORD_TOO_LARGE.RENEGOTIATION_EMS_MISM
+  0x66f1940: ATCH.RENEGOTIATION_ENCODING_ERR.RENEGOTIATION_MISMATCH.REQUIRED_
+  0x66f1980: CIPHER_MISSING.RESUMED_EMS_SESSION_WITHOUT_EMS_EXTENSION.RESUMED
+  0x66f19c0: _NON_EMS_SESSION_WITH_EMS_EXTENSION.SCSV_RECEIVED_WHEN_RENEGOTIA
+  0x66f1a00: TING.SECOND_SERVERHELLO_VERSION_MISMATCH.SERVERHELLO_TLSEXT.SERV
+  0x66f1a40: ER_CERT_CHANGED.SERVER_ECHOED_INVALID_SESSION_ID.SESSION_ID_CONT
+  0x66f1a80: EXT_UNINITIALIZED.SESSION_MAY_NOT_BE_CREATED.SHUTDOWN_WHILE_IN_I
+  0x66f1ac0: NIT.SIGNATURE_ALGORITHMS_EXTENSION_SENT_BY_SERVER.SRTP_COULD_NOT
+  0x66f1b00: _ALLOCATE_PROFILES.SRTP_UNKNOWN_PROTECTION_PROFILE.SSL3_EXT_INVA
+  0x66f1b40: LID_SERVERNAME.SSLV3_ALERT_BAD_CERTIFICATE.SSLV3_ALERT_BAD_RECOR
+  0x66f1b80: D_MAC.SSLV3_ALERT_CERTIFICATE_EXPIRED.SSLV3_ALERT_CERTIFICATE_RE
+  0x66f1bc0: VOKED.SSLV3_ALERT_CERTIFICATE_UNKNOWN.SSLV3_ALERT_CLOSE_NOTIFY.S
+  0x66f1c00: SLV3_ALERT_DECOMPRESSION_FAILURE.SSLV3_ALERT_HANDSHAKE_FAILURE.S
+  0x66f1c40: SLV3_ALERT_ILLEGAL_PARAMETER.SSLV3_ALERT_NO_CERTIFICATE.SSLV3_AL
+  0x66f1c80: ERT_UNEXPECTED_MESSAGE.SSLV3_ALERT_UNSUPPORTED_CERTIFICATE.SSL_C
+  0x66f1cc0: TX_HAS_NO_DEFAULT_SSL_VERSION.SSL_HANDSHAKE_FAILURE.SSL_SESSION_
+  0x66f1d00: ID_CONTEXT_TOO_LONG.SSL_SESSION_ID_TOO_LONG.TICKET_ENCRYPTION_FA
+  0x66f1d40: ILED.TLS13_DOWNGRADE.TLSV1_ALERT_ACCESS_DENIED.TLSV1_ALERT_BAD_C
+  0x66f1d80: ERTIFICATE_HASH_VALUE.TLSV1_ALERT_BAD_CERTIFICATE_STATUS_RESPONS
+  0x66f1dc0: E.TLSV1_ALERT_CERTIFICATE_REQUIRED.TLSV1_ALERT_CERTIFICATE_UNOBT
+  0x66f1e00: AINABLE.TLSV1_ALERT_DECODE_ERROR.TLSV1_ALERT_DECRYPTION_FAILED.T
+  0x66f1e40: LSV1_ALERT_DECRYPT_ERROR.TLSV1_ALERT_ECH_REQUIRED.TLSV1_ALERT_EX
+  0x66f1e80: PORT_RESTRICTION.TLSV1_ALERT_INAPPROPRIATE_FALLBACK.TLSV1_ALERT_
+  0x66f1ec0: INSUFFICIENT_SECURITY.TLSV1_ALERT_INTERNAL_ERROR.TLSV1_ALERT_NO_
+  0x66f1f00: APPLICATION_PROTOCOL.TLSV1_ALERT_NO_RENEGOTIATION.TLSV1_ALERT_PR
+  0x66f1f40: OTOCOL_VERSION.TLSV1_ALERT_RECORD_OVERFLOW.TLSV1_ALERT_UNKNOWN_C
+  0x66f1f80: A.TLSV1_ALERT_UNKNOWN_PSK_IDENTITY.TLSV1_ALERT_UNRECOGNIZED_NAME
+  0x66f1fc0: .TLSV1_ALERT_UNSUPPORTED_EXTENSION.TLSV1_ALERT_USER_CANCELLED.TL
+  0x66f2000: S_PEER_DID_NOT_RESPOND_WITH_CERTIFICATE_LIST.TLS_RSA_ENCRYPTED_V
+  0x66f2040: ALUE_LENGTH_IS_WRONG.TOO_MANY_EMPTY_FRAGMENTS.TOO_MANY_KEY_UPDAT
+  0x66f2080: ES.TOO_MANY_WARNING_ALERTS.TOO_MUCH_READ_EARLY_DATA.TOO_MUCH_SKI
+  0x66f20c0: PPED_EARLY_DATA.UNABLE_TO_FIND_ECDH_PARAMETERS.UNCOMPRESSED_CERT
+  0x66f2100: _TOO_LARGE.UNEXPECTED_COMPATIBILITY_MODE.UNEXPECTED_EXTENSION.UN
+  0x66f2140: EXPECTED_EXTENSION_ON_EARLY_DATA.UNEXPECTED_MESSAGE.UNEXPECTED_O
+  0x66f2180: PERATOR_IN_GROUP.UNEXPECTED_RECORD.UNKNOWN_ALERT_TYPE.UNKNOWN_CE
+  0x66f21c0: RTIFICATE_TYPE.UNKNOWN_CERT_COMPRESSION_ALG.UNKNOWN_CIPHER_RETUR
+  0x66f2200: NED.UNKNOWN_CIPHER_TYPE.UNKNOWN_KEY_EXCHANGE_TYPE.UNKNOWN_PROTOC
+  0x66f2240: OL.UNKNOWN_SSL_VERSION.UNKNOWN_STATE.UNSAFE_LEGACY_RENEGOTIATION
+  0x66f2280: _DISABLED.UNSUPPORTED_COMPRESSION_ALGORITHM.UNSUPPORTED_CREDENTI
+  0x66f22c0: AL_LIST.UNSUPPORTED_ECH_SERVER_CONFIG.UNSUPPORTED_ELLIPTIC_CURVE
+  0x66f2300: .UNSUPPORTED_PROTOCOL.UNSUPPORTED_PROTOCOL_FOR_CUSTOM_KEY.WRONG_
+  0x66f2340: CERTIFICATE_TYPE.WRONG_CIPHER_RETURNED.WRONG_CURVE.WRONG_ENCRYPT
+  0x66f2380: ION_LEVEL_RECEIVED.WRONG_MESSAGE_TYPE.WRONG_SIGNATURE_TYPE.WRONG
+  0x66f23c0: _SSL_VERSION.WRONG_VERSION_NUMBER.WRONG_VERSION_ON_EARLY_DATA.X5
+  0x66f2400: 09_LIB.X509_VERIFICATION_SETUP_PROBLEMS.BAD_VALIDITY_CHECK.DECOD
+  0x66f2440: E_FAILURE.INVALID_KEY_ID.INVALID_METADATA.INVALID_METADATA_KEY.I
+  0x66f2480: NVALID_PROOF.INVALID_TOKEN.NO_KEYS_CONFIGURED.NO_SRR_KEY_CONFIGU
+  0x66f24c0: RED.OVER_BATCHSIZE.SRR_SIGNATURE_ERROR.TOO_MANY_KEYS.AKID_MISMAT
+  0x66f2500: CH.BAD_X509_FILETYPE.BASE64_DECODE_ERROR.CANT_CHECK_DH_KEY.CERT_
+  0x66f2540: ALREADY_IN_HASH_TABLE.CRL_ALREADY_DELTA.CRL_VERIFY_FAILURE.DELTA
+  0x66f2580: _CRL_WITHOUT_CRL_NUMBER.IDP_MISMATCH.INVALID_DIRECTORY.INVALID_F
+  0x66f25c0: IELD_FOR_VERSION.INVALID_FIELD_NAME.INVALID_PARAMETER.INVALID_PO
+  0x66f2600: LICY_EXTENSION.INVALID_PSS_PARAMETERS.INVALID_TRUST.INVALID_VERS
+  0x66f2640: ION.ISSUER_MISMATCH.KEY_TYPE_MISMATCH.KEY_VALUES_MISMATCH.LOADIN
+  0x66f2680: G_CERT_DIR.LOADING_DEFAULTS.NAME_TOO_LONG.NEWER_CRL_NOT_NEWER.NO
+  0x66f26c0: _CERTIFICATE_FOUND.NO_CERTIFICATE_OR_CRL_FOUND.NO_CERT_SET_FOR_U
+  0x66f2700: S_TO_VERIFY.NO_CRL_FOUND.NO_CRL_NUMBER.PUBLIC_KEY_DECODE_ERROR.P
+  0x66f2740: UBLIC_KEY_ENCODE_ERROR.SHOULD_RETRY.SIGNATURE_ALGORITHM_MISMATCH
+  0x66f2780: .UNKNOWN_KEY_TYPE.UNKNOWN_PURPOSE_ID.UNKNOWN_TRUST_ID.WRONG_LOOK
+  0x66f27c0: UP_TYPE.BAD_IP_ADDRESS.BAD_OBJECT.BN_DEC2BN_ERROR.BN_TO_ASN1_INT
+  0x66f2800: EGER_ERROR.CANNOT_FIND_FREE_FUNCTION.DIRNAME_ERROR.DISTPOINT_ALR
+  0x66f2840: EADY_SET.DUPLICATE_ZONE_ID.ERROR_CONVERTING_ZONE.ERROR_CREATING_
+  0x66f2880: EXTENSION.ERROR_IN_EXTENSION.EXPECTED_A_SECTION_NAME.EXTENSION_E
+  0x66f28c0: XISTS.EXTENSION_NAME_ERROR.EXTENSION_NOT_FOUND.EXTENSION_SETTING
+  0x66f2900: _NOT_SUPPORTED.EXTENSION_VALUE_ERROR.ILLEGAL_EMPTY_EXTENSION.ILL
+  0x66f2940: EGAL_HEX_DIGIT.INCORRECT_POLICY_SYNTAX_TAG.INVALID_BOOLEAN_STRIN
+  0x66f2980: G.INVALID_EXTENSION_STRING.INVALID_MULTIPLE_RDNS.INVALID_NAME.IN
+  0x66f29c0: VALID_NULL_ARGUMENT.INVALID_NULL_NAME.INVALID_NULL_VALUE.INVALID
+  0x66f2a00: _NUMBERS.INVALID_OBJECT_IDENTIFIER.INVALID_OPTION.INVALID_POLICY
+  0x66f2a40: _IDENTIFIER.INVALID_PROXY_POLICY_SETTING.INVALID_PURPOSE.INVALID
+  0x66f2a80: _SECTION.INVALID_SYNTAX.INVALID_VALUE.ISSUER_DECODE_ERROR.NEED_O
+  0x66f2ac0: RGANIZATION_AND_NUMBERS.NO_CONFIG_DATABASE.NO_ISSUER_CERTIFICATE
+  0x66f2b00: .NO_ISSUER_DETAILS.NO_POLICY_IDENTIFIER.NO_PROXY_CERT_POLICY_LAN
+  0x66f2b40: GUAGE_DEFINED.NO_PUBLIC_KEY.NO_SUBJECT_DETAILS.ODD_NUMBER_OF_DIG
+  0x66f2b80: ITS.OPERATION_NOT_DEFINED.OTHERNAME_ERROR.POLICY_LANGUAGE_ALREAD
+  0x66f2bc0: Y_DEFINED.POLICY_PATH_LENGTH.POLICY_PATH_LENGTH_ALREADY_DEFINED.
+  0x66f2c00: POLICY_WHEN_PROXY_LANGUAGE_REQUIRES_NO_POLICY.SECTION_NOT_FOUND.
+  0x66f2c40: TRAILING_DATA_IN_EXTENSION.UNABLE_TO_GET_ISSUER_DETAILS.UNABLE_T
+  0x66f2c80: O_GET_ISSUER_KEYID.UNKNOWN_BIT_STRING_ARGUMENT.UNKNOWN_EXTENSION
+  0x66f2cc0: .UNKNOWN_EXTENSION_NAME.UNKNOWN_OPTION.UNSUPPORTED_OPTION.USER_T
+  0x66f2d00: OO_LONG.........................expand 32-byte k................
+  0x66f2d40: ChaCha20 for ARMv8, CRYPTOGAMS by <appro@openssl.org>...........
+  0x66f2d80: expand 32-byte k................................................
+  0x66f2dc0: , ...=.v8@?0.%.0f.v16@?0@"NSTimer"8._0._1._2._3._4.v12@?0B8..._5
+  0x66f2e00: ._6._7._8._9._a._b._c._d.v32@?0@"NSString"8@"NSString"16@"NSData
+  0x66f2e40: "24.%.1f.allocator<T>::allocate(size_t n) 'n' exceeds maximum su
+  0x66f2e80: pported size..[.v16@?0@"NSNotification"8.v16@?0@8...............
+  0x66f2ec0: ..................................................{.\/./.-.+._.2
+  0x66f2f00: -t5*.354;6t8(?;1*534..ui_19ac5b6fcb1a58851db392.ui_6a63295d2bbb6
+  0x66f2f40: 6e9698269.ui_b01108f332a1a7c7b0c6db.............timeout.tap.unkn
+  0x66f2f80: own.v16@?0@"UIAlertAction"8.uikit_ctxlog_..bin.....ctor150.ctor1
+  0x66f2fc0: 80.ctor201.ctor230.ctor255.kern.osproductversion.%u.%u.%u.@"NSAr
