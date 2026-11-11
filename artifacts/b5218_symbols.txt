@@ -1,0 +1,266 @@
+FNV1a('unityframework') ^ 0xa5c39f17 = 0xea7fd991 (expected 0xea7fd991)
+
+=== sub_b5218 / sub_b5310 Obfuscated Symbol Resolver Table (37 entries) ===
+  idx= 0 | id=0x375a | case_va=0x0b54f8 |                                            | mov x8, #0x59b9; movk x8, #0xce48, lsl #16; movk x8, #0x2d22, lsl #32
+  idx= 1 | id=0x375b | case_va=0x0b5344 | internal_func_0x130dec                     | adr x0, #0x130dec; nop ; b #0xb54f8
+  idx= 2 | id=0x3758 | case_va=0x0b5358 | internal_func_0x131014                     | adr x0, #0x131014; nop ; b #0xb54f8
+  idx= 3 | id=0x3759 | case_va=0x0b5364 | internal_func_0x133484                     | adr x0, #0x133484; nop ; b #0xb54f8
+  idx= 4 | id=0x375e | case_va=0x0b5370 | internal_func_0x133640                     | adr x0, #0x133640; nop ; b #0xb54f8
+  idx= 5 | id=0x375f | case_va=0x0b537c | internal_func_0x1338ac                     | adr x0, #0x1338ac; nop ; b #0xb54f8
+  idx= 6 | id=0x375c | case_va=0x0b5388 | internal_func_0x133b1c                     | adr x0, #0x133b1c; nop ; b #0xb54f8
+  idx= 7 | id=0x375d | case_va=0x0b5394 | internal_func_0x133c00                     | adr x0, #0x133c00; nop ; b #0xb54f8
+  idx= 8 | id=0x3752 | case_va=0x0b53a0 | internal_func_0x133cdc                     | adr x0, #0x133cdc; nop ; b #0xb54f8
+  idx= 9 | id=0x3753 | case_va=0x0b53ac | GOT[0xcc4c470] -> _vm_read_overwrite       | adrp x0, #0xcc4c000; ldr x0, [x0, #0x470]; b #0xb54f8
+  idx=10 | id=0x3750 | case_va=0x0b53b8 | GOT[0xcc4c480] -> _vm_write                | adrp x0, #0xcc4c000; ldr x0, [x0, #0x480]; b #0xb54f8
+  idx=11 | id=0x3751 | case_va=0x0b53c4 | GOT[0xcc4c468] -> _vm_protect              | adrp x0, #0xcc4c000; ldr x0, [x0, #0x468]; b #0xb54f8
+  idx=12 | id=0x3756 | case_va=0x0b53d0 | GOT[0xcc4c460] -> _vm_deallocate           | adrp x0, #0xcc4c000; ldr x0, [x0, #0x460]; b #0xb54f8
+  idx=13 | id=0x3757 | case_va=0x0b53dc | GOT[0xcc4c478] -> _vm_region_recurse_64    | adrp x0, #0xcc4c000; ldr x0, [x0, #0x478]; b #0xb54f8
+  idx=14 | id=0x3754 | case_va=0x0b53e8 | GOT[0xcc4c448] -> _task_threads            | adrp x0, #0xcc4c000; ldr x0, [x0, #0x448]; b #0xb54f8
+  idx=15 | id=0x3755 | case_va=0x0b53f4 | GOT[0xcc4c450] -> _thread_get_state        | adrp x0, #0xcc4c000; ldr x0, [x0, #0x450]; b #0xb54f8
+  idx=16 | id=0x374a | case_va=0x0b5400 | GOT[0xcc4c458] -> _thread_set_state        | adrp x0, #0xcc4c000; ldr x0, [x0, #0x458]; b #0xb54f8
+  idx=17 | id=0x374b | case_va=0x0b540c | GOT[0xcc4c440] -> _task_set_state          | adrp x0, #0xcc4c000; ldr x0, [x0, #0x440]; b #0xb54f8
+  idx=18 | id=0x3748 | case_va=0x0b5418 | GOT[0xcc4c438] -> _task_set_exception_ports | adrp x0, #0xcc4c000; ldr x0, [x0, #0x438]; b #0xb54f8
+  idx=19 | id=0x3749 | case_va=0x0b5424 | GOT[0xcc4c008] -> _CCCrypt                 | adrp x0, #0xcc4c000; ldr x0, [x0, #8]; b #0xb54f8
+  idx=20 | id=0x374e | case_va=0x0b5430 | GOT[0xcc4c010] -> _CCCryptorCreateWithMode | adrp x0, #0xcc4c000; ldr x0, [x0, #0x10]; b #0xb54f8
+  idx=21 | id=0x374f | case_va=0x0b543c | GOT[0xcc4c020] -> _CCCryptorUpdate         | adrp x0, #0xcc4c000; ldr x0, [x0, #0x20]; b #0xb54f8
+  idx=22 | id=0x374c | case_va=0x0b5448 | GOT[0xcc4c018] -> _CCCryptorRelease        | adrp x0, #0xcc4c000; ldr x0, [x0, #0x18]; b #0xb54f8
+  idx=23 | id=0x374d | case_va=0x0b5454 | GOT[0xcc4c0d8] -> _SecItemCopyMatching     | adrp x0, #0xcc4c000; ldr x0, [x0, #0xd8]; b #0xb54f8
+  idx=24 | id=0x3742 | case_va=0x0b5460 | GOT[0xcc4c0d0] -> _SecItemAdd              | adrp x0, #0xcc4c000; ldr x0, [x0, #0xd0]; b #0xb54f8
+  idx=25 | id=0x3743 | case_va=0x0b546c | GOT[0xcc4c0e8] -> _SecItemUpdate           | adrp x0, #0xcc4c000; ldr x0, [x0, #0xe8]; b #0xb54f8
+  idx=26 | id=0x3740 | case_va=0x0b5478 | GOT[0xcc4c0e0] -> _SecItemDelete           | adrp x0, #0xcc4c000; ldr x0, [x0, #0xe0]; b #0xb54f8
+  idx=27 | id=0x3741 | case_va=0x0b5484 | GOT[0xcc4c2c8] -> __dyld_image_count       | adrp x0, #0xcc4c000; ldr x0, [x0, #0x2c8]; b #0xb54f8
+  idx=28 | id=0x3746 | case_va=0x0b5490 | GOT[0xcc4c2b8] -> __dyld_get_image_name    | adrp x0, #0xcc4c000; ldr x0, [x0, #0x2b8]; b #0xb54f8
+  idx=29 | id=0x3747 | case_va=0x0b549c | GOT[0xcc4c2b0] -> __dyld_get_image_header  | adrp x0, #0xcc4c000; ldr x0, [x0, #0x2b0]; b #0xb54f8
+  idx=30 | id=0x3744 | case_va=0x0b54a8 | GOT[0xcc4c2c0] -> __dyld_get_image_vmaddr_slide | adrp x0, #0xcc4c000; ldr x0, [x0, #0x2c0]; b #0xb54f8
+  idx=31 | id=0x3745 | case_va=0x0b54b4 | GOT[0xcc4c2d0] -> __dyld_register_func_for_add_image | adrp x0, #0xcc4c000; ldr x0, [x0, #0x2d0]; b #0xb54f8
+  idx=32 | id=0x377a | case_va=0x0b54c0 | GOT[0xcc4c428] -> _sysctl                  | adrp x0, #0xcc4c000; ldr x0, [x0, #0x428]; b #0xb54f8
+  idx=33 | id=0x377b | case_va=0x0b54cc | GOT[0xcc4c430] -> _sysctlbyname            | adrp x0, #0xcc4c000; ldr x0, [x0, #0x430]; b #0xb54f8
+  idx=34 | id=0x3778 | case_va=0x0b54d8 | internal_func_0x133f08                     | adr x0, #0x133f08; nop ; b #0xb54f8
+  idx=35 | id=0x3779 | case_va=0x0b54e4 | internal_func_0x133e5c                     | adr x0, #0x133e5c; nop ; b #0xb54f8
+  idx=36 | id=0x377e | case_va=0x0b54f0 | internal_func_0x133dac                     | adr x0, #0x133dac; nop ; mov x8, #0x59b9
+
+=== sub_d9e44 / sub_da2e0 Disasm (0xda180 .. 0xda2e8) ===
+  0x0da180: cbz      x14, #0xd9f14
+  0x0da184: mov      x19, x14
+  0x0da188: ldr      w8, [x14, #0xc]
+  0x0da18c: cbz      w8, #0xd9f14
+  0x0da190: mov      x21, x8
+  0x0da194: mov      x8, #0
+  0x0da198: mov      w9, #0xa120
+  0x0da19c: movk     w9, #7, lsl #16
+  0x0da1a0: cmp      w21, w9
+  0x0da1a4: ccmp     x10, #0, #4, ls
+  0x0da1a8: b.eq     #0xd9ecc
+  0x0da1ac: eor      w9, w13, #1
+  0x0da1b0: tbnz     w9, #0, #0xd9ecc
+  0x0da1b4: mov      x22, #0
+  0x0da1b8: sub      x23, x0, x11
+  0x0da1bc: sub      x9, x10, x12
+  0x0da1c0: add      x11, x9, x23
+  0x0da1c4: mov      x9, x19
+  0x0da1c8: ldr      w10, [x19, #8]
+  0x0da1cc: add      x26, x11, x10
+  0x0da1d0: ldr      w12, [x19, #0x10]
+  0x0da1d4: add      x24, x11, x12
+  0x0da1d8: adrp     x25, #0x63dc000
+  0x0da1dc: add      x25, x25, #0xd28
+  0x0da1e0: mov      x12, x21
+  0x0da1e4: add      x13, x26, x22, lsl #4
+  0x0da1e8: ldrb     w14, [x13, #4]
+  0x0da1ec: mvn      w14, w14
+  0x0da1f0: tst      w14, #0xe
+  0x0da1f4: b.ne     #0xda2b0
+  0x0da1f8: ldr      x27, [x13, #8]
+  0x0da1fc: cbz      x27, #0xda2b0
+  0x0da200: lsl      x14, x22, #4
+  0x0da204: ldr      w14, [x26, x14]
+  0x0da208: ldr      w15, [x9, #0x14]
+  0x0da20c: cmp      w14, w15
+  0x0da210: b.hs     #0xda2b0
+  0x0da214: add      x14, x24, x14
+  0x0da218: mov      x15, x14
+  0x0da21c: ldrb     w16, [x15], #1
+  0x0da220: cmp      w16, #0x5f
+  0x0da224: csel     x0, x14, x15, ne
+  0x0da228: ldrb     w14, [x0]
+  0x0da22c: cmp      w14, #0x69
+  0x0da230: b.ne     #0xda2b0
+  0x0da234: ldrb     w14, [x0, #1]
+  0x0da238: cmp      w14, #0x6c
+  0x0da23c: b.ne     #0xda2b0
+  0x0da240: ldrb     w14, [x0, #2]
+  0x0da244: cmp      w14, #0x32
+  0x0da248: b.ne     #0xda2b0
+  0x0da24c: bl       #0xda2e4
+  0x0da250: mov      x12, x21
+  0x0da254: mov      x9, x19
+  0x0da258: mov      x13, #0
+  0x0da25c: ldr      x15, [sp, #8]
+  0x0da260: eor      x15, x0, x15
+  0x0da264: mov      x16, #0x7c15
+  0x0da268: movk     x16, #0x7f4a, lsl #16
+  0x0da26c: movk     x16, #0x79b9, lsl #32
+  0x0da270: movk     x16, #0x9e37, lsl #48
+  0x0da274: ldr      x17, [x25, x13]
+  0x0da278: cmp      x15, x17
+  0x0da27c: b.eq     #0xda294
+  0x0da280: add      x16, x16, x20
+  0x0da284: add      x13, x13, #8
+  0x0da288: cmp      x13, #0x98
+  0x0da28c: b.ne     #0xda274
+  0x0da290: b        #0xda2b0
+  0x0da294: add      x15, x27, x23
+  0x0da298: ldr      x14, [sp, #0x10]
+  0x0da29c: eor      x14, x15, x14
+  0x0da2a0: eor      x15, x14, x16
+  0x0da2a4: adrp     x14, #0xcc90000
+  0x0da2a8: add      x14, x14, #0xce8
+  0x0da2ac: str      x15, [x14, x13]
+  0x0da2b0: add      x22, x22, #1
+  0x0da2b4: cmp      x22, x12
+  0x0da2b8: b.ne     #0xda1e4
+  0x0da2bc: adrp     x8, #0xcc90000
+  0x0da2c0: add      x8, x8, #0xce8
+  0x0da2c4: ldr      x9, [x8, x28, lsl #3]
+  0x0da2c8: ldr      x8, [sp, #0x18]
+  0x0da2cc: eor      x8, x9, x8
+  0x0da2d0: cmp      x9, #0
+  0x0da2d4: csel     x8, xzr, x8, eq
+  0x0da2d8: b        #0xd9ecc
+  0x0da2dc: mov      w3, #0
+  0x0da2e0: b        #0xd9fe4
+  0x0da2e4: ldrb     w10, [x0]
+
+=== sub_d9e44 IL2CPP Export Table @ 0x63dcd28 (19 entries, mask=0x376d7964fb120108) ===
+  idx= 0 (0x00) | hash_enc=0x79da3afbf159fb4c | uf_va=0x0a10fefc | il2cpp_domain_get
+  idx= 1 (0x01) | hash_enc=0x6401cc92ef5d3d25 | uf_va=0x0a11043c | il2cpp_thread_attach
+  idx= 2 (0x02) | hash_enc=0x6e769723fd4e79b4 | uf_va=0x0a110408 | il2cpp_runtime_class_init
+  idx= 3 (0x03) | hash_enc=0x2357bbee2fe1b8ce | uf_va=0x0a1103b8 | il2cpp_object_new
+  idx= 4 (0x04) | hash_enc=0x4e290f95cc7e86da | uf_va=0x0a10f98c | il2cpp_array_new
+  idx= 5 (0x05) | hash_enc=0x98f828f4bd09e47c | uf_va=0x0a10f9d8 | il2cpp_class_from_name
+  idx= 6 (0x06) | hash_enc=0x2f01f9a855417225 | uf_va=0x0a10f96c | il2cpp_get_corlib
+  idx= 7 (0x07) | hash_enc=0x86dd3b93a4ff0070 | uf_va=0x0a110204 | il2cpp_gchandle_new
+  idx= 8 (0x08) | hash_enc=0x44aa960f287f4b0d | uf_va=0x0a110278 | il2cpp_gc_wbarrier_set_field
+  idx= 9 (0x09) | hash_enc=0xe267138b2706c982 | uf_va=0x0a110420 | il2cpp_string_new
+  idx=10 (0x0a) | hash_enc=0x01170a9a4000c61a | uf_va=0x0a10fa04 | il2cpp_class_get_method_from_name
+  idx=11 (0x0b) | hash_enc=0x37a3d5e1c8bead60 | uf_va=0x0a110404 | il2cpp_runtime_invoke
+  idx=12 (0x0c) | hash_enc=0x1161568e53a19d88 | uf_va=0x0a10f9fc | il2cpp_class_get_methods
+  idx=13 (0x0d) | hash_enc=0x565df362be6919bd | uf_va=0x0a1102e0 | il2cpp_method_get_name
+  idx=14 (0x0e) | hash_enc=0x5935f0d618c3c188 | uf_va=0x0a10ff08 | il2cpp_domain_get_assemblies
+  idx=15 (0x0f) | hash_enc=0x1655638cfe8569c6 | uf_va=0x0a10f9a0 | il2cpp_assembly_get_image
+  idx=16 (0x10) | hash_enc=0xb9c99cf8cd2eefea | uf_va=0x0a10f9f8 | il2cpp_class_get_field_from_name
+  idx=17 (0x11) | hash_enc=0xc15437eba954ff1b | uf_va=0x0a110128 | il2cpp_field_static_set_value
+  idx=18 (0x12) | hash_enc=0xde1720f481de6873 | uf_va=0x0a110124 | il2cpp_field_static_get_value
+
+=== sub_b973c Disasm (0xb973c .. 0xb97e4) ===
+  0x0b973c: cbz      x0, #0xb97c8
+  0x0b9740: mov      x8, #0x2325
+  0x0b9744: movk     x8, #0x8422, lsl #16
+  0x0b9748: movk     x8, #0x9ce4, lsl #32
+  0x0b974c: movk     x8, #0xcbf2, lsl #48
+  0x0b9750: ldrb     w11, [x0]
+  0x0b9754: cbz      w11, #0xb978c
+  0x0b9758: add      x9, x0, #1
+  0x0b975c: mov      x10, #0x1b3
+  0x0b9760: movk     x10, #0x100, lsl #32
+  0x0b9764: sub      w12, w11, #0x41
+  0x0b9768: and      w12, w12, #0xff
+  0x0b976c: add      w13, w11, #0x20
+  0x0b9770: cmp      w12, #0x1a
+  0x0b9774: csel     w11, w13, w11, lo
+  0x0b9778: and      x11, x11, #0xff
+  0x0b977c: eor      x8, x8, x11
+  0x0b9780: mul      x8, x8, x10
+  0x0b9784: ldrb     w11, [x9], #1
+  0x0b9788: cbnz     w11, #0xb9764
+  0x0b978c: eor      x8, x8, x8, lsr #30
+  0x0b9790: mov      x9, #0xe5b9
+  0x0b9794: movk     x9, #0x1ce4, lsl #16
+  0x0b9798: movk     x9, #0x476d, lsl #32
+  0x0b979c: movk     x9, #0xbf58, lsl #48
+  0x0b97a0: mul      x8, x8, x9
+  0x0b97a4: eor      x8, x8, x8, lsr #27
+  0x0b97a8: mov      x9, #0x11eb
+  0x0b97ac: movk     x9, #0x1331, lsl #16
+  0x0b97b0: movk     x9, #0x49bb, lsl #32
+  0x0b97b4: movk     x9, #0x94d0, lsl #48
+  0x0b97b8: mul      x8, x8, x9
+  0x0b97bc: lsr      x9, x8, #0x3f
+  0x0b97c0: lsr      x8, x8, #0x20
+  0x0b97c4: eor      w0, w9, w8
+  0x0b97c8: ret      
+  0x0b97cc: stp      x29, x30, [sp, #-0x10]!
+  0x0b97d0: mov      x29, sp
+  0x0b97d4: mov      x0, x2
+  0x0b97d8: bl       #0x639fd88
+  0x0b97dc: ldp      x29, x30, [sp], #0x10
+  0x0b97e0: b        #0x639fca4
+
+=== +[_UISceneBootstrapLoader load] Decrypted setenv(name, value, 1) ===
+  env_name  = '_UISceneTraitBootToken'
+  env_value = '1'
+
+=== All Calls to sub_b973c (case-insensitive FNV1a-64 + SplitMix64 -> 32-bit hash) ===
+  call sub_b973c @ 0x0b9534:
+    0x0b9514: cmp      w8, #0x2e
+    0x0b9518: b.ne     #0xb963c
+    0x0b951c: mov      x0, x24
+    0x0b9520: mov      x27, x26
+    0x0b9524: mov      x26, x28
+    0x0b9528: mov      x28, x25
+    0x0b952c: mov      x25, x23
+    0x0b9530: mov      x23, x7
+    0x0b9534: bl       #0xb973c
+    0x0b9538: mov      x7, x23
+    0x0b953c: mov      x23, x25
+    0x0b9540: mov      x25, x28
+    0x0b9544: mov      x28, x26
+    0x0b9548: mov      x26, x27
+    0x0b954c: ldr      x27, [sp, #0x18]
+    0x0b9550: mov      w6, #0x5443
+    0x0b9554: movk     w6, #0x4259, lsl #16
+    0x0b9558: mov      w5, #0x79b9
+    0x0b955c: movk     w5, #0x9e37, lsl #16
+    0x0b9560: adrp     x4, #0xcc74000
+  call sub_b973c @ 0x0ba2d8:
+    0x0ba2b8: ldr      x0, [x8, x21, lsl #3]
+    0x0ba2bc: bl       #0x639fd94
+    0x0ba2c0: mov      x28, x0
+    0x0ba2c4: mov      x1, x26
+    0x0ba2c8: bl       #0x639fd34
+    0x0ba2cc: cbz      x0, #0xba32c
+    0x0ba2d0: ldrb     w8, [x0]
+    0x0ba2d4: cbz      w8, #0xba32c
+    0x0ba2d8: bl       #0xb973c
+    0x0ba2dc: cmp      w20, #0
+    0x0ba2e0: ccmp     w0, w20, #0, ne
+    0x0ba2e4: cset     w8, eq
+    0x0ba2e8: cmp      w0, w24
+    0x0ba2ec: ccmp     w8, #0, #0, ne
+    0x0ba2f0: b.eq     #0xba32c
+    0x0ba2f4: ldr      x0, [sp, #0x10]
+    0x0ba2f8: mov      x1, x23
+    0x0ba2fc: mov      x2, x28
+    0x0ba300: bl       #0x639fd34
+    0x0ba304: mov      x29, x29
+  call sub_b973c @ 0x0d6fac:
+    0x0d6f8c: mov      x24, x0
+    0x0d6f90: mov      w19, #0x3cae
+    0x0d6f94: movk     w19, #0x1611, lsl #16
+    0x0d6f98: mov      w28, #0xe851
+    0x0d6f9c: movk     w28, #0x2e70, lsl #16
+    0x0d6fa0: mov      x0, x24
+    0x0d6fa4: blr      x23
+    0x0d6fa8: cbz      x0, #0xd6ff8
+    0x0d6fac: bl       #0xb973c
+    0x0d6fb0: ldr      w8, [sp, #0x18]
+    0x0d6fb4: eor      w8, w0, w8
+    0x0d6fb8: cmp      w8, w19
+    0x0d6fbc: b.eq     #0xd6fe4
+    0x0d6fc0: cmp      w8, w28
+    0x0d6fc4: b.ne     #0xd6ff8
+    0x0d6fc8: ldr      x8, [x24]
+    0x0d6fcc: cmp      x8, x20
+    0x0d6fd0: b.eq     #0xd6ff8
+    0x0d6fd4: adrp     x9, #0xcc90000
+    0x0d6fd8: str      x8, [x9, #0xe38]
