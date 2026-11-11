@@ -82,3 +82,43 @@ IPA 2 mở rộng `__DATA.__bss` của `Penny` từ `0x44e8` lên `0x45b0` và c
   - Endpoint: `https://api.hackgamefile.com/sophia/verify`
   - Trường JSON gửi đi: `package` (`"hunterff"`), `app_version` (`"1.0.0"`), `hwid`, `nonce`, `key`.
   - Trường JSON phản hồi được kiểm tra: `valid`, `code`, `user`, `expiry` / `expiresAt`, `server_time` / `serverTime`, và chữ ký Ed25519 `sig_ed2` được xác minh bằng khóa công khai 32-byte `f55a7bef05eb2fdd7580a003bf7d29c4811f27eb859b8b3d37805d3f2bfb16de`.
+
+---
+
+## 5. Giải Mã Sâu Kiến Trúc Máy Ảo (VM), TLS Pinning, Ed25519 & Backend (`tools/devirt_hunterff_full.py`)
+
+### 5.1. Kiến trúc Máy ảo Bytecode ARM64 (`0x007300 .. 0x404100`)
+- Vùng mã máy ảo dài `0x3fce00` byte (`4.181.504 byte`) nằm ngay trước `__TEXT.__text` (`0x408000 .. 0x4357a8`).
+- Trên toàn bộ `484` hàm trong `LC_FUNCTION_STARTS`, có **`8.863` nhánh nhảy `b #<vm_target>`** từ `__TEXT.__text` vào vùng VM và **`8.522` điểm nhảy quay về (`[<=VM_RESUME]`)** trong `__TEXT.__text`:
+  - **`4.322` điểm vào `BytecodeVM`**: Đẩy ngữ cảnh thanh ghi `x0..x30` lên stack qua `0x560e8` / `0x2e0ab8` (`x2 = sp` là mảng thanh ghi ảo `vregs`), nạp `x0 = tbl_base`, `x3 = VIP` (con trỏ dòng bytecode) và nhảy vào 1 trong 2 trình điều phối trung tâm (**`0x223dc0`** hoặc **`0x3a2428`**).
+  - **`4.541` điểm vào `ObfTramp`**: Các trampoline lệnh máy đa hình có chèn chuỗi lệnh rác trung hòa (`rev`/`rbit` kép, hoán vị cộng-trừ, ghi đè thanh ghi chết trước `ldp`).
+  - **Tập lệnh Bytecode & Hybrid Native Snippets**: Opcode 16-bit tại `[x3]` (`0x002d` nạp hằng 64-bit, `0x0030` ghi vreg, `0x0037`/`0x0024` đọc vreg, `0x005c` nhảy tới đoạn mã native 5 lệnh tại `(VIP + 2) + rel64` rồi `add x3, x3, #0xa ; br x6`, `0x0007` thoát khỏi VM về `(VIP + 2) + rel64`).
+
+### 5.2. Cơ chế TLS Pinning trong `PennyOwnerPinnedSession` (`0x41bcd4`, `0x41bfa0` & `sub_4165b0`)
+- Hàm `sub_41bfb0` (`0x41c488 .. 0x41c510`) tạo `ephemeralSessionConfiguration`, xóa sạch `URLCache`, `HTTPCookieStorage`, `URLCredentialStorage`, ép `TLSMinimumSupportedProtocolVersion = 0x0303` (**TLS 1.2**) và gắn delegate `PennyOwnerPinnedSession` (`0x451ac0`).
+- `-[PennyOwnerPinnedSession URLSession:task:willPerformHTTPRedirection:newRequest:completionHandler:]` (`0x41bfa0`) luôn truyền `nil` vào `completionHandler` để chặn mọi HTTP redirect.
+- `-[PennyOwnerPinnedSession URLSession:didReceiveChallenge:completionHandler:]` (`0x41bcd4`) gọi **`sub_4165b0(serverTrust, host)`** (`0x4165b0`):
+  1. Kiểm tra `strcmp(host, "api.hackgamefile.com") == 0` (`0x445e99`).
+  2. Đánh giá chuỗi chứng chỉ chuẩn qua `SecPolicyCreateSSL(true, @"api.hackgamefile.com")` và `SecTrustEvaluateWithError`.
+  3. Duyệt từng chứng chỉ trong chuỗi (`SecTrustGetCertificateCount` / `SecTrustGetCertificateAtIndex`), băm `CC_SHA256` + mã hóa Base64 (`sub_416a0c`) trên cả DER cert (`SecCertificateCopyData`) và khóa công khai SPKI (`SecCertificateCopyKey` + `SecKeyCopyExternalRepresentation`, tự ghép 24 byte ASN.1 header RSA-2048 tại `0x43ba38`: `30820122300d06092a864886f70d01010105000382010f00` nếu khóa dài `0x10e = 270` byte) rồi đối chiếu với **3 mã Pin SHA-256 Base64**:
+     - **Pin 1 (`0x445eae`)**: `ByY50LFA1b/64WrZw/bMYIYEBiH1HuYabUaokVwHz3Y=`
+     - **Pin 2 (`0x445edb`)**: `lrzsBiZJdvN0YHeazyjFp8/oo8Cq4RqP/O4FwL3fCMY=`
+     - **Pin 3 (`0x445f08`)**: `EsfgDUB7JOgzShwSwJuq7obKoRCK7FXLITmeRtW8tDg=`
+
+### 5.3. Cơ chế Xác minh Chữ ký Ed25519 (`sub_4086f8` & `sub_421714`)
+- Trong `sub_4086f8` (`0x4086f8 .. 0x409348`), sau khi kiểm tra `|device_time - server_time| <= 300.0` giây (`0x40891c..0x408930`), hàm giải mã `sig_ed2` (hex 128 ký tự $\rightarrow$ 64 byte) và khóa công khai Ed25519 tại **`0x444952`** (`f55a7bef05eb2fdd7580a003bf7d29c4811f27eb859b8b3d37805d3f2bfb16de` $\rightarrow$ 32 byte).
+- **Định dạng Chuỗi Chuẩn Hóa (Canonical Message) 6 trường (`0x408b9c .. 0x408db8`)**:
+  ```text
+  <valid_bit>|<user>|<expiry>|<hwid>|<nonce>|<server_time>
+  ```
+  Trong đó `<valid_bit>` là `"1"` hoặc `"0"`, `<hwid>` lấy từ Keychain (`net.hunterff.penny` / `device`), `<nonce>` là chuỗi hex 32 ký tự sinh từ `arc4random_buf(16)`, và `<server_time>` là chuỗi số nguyên `std::to_string((long long)server_time)`.
+- **Hàm xác minh Ed25519 Ref10 + SHA-512 (`sub_421714` tại `0x421714 .. 0x421840`)**:
+  - Kiểm tra $S < L$ với hằng số bậc nhóm $L$ tại `0x4447e0` (`edd3f55c1a631258d69cf7a2def9de1400000000000000000000000000000010`).
+  - Giải nén điểm khóa công khai $-A$ qua `sub_41f5e0` (`ge_frombytes_negate_vartime`).
+  - Tính `SHA-512(R || A || msg)` qua `sub_42104c`, `sub_421098`, `sub_42154c`, rút gọn modulo $L$ qua `sub_41fe58` (`sc_reduce`), tính $R_{\text{calc}} = [S]B + [k](-A)$ qua `sub_41e6f0` (`ge_double_scalarmult_vartime` + 77 hàm bảng điểm cơ sở `0x421844..0x434eac`), nén điểm qua `sub_41f7f4` (`ge_tobytes`) và so sánh thời gian hằng 32 byte bằng tập lệnh SIMD NEON (`cmeq` + `mvn` + `orn` + `umaxv` tại `0x421818..0x42183c`).
+  - Giả lập Unicorn trên `sub_421714` với vector chữ ký chuẩn RFC 8032 xác nhận hàm trả về `1` khi chữ ký hợp lệ và `0` khi thông điệp bị sửa đổi.
+
+### 5.4. Keychain, Chu kỳ Re-verify 45 Giây & Watermark (`0x41895c .. 0x41bc68`)
+- **Keychain (`0x41895c` & `0x418fdc`)**: Lưu dưới `kSecAttrService = "net.hunterff.penny"` (`0x44cff8`) với 2 tài khoản `"device"` (mã thiết bị `UUIDString`) và `"key"` (license key đã trim và `uppercaseString`).
+- **Timeout & Re-verify**: Mỗi phiên xác thực có hạn chờ tối đa `90.0` giây theo `mach_absolute_time` (`0x40a3e8`). Sau khi đăng nhập, `HunterFF.dylib` đặt lịch kiểm tra lại key mỗi **`45` giây** (`0xa7a358200 ns` tại `0x419ad4`, `0x419bb8`) và mỗi khi ứng dụng vào tiền cảnh (`UIApplicationDidBecomeActiveNotification`).
+- **Watermark (`init[3]` tại `0x41b888`)**: Quét cửa sổ hoạt động mỗi `1.0` giây để gắn `HFFWatermarkView` (`'xumod_crack'` với `CAGradientLayer` 7 màu cầu vồng).

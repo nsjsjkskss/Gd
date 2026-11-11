@@ -1,0 +1,74 @@
+=== 1. HunterFF.dylib Binary & Mach-O Layout ===
+  Size: 4673920 bytes | SHA-256: 624ca78e989ba7994d10af17fb0590abeab594fa0bac1babfcb9302326c094cb | LC_UUID: 970ade6095d434ffb727755db07b4f1d
+  Segment __TEXT       VA=0x00000000 VSize=0x0044c000 FOff=0x00000000 FSize=0x0044c000 Prot=5/5
+    Section __text           VA=0x00408000 Size=0x0002d7a8
+    Section __stubs          VA=0x004357a8 Size=0x00000468
+    Section __stub_helper    VA=0x00435c10 Size=0x00000468
+    Section __objc_stubs     VA=0x00436080 Size=0x00001ba0
+    Section __objc_methlist  VA=0x00437c20 Size=0x000001b0
+    Section __const          VA=0x00437dd0 Size=0x0000ca30
+    Section __cstring        VA=0x00444800 Size=0x000019ac
+    Section __gcc_except_tab VA=0x004461ac Size=0x000010dc
+    Section __ustring        VA=0x00447288 Size=0x000007d6
+    Section __objc_methname  VA=0x00447a5e Size=0x00001625
+    Section __objc_classname VA=0x00449083 Size=0x000000ae
+    Section __objc_methtype  VA=0x00449131 Size=0x000006ae
+    Section __unwind_info    VA=0x004497e0 Size=0x000007b0
+    Section __eh_frame       VA=0x00449f90 Size=0x00000150
+  Segment __DATA_CONST VA=0x0044c000 VSize=0x00004000 FOff=0x0044c000 FSize=0x00004000 Prot=3/3
+    Section __got            VA=0x0044c000 Size=0x00000148
+    Section __mod_init_func  VA=0x0044c148 Size=0x00000020
+    Section __const          VA=0x0044c168 Size=0x00000d90
+    Section __cfstring       VA=0x0044cef8 Size=0x000009c0
+    Section __objc_classlist VA=0x0044d8b8 Size=0x00000020
+    Section __objc_protolist VA=0x0044d8d8 Size=0x00000020
+    Section __objc_imageinfo VA=0x0044d8f8 Size=0x00000008
+    Section __objc_arraydata VA=0x0044d900 Size=0x00000080
+    Section __objc_dictobj   VA=0x0044d980 Size=0x00000028
+  Segment __DATA       VA=0x00450000 VSize=0x00004000 FOff=0x00450000 FSize=0x00004000 Prot=3/3
+    Section __la_symbol_ptr  VA=0x00450000 Size=0x000002e0
+    Section __objc_const     VA=0x004502e0 Size=0x00000df0
+    Section __objc_selrefs   VA=0x004510d0 Size=0x00000740
+    Section __objc_classrefs VA=0x00451810 Size=0x00000170
+    Section __objc_superrefs VA=0x00451980 Size=0x00000008
+    Section __objc_ivar      VA=0x00451988 Size=0x00000020
+    Section __objc_data      VA=0x004519a8 Size=0x00000140
+    Section __data           VA=0x00451ae8 Size=0x000001e0
+    Section __interpose      VA=0x00451cc8 Size=0x00000010
+    Section __bss            VA=0x00451cd8 Size=0x000000f8
+    Section __common         VA=0x00451dd0 Size=0x000009d0
+  Segment __VDATA      VA=0x00454000 VSize=0x00004000 FOff=0x00454000 FSize=0x00004000 Prot=3/3
+    Section __vdata          VA=0x00454000 Size=0x00004000
+  Segment __LINKEDIT   VA=0x00458000 VSize=0x0001e000 FOff=0x00458000 FSize=0x0001d180 Prot=1/1
+
+=== 2. Custom ARM64 Bytecode VM Statistics (0x007300 .. 0x404100) ===
+  Total functions in LC_FUNCTION_STARTS: 484
+  Branches from __TEXT.__text into VM region (0x7300..0x404100): 8863
+  VM Bytecode Entry Stubs (BytecodeVM): 4322
+  Central VM Dispatchers: 0x223dc0, 0x3a2428
+  Unique VM->text resume addresses in __TEXT.__text: 8522
+
+=== 3. TLS Pinning Configuration (PennyOwnerPinnedSession & sub_4165b0) ===
+  Pinned Host (0x445e99 / CFString@0x44cef8): 'api.hackgamefile.com'
+  SHA-256 Pin 1 @ 0x445eae: 'ByY50LFA1b/64WrZw/bMYIYEBiH1HuYabUaokVwHz3Y='
+  SHA-256 Pin 2 @ 0x445edb: 'lrzsBiZJdvN0YHeazyjFp8/oo8Cq4RqP/O4FwL3fCMY='
+  SHA-256 Pin 3 @ 0x445f08: 'EsfgDUB7JOgzShwSwJuq7obKoRCK7FXLITmeRtW8tDg='
+  RSA-2048 SPKI ASN.1 Header @ 0x43ba38 (24B): 30820122300d06092a864886f70d01010105000382010f00
+
+=== 4. Backend Error Dictionary (__objc_dictobj @ 0x44d980 / __objc_arraydata @ 0x44d900) ===
+  'closed'         -> 'Máy chủ đang bảo trì.'
+  'device_limit'   -> 'Key đã đủ số thiết bị.'
+  'expired'        -> 'Key đã hết hạn.'
+  'locked'         -> 'Key đã bị khóa.'
+  'no_package'     -> 'Gói hunterff chưa được cấu hình.'
+  'not_found'      -> 'Key không tồn tại.'
+  'update'         -> 'Đã có phiên bản mới. Vui lòng cập nhật.'
+  'wrong_package'  -> 'Key không thuộc hunterff.'
+
+=== 5. Ed25519 Ref10 + SHA-512 Unicorn Verification (sub_421714) ===
+  Embedded Server Ed25519 Public Key @ 0x444952: f55a7bef05eb2fdd7580a003bf7d29c4811f27eb859b8b3d37805d3f2bfb16de
+  Group Order L @ 0x4447e0 (32B): edd3f55c1a631258d69cf7a2def9de1400000000000000000000000000000010
+  Canonical Message Format (built in sub_4086f8 @ 0x408b9c..0x408db8):
+    <valid_bit>|<user>|<expiry>|<hwid>|<nonce>|<server_time>
+  sub_421714(valid RFC 8032 signature)   -> 1 (expected 1)
+  sub_421714(tampered canonical message) -> 0 (expected 0)
